@@ -1,0 +1,18 @@
+Based on the meeting on February 12, 2010, it has been decided that the AP scanner program will be modeled after App Store of Apple. A list containing service-publishing APs ignoring any ordinary AP is displayed. For example, SSID ##^0,Chess^0,Solitaire^95^78 of AP1 and SSID ##^95,50% discount! of AP2 will result in the following display:
+
+    * AP1
+          o Chess
+          o Solitaire
+          o Book store
+          o Restaurant
+    * AP2
+          o Book store: 50% discount!
+
+Upon clicking the desired service, the gadget will establish a UDP connection to the AP retrieving the details of the service (c.f., Service Description Exchange). The gadget can also choose to retrieve all of the available service descriptions in one go while the selected service description is being perused. The retrieved service description can be displayed as follows:
+
+    * AP: AP1
+    * Service name: Chess
+    * Description: While waiting for the food, why don't you play our chess program?
+    * Service: http://192.168.1.1/chess
+
+When the user clicks the URI of the service, the gadget should be smart enough to do what it should do like opening a web browser or a movie player. 

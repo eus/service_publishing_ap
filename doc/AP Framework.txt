@@ -1,0 +1,24 @@
+AP Owner
+Use-cases
+
+   1. Advertising conveniently one or more services in the SSID.
+   2. Creating, updating and deleting conveniently the service description (e.g., a chef can change the offered menu)
+
+AP User
+Use-cases
+
+   1. Connecting conveniently to one of the services advertised in the SSID.
+
+How the AP works?
+The AP framework architecture.
+The Service Publishing UI
+
+    * Add service
+          o A tree of the available categories from the central category database needs to be presented so that the owner can just simply pick a particular category of service to be advertised.
+    * Edit service description
+    * Disable service
+    * Delete service
+    * Update the category database
+
+The Service Inquiry Handler
+See Service Description Exchange. 

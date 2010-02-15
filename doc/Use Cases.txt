@@ -1,0 +1,43 @@
+Gadget use-cases
+Requiring descriptive SSID
+Comparing a similar service
+
+   1. A similar service is offered by several APs. I want to quickly scan for the best bargain. So, definitely I want to see a price tag instead of connecting to a particular AP to retrieve its service fee. This way I can quickly compare the service fees at a glance.
+
+Quick glancing while window shopping
+
+   1. "What does this neighborhood offer?", I ask myself. "Humm... three book stores... three restaurants... but, hey, this book store has got the best-selling book that I am looking for!", I say to myself, and so connect to the book store's AP to book for one, see the exact location and go there to buy the book.
+
+Requiring filtering and alarm
+Looking for something desperately
+
+   1. Oh, I really need to print this with a color laser printer ASAP. I do not care for the service fee. I just need to be notified when I pass an AP offering such a service while I am driving through this neighborhood. If I find one, I will simply pull up my car, connect to the AP, book a time slot for an immediate service, see the exact location and go there.
+
+Looking for something leisurely
+
+   1. I want my gadget to notify me if I am within the range of an AP of an Indonesian restaurant while walking in the city center.
+
+Access point use-cases
+Advertising through SSID/Attracting people to my AP
+
+   1. I want people to get attracted to my service offering in this competitive environment. So, I will definitely want people to see my lowest service fee without connecting to my AP.
+   2. I want people to know that my book shop offers this best-selling novel. So, definitely I want my SSID to be easily notified when people do SSID service discovery.
+   3. I want people to know that my restaurant is not an ordinary one. Mine is the freshest sushi restaurant in town!
+
+SSID format requirements
+
+Based on the meeting on February 12, 2010, the SSID will consist of printable 7-bit ASCII characters for the highest interoperability with drivers.
+Grammar
+
+Ordinary AP: Anything that does not start with "##^".
+
+Service-publishing AP: ##(^CAT_ID(,STRING)?)(^CAT_ID(,STRING)?)*
+A category ID to allow filtering (category == service)
+
+   1. A centralized category database has to be maintained to provide the users with uniformity for filtering.
+   2. An outdated SSID scanner program in the user's gadget should report "UNRECOGNIZED CATEGORY" for recently added entries that the program cannot recognize so that the user knows that the program needs to be updated. The string description of such an unrecognized category must be displayed.
+   3. The category ID space is flat. For example, 1 is for restaurant, 2 is for hotel, 3 is for Indonesian restaurant and 4 is for book store. It is the job of the program to display the flat category space in a hierarchical manner to the user following the hierarchical structure information that is available through the central database.
+   4. The CAT_ID field contains the ID represented in ASCII characters (e.g., 23 is put in the SSID as "23"). It is of variable length. The end of it is either ',' to indicate the start of the optional description string or '^' to indicate the start of another category.
+         1. The category ID 0 is reserved to indicate a custom category that is described in the corresponding string description. This is to permit an AP owner to put more than one custom category in the SSID. For example, the following SSID advertises two string-described services and two defined services: ##^0,Chess^0,Solitaire^95^78
+         2. If machine-readable data are needed in the description of a category, the machine-readable data have to be encoded with uuencode in base 64.
+   5. The STRING field can contain anything other than "^". Any appearance of "^" has to be escaped with "\".

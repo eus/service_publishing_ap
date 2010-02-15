@@ -1,0 +1,59 @@
+DB Distribution Format
+Standard SQL DDL and DML text will be used to achieve the highest interoperability.
+
+DB Schema
+
+category
+Field Name 	Field Type
+cat_id		integer
+cat_name 	varchar(128)
+is_binary_data 	integer
+
+DDL
+create table category (cat_id integer not null primary key, cat_name varchar(128) not null, is_binary_data char(1) not null default 'n');
+Note
+
+    * cat_id will start from 1. New category ID will be added sequentially so that there is no gap in the cat_id. Category ID is immutable once it is inserted. It cannot be deleted. Therefore, the administrator of this central database has to be really careful in introducing a new category since upon insertion (distribution is then implied), no revocation is possible.
+    * cat_name is the name that will be displayed to the user. Therefore, cat_name has to be short and descriptive in describing a category.
+
+category_structure
+Field Name 	Field Type
+cat_id 		integer
+subcat_id 	integer
+
+DDL
+create table category_structure (cat_id integer not null, subcat_id integer not null, foreign key (cat_id) references category (cat_id), foreign key (subcat_id) references category (cat_id));
+Note
+
+    * cat_id serves as a parent category of subcat_id.
+    * Insertion of a new entry is immutable. It cannot be deleted. Therefore, the administrator of this central database has to be really careful in introducing a new category since upon insertion (distribution is then implied), no revocation is possible.
+    * An application should parse the category_structure data once as a 2D link list and store the resulting internal representation for quick category display to the user.
+
+version
+Field Name 	Field Type
+ending_cat_id 	integer
+version 	integer
+
+DDL
+create table version (ending_cat_id integer not null, version integer not null, foreign key (ending_cat_id) references category (cat_id));
+Note
+
+    * This allow a person to easily upgrade his/her DB from a certain version to the latest version by only downloading the relevant records.
+    * A new entry is immutable. It cannot be deleted.
+    * A new entry creates an additional link named "Download upgrade data from version [CREATED_VERSION - 1]" in the public interface to download the database.
+
+Admin Interface
+
+    * Add a category
+    * Publish a new version
+    * See suggested new categories
+
+Public Interface
+
+    * See category
+    * Download database
+          o Download database
+          o Download upgrade data from version 1
+          o ...
+          o Download upgrade data from version n
+    * Suggest a new category
