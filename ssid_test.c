@@ -18,6 +18,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "ssid.h"
 
 int
@@ -48,12 +49,23 @@ main (int argc, char **argv, char **envp)
     {
       assert (ssid2[i] == retrieved_ssid2[i]);
     }
+  char ssid3 [22]; /* provides two NULL trailing characters */
+  char retrieved_ssid3[sizeof (ssid3)];
+  memset (ssid3, 0, sizeof (ssid3));
+  strcpy (ssid3, "01234567890123456789"); /* only 20 non-NULL characters */
+  assert (set_ssid (ssid3, sizeof (ssid3)) == 0);
+  assert ((len = get_ssid (retrieved_ssid3, sizeof (retrieved_ssid3)))
+	  == sizeof (ssid3) - 2);
+  for (i = 0; i < len; i++)
+    {
+      assert (ssid3[i] == retrieved_ssid3[i]);
+    }
 
   /* Setting a zero-length SSID is okay. */
-  char ssid3;
-  assert (set_ssid (&ssid3, 0) == 0);
-  assert ((len = get_ssid (&ssid3, sizeof (ssid3)))
-	  == sizeof (ssid3) - 1);
+  char ssid4;
+  assert (set_ssid (&ssid4, 0) == 0);
+  assert ((len = get_ssid (&ssid4, sizeof (ssid4)))
+	  == sizeof (ssid4) - 1);
 
   exit (EXIT_SUCCESS);
 }
