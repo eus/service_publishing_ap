@@ -15,40 +15,45 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
  *****************************************************************************/
 
-#ifndef SSID_H
-#define SSID_H
-
+#include <assert.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include "ssid.h"
 
-#ifdef __cpluplus
-extern "C" {
-#endif
-
-/**
- * Sets the SSID.
- * 
- * @param [in] new_ssid the new SSID to set.
- * @param [in] len the length of the new SSID.
- *
- * @return 0 if it is successful or non-zero if it is not.
- */
 int
-set_ssid (const void *new_ssid, size_t len);
+main (int argc, char **argv, char **envp)
+{
+  int i;
+  ssize_t len;
 
-/**
- * Gets the SSID.
- *
- * @param [out] buffer the buffer to hold the returned SSID.
- * @param [in] len the length of the buffer.
- *
- * @return the length of the SSID contained in the buffer or -1 if there is an
- *         error.
- */
-ssize_t
-get_ssid (void *buffer, size_t len);
+  /* Binary SSID is okay */
+  char ssid1 [] = {0x32, 0x1, 0x0, 0xf4, 0xf8, 0x32};
+  char retrieved_ssid1[sizeof (ssid1)];
 
-#ifdef __cplusplus
+  assert (set_ssid (ssid1, sizeof (ssid1)) == 0);
+  assert ((len = get_ssid (retrieved_ssid1, sizeof (retrieved_ssid1))) == sizeof (ssid1));
+  for (i = 0; i < len; i++)
+    {
+      assert (ssid1[i] == retrieved_ssid1[i]);
+    }
+
+  /* CAUTION: A trailing NULL character cannot be put into the SSID */
+  char ssid2 [] = "0123456789012345678901234567890"; /* 32 bytes in total */
+  char retrieved_ssid2[sizeof (ssid2)];
+
+  assert (set_ssid (ssid2, sizeof (ssid2)) == 0);
+  assert ((len = get_ssid (retrieved_ssid2, sizeof (retrieved_ssid2)))
+	  == sizeof (ssid2) - 1);
+  for (i = 0; i < len; i++)
+    {
+      assert (ssid2[i] == retrieved_ssid2[i]);
+    }
+
+  /* Setting a zero-length SSID is okay. */
+  char ssid3;
+  assert (set_ssid (&ssid3, 0) == 0);
+  assert ((len = get_ssid (&ssid3, sizeof (ssid3)))
+	  == sizeof (ssid3) - 1);
+
+  exit (EXIT_SUCCESS);
 }
-#endif
-
-#endif /* SSID_H */

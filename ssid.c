@@ -26,6 +26,7 @@
 #include <linux/wireless.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "ssid.h"
 
 static const char *
 get_wlan_ifname (void)
@@ -111,15 +112,19 @@ close_socket_to_kernel (int *s)
 }
 
 int
-set_ssid (const char *new_ssid)
+set_ssid (const void *new_ssid, size_t len)
 {
   int s;
   struct iwreq wrq;
-  char ssid[IW_ESSID_MAX_SIZE + 1];
-  size_t ssid_len;
-  int kernel_we_version = iw_get_kernel_we_version();
+  int kernel_we_version;
 
-  if (kernel_we_version < 0)
+  if (len > IW_ESSID_MAX_SIZE)
+    {
+      fprintf (stderr, "Cannot set SSID: too long\n");
+      return -1;
+    }
+
+  if ((kernel_we_version = iw_get_kernel_we_version()) < 0)
     {
       return -1;
     }
@@ -129,19 +134,9 @@ set_ssid (const char *new_ssid)
       return -1;
     }
 
-  if ((ssid_len = strlen (new_ssid)) > IW_ESSID_MAX_SIZE)
-    {
-      fprintf (stderr, "Cannot set SSID: too long\n");
-      close_socket_to_kernel (&s);
-      return -1;
-    }
-
-  strncpy (ssid, new_ssid, ssid_len);
-  ssid[ssid_len] = '\0';
-
-  wrq.u.essid.length = ssid_len;
+  wrq.u.essid.length = len;
   wrq.u.essid.flags = 1;
-  wrq.u.essid.pointer = (caddr_t) ssid;
+  wrq.u.essid.pointer = (caddr_t) new_ssid;
   if (kernel_we_version < 21)
     {
       wrq.u.essid.length++;
@@ -174,7 +169,7 @@ get_ssid (void *buffer, size_t len)
   memset (buffer, 0, len);
 
   wrq.u.essid.pointer = (caddr_t) buffer;
-  wrq.u.essid.length = len - 1;
+  wrq.u.essid.length = len;
   wrq.u.essid.flags = 0;
 
   strncpy (wrq.ifr_name, get_wlan_ifname (), IFNAMSIZ);
@@ -187,26 +182,5 @@ get_ssid (void *buffer, size_t len)
 
   close_socket_to_kernel (&s);
 
-  return strlen (buffer);
-}
-
-int
-main (int argc, char **argv, char **envp)
-{
-  ssize_t len;
-  char ssid [33];
-
-  if (argc == 2 && set_ssid (argv[1]) < 0)
-    {
-      exit (EXIT_FAILURE);
-    }
-
-  if ((len = get_ssid (ssid, sizeof (ssid))) < 0)
-    {
-      exit (EXIT_FAILURE);
-    }
-
-  printf ("ssid (%d) = %s\n", len, ssid);
-
-  exit (EXIT_SUCCESS);
+  return wrq.u.essid.length;
 }
