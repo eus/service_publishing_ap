@@ -1,4 +1,4 @@
-.PHONY = test test_with_root_priv test_without_root_priv clean
+.PHONY: test test_with_root_priv test_without_root_priv clean doc
 
 TEST_EXECUTABLES_NEEDING_ROOT_PRIV := ssid_test
 TEST_EXECUTABLES :=
@@ -23,6 +23,9 @@ test_without_root_priv: $(TEST_EXECUTABLES)
 	done
 
 test: test_with_root_priv test_without_root_priv
+
+doc:
+	doxygen
 
 clean:
 	rm *.o

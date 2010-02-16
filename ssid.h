@@ -13,7 +13,10 @@
  *                                                                           *
  * You should have received a copy of the GNU General Public License         *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
- *****************************************************************************/
+ *************************************************************************//**
+ * @file ssid.h
+ * @brief The SSID advertisement module.
+ ****************************************************************************/
 
 #ifndef SSID_H
 #define SSID_H
