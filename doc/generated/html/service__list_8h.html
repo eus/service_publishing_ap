@@ -9,7 +9,9 @@
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="annotated.html"><span>Data&nbsp;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
     </ul>
   </div>
   <div class="tabs">
@@ -160,8 +162,8 @@ The service set ads will not fit in the SSID. </td></tr>
 Adds a new service as the first member of the service list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sl</em>&nbsp;</td><td>[in] the service list that will contain the new service. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td>[in] the service to be added.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that will contain the new service. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the service to be added.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -197,8 +199,8 @@ Adds a new service as the first member of the service list.<p>
 Adds a new service as the last member of the service list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sl</em>&nbsp;</td><td>[in] the service list that will contain the new service. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td>[in] the service to be added.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that will contain the new service. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the service to be added.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -225,7 +227,7 @@ Adds a new service as the last member of the service list.<p>
 Count the number of elements in a service list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sl</em>&nbsp;</td><td>[in] the service list whose elements are to be counted.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list whose elements are to be counted.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>the number of services contained in the service list. </dd></dl>
@@ -279,11 +281,11 @@ Count the number of elements in a service list.<p>
 Creates a service having the specified attributes. The created service should be freed later with <a class="el" href="service__list_8h.html#4e6f244d29d53b67d43f0ea3511c504b">destroy_service()</a>.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td>[out] the resulting service object. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>cat_id</em>&nbsp;</td><td>[in] the mandatory category ID of the service. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>desc</em>&nbsp;</td><td>[in] the optional description of the service for the SSID ads. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>long_desc</em>&nbsp;</td><td>[in] the optional long description of the service. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>uri</em>&nbsp;</td><td>[in] the mandatory URI to obtain the service.</td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the resulting service object. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>cat_id</em>&nbsp;</td><td>the mandatory category ID of the service. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>desc</em>&nbsp;</td><td>the optional description of the service for the SSID ads. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>long_desc</em>&nbsp;</td><td>the optional long description of the service. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>uri</em>&nbsp;</td><td>the mandatory URI to obtain the service.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -310,7 +312,7 @@ Creates a service having the specified attributes. The created service should be
 Deletes all services.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sl</em>&nbsp;</td><td>[in] the service list that to be emptied.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that to be emptied.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -346,8 +348,8 @@ Deletes all services.<p>
 Deletes a service at the specified index in the service list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sl</em>&nbsp;</td><td>[in] the service list that contains the service. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>idx</em>&nbsp;</td><td>[in] the 0-based position index.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that contains the service. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx</em>&nbsp;</td><td>the 0-based position index.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -374,7 +376,7 @@ Deletes a service at the specified index in the service list.<p>
 Frees the memory allocated through <a class="el" href="service__list_8h.html#d609f5d3a865dee5f25de650b1f1e9a4">create_service()</a> or <a class="el" href="service__list_8h.html#5baa52c0d5c3fffb155941fcf7148e19">get_service_at()</a> and sets the pointer to NULL as a safe guard. Passing a pointer to NULL is okay but not a NULL pointer.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td>[in] the service to be freed. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the service to be freed. </td></tr>
   </table>
 </dl>
 
@@ -400,7 +402,7 @@ Frees the memory allocated through <a class="el" href="service__list_8h.html#d60
 Frees the memory allocated through <a class="el" href="service__list_8h.html#c084a45dd0591e28048a1d4ff8279c5c">load_service_list()</a> and sets the pointer to NULL as a safe guard. Passing a pointer to NULL is okay but not a NULL pointer.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sl</em>&nbsp;</td><td>[in] the service list to be freed. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list to be freed. </td></tr>
   </table>
 </dl>
 
@@ -426,7 +428,7 @@ Frees the memory allocated through <a class="el" href="service__list_8h.html#c08
 Disables all services.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sl</em>&nbsp;</td><td>[in] the service list that to be disabled.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that to be disabled.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -462,8 +464,8 @@ Disables all services.<p>
 Disables a service at the specified index in the service list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sl</em>&nbsp;</td><td>[in] the service list that contains the service. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>idx</em>&nbsp;</td><td>[in] the 0-based position index.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that contains the service. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx</em>&nbsp;</td><td>the 0-based position index.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -490,7 +492,7 @@ Disables a service at the specified index in the service list.<p>
 Translates an error code to a human-readable string.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>err</em>&nbsp;</td><td>[in] the error code to be translated.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>err</em>&nbsp;</td><td>the error code to be translated.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>a read-only string explaining the error code. </dd></dl>
@@ -532,9 +534,9 @@ Translates an error code to a human-readable string.<p>
 Gets a copy of the service at the specified index in the service list. The copy should later be freed with <a class="el" href="service__list_8h.html#4e6f244d29d53b67d43f0ea3511c504b">destroy_service()</a>.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sl</em>&nbsp;</td><td>[in] the service list that has the service. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td>[out] a pointer to the dynamically allocated copy of the service. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>idx</em>&nbsp;</td><td>[in] the 0-based position index.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that has the service. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>a pointer to the dynamically allocated copy of the service. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx</em>&nbsp;</td><td>the 0-based position index.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -576,9 +578,9 @@ Gets a copy of the service at the specified index in the service list. The copy 
 Inserts a new service at the specified index in the service list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sl</em>&nbsp;</td><td>[in] the service list that will contain the new service. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td>[in] the service to be added. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>idx</em>&nbsp;</td><td>[in] the 0-based position index.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that will contain the new service. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the service to be added. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx</em>&nbsp;</td><td>the 0-based position index.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -605,9 +607,10 @@ Inserts a new service at the specified index in the service list.<p>
 Loads the currently published service list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sl</em>&nbsp;</td><td>[out] the pointer pointing to dynamically allocated memory that should be freed with <a class="el" href="service__list_8h.html#ce772dad0102e6984e8bf416503ed74a">destroy_service_list()</a>. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the pointer pointing to dynamically allocated memory that should be freed with <a class="el" href="service__list_8h.html#ce772dad0102e6984e8bf416503ed74a">destroy_service_list()</a>.</td></tr>
   </table>
 </dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
 
 </div>
 </div><p>
@@ -646,9 +649,9 @@ Loads the currently published service list.<p>
 Replaces a service at the specified index in the service list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sl</em>&nbsp;</td><td>[in] the service list that contains the service. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td>[in] the new service that will replace the old one. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>idx</em>&nbsp;</td><td>[in] the 0-based position index.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that contains the service. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the new service that will replace the old one. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx</em>&nbsp;</td><td>the 0-based position index.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -675,7 +678,7 @@ Replaces a service at the specified index in the service list.<p>
 Saves the service list in the published service database and advertises the service list in the SSID accordingly.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sl</em>&nbsp;</td><td>[in] the service list to be saved.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list to be saved.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -683,7 +686,7 @@ Saves the service list in the published service database and advertises the serv
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Tue Feb 16 19:01:39 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 18 16:56:53 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

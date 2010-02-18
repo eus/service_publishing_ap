@@ -9,7 +9,9 @@
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="annotated.html"><span>Data&nbsp;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
     </ul>
   </div>
   <div class="tabs">
@@ -66,52 +68,52 @@
 <a name="l00082"></a>00082 <span class="keyword">const</span> <span class="keywordtype">char</span> *
 <a name="l00083"></a>00083 <a class="code" href="service__list_8h.html#ce1966c7826a4a215b5bc90482a123fd">errtostr</a> (<span class="keywordtype">int</span> <a class="code" href="service__list_8h.html#52482fdd3721e7db69dc740aefee8ad4">err</a>);
 <a name="l00084"></a>00084 
-<a name="l00091"></a>00091 <span class="keywordtype">int</span>
-<a name="l00092"></a>00092 <a class="code" href="service__list_8h.html#c084a45dd0591e28048a1d4ff8279c5c">load_service_list</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> **sl);
-<a name="l00093"></a>00093 
-<a name="l00101"></a>00101 <span class="keywordtype">void</span>
-<a name="l00102"></a>00102 <a class="code" href="service__list_8h.html#ce772dad0102e6984e8bf416503ed74a">destroy_service_list</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> **sl);
-<a name="l00103"></a>00103 
-<a name="l00112"></a>00112 <span class="keywordtype">int</span>
-<a name="l00113"></a>00113 <a class="code" href="service__list_8h.html#54690febb4d4eb1c4019318736b17044">save_service_list</a> (<span class="keyword">const</span> <a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl);
-<a name="l00114"></a>00114 
-<a name="l00122"></a>00122 <span class="keywordtype">size_t</span>
-<a name="l00123"></a>00123 <a class="code" href="service__list_8h.html#ba374fb3ca8790bb07d8db4d65cf3f1e">count_service</a> (<span class="keyword">const</span> <a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl);
-<a name="l00124"></a>00124 
-<a name="l00133"></a>00133 <span class="keywordtype">int</span>
-<a name="l00134"></a>00134 <a class="code" href="service__list_8h.html#07b7647e8a7b796251e321133c8712c5">add_service_first</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <span class="keyword">const</span> <a class="code" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s);
-<a name="l00135"></a>00135 
-<a name="l00144"></a>00144 <span class="keywordtype">int</span>
-<a name="l00145"></a>00145 <a class="code" href="service__list_8h.html#80b496431ecd17604ef76360b0276179">add_service_last</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <span class="keyword">const</span> <a class="code" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s);
-<a name="l00146"></a>00146 
-<a name="l00157"></a>00157 <span class="keywordtype">int</span>
-<a name="l00158"></a>00158 <a class="code" href="service__list_8h.html#5baa52c0d5c3fffb155941fcf7148e19">get_service_at</a> (<span class="keyword">const</span> <a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <a class="code" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
-<a name="l00159"></a>00159 
-<a name="l00169"></a>00169 <span class="keywordtype">int</span>
-<a name="l00170"></a>00170 <a class="code" href="service__list_8h.html#5c0baf105dcb98500d8d712862eeec40">insert_service_at</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <span class="keyword">const</span> <a class="code" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
-<a name="l00171"></a>00171 
-<a name="l00181"></a>00181 <span class="keywordtype">int</span>
-<a name="l00182"></a>00182 <a class="code" href="service__list_8h.html#8f9c81c24502355c7a6e642804545777">replace_service_at</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <span class="keyword">const</span> <a class="code" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
-<a name="l00183"></a>00183 
-<a name="l00192"></a>00192 <span class="keywordtype">int</span>
-<a name="l00193"></a>00193 <a class="code" href="service__list_8h.html#6d854d1c079c1768937996ac8d7850d1">del_service_at</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
-<a name="l00194"></a>00194 
-<a name="l00202"></a>00202 <span class="keywordtype">int</span>
-<a name="l00203"></a>00203 <a class="code" href="service__list_8h.html#550c05cc62761451f91d68f59b71808e">del_service_all</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl);
-<a name="l00204"></a>00204 
-<a name="l00213"></a>00213 <span class="keywordtype">int</span>
-<a name="l00214"></a>00214 <a class="code" href="service__list_8h.html#811685fd83bc845b22c95f38d5dde079">disable_service_at</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
-<a name="l00215"></a>00215 
-<a name="l00223"></a>00223 <span class="keywordtype">int</span>
-<a name="l00224"></a>00224 <a class="code" href="service__list_8h.html#51b063258edcc68d52ce0ced978d5356">disable_service_all</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl);
-<a name="l00225"></a>00225 
-<a name="l00226"></a>00226 <span class="preprocessor">#ifdef __cplusplus</span>
-<a name="l00227"></a>00227 <span class="preprocessor"></span>}
-<a name="l00228"></a>00228 <span class="preprocessor">#endif</span>
-<a name="l00229"></a>00229 <span class="preprocessor"></span>
-<a name="l00230"></a>00230 <span class="preprocessor">#endif </span><span class="comment">/* SERVICE_LIST_H */</span>
+<a name="l00093"></a>00093 <span class="keywordtype">int</span>
+<a name="l00094"></a>00094 <a class="code" href="service__list_8h.html#c084a45dd0591e28048a1d4ff8279c5c">load_service_list</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> **sl);
+<a name="l00095"></a>00095 
+<a name="l00103"></a>00103 <span class="keywordtype">void</span>
+<a name="l00104"></a>00104 <a class="code" href="service__list_8h.html#ce772dad0102e6984e8bf416503ed74a">destroy_service_list</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> **sl);
+<a name="l00105"></a>00105 
+<a name="l00114"></a>00114 <span class="keywordtype">int</span>
+<a name="l00115"></a>00115 <a class="code" href="service__list_8h.html#54690febb4d4eb1c4019318736b17044">save_service_list</a> (<span class="keyword">const</span> <a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl);
+<a name="l00116"></a>00116 
+<a name="l00124"></a>00124 <span class="keywordtype">size_t</span>
+<a name="l00125"></a>00125 <a class="code" href="service__list_8h.html#ba374fb3ca8790bb07d8db4d65cf3f1e">count_service</a> (<span class="keyword">const</span> <a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl);
+<a name="l00126"></a>00126 
+<a name="l00135"></a>00135 <span class="keywordtype">int</span>
+<a name="l00136"></a>00136 <a class="code" href="service__list_8h.html#07b7647e8a7b796251e321133c8712c5">add_service_first</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <span class="keyword">const</span> <a class="code" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s);
+<a name="l00137"></a>00137 
+<a name="l00146"></a>00146 <span class="keywordtype">int</span>
+<a name="l00147"></a>00147 <a class="code" href="service__list_8h.html#80b496431ecd17604ef76360b0276179">add_service_last</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <span class="keyword">const</span> <a class="code" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s);
+<a name="l00148"></a>00148 
+<a name="l00159"></a>00159 <span class="keywordtype">int</span>
+<a name="l00160"></a>00160 <a class="code" href="service__list_8h.html#5baa52c0d5c3fffb155941fcf7148e19">get_service_at</a> (<span class="keyword">const</span> <a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <a class="code" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
+<a name="l00161"></a>00161 
+<a name="l00171"></a>00171 <span class="keywordtype">int</span>
+<a name="l00172"></a>00172 <a class="code" href="service__list_8h.html#5c0baf105dcb98500d8d712862eeec40">insert_service_at</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <span class="keyword">const</span> <a class="code" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
+<a name="l00173"></a>00173 
+<a name="l00183"></a>00183 <span class="keywordtype">int</span>
+<a name="l00184"></a>00184 <a class="code" href="service__list_8h.html#8f9c81c24502355c7a6e642804545777">replace_service_at</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <span class="keyword">const</span> <a class="code" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
+<a name="l00185"></a>00185 
+<a name="l00194"></a>00194 <span class="keywordtype">int</span>
+<a name="l00195"></a>00195 <a class="code" href="service__list_8h.html#6d854d1c079c1768937996ac8d7850d1">del_service_at</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
+<a name="l00196"></a>00196 
+<a name="l00204"></a>00204 <span class="keywordtype">int</span>
+<a name="l00205"></a>00205 <a class="code" href="service__list_8h.html#550c05cc62761451f91d68f59b71808e">del_service_all</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl);
+<a name="l00206"></a>00206 
+<a name="l00215"></a>00215 <span class="keywordtype">int</span>
+<a name="l00216"></a>00216 <a class="code" href="service__list_8h.html#811685fd83bc845b22c95f38d5dde079">disable_service_at</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
+<a name="l00217"></a>00217 
+<a name="l00225"></a>00225 <span class="keywordtype">int</span>
+<a name="l00226"></a>00226 <a class="code" href="service__list_8h.html#51b063258edcc68d52ce0ced978d5356">disable_service_all</a> (<a class="code" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl);
+<a name="l00227"></a>00227 
+<a name="l00228"></a>00228 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00229"></a>00229 <span class="preprocessor"></span>}
+<a name="l00230"></a>00230 <span class="preprocessor">#endif</span>
+<a name="l00231"></a>00231 <span class="preprocessor"></span>
+<a name="l00232"></a>00232 <span class="preprocessor">#endif </span><span class="comment">/* SERVICE_LIST_H */</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Tue Feb 16 19:01:39 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 18 16:56:53 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>
