@@ -47,11 +47,11 @@ typedef struct service_impl service;
  * Creates a service having the specified attributes. The created service should
  * be freed later with destroy_service().
  *
- * @param s [out] the resulting service object.
- * @param cat_id [in] the mandatory category ID of the service.
- * @param desc [in] the optional description of the service for the SSID ads.
- * @param long_desc [in] the optional long description of the service.
- * @param uri [in] the mandatory URI to obtain the service.
+ * @param [out] s the resulting service object.
+ * @param [in] cat_id the mandatory category ID of the service.
+ * @param [in] desc the optional description of the service for the SSID ads.
+ * @param [in] long_desc the optional long description of the service.
+ * @param [in] uri the mandatory URI to obtain the service.
  *
  * @return 0 if there is no error or non-zero if there is an error.
  */
@@ -67,7 +67,7 @@ create_service (service *s,
  * sets the pointer to NULL as a safe guard. Passing a pointer to NULL is okay
  * but not a NULL pointer.
  *
- * @param s [in] the service to be freed.
+ * @param [in] s the service to be freed.
  */
 void
 destroy_service (service **s);
@@ -75,7 +75,7 @@ destroy_service (service **s);
 /**
  * Translates an error code to a human-readable string.
  *
- * @param err [in] the error code to be translated.
+ * @param [in] err the error code to be translated.
  *
  * @return a read-only string explaining the error code.
  */
@@ -85,8 +85,10 @@ errtostr (int err);
 /**
  * Loads the currently published service list.
  *
- * @param sl [out] the pointer pointing to dynamically allocated memory that
+ * @param [out] sl the pointer pointing to dynamically allocated memory that
  *                 should be freed with destroy_service_list().
+ *
+ * @return 0 if there is no error or non-zero if there is an error.
  */
 int
 load_service_list (service_list **sl);
@@ -96,7 +98,7 @@ load_service_list (service_list **sl);
  * to NULL as a safe guard. Passing a pointer to NULL is okay but not a NULL
  * pointer.
  *
- * @param sl [in] the service list to be freed.
+ * @param [in] sl the service list to be freed.
  */
 void
 destroy_service_list (service_list **sl);
@@ -105,7 +107,7 @@ destroy_service_list (service_list **sl);
  * Saves the service list in the published service database and advertises the
  * service list in the SSID accordingly.
  *
- * @param sl [in] the service list to be saved.
+ * @param [in] sl the service list to be saved.
  *
  * @return 0 if there is no error or non-zero if there is an error.
  */
@@ -115,7 +117,7 @@ save_service_list (const service_list *sl);
 /**
  * Count the number of elements in a service list.
  *
- * @param sl [in] the service list whose elements are to be counted.
+ * @param [in] sl the service list whose elements are to be counted.
  *
  * @return the number of services contained in the service list.
  */
@@ -125,8 +127,8 @@ count_service (const service_list *sl);
 /** 
  * Adds a new service as the first member of the service list.
  * 
- * @param sl [in] the service list that will contain the new service.
- * @param s [in] the service to be added.
+ * @param [in] sl the service list that will contain the new service.
+ * @param [in] s the service to be added.
  * 
  * @return 0 if there is no error or non-zero if there is an error.
  */
@@ -136,8 +138,8 @@ add_service_first (service_list *sl, const service *s);
 /** 
  * Adds a new service as the last member of the service list.
  * 
- * @param sl [in] the service list that will contain the new service.
- * @param s [in] the service to be added.
+ * @param [in] sl the service list that will contain the new service.
+ * @param [in] s the service to be added.
  * 
  * @return 0 if there is no error or non-zero if there is an error.
  */
@@ -148,9 +150,9 @@ add_service_last (service_list *sl, const service *s);
  * Gets a copy of the service at the specified index in the service list.
  * The copy should later be freed with destroy_service().
  * 
- * @param sl [in] the service list that has the service.
- * @param s [out] a pointer to the dynamically allocated copy of the service.
- * @param idx [in] the 0-based position index.
+ * @param [in] sl the service list that has the service.
+ * @param [out] s a pointer to the dynamically allocated copy of the service.
+ * @param [in] idx the 0-based position index.
  * 
  * @return 0 if there is no error or non-zero if there is an error.
  */
@@ -160,9 +162,9 @@ get_service_at (const service_list *sl, service *s, unsigned int idx);
 /** 
  * Inserts a new service at the specified index in the service list.
  * 
- * @param sl [in] the service list that will contain the new service.
- * @param s [in] the service to be added.
- * @param idx [in] the 0-based position index.
+ * @param [in] sl the service list that will contain the new service.
+ * @param [in] s the service to be added.
+ * @param [in] idx the 0-based position index.
  * 
  * @return 0 if there is no error or non-zero if there is an error.
  */
@@ -172,9 +174,9 @@ insert_service_at (service_list *sl, const service *s, unsigned int idx);
 /** 
  * Replaces a service at the specified index in the service list.
  * 
- * @param sl [in] the service list that contains the service.
- * @param s [in] the new service that will replace the old one.
- * @param idx [in] the 0-based position index.
+ * @param [in] sl the service list that contains the service.
+ * @param [in] s the new service that will replace the old one.
+ * @param [in] idx the 0-based position index.
  * 
  * @return 0 if there is no error or non-zero if there is an error.
  */
@@ -184,8 +186,8 @@ replace_service_at (service_list *sl, const service *s, unsigned int idx);
 /** 
  * Deletes a service at the specified index in the service list.
  * 
- * @param sl [in] the service list that contains the service.
- * @param idx [in] the 0-based position index.
+ * @param [in] sl the service list that contains the service.
+ * @param [in] idx the 0-based position index.
  * 
  * @return 0 if there is no error or non-zero if there is an error.
  */
@@ -195,7 +197,7 @@ del_service_at (service_list *sl, unsigned int idx);
 /** 
  * Deletes all services.
  * 
- * @param sl [in] the service list that to be emptied.
+ * @param [in] sl the service list that to be emptied.
  * 
  * @return 0 if there is no error or non-zero if there is an error.
  */
@@ -205,8 +207,8 @@ del_service_all (service_list *sl);
 /** 
  * Disables a service at the specified index in the service list.
  * 
- * @param sl [in] the service list that contains the service.
- * @param idx [in] the 0-based position index.
+ * @param [in] sl the service list that contains the service.
+ * @param [in] idx the 0-based position index.
  * 
  * @return 0 if there is no error or non-zero if there is an error.
  */
@@ -216,7 +218,7 @@ disable_service_at (service_list *sl, unsigned int idx);
 /** 
  * Disables all services.
  * 
- * @param sl [in] the service list that to be disabled.
+ * @param [in] sl the service list that to be disabled.
  * 
  * @return 0 if there is no error or non-zero if there is an error.
  */
