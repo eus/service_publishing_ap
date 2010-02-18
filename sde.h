@@ -16,39 +16,65 @@
  *************************************************************************//**
  * @file sde.h
  * @brief The Service Description Exchange data and packet structures.
-A service description exchange happens when a user connects to a particular AP to retrieve the details of the service offered in the SSID. The data exchange will be modeled after the latest Android ToDo protocol that employs static packet structures and TLV chunks. Once the gadget gets an IP address, it should connect to UDP port 30003 to start the following communication sequence.
-<ol>
-    <li>GET_METADATA</li>
-    <ul>
-        <li>If there is no answer after a timeout, the gadget can notify the user that the AP is not responding. The user can then choose to retry.</li>
-        <li>One use of metadata is to enable caching of information like what is used in HTML proxy.</li>
-    </ul>
-    <li>METADATA: METADATA_COUNT</li>
-    <ul>
-        <li>The METADATA_COUNT tells the gadget how many "struct metadata" is contained in the packet that follows. In other words, the AP will issue two UDP packets in response to GET_METADATA.</li>
-        <li>The packet that follows contains the last modification timestamp of each of the published service in the SSID. The timestamps are ordered according to the service positions in the SSID. The timestamp is the number of seconds since the Unix epoch stored in 8 bytes.</li>
-        <li>A TLV chunk is not employed here because, I think, metadata negotiation has to be fast.</li>
-    </ul>
-    <li>GET_SERVICE_DESCRIPTION: POSITION_COUNT
-    <ul>
-        <li>The SERVICE_ID_COUNT tells the AP how many "struct position" is contained in the packet that follows. In other words, the gadget will issue two UDP packets in response to METADATA.</li>
-        <li>The packet that follows contains the positions of the services that are published in the SSID so that the AP can send only the needed data as the gadget wants. A position starts from 0 and is stored in 1 byte.</li>
-    </ul>
-    </li>
-    <li>SERVICE_DESCRIPTION: TOTAL_BYTES
-    <ul>
-        <li>The TOTAL_BYTES tells the gadget how many bytes is contained in the packet that follows. In other words, the AP will issue two UDP packets in response to GET_SERVICE_DESCRIPTION.</li>
-        <li>The packet that follows contains a TLV chunk for each of the requested position. Each chunk currently contains the following information represented as nested TLV chunks:
-        <ul>
-            <li>Last modification timestamp.</li>
-            <li>Service long description.</li>
-            <li>URI to obtain the service (e.g., rss://xxx).</li>
-        </ul>
-        </li>
-        <li>TLV is used here since more information can be added in the future (e.g., a small picture) or the information can be tailored to the service category.</li>
-    </ul>
-    </li>
-</ol>
+ * A service description exchange happens when a user connects to a particular
+ * AP to retrieve the details of the service offered in the SSID. The data
+ * exchange will be modeled after the latest Android ToDo protocol that
+ * employs static packet structures and TLV chunks. Once the gadget gets an IP
+ * address, it should connect to UDP port 30003 to start the following
+ * communication sequence.
+ * <ol>
+ *    <li>GET_METADATA</li>
+ *    <ul>
+ *        <li>If there is no answer after a timeout, the gadget can notify
+ *            the user that the AP is not responding. The user can then
+ *            choose to retry.</li>
+ *        <li>One use of metadata is to enable caching of information like
+ *            what is used in HTML proxy.</li>
+ *    </ul>
+ *    <li>METADATA: METADATA_COUNT</li>
+ *    <ul>
+ *        <li>The METADATA_COUNT tells the gadget how many "struct metadata"
+ *            is contained in the packet that follows. In other words, the AP
+ *            will issue two UDP packets in response to GET_METADATA.</li>
+ *        <li>The packet that follows contains the last modification
+ *            timestamp of each of the published service in the SSID. The
+ *            timestamps are ordered according to the service positions in the
+ *            SSID. The timestamp is the number of seconds since the Unix
+ *            epoch stored in 8 bytes.</li>
+ *        <li>A TLV chunk is not employed here because, I think, metadata
+ *            negotiation has to be fast.</li>
+ *    </ul>
+ *    <li>GET_SERVICE_DESCRIPTION: POSITION_COUNT
+ *    <ul>
+ *        <li>The SERVICE_ID_COUNT tells the AP how many "struct position"
+ *            is contained in the packet that follows. In other words, the
+ *            gadget will issue two UDP packets in response to METADATA.</li>
+ *        <li>The packet that follows contains the positions of the services
+ *            that are published in the SSID so that the AP can send only the
+ *            needed data as the gadget wants. A position starts from 0 and
+ *            is stored in 1 byte.</li>
+ *    </ul>
+ *    </li>
+ *    <li>SERVICE_DESCRIPTION: TOTAL_BYTES
+ *    <ul>
+ *        <li>The TOTAL_BYTES tells the gadget how many bytes is contained in
+ *            the packet that follows. In other words, the AP will issue two
+ *            UDP packets in response to GET_SERVICE_DESCRIPTION.</li>
+ *        <li>The packet that follows contains a TLV chunk for each of the
+ *            requested position. Each chunk currently contains the following
+ *            information represented as nested TLV chunks:
+ *        <ul>
+ *            <li>Last modification timestamp.</li>
+ *            <li>Service long description.</li>
+ *            <li>URI to obtain the service (e.g., rss://xxx).</li>
+ *        </ul>
+ *        </li>
+ *        <li>TLV is used here since more information can be added in the
+ *            future (e.g., a small picture) or the information can be
+ *            tailored to the service category.</li>
+ *    </ul>
+ *    </li>
+ * </ol>
  ****************************************************************************/
 
 #ifndef SDE_H
@@ -70,7 +96,10 @@ struct metadata
 /** The positions of the desired services. */
 struct position
 {
-  uint8_t pos; /**< The position of a service as advertised in the SSID. */
+  uint8_t pos; /**<
+		* The position of a service starting from 0 as advertised in the
+		* SSID.
+		*/
 } __attribute__ ((packed));
 
 /** The type of a chunk contained in a service description data. */
