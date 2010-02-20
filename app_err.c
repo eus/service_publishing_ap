@@ -13,9 +13,21 @@
  *                                                                           *
  * You should have received a copy of the GNU General Public License         *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
- ****************************************************************************/
+ *****************************************************************************/
 
 #include "app_err.h"
-#include "logger.h"
-#include "service_list.h"
 
+const char *
+errtostr (int err)
+{
+  static const char *errstr[] = {
+    "Success",
+    "SSID cannot accommodate the service set",
+    "Socket error",
+    "Not enough memory",
+    "SSID too long",
+    "Set SSID error",
+  };
+
+  return errstr[err];
+}

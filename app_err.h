@@ -13,9 +13,41 @@
  *                                                                           *
  * You should have received a copy of the GNU General Public License         *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
+ *************************************************************************//**
+ * @file app_err.h
+ * @brief The error module.
  ****************************************************************************/
 
-#include "app_err.h"
-#include "logger.h"
-#include "service_list.h"
+#ifndef APP_ERR_H
+#define APP_ERR_H
 
+#ifdef __cpluplus
+extern "C" {
+#endif
+
+/** The possible errors. */
+enum err
+  {
+    ERR_SUCCESS, /**< There is no error. */
+    ERR_SERVICE_SET_FULL, /**< The service set ads will not fit in the SSID. */
+    ERR_SOCK, /**< Socket error. */
+    ERR_MEM, /**< Insufficient memory. */
+    ERR_SSID_TOO_LONG, /**< The SSID is too long. */
+    ERR_SET_SSID, /**< Cannot set the SSID. */
+  };
+
+/**
+ * Translates an error code to a human-readable string.
+ *
+ * @param [in] err the error code to be translated.
+ *
+ * @return a read-only string explaining the error code.
+ */
+const char *
+errtostr (int err);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* APP_ERR_H */

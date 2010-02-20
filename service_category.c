@@ -13,9 +13,8 @@
  *                                                                           *
  * You should have received a copy of the GNU General Public License         *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
- ****************************************************************************/
+ *****************************************************************************/
 
 #include "app_err.h"
 #include "logger.h"
-#include "service_list.h"
-
+#include "service_category.h"

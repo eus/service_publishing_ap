@@ -30,13 +30,6 @@
 extern "C" {
 #endif
 
-/** The possible errors. */
-enum err
-  {
-    SUCCESS, /**< There is no error. */
-    SERVICE_SET_FULL, /**< The service set ads will not fit in the SSID. */
-  };
-
 /** A list of services advertised in the SSID. */
 typedef struct service_list_impl service_list;
 
@@ -71,16 +64,6 @@ create_service (service *s,
  */
 void
 destroy_service (service **s);
-
-/**
- * Translates an error code to a human-readable string.
- *
- * @param [in] err the error code to be translated.
- *
- * @return a read-only string explaining the error code.
- */
-const char *
-errtostr (int err);
 
 /**
  * Loads the currently published service list.

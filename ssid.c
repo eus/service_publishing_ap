@@ -26,6 +26,8 @@
 #include <linux/wireless.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "app_err.h"
+#include "logger.h"
 #include "ssid.h"
 
 static const char *
@@ -53,7 +55,7 @@ iw_get_kernel_we_version(void)
 
   if(fh == NULL)
     {
-      fprintf(stderr, "Cannot read %s\n", get_proc_net_wireless ());
+      l->SYS_ERR ("Cannot read %s", get_proc_net_wireless ());
       return(-1);
     }
 
@@ -80,7 +82,7 @@ iw_get_kernel_we_version(void)
   p = strrchr(buff, '|');
   if((p == NULL) || (sscanf(p + 1, "%d", &v) != 1))
     {
-      fprintf(stderr, "Cannot parse %s\n", get_proc_net_wireless ());
+      l->ERR ("Cannot parse %s", get_proc_net_wireless ());
       fclose(fh);
       return(-1);
     }
@@ -105,7 +107,7 @@ close_socket_to_kernel (int *s)
 
   if (close (*s) == -1)
     {
-      perror ("Cannot close socket");
+      l->SYS_ERR ("Cannot close socket");
     }
 
   *s = -1;
@@ -120,18 +122,19 @@ set_ssid (const void *new_ssid, size_t len)
 
   if (len > IW_ESSID_MAX_SIZE)
     {
-      fprintf (stderr, "Cannot set SSID: too long\n");
-      return -1;
+      l->APP_ERR (ERR_SSID_TOO_LONG, "Cannot set SSID");
+      return ERR_SSID_TOO_LONG;
     }
 
   if ((kernel_we_version = iw_get_kernel_we_version()) < 0)
     {
-      return -1;
+      return ERR_SET_SSID;
     }
 
   if ((s = open_socket_to_kernel ()) == -1)
     {
-      return -1;
+      l->SYS_ERR ("Cannot create SSID manipulating socket");
+      return ERR_SET_SSID;
     }
 
   wrq.u.essid.length = len;
@@ -145,14 +148,14 @@ set_ssid (const void *new_ssid, size_t len)
   strncpy (wrq.ifr_name, get_wlan_ifname (), IFNAMSIZ);
   if (ioctl (s, SIOCSIWESSID, &wrq) < 0)
     {
-      perror ("Cannot set SSID");
+      l->SYS_ERR ("Cannot set SSID");
       close_socket_to_kernel (&s);
-      return -1;
+      return ERR_SET_SSID;
     }
 
   close_socket_to_kernel (&s);
 
-  return 0;
+  return ERR_SUCCESS;
 }
 
 ssize_t
@@ -163,6 +166,7 @@ get_ssid (void *buffer, size_t len)
 
   if ((s = open_socket_to_kernel ()) == -1)
     {
+      l->SYS_ERR ("Cannot create SSID manipulating socket");
       return -1;
     }
 
@@ -175,7 +179,7 @@ get_ssid (void *buffer, size_t len)
   strncpy (wrq.ifr_name, get_wlan_ifname (), IFNAMSIZ);
   if (ioctl (s, SIOCGIWESSID, &wrq) < 0)
     {
-      perror ("Cannot retrieve SSID");
+      l->SYS_ERR ("Cannot retrieve SSID");
       close_socket_to_kernel (&s);
       return -1;
     }

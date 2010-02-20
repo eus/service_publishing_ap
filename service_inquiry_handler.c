@@ -13,9 +13,63 @@
  *                                                                           *
  * You should have received a copy of the GNU General Public License         *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
- ****************************************************************************/
+ *****************************************************************************/
 
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "app_err.h"
 #include "logger.h"
-#include "service_list.h"
+#include "service_inquiry.h"
 
+static int stop_signal = 0;
+
+static int
+is_stopped ()
+{
+  return stop_signal;
+}
+
+static void
+signal_handler (int signum)
+{
+  stop_signal = 1;
+}
+
+GLOBAL_LOGGER;
+
+int
+main (int argc, char **argv, char **envp)
+{
+  struct sigaction act = {
+    .sa_handler = signal_handler,
+  };
+  int rc;
+
+  if (argc != 2)
+    {
+      fprintf (stderr, "Usage: %s LOG_FILE\n", argv[0]);
+      exit (EXIT_FAILURE);
+    }
+
+  SETUP_LOGGER (argv[1], errtostr);
+
+  if (sigaction (SIGTERM, &act, NULL)
+      || sigaction (SIGINT, &act, NULL))
+    {
+      l->SYS_ERR ("Cannot install signal handler");
+      exit (EXIT_FAILURE);
+    }
+
+  if ((rc = run_inquiry_handler (is_stopped, &l)))
+    {
+      l->APP_ERR (rc, "Error in inquiry handler");
+      rc = EXIT_FAILURE;
+    }
+  else
+    {
+      rc = EXIT_SUCCESS;
+    }
+
+  exit (rc);
+}

@@ -35,17 +35,10 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct service_impl&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a></td></tr>
 
-<tr><td colspan="2"><br><h2>Enumerations</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#52482fdd3721e7db69dc740aefee8ad4">err</a> { <a class="el" href="service__list_8h.html#52482fdd3721e7db69dc740aefee8ad4c7f69f7c9e5aea9b8f54cf02870e2bf8">SUCCESS</a>, 
-<a class="el" href="service__list_8h.html#52482fdd3721e7db69dc740aefee8ad42d04b58809f55eddc6b2ba7dc0df17f7">SERVICE_SET_FULL</a>
- }</td></tr>
-
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#d609f5d3a865dee5f25de650b1f1e9a4">create_service</a> (<a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s, unsigned long cat_id, const char *desc, const char *long_desc, const char *uri)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#4e6f244d29d53b67d43f0ea3511c504b">destroy_service</a> (<a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> **s)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#ce1966c7826a4a215b5bc90482a123fd">errtostr</a> (int <a class="el" href="service__list_8h.html#52482fdd3721e7db69dc740aefee8ad4">err</a>)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#c084a45dd0591e28048a1d4ff8279c5c">load_service_list</a> (<a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> **sl)</td></tr>
 
@@ -106,30 +99,6 @@ A service to be included in a service list.
 
 <p>
 A list of services advertised in the SSID. 
-</div>
-</div><p>
-<hr><h2>Enumeration Type Documentation</h2>
-<a class="anchor" name="52482fdd3721e7db69dc740aefee8ad4"></a><!-- doxytag: member="service_list.h::err" ref="52482fdd3721e7db69dc740aefee8ad4" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="service__list_8h.html#52482fdd3721e7db69dc740aefee8ad4">err</a>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-The possible errors. <dl compact><dt><b>Enumerator: </b></dt><dd>
-<table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad4c7f69f7c9e5aea9b8f54cf02870e2bf8"></a><!-- doxytag: member="SUCCESS" ref="52482fdd3721e7db69dc740aefee8ad4c7f69f7c9e5aea9b8f54cf02870e2bf8" args="" -->SUCCESS</em>&nbsp;</td><td>
-There is no error. </td></tr>
-<tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad42d04b58809f55eddc6b2ba7dc0df17f7"></a><!-- doxytag: member="SERVICE_SET_FULL" ref="52482fdd3721e7db69dc740aefee8ad42d04b58809f55eddc6b2ba7dc0df17f7" args="" -->SERVICE_SET_FULL</em>&nbsp;</td><td>
-The service set ads will not fit in the SSID. </td></tr>
-</table>
-</dl>
-
 </div>
 </div><p>
 <hr><h2>Function Documentation</h2>
@@ -472,33 +441,6 @@ Disables a service at the specified index in the service list.<p>
 
 </div>
 </div><p>
-<a class="anchor" name="ce1966c7826a4a215b5bc90482a123fd"></a><!-- doxytag: member="service_list.h::errtostr" ref="ce1966c7826a4a215b5bc90482a123fd" args="(int err)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* errtostr           </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>err</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Translates an error code to a human-readable string.<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>err</em>&nbsp;</td><td>the error code to be translated.</td></tr>
-  </table>
-</dl>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>a read-only string explaining the error code. </dd></dl>
-
-</div>
-</div><p>
 <a class="anchor" name="5baa52c0d5c3fffb155941fcf7148e19"></a><!-- doxytag: member="service_list.h::get_service_at" ref="5baa52c0d5c3fffb155941fcf7148e19" args="(const service_list *sl, service *s, unsigned int idx)" -->
 <div class="memitem">
 <div class="memproto">
@@ -686,7 +628,7 @@ Saves the service list in the published service database and advertises the serv
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 18 20:40:40 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Feb 20 01:35:32 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

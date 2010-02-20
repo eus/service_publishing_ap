@@ -13,9 +13,23 @@
  *                                                                           *
  * You should have received a copy of the GNU General Public License         *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
+ *************************************************************************//**
+ * @file service_inquiry.h
+ * @brief The service inquiry module.
  ****************************************************************************/
 
-#include "app_err.h"
-#include "logger.h"
-#include "service_list.h"
+#ifndef SERVICE_INQUIRY_H
+#define SERVICE_INQUIRY_H
 
+#ifdef __cpluplus
+extern "C" {
+#endif
+
+int
+run_inquiry_handler (int (*is_stopped) (void))
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* SERVICE_INQUIRY_H */

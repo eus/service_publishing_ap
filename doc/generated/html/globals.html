@@ -24,6 +24,7 @@
     <ul>
       <li class="current"><a href="globals.html"><span>All</span></a></li>
       <li><a href="globals_func.html"><span>Functions</span></a></li>
+      <li><a href="globals_vars.html"><span>Variables</span></a></li>
       <li><a href="globals_type.html"><span>Typedefs</span></a></li>
       <li><a href="globals_enum.html"><span>Enumerations</span></a></li>
       <li><a href="globals_eval.html"><span>Enumerator</span></a></li>
@@ -36,12 +37,16 @@
       <li><a href="#index_c"><span>c</span></a></li>
       <li><a href="#index_d"><span>d</span></a></li>
       <li><a href="#index_e"><span>e</span></a></li>
+      <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_l"><span>l</span></a></li>
       <li><a href="#index_m"><span>m</span></a></li>
+      <li><a href="#index_n"><span>n</span></a></li>
+      <li><a href="#index_p"><span>p</span></a></li>
       <li><a href="#index_r"><span>r</span></a></li>
       <li><a href="#index_s"><span>s</span></a></li>
+      <li><a href="#index_u"><span>u</span></a></li>
       <li><a href="#index_v"><span>v</span></a></li>
     </ul>
   </div>
@@ -54,10 +59,18 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="service__list_8h.html#07b7647e8a7b796251e321133c8712c5">service_list.h</a>
 <li>add_service_last()
 : <a class="el" href="service__list_8h.html#80b496431ecd17604ef76360b0276179">service_list.h</a>
+<li>APP_ERR
+: <a class="el" href="logger_8h.html#465188875b9ea8c2f73685e4b7bd5c49">logger.h</a>
 </ul>
 <h3><a class="anchor" name="index_c">- c -</a></h3><ul>
+<li>cat_list
+: <a class="el" href="service__category_8h.html#e1be5bbbffe3942dca22969605b7d0be">service_category.h</a>
+<li>cat_list_itr
+: <a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">service_category.h</a>
 <li>count_service()
 : <a class="el" href="service__list_8h.html#ba374fb3ca8790bb07d8db4d65cf3f1e">service_list.h</a>
+<li>create_cat_list_itr()
+: <a class="el" href="service__category_8h.html#cb7fc9d3af683d2a7e41a0a1ea1d1740">service_category.h</a>
 <li>create_chunk()
 : <a class="el" href="tlv_8h.html#5ba090432b02ce67c02f72f9085218f1">tlv.h</a>
 <li>create_service()
@@ -70,6 +83,12 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="service__list_8h.html#6d854d1c079c1768937996ac8d7850d1">service_list.h</a>
 <li>DESCRIPTION
 : <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28b6018339139b51a498dc44bd760766fc">sde.h</a>
+<li>destroy_cat_list()
+: <a class="el" href="service__category_8h.html#aa4a1b8440b32ddd8fe638be8c699904">service_category.h</a>
+<li>destroy_cat_list_itr()
+: <a class="el" href="service__category_8h.html#0bd7ad900c9fcd3677ffcbfa4af5bd36">service_category.h</a>
+<li>destroy_logger()
+: <a class="el" href="logger_8h.html#4dfcbd491525c8782dc0f4a373f29fd6">logger.h</a>
 <li>destroy_service()
 : <a class="el" href="service__list_8h.html#4e6f244d29d53b67d43f0ea3511c504b">service_list.h</a>
 <li>destroy_service_list()
@@ -80,12 +99,32 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="service__list_8h.html#811685fd83bc845b22c95f38d5dde079">service_list.h</a>
 </ul>
 <h3><a class="anchor" name="index_e">- e -</a></h3><ul>
+<li>ERR
+: <a class="el" href="logger_8h.html#53920b362caf5d82db53de41a7740232">logger.h</a>
 <li>err
-: <a class="el" href="service__list_8h.html#52482fdd3721e7db69dc740aefee8ad4">service_list.h</a>
+: <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad4">app_err.h</a>
+<li>ERR_MEM
+: <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad4aaeafdbf3aecc46864daa3cd829c7e05">app_err.h</a>
+<li>ERR_SERVICE_SET_FULL
+: <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad4a86fe0be58755670106c01522a1fde73">app_err.h</a>
+<li>ERR_SET_SSID
+: <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad482556b884fd73e88ecbf950884a7cde0">app_err.h</a>
+<li>ERR_SOCK
+: <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad4b2f8de630db874b7df23b1d7cc0b7779">app_err.h</a>
+<li>ERR_SSID_TOO_LONG
+: <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad42e38db2712fd9ca6836c905abd801ee0">app_err.h</a>
+<li>ERR_SUCCESS
+: <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad46d4f18a9728f434ff2d1a64043ebe6e8">app_err.h</a>
 <li>errtostr()
-: <a class="el" href="service__list_8h.html#ce1966c7826a4a215b5bc90482a123fd">service_list.h</a>
+: <a class="el" href="app__err_8h.html#ce1966c7826a4a215b5bc90482a123fd">app_err.h</a>
+</ul>
+<h3><a class="anchor" name="index_f">- f -</a></h3><ul>
+<li>free_cat()
+: <a class="el" href="service__category_8h.html#193751c355ce8ca503b900987443ce67">service_category.h</a>
 </ul>
 <h3><a class="anchor" name="index_g">- g -</a></h3><ul>
+<li>get_cat()
+: <a class="el" href="service__category_8h.html#1ea92041159ec8c3497b1896d237bc11">service_category.h</a>
 <li>GET_METADATA
 : <a class="el" href="sde_8h.html#edbe138a09311afa037d3add2468d6404428e5f642432448da74290c4a70173e">sde.h</a>
 <li>get_padded_length()
@@ -98,12 +137,24 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="sde_8h.html#edbe138a09311afa037d3add2468d640bd8f61f35a1f8df3f3d535b16440a1dc">sde.h</a>
 <li>get_ssid()
 : <a class="el" href="ssid_8h.html#148ac704d7b8a2cfdabe724b2d6c0ff3">ssid.h</a>
+<li>GLOBAL_LOGGER
+: <a class="el" href="logger_8h.html#12f7b436908fb49526f10ebcefd401ba">logger.h</a>
+<li>go_sub()
+: <a class="el" href="service__category_8h.html#bfc9f86af2fc746dc2755e19d172b5a1">service_category.h</a>
+<li>go_sup()
+: <a class="el" href="service__category_8h.html#e7717ee814cbc7cfe7f826f7d4871f92">service_category.h</a>
 </ul>
 <h3><a class="anchor" name="index_i">- i -</a></h3><ul>
+<li>init_logger()
+: <a class="el" href="logger_8h.html#d669c69bbc8b70990cf421d32c54a220">logger.h</a>
 <li>insert_service_at()
 : <a class="el" href="service__list_8h.html#5c0baf105dcb98500d8d712862eeec40">service_list.h</a>
 </ul>
 <h3><a class="anchor" name="index_l">- l -</a></h3><ul>
+<li>l
+: <a class="el" href="logger_8h.html#f7810bf7932f515cc24dff9384e78b1b">logger.h</a>
+<li>load_cat_list()
+: <a class="el" href="service__category_8h.html#ea93a3c7ccb1c48660f6ed198db14729">service_category.h</a>
 <li>load_service_list()
 : <a class="el" href="service__list_8h.html#c084a45dd0591e28048a1d4ff8279c5c">service_list.h</a>
 </ul>
@@ -112,6 +163,14 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="sde_8h.html#edbe138a09311afa037d3add2468d6400e1d7082456940b59823eed8099493ca">sde.h</a>
 <li>METADATA_DATA
 : <a class="el" href="sde_8h.html#edbe138a09311afa037d3add2468d640e4d7b97f100ece56b1dcfb19d8312fdc">sde.h</a>
+</ul>
+<h3><a class="anchor" name="index_n">- n -</a></h3><ul>
+<li>next()
+: <a class="el" href="service__category_8h.html#80d493b55f5e1c44f016fc31bf9bb646">service_category.h</a>
+</ul>
+<h3><a class="anchor" name="index_p">- p -</a></h3><ul>
+<li>prev()
+: <a class="el" href="service__category_8h.html#675133de16b603711189e3e5d7d2fd93">service_category.h</a>
 </ul>
 <h3><a class="anchor" name="index_r">- r -</a></h3><ul>
 <li>read_chunk()
@@ -138,23 +197,27 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28266791ced345bfe6511dd4acab8d0b28">sde.h</a>
 <li>SERVICE_POS
 : <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28feaef8a658b26a4d579bc6b737454b22">sde.h</a>
-<li>SERVICE_SET_FULL
-: <a class="el" href="service__list_8h.html#52482fdd3721e7db69dc740aefee8ad42d04b58809f55eddc6b2ba7dc0df17f7">service_list.h</a>
 <li>SERVICE_TS
 : <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28267d1e553ddae7b4a94965d90362173d">sde.h</a>
 <li>SERVICE_URI
 : <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28dff633207be6c7a92d0462413ae8ce7e">sde.h</a>
 <li>set_ssid()
 : <a class="el" href="ssid_8h.html#b95825902a49c3d8825beb538d2e8599">ssid.h</a>
-<li>SUCCESS
-: <a class="el" href="service__list_8h.html#52482fdd3721e7db69dc740aefee8ad4c7f69f7c9e5aea9b8f54cf02870e2bf8">service_list.h</a>
+<li>SETUP_LOGGER
+: <a class="el" href="logger_8h.html#ac5f0777f4352b3cc840319006ae1cff">logger.h</a>
+<li>SYS_ERR
+: <a class="el" href="logger_8h.html#11000ece922ae6d878ae07b4bf85df66">logger.h</a>
+</ul>
+<h3><a class="anchor" name="index_u">- u -</a></h3><ul>
+<li>update_cat_list()
+: <a class="el" href="service__category_8h.html#c717070150975bfa8f2d50b9bffc123a">service_category.h</a>
 </ul>
 <h3><a class="anchor" name="index_v">- v -</a></h3><ul>
 <li>VALUE_ALIGNMENT
 : <a class="el" href="tlv_8h.html#d36cab94944bfd82311ae5939d58af94">tlv.h</a>
 </ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 18 20:40:40 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Feb 20 01:35:33 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

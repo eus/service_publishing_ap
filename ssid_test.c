@@ -19,7 +19,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "logger.h"
+#include "app_err.h"
 #include "ssid.h"
+
+GLOBAL_LOGGER;
 
 int
 main (int argc, char **argv, char **envp)
@@ -27,8 +31,10 @@ main (int argc, char **argv, char **envp)
   int i;
   ssize_t len;
 
+  SETUP_LOGGER ("/dev/stderr", errtostr);
+  
   /* Binary SSID is okay */
-  char ssid1 [] = {0x32, 0x1, 0x0, 0xf4, 0xf8, 0x32};
+  char ssid1[] = {0x32, 0x1, 0x0, 0xf4, 0xf8, 0x32};
   char retrieved_ssid1[sizeof (ssid1)];
 
   assert (set_ssid (ssid1, sizeof (ssid1)) == 0);
@@ -39,7 +45,7 @@ main (int argc, char **argv, char **envp)
     }
 
   /* CAUTION: A trailing NULL character cannot be put into the SSID */
-  char ssid2 [] = "0123456789012345678901234567890"; /* 32 bytes in total */
+  char ssid2[] = "0123456789012345678901234567890"; /* 32 bytes in total */
   char retrieved_ssid2[sizeof (ssid2)];
 
   assert (set_ssid (ssid2, sizeof (ssid2)) == 0);
@@ -49,7 +55,7 @@ main (int argc, char **argv, char **envp)
     {
       assert (ssid2[i] == retrieved_ssid2[i]);
     }
-  char ssid3 [22]; /* provides two NULL trailing characters */
+  char ssid3[22]; /* provides two NULL trailing characters */
   char retrieved_ssid3[sizeof (ssid3)];
   memset (ssid3, 0, sizeof (ssid3));
   strcpy (ssid3, "01234567890123456789"); /* only 20 non-NULL characters */
@@ -66,6 +72,11 @@ main (int argc, char **argv, char **envp)
   assert (set_ssid (&ssid4, 0) == 0);
   assert ((len = get_ssid (&ssid4, sizeof (ssid4)))
 	  == sizeof (ssid4) - 1);
+
+  /* Setting a too long SSID returns ERR_SSID_TOO_LONG */
+  char ssid5[33] = {0};
+  memset (ssid5, 'A', sizeof (ssid5));
+  assert (set_ssid (ssid5, sizeof (ssid5)) == ERR_SSID_TOO_LONG);
 
   exit (EXIT_SUCCESS);
 }

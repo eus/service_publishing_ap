@@ -13,9 +13,46 @@
  *                                                                           *
  * You should have received a copy of the GNU General Public License         *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
- ****************************************************************************/
+ *****************************************************************************/
 
-#include "app_err.h"
+#include <stdlib.h>
+#include <errno.h>
 #include "logger.h"
-#include "service_list.h"
 
+GLOBAL_LOGGER;
+
+/** The possible errors. */
+enum err
+  {
+    ERR_SUCCESS, /**< There is no error. */
+    ERR_SOCK, /**< Socket error. */
+    ERR_MEM, /**< Insufficient memory. */
+  };
+
+static const char *
+errtostr (int err)
+{
+  static const char *errstr[] = {
+    "Success",
+    "Socket error",
+    "Not enough memory",
+  };
+
+  return errstr[err];
+}
+
+int
+main (int argc, char **argv, char **envp)
+{
+  SETUP_LOGGER ("/dev/null", errtostr);
+  
+  /* Ensuring no segmentation fault happens */
+  errno = ENOMEM;
+  l->SYS_ERR ("System error");
+
+  l->APP_ERR (ERR_MEM, "Application error");
+
+  l->ERR ("Custom error %s", "[ERROR]");
+
+  exit (EXIT_SUCCESS);
+}

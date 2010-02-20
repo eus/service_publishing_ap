@@ -33,7 +33,8 @@ extern "C" {
  * @param [in] new_ssid the new SSID to set.
  * @param [in] len the length of the new SSID.
  *
- * @return 0 if it is successful or non-zero if it is not.
+ * @return 0 if it is successful, ERR_SSID_TOO_LONG if the new SSID is too long,
+ *         or non-zero for other errors.
  */
 int
 set_ssid (const void *new_ssid, size_t len);

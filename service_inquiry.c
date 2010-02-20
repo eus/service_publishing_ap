@@ -13,9 +13,59 @@
  *                                                                           *
  * You should have received a copy of the GNU General Public License         *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
- ****************************************************************************/
+ *****************************************************************************/
 
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include "service_inquiry.h"
 #include "app_err.h"
 #include "logger.h"
-#include "service_list.h"
 
+static int s = -1;
+
+static int
+destroy_socket (void)
+{
+  if (s != -1)
+    {
+      if (close (s) == -1)
+	{
+	  l->SYS_ERR ("Cannot close inquiry handler socket");
+	  return ERR_SOCK;
+	}
+    }
+
+  return ERR_SUCCESS;
+}
+
+int
+run_inquiry_handler (int (*is_stopped) (void))
+{
+  struct sockaddr_in handler_addr = {
+    .sin_family = AF_INET,
+    .sin_addr = INADDR_ANY,
+    .sin_port = SERVICE_INQUIRY_HANDLER_PORT,
+  };
+
+  s = socket (AF_INET, SOCK_DGRAM, 0);
+  if (s == -1)
+    {
+      l->SYS_ERR ("Cannot create inquiry handler socket");
+      return ERR_SOCK;
+    }
+
+  if (bind (s, (struct sockaddr *) &handler_addr, sizeof (handler_addr)) == -1)
+    {
+      l->SYS_ERR ("Cannot name inquiry handler socket");
+      destroy_socket ();
+      return ERR_SOCK;
+    }
+
+  while (!is_stopped ())
+    {
+    }
+
+  return ERR_SUCCESS;
+}
