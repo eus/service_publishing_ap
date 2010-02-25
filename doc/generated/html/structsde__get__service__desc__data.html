@@ -29,6 +29,8 @@
 <tr><td colspan="2"><br><h2>Data Fields</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structsde__packet.html">sde_packet</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsde__get__service__desc__data.html#b604b0984bfe9fbd4a8cdb2f30684192">c</a></td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">uint32_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsde__get__service__desc__data.html#84ab625ec158116162118a417df9ae79">count</a></td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structposition.html">position</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsde__get__service__desc__data.html#fa5adf325af523029d00f52becf722e5">data</a> [0]</td></tr>
 
 </table>
@@ -49,6 +51,21 @@ The SDE GET_SERVICE_DESCRIPTION data packet. The <a class="el" href="structsde__
 The common part of an SDE packet. 
 </div>
 </div><p>
+<a class="anchor" name="84ab625ec158116162118a417df9ae79"></a><!-- doxytag: member="sde_get_service_desc_data::count" ref="84ab625ec158116162118a417df9ae79" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="structsde__get__service__desc__data.html#84ab625ec158116162118a417df9ae79">sde_get_service_desc_data::count</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+A copy of the corresponding <a class="el" href="structsde__get__service__desc.html#355370ab22b759d336375dd60ae5cfc0">sde_get_service_desc::count</a>. 
+</div>
+</div><p>
 <a class="anchor" name="fa5adf325af523029d00f52becf722e5"></a><!-- doxytag: member="sde_get_service_desc_data::data" ref="fa5adf325af523029d00f52becf722e5" args="[0]" -->
 <div class="memitem">
 <div class="memproto">
@@ -61,13 +78,13 @@ The common part of an SDE packet.
 <div class="memdoc">
 
 <p>
-The service descriptions to be retrieved. 
+The <a class="el" href="structservice.html">service</a> descriptions to be retrieved. 
 </div>
 </div><p>
 <hr>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="sde_8h-source.html">sde.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Feb 20 01:35:33 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 25 21:18:15 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

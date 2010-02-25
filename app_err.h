@@ -34,6 +34,24 @@ enum err
     ERR_MEM, /**< Insufficient memory. */
     ERR_SSID_TOO_LONG, /**< The SSID is too long. */
     ERR_SET_SSID, /**< Cannot set the SSID. */
+    ERR_GET_SDE_INFO, /**< Error in getting the next SDE packet's info. */
+    ERR_HANDLE_SDE_PACKET, /**< Error in handling an SDE packet. */
+    ERR_TAKE_SDE_PACKET, /**< Error in taking an SDE packet. */
+    ERR_REMOVE_SDE_PACKET, /**< Error in taking an SDE packet. */
+    ERR_SEND_METADATA, /**< Error in sending SDE metadata response. */
+    ERR_GET_METADATA_PACKETS, /**< Error in creating metadata packets. */
+    ERR_EXTRACTING_METADATA, /**<
+			      * Error in extracting metadata from a service
+			      * list.
+			      */
+    ERR_GET_SERVICE_DESC_PACKETS, /**<
+				   * Error in creating service description
+				   * packets.
+				   */
+    ERR_GET_SERVICE_DESC, /**<
+			   * Error in extracting a service description from a
+			   * service list.
+			   */
   };
 
 /**

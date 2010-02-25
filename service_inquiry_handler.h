@@ -13,30 +13,34 @@
  *                                                                           *
  * You should have received a copy of the GNU General Public License         *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
- *****************************************************************************/
+ *************************************************************************//**
+ * @file service_inquiry_handler.h
+ * @brief The service inquiry handler module.
+ ****************************************************************************/
 
-#include "app_err.h"
+#ifndef SERVICE_INQUIRY_HANDLER_H
+#define SERVICE_INQUIRY_HANDLER_H
 
-const char *
-errtostr (int err)
-{
-  static const char *errstr[] = {
-    "Success",
-    "SSID cannot accommodate the service set",
-    "Socket error",
-    "Not enough memory",
-    "SSID too long",
-    "Set SSID error",
-    "Error in getting the next SDE packet info",
-    "Error in handling an SDE packet",
-    "Error in taking an SDE packet",
-    "Error in removing an SDE packet",
-    "Error in sending SDE metadata response",
-    "Error in creating metadata packets",
-    "Error in extracting metadata from service list",
-    "Error in creating service description packets",
-    "Error in extracting service description from service list",
-  };
+/** The port at which a client will initiate an SDE session. */
+#define SERVICE_INQUIRY_HANDLER_PORT 30003
 
-  return errstr[err];
+#ifdef __cpluplus
+extern "C" {
+#endif
+
+/**
+ * Runs the SDE handler. This is a blocking operation.
+ *
+ * @param [in] is_stopped a callback function called by the handler to decide
+ *                        whether or not to handler should return.
+ *
+ * @return 0 if there is no error or non-zero if there is an error.
+ */
+int
+run_inquiry_handler (int (*is_stopped) (void));
+
+#ifdef __cplusplus
 }
+#endif
+
+#endif /* SERVICE_INQUIRY_HANDLER_H */

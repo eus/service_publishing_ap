@@ -15,7 +15,7 @@
    inkscape:version="0.46"
    sodipodi:docname="AP Framework Architecture.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="/home/eus/eumi/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/AP Framework Architecture v1.png"
+   inkscape:export-filename="/home/eus/eumi/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
    inkscape:export-xdpi="150.07819"
    inkscape:export-ydpi="150.07819">
   <defs
@@ -64,9 +64,9 @@
      objecttolerance="10"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.92086623"
-     inkscape:cx="177.43246"
-     inkscape:cy="754.77318"
+     inkscape:zoom="0.82816158"
+     inkscape:cx="309.48701"
+     inkscape:cy="791.4876"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -91,7 +91,7 @@
      id="layer1">
     <g
        id="g3330"
-       transform="translate(46.465738,51.960561)">
+       transform="translate(14.465738,51.960561)">
       <text
          id="text2532"
          y="224.61438"
@@ -133,17 +133,17 @@
     </g>
     <g
        id="g3325"
-       transform="translate(-22.640595,-27.168713)">
+       transform="translate(-154.20669,25.357269)">
       <text
          id="text2524"
-         y="170.36894"
-         x="236.89951"
+         y="171.32109"
+         x="269.55087"
          style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
          xml:space="preserve"><tspan
-           y="170.36894"
-           x="236.89951"
+           y="171.32109"
+           x="269.55087"
            id="tspan2526"
-           sodipodi:role="line">Service Publishing Logic</tspan></text>
+           sodipodi:role="line">Service List</tspan></text>
       <rect
          style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="rect3316"
@@ -175,7 +175,7 @@
     </g>
     <g
        id="g3384"
-       transform="translate(335.06524,-187.76657)">
+       transform="translate(185.20109,-130.03806)">
       <g
          id="g3348">
         <path
@@ -201,7 +201,7 @@
            sodipodi:end="3.1415927"
            sodipodi:open="true" />
         <path
-           style="opacity:0.81999978;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
            d="M 87.088486,342.60288 L 87.088486,314.60168"
            id="path3344" />
         <path
@@ -222,7 +222,7 @@
     </g>
     <g
        id="g3374"
-       transform="translate(284.24983,-197.43221)">
+       transform="translate(53.117642,-295.84296)">
       <g
          transform="translate(-36.914956,81.884085)"
          id="g3358">
@@ -337,27 +337,13 @@
        id="path3606"
        sodipodi:nodetypes="cccc" />
     <path
-       sodipodi:nodetypes="cccc"
+       sodipodi:nodetypes="cccccc"
        id="path3608"
-       d="M 358.56911,80.043588 L 539.70489,80.043588 L 539.86442,361.56649 L 303.68052,361.56649"
+       d="M 533.71227,80.043588 L 539.70489,80.043588 L 539.86442,361.56649 L 303.68052,361.56649 M 358.56911,80.043588 L 370.70062,80.043588"
        style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
-       d="M 277.34728,97.42909 L 277.34728,125.86187"
-       id="path3610"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g3320"
-       inkscape:connection-end="#g3325" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
-       d="M 266.32462,155.16261 L 188.80385,258.19654"
-       id="path4913"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g3325"
-       inkscape:connection-end="#g3330" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Mend)"
-       d="M 194.2212,287.49728 L 256.2659,342.78787"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-opacity:1"
+       d="M 167.50493,287.49728 L 249.49046,342.78787"
        id="path5436"
        inkscape:connector-type="polyline"
        inkscape:connection-start="#g3330"
@@ -369,27 +355,6 @@
        inkscape:connector-type="polyline"
        inkscape:connection-start="#g3599"
        inkscape:connection-end="#g3335" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
-       d="M 376.91338,258.19654 L 376.91338,236.28692"
-       id="path7524"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g3335"
-       inkscape:connection-end="#g3374" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
-       d="M 297.54545,155.16261 L 344.43687,189.17445"
-       id="path8047"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g3325"
-       inkscape:connection-end="#g3374" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
-       d="M 359.35342,140.51224 L 421.65373,140.51224"
-       id="path8570"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g3325"
-       inkscape:connection-end="#g3384" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
        d="M 277.34728,455.28623 L 277.34728,380.36084"
@@ -469,5 +434,112 @@
            id="tspan10172"
            sodipodi:role="line">Legend:</tspan></text>
     </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+       d="M 145.78119,207.68859 L 145.78119,258.19654"
+       id="path2450"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#g3325"
+       inkscape:connection-end="#g3330" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+       d="M 145.78119,178.38785 L 145.78119,137.87617"
+       id="path3755"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#g3325"
+       inkscape:connection-end="#g3374" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+       d="M 259.86587,97.42909 L 163.2626,178.38785"
+       id="path4278"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#g3320"
+       inkscape:connection-end="#g3325" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+       d="M 334.48476,258.19654 L 188.20981,207.68859"
+       id="path4801"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#g3335"
+       inkscape:connection-end="#g3325" />
+    <g
+       id="g5324"
+       transform="translate(52.224045,-30.187448)">
+      <text
+         id="text5326"
+         y="170.28105"
+         x="228.01941"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+         xml:space="preserve"><tspan
+           y="170.28105"
+           x="228.01941"
+           id="tspan5328"
+           sodipodi:role="line">Category List</tspan></text>
+      <rect
+         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5330"
+         width="88.147659"
+         height="28.300743"
+         x="218.48172"
+         y="153.53058" />
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1"
+       d="M 314.77959,152.14387 L 314.77959,174.68451"
+       id="path5332"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#g5324"
+       inkscape:connection-end="#g3384" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1"
+       d="M 287.37012,97.42909 L 304.75676,122.84313"
+       id="path6376"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#g3320"
+       inkscape:connection-end="#g5324" />
+    <g
+       id="g6899"
+       transform="translate(185.57571,-23.772624)">
+      <text
+         id="text6901"
+         y="104.02937"
+         x="265.6095"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+         xml:space="preserve"><tspan
+           y="104.02937"
+           x="265.6095"
+           id="tspan6903"
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle">Service Inquiry Handler</tspan><tspan
+           y="116.52937"
+           x="265.6095"
+           sodipodi:role="line"
+           id="tspan6907"
+           style="text-align:center;text-anchor:middle">Daemon</tspan></text>
+      <rect
+         y="92.40097"
+         x="184.52084"
+         height="28.300743"
+         width="163.01228"
+         id="rect6905"
+         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+       x="442.55972"
+       y="62.222019"
+       id="text6909"><tspan
+         sodipodi:role="line"
+         id="tspan6911"
+         x="442.55972"
+         y="62.222019">Init</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+       d="M 445.84568,97.42909 L 382.6704,258.19654"
+       id="path6913"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#g6899"
+       inkscape:connection-end="#g3335" />
   </g>
 </svg>

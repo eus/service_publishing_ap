@@ -2,9 +2,9 @@
 
 TEST_EXECUTABLES_NEEDING_ROOT_PRIV := ssid_test
 TEST_EXECUTABLES := tlv_test logger_test
-EXECUTABLES := service_inquiry_handler
+EXECUTABLES := service_inquiry_handler_daemon
 
-CFLAGS := -Werror $(CFLAGS)
+CFLAGS := -Wall -Werror $(CFLAGS)
 
 all: $(EXECUTABLES)
 
@@ -14,9 +14,11 @@ logger_test: logger.o
 
 app_err.o: app_err.h
 
-service_inquiry.o: service_inquiry.h app_err.h logger.h
+service_inquiry.o: service_inquiry.h app_err.h logger.h tlv.h sde.h service_list.h
 
-service_inquiry_handler: app_err.o service_inquiry.o logger.o
+service_inquiry_handler.o: service_inquiry_handler.h app_err.h logger.h service_inquiry.h sde.h
+
+service_inquiry_handler_daemon: app_err.o service_inquiry.o service_inquiry_handler.o logger.o tlv.o service_list.o
 
 tlv.o: tlv.h
 
@@ -45,6 +47,7 @@ test_without_root_priv: $(TEST_EXECUTABLES)
 test: test_with_root_priv test_without_root_priv
 
 doc:
+	-rm -R doc/generated/html/*
 	doxygen
 
 clean:

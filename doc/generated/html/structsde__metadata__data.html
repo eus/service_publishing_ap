@@ -29,6 +29,10 @@
 <tr><td colspan="2"><br><h2>Data Fields</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structsde__packet.html">sde_packet</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsde__metadata__data.html#22a2e7a618d0ff7f41c4c7305c70c3a4">c</a></td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">uint32_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsde__metadata__data.html#352d536c43420ca6fb7e704f2aacf74a">count</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">uint32_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsde__metadata__data.html#2d194a23a7245b76cfb760cd6dad6072">unused1</a></td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structmetadata.html">metadata</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsde__metadata__data.html#a2328a7a3bc265668e0c4befb34126b2">data</a> [0]</td></tr>
 
 </table>
@@ -49,6 +53,21 @@ The SDE METADATA data packet. The <a class="el" href="structsde__packet.html#5d1
 The common part of an SDE packet. 
 </div>
 </div><p>
+<a class="anchor" name="352d536c43420ca6fb7e704f2aacf74a"></a><!-- doxytag: member="sde_metadata_data::count" ref="352d536c43420ca6fb7e704f2aacf74a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="structsde__metadata__data.html#352d536c43420ca6fb7e704f2aacf74a">sde_metadata_data::count</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+A copy of the corresponding <a class="el" href="structsde__metadata.html#8cd8a6f3a2fb265a4b075eeff598651d">sde_metadata::count</a>. 
+</div>
+</div><p>
 <a class="anchor" name="a2328a7a3bc265668e0c4befb34126b2"></a><!-- doxytag: member="sde_metadata_data::data" ref="a2328a7a3bc265668e0c4befb34126b2" args="[0]" -->
 <div class="memitem">
 <div class="memproto">
@@ -64,10 +83,25 @@ The common part of an SDE packet.
 The <a class="el" href="structmetadata.html">metadata</a> data. 
 </div>
 </div><p>
+<a class="anchor" name="2d194a23a7245b76cfb760cd6dad6072"></a><!-- doxytag: member="sde_metadata_data::unused1" ref="2d194a23a7245b76cfb760cd6dad6072" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="structsde__metadata__data.html#2d194a23a7245b76cfb760cd6dad6072">sde_metadata_data::unused1</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Padding for aligning the data at 64-bits. 
+</div>
+</div><p>
 <hr>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="sde_8h-source.html">sde.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Feb 20 01:35:33 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 25 21:18:15 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

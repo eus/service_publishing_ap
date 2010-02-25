@@ -22,19 +22,179 @@
   </div>
 </div>
 <div class="contents">
-<h1>service_inquiry.h File Reference</h1>The service inquiry module.  
+<h1>service_inquiry.h File Reference</h1>The core logic of <a class="el" href="structservice.html">service</a> inquiry handler module. <b>[CAUTION]</b> When an application uses the APIs in this file, upon exit the application should call <a class="el" href="service__inquiry_8h.html#796bbeb679cbcb400b5659312832b4cb">destroy_sde_handler_cache()</a> as a part of its memory clean up.  
 <a href="#_details">More...</a>
 <p>
+<code>#include &lt;netinet/in.h&gt;</code><br>
+<code>#include &quot;<a class="el" href="sde_8h-source.html">sde.h</a>&quot;</code><br>
 
 <p>
 <a href="service__inquiry_8h-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__inquiry_8h.html#796bbeb679cbcb400b5659312832b4cb">destroy_sde_handler_cache</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__inquiry_8h.html#3e55724c163a712726f720d5b786462e">get_metadata_response</a> (uint32_t seq, struct <a class="el" href="structsde__metadata.html">sde_metadata</a> **p1, size_t *p1_size, struct <a class="el" href="structsde__metadata__data.html">sde_metadata_data</a> **p2, size_t *p2_size)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__inquiry_8h.html#21240f0f13ac79583c94c7e392673e9c">get_service_desc_response</a> (uint32_t seq, struct <a class="el" href="structsde__service__desc.html">sde_service_desc</a> **p1, size_t *p1_size, struct <a class="el" href="structsde__service__desc__data.html">sde_service_desc_data</a> **p2, size_t *p2_size, const struct <a class="el" href="structposition.html">position</a> *pos, uint32_t pos_len)</td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-The service inquiry module. 
+The core logic of <a class="el" href="structservice.html">service</a> inquiry handler module. <b>[CAUTION]</b> When an application uses the APIs in this file, upon exit the application should call <a class="el" href="service__inquiry_8h.html#796bbeb679cbcb400b5659312832b4cb">destroy_sde_handler_cache()</a> as a part of its memory clean up. 
 <p>
+<hr><h2>Function Documentation</h2>
+<a class="anchor" name="796bbeb679cbcb400b5659312832b4cb"></a><!-- doxytag: member="service_inquiry.h::destroy_sde_handler_cache" ref="796bbeb679cbcb400b5659312832b4cb" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void destroy_sde_handler_cache           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Feb 20 01:35:32 2010 for AP Service Publisher by&nbsp;
+<div class="memdoc">
+
+<p>
+Destroyes the already cached data. The cache data are used to speed up SDE sessions. Calling this function repeatedly is safe although the performance of the SDE handler will degrade significantly. 
+</div>
+</div><p>
+<a class="anchor" name="3e55724c163a712726f720d5b786462e"></a><!-- doxytag: member="service_inquiry.h::get_metadata_response" ref="3e55724c163a712726f720d5b786462e" args="(uint32_t seq, struct sde_metadata **p1, size_t *p1_size, struct sde_metadata_data **p2, size_t *p2_size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_metadata_response           </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&nbsp;</td>
+          <td class="paramname"> <em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structsde__metadata.html">sde_metadata</a> **&nbsp;</td>
+          <td class="paramname"> <em>p1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&nbsp;</td>
+          <td class="paramname"> <em>p1_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structsde__metadata__data.html">sde_metadata_data</a> **&nbsp;</td>
+          <td class="paramname"> <em>p2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&nbsp;</td>
+          <td class="paramname"> <em>p2_size</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Creates the response packets for an <a class="el" href="structsde__get__metadata.html">sde_get_metadata</a>.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>seq</em>&nbsp;</td><td>the sequence number of the <a class="el" href="structsde__get__metadata.html">sde_get_metadata</a> packet. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>p1</em>&nbsp;</td><td>a pointer to a dynamically allocated memory space containing the response packet to be sent first. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>p1_size</em>&nbsp;</td><td>the size of p1 in bytes. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>p2</em>&nbsp;</td><td>a pointer to a dynamically allocated memory space containing the response packet to be sent after p1. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>p2_size</em>&nbsp;</td><td>the size of p2 in bytes.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="21240f0f13ac79583c94c7e392673e9c"></a><!-- doxytag: member="service_inquiry.h::get_service_desc_response" ref="21240f0f13ac79583c94c7e392673e9c" args="(uint32_t seq, struct sde_service_desc **p1, size_t *p1_size, struct sde_service_desc_data **p2, size_t *p2_size, const struct position *pos, uint32_t pos_len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_service_desc_response           </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&nbsp;</td>
+          <td class="paramname"> <em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structsde__service__desc.html">sde_service_desc</a> **&nbsp;</td>
+          <td class="paramname"> <em>p1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&nbsp;</td>
+          <td class="paramname"> <em>p1_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structsde__service__desc__data.html">sde_service_desc_data</a> **&nbsp;</td>
+          <td class="paramname"> <em>p2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&nbsp;</td>
+          <td class="paramname"> <em>p2_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct <a class="el" href="structposition.html">position</a> *&nbsp;</td>
+          <td class="paramname"> <em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&nbsp;</td>
+          <td class="paramname"> <em>pos_len</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Creates the response packets for an <a class="el" href="structsde__get__service__desc.html">sde_get_service_desc</a>.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>seq</em>&nbsp;</td><td>the sequence number of the <a class="el" href="structsde__get__service__desc.html">sde_get_service_desc</a> packet. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>p1</em>&nbsp;</td><td>a pointer to a dynamically allocated memory space containing the response packet to be sent first. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>p1_size</em>&nbsp;</td><td>the size of p1 in bytes. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>p2</em>&nbsp;</td><td>a pointer to a dynamically allocated memory space containing the response packet to be sent after p1. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>p2_size</em>&nbsp;</td><td>the size of p2 in bytes. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>pos</em>&nbsp;</td><td>the <a class="el" href="structposition.html">position</a> data contained in the corresponding <a class="el" href="structsde__get__service__desc__data.html">sde_get_service_desc_data</a> packet. <b>[CAUTION]</b> The caller must sort pos. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>pos_len</em>&nbsp;</td><td>the number of positions in pos.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 25 21:18:15 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

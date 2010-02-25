@@ -157,7 +157,7 @@ struct sde_get_metadata
 struct sde_metadata
 {
   struct sde_packet c; /**< The common part of an SDE packet. */
-  uint8_t count; /**< The number of metadata in the data packet. */
+  uint32_t count; /**< The number of metadata in the data packet. */
 } __attribute__ ((packed));
 
 /**
@@ -169,6 +169,8 @@ struct sde_metadata
 struct sde_metadata_data
 {
   struct sde_packet c; /**< The common part of an SDE packet. */
+  uint32_t count; /**< A copy of the corresponding sde_metadata::count. */
+  uint32_t unused1; /**< Padding for aligning the data at 64-bits. */
   struct metadata data[0]; /**< The metadata data. */
 } __attribute__ ((packed));
 
@@ -180,7 +182,7 @@ struct sde_metadata_data
 struct sde_get_service_desc
 {
   struct sde_packet c; /**< The common part of an SDE packet. */
-  uint8_t count; /**< The number of positions in the data packet. */
+  uint32_t count; /**< The number of positions in the data packet. */
 } __attribute__ ((packed));
 
 /**
@@ -192,6 +194,9 @@ struct sde_get_service_desc
 struct sde_get_service_desc_data
 {
   struct sde_packet c; /**< The common part of an SDE packet. */
+  uint32_t count; /**<
+		   * A copy of the corresponding sde_get_service_desc::count.
+		   */
   struct position data[0]; /**< The service descriptions to be retrieved. */
 } __attribute__ ((packed));
 
@@ -216,7 +221,8 @@ struct sde_service_desc
 struct sde_service_desc_data
 {
   struct sde_packet c; /**< The common part of an SDE packet. */
-  struct tlv_chunk data[0]; /**< The size in bytes of the data packet. */
+  uint32_t size; /**< A copy of the corresponding sde_service_desc::size. */
+  struct tlv_chunk data[0]; /**< The service description data. */
 } __attribute__ ((packed));
 
 #ifdef __cplusplus

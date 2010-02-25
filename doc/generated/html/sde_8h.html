@@ -22,7 +22,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>sde.h File Reference</h1>The Service Description Exchange data and packet structures. A service description exchange happens when a user connects to a particular AP to retrieve the details of the service offered in the SSID. The data exchange will be modeled after the latest Android ToDo protocol that employs static packet structures and TLV chunks. Once the gadget gets an IP address, it should connect to UDP port 30003 to start the following communication sequence.  
+<h1>sde.h File Reference</h1>The Service Description Exchange data and packet structures. A <a class="el" href="structservice.html">service</a> description exchange happens when a user connects to a particular AP to retrieve the details of the <a class="el" href="structservice.html">service</a> offered in the SSID. The data exchange will be modeled after the latest Android ToDo protocol that employs static packet structures and TLV chunks. Once the gadget gets an IP address, it should connect to UDP port 30003 to start the following communication sequence.  
 <a href="#_details">More...</a>
 <p>
 <code>#include &lt;stdint.h&gt;</code><br>
@@ -77,7 +77,7 @@
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-The Service Description Exchange data and packet structures. A service description exchange happens when a user connects to a particular AP to retrieve the details of the service offered in the SSID. The data exchange will be modeled after the latest Android ToDo protocol that employs static packet structures and TLV chunks. Once the gadget gets an IP address, it should connect to UDP port 30003 to start the following communication sequence. 
+The Service Description Exchange data and packet structures. A <a class="el" href="structservice.html">service</a> description exchange happens when a user connects to a particular AP to retrieve the details of the <a class="el" href="structservice.html">service</a> offered in the SSID. The data exchange will be modeled after the latest Android ToDo protocol that employs static packet structures and TLV chunks. Once the gadget gets an IP address, it should connect to UDP port 30003 to start the following communication sequence. 
 <p>
 <ol>
 <li>
@@ -93,7 +93,7 @@ METADATA: METADATA_COUNT <ul>
 <li>
 The METADATA_COUNT tells the gadget how many "struct metadata" is contained in the packet that follows. In other words, the AP will issue two UDP packets in response to GET_METADATA. </li>
 <li>
-The packet that follows contains the last modification timestamp of each of the published service in the SSID. The timestamps are ordered according to the service positions in the SSID. The timestamp is the number of seconds since the Unix epoch stored in 8 bytes. </li>
+The packet that follows contains the last modification timestamp of each of the published <a class="el" href="structservice.html">service</a> in the SSID. The timestamps are ordered according to the <a class="el" href="structservice.html">service</a> positions in the SSID. The timestamp is the number of seconds since the Unix epoch stored in 8 bytes. </li>
 <li>
 A TLV chunk is not employed here because, I think, <a class="el" href="structmetadata.html">metadata</a> negotiation has to be fast. </li>
 </ul>
@@ -117,11 +117,11 @@ Last modification timestamp. </li>
 <li>
 Service long description. </li>
 <li>
-URI to obtain the service (e.g., rss://xxx). </li>
+URI to obtain the <a class="el" href="structservice.html">service</a> (e.g., rss://xxx). </li>
 </ul>
 </li>
 <li>
-TLV is used here since more information can be added in the future (e.g., a small picture) or the information can be tailored to the service category. </li>
+TLV is used here since more information can be added in the future (e.g., a small picture) or the information can be tailored to the <a class="el" href="structservice.html">service</a> category. </li>
 </ul>
 </li>
 </ol>
@@ -147,13 +147,13 @@ A <a class="el" href="structmetadata.html">metadata</a> response. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="edbe138a09311afa037d3add2468d640e4d7b97f100ece56b1dcfb19d8312fdc"></a><!-- doxytag: member="METADATA_DATA" ref="edbe138a09311afa037d3add2468d640e4d7b97f100ece56b1dcfb19d8312fdc" args="" -->METADATA_DATA</em>&nbsp;</td><td>
 The <a class="el" href="structmetadata.html">metadata</a> response data. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="edbe138a09311afa037d3add2468d640c626f3311c4accefb1fe659e53ffab61"></a><!-- doxytag: member="GET_SERVICE_DESC" ref="edbe138a09311afa037d3add2468d640c626f3311c4accefb1fe659e53ffab61" args="" -->GET_SERVICE_DESC</em>&nbsp;</td><td>
-A service description request. </td></tr>
+A <a class="el" href="structservice.html">service</a> description request. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="edbe138a09311afa037d3add2468d640bd8f61f35a1f8df3f3d535b16440a1dc"></a><!-- doxytag: member="GET_SERVICE_DESC_DATA" ref="edbe138a09311afa037d3add2468d640bd8f61f35a1f8df3f3d535b16440a1dc" args="" -->GET_SERVICE_DESC_DATA</em>&nbsp;</td><td>
-The service description request data. </td></tr>
+The <a class="el" href="structservice.html">service</a> description request data. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="edbe138a09311afa037d3add2468d6400c6eddfb28096f33fc47e0eaa0588d88"></a><!-- doxytag: member="SERVICE_DESC" ref="edbe138a09311afa037d3add2468d6400c6eddfb28096f33fc47e0eaa0588d88" args="" -->SERVICE_DESC</em>&nbsp;</td><td>
-The service description response. </td></tr>
+The <a class="el" href="structservice.html">service</a> description response. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="edbe138a09311afa037d3add2468d640acc47865511e3fb052c9777361bf5bda"></a><!-- doxytag: member="SERVICE_DESC_DATA" ref="edbe138a09311afa037d3add2468d640acc47865511e3fb052c9777361bf5bda" args="" -->SERVICE_DESC_DATA</em>&nbsp;</td><td>
-The service description response data. </td></tr>
+The <a class="el" href="structservice.html">service</a> description response data. </td></tr>
 </table>
 </dl>
 
@@ -171,25 +171,25 @@ The service description response data. </td></tr>
 <div class="memdoc">
 
 <p>
-The type of a chunk contained in a service description data. <dl compact><dt><b>Enumerator: </b></dt><dd>
+The type of a chunk contained in a <a class="el" href="structservice.html">service</a> description data. <dl compact><dt><b>Enumerator: </b></dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" name="6ae07eed4365b800c09d7b22bacd7a28b6018339139b51a498dc44bd760766fc"></a><!-- doxytag: member="DESCRIPTION" ref="6ae07eed4365b800c09d7b22bacd7a28b6018339139b51a498dc44bd760766fc" args="" -->DESCRIPTION</em>&nbsp;</td><td>
-The service description of a service at a particular <a class="el" href="structposition.html">position</a>. The value is chunks of <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28feaef8a658b26a4d579bc6b737454b22">SERVICE_POS</a>, <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28267d1e553ddae7b4a94965d90362173d">SERVICE_TS</a>, <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28266791ced345bfe6511dd4acab8d0b28">SERVICE_LONG_DESC</a> and <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28dff633207be6c7a92d0462413ae8ce7e">SERVICE_URI</a>. </td></tr>
+The <a class="el" href="structservice.html">service</a> description of a <a class="el" href="structservice.html">service</a> at a particular <a class="el" href="structposition.html">position</a>. The value is chunks of <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28feaef8a658b26a4d579bc6b737454b22">SERVICE_POS</a>, <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28267d1e553ddae7b4a94965d90362173d">SERVICE_TS</a>, <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28266791ced345bfe6511dd4acab8d0b28">SERVICE_LONG_DESC</a> and <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28dff633207be6c7a92d0462413ae8ce7e">SERVICE_URI</a>. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="6ae07eed4365b800c09d7b22bacd7a28feaef8a658b26a4d579bc6b737454b22"></a><!-- doxytag: member="SERVICE_POS" ref="6ae07eed4365b800c09d7b22bacd7a28feaef8a658b26a4d579bc6b737454b22" args="" -->SERVICE_POS</em>&nbsp;</td><td>
-The <a class="el" href="structposition.html">position</a> of a particular service as advertised in the SSID. </td></tr>
+The <a class="el" href="structposition.html">position</a> of a particular <a class="el" href="structservice.html">service</a> as advertised in the SSID. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="6ae07eed4365b800c09d7b22bacd7a28267d1e553ddae7b4a94965d90362173d"></a><!-- doxytag: member="SERVICE_TS" ref="6ae07eed4365b800c09d7b22bacd7a28267d1e553ddae7b4a94965d90362173d" args="" -->SERVICE_TS</em>&nbsp;</td><td>
-The last-modification timestamp of a particular service. </td></tr>
+The last-modification timestamp of a particular <a class="el" href="structservice.html">service</a>. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="6ae07eed4365b800c09d7b22bacd7a28266791ced345bfe6511dd4acab8d0b28"></a><!-- doxytag: member="SERVICE_LONG_DESC" ref="6ae07eed4365b800c09d7b22bacd7a28266791ced345bfe6511dd4acab8d0b28" args="" -->SERVICE_LONG_DESC</em>&nbsp;</td><td>
-The long description of a particular service. </td></tr>
+The long description of a particular <a class="el" href="structservice.html">service</a>. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="6ae07eed4365b800c09d7b22bacd7a28dff633207be6c7a92d0462413ae8ce7e"></a><!-- doxytag: member="SERVICE_URI" ref="6ae07eed4365b800c09d7b22bacd7a28dff633207be6c7a92d0462413ae8ce7e" args="" -->SERVICE_URI</em>&nbsp;</td><td>
-The URI to obtain a particular service. </td></tr>
+The URI to obtain a particular <a class="el" href="structservice.html">service</a>. </td></tr>
 </table>
 </dl>
 
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Feb 20 01:35:32 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 25 21:18:15 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

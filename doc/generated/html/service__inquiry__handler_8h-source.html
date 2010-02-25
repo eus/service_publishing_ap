@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>AP Service Publisher: ssid.h Source File</title>
+<title>AP Service Publisher: service_inquiry_handler.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -20,7 +20,7 @@
       <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
-<h1>ssid.h</h1><a href="ssid_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*****************************************************************************</span>
+<h1>service_inquiry_handler.h</h1><a href="service__inquiry__handler_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*****************************************************************************</span>
 <a name="l00002"></a>00002 <span class="comment"> * Copyright (C) 2010  Tadeus Prastowo (eus@member.fsf.org)                  *</span>
 <a name="l00003"></a>00003 <span class="comment"> *                                                                           *</span>
 <a name="l00004"></a>00004 <span class="comment"> * This program is free software: you can redistribute it and/or modify      *</span>
@@ -36,26 +36,23 @@
 <a name="l00014"></a>00014 <span class="comment"> * You should have received a copy of the GNU General Public License         *</span>
 <a name="l00015"></a>00015 <span class="comment"> * along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.     *</span>
 <a name="l00016"></a>00016 <span class="comment"> *************************************************************************/</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#ifndef SSID_H</span>
-<a name="l00022"></a>00022 <span class="preprocessor"></span><span class="preprocessor">#define SSID_H</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#ifndef SERVICE_INQUIRY_HANDLER_H</span>
+<a name="l00022"></a>00022 <span class="preprocessor"></span><span class="preprocessor">#define SERVICE_INQUIRY_HANDLER_H</span>
 <a name="l00023"></a>00023 <span class="preprocessor"></span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;stdlib.h&gt;</span>
-<a name="l00025"></a>00025 
-<a name="l00026"></a>00026 <span class="preprocessor">#ifdef __cpluplus</span>
-<a name="l00027"></a>00027 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span> {
-<a name="l00028"></a>00028 <span class="preprocessor">#endif</span>
-<a name="l00029"></a>00029 <span class="preprocessor"></span>
+<a name="l00025"></a><a class="code" href="service__inquiry__handler_8h.html#defa02a24beef9da761ea6bd88288ba7">00025</a> <span class="preprocessor">#define SERVICE_INQUIRY_HANDLER_PORT 30003</span>
+<a name="l00026"></a>00026 <span class="preprocessor"></span>
+<a name="l00027"></a>00027 <span class="preprocessor">#ifdef __cpluplus</span>
+<a name="l00028"></a>00028 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span> {
+<a name="l00029"></a>00029 <span class="preprocessor">#endif</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span>
 <a name="l00039"></a>00039 <span class="keywordtype">int</span>
-<a name="l00040"></a>00040 set_ssid (<span class="keyword">const</span> <span class="keywordtype">void</span> *new_ssid, <span class="keywordtype">size_t</span> len);
+<a name="l00040"></a>00040 run_inquiry_handler (<span class="keywordtype">int</span> (*is_stopped) (<span class="keywordtype">void</span>));
 <a name="l00041"></a>00041 
-<a name="l00051"></a>00051 ssize_t
-<a name="l00052"></a>00052 get_ssid (<span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> len);
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054 <span class="preprocessor">#ifdef __cplusplus</span>
-<a name="l00055"></a>00055 <span class="preprocessor"></span>}
-<a name="l00056"></a>00056 <span class="preprocessor">#endif</span>
-<a name="l00057"></a>00057 <span class="preprocessor"></span>
-<a name="l00058"></a>00058 <span class="preprocessor">#endif </span><span class="comment">/* SSID_H */</span>
+<a name="l00042"></a>00042 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00043"></a>00043 <span class="preprocessor"></span>}
+<a name="l00044"></a>00044 <span class="preprocessor">#endif</span>
+<a name="l00045"></a>00045 <span class="preprocessor"></span>
+<a name="l00046"></a>00046 <span class="preprocessor">#endif </span><span class="comment">/* SERVICE_INQUIRY_HANDLER_H */</span>
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 25 21:18:15 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">

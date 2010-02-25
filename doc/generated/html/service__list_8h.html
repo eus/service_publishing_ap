@@ -22,100 +22,70 @@
   </div>
 </div>
 <div class="contents">
-<h1>service_list.h File Reference</h1>The service list module. Everything starts by getting the currently available service list. The service list can then be manipulated before being saved in the DB and automatically advertised in the SSID.  
+<h1>service_list.h File Reference</h1>The <a class="el" href="structservice.html">service</a> list module. Everything starts by getting the currently available <a class="el" href="structservice.html">service</a> list. The <a class="el" href="structservice.html">service</a> list can then be manipulated before being saved in the DB and automatically advertised in the SSID.  
 <a href="#_details">More...</a>
 <p>
 <code>#include &lt;stdlib.h&gt;</code><br>
+<code>#include &lt;stdint.h&gt;</code><br>
 
 <p>
 <a href="service__list_8h-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
-<tr><td colspan="2"><br><h2>Typedefs</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct service_list_impl&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a></td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct service_impl&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a></td></tr>
+<tr><td colspan="2"><br><h2>Data Structures</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structservice.html">service</a></td></tr>
 
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#d609f5d3a865dee5f25de650b1f1e9a4">create_service</a> (<a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s, unsigned long cat_id, const char *desc, const char *long_desc, const char *uri)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#c06c6fd43ae92b1289d2c46155cb3463">create_service</a> (struct <a class="el" href="structservice.html">service</a> *s, unsigned long cat_id, const char *desc, const char *long_desc, const char *uri)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#4e6f244d29d53b67d43f0ea3511c504b">destroy_service</a> (<a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> **s)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#122667ee719585cfff23d4eb9bd1f708">destroy_service</a> (struct <a class="el" href="structservice.html">service</a> **s)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#c084a45dd0591e28048a1d4ff8279c5c">load_service_list</a> (<a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> **sl)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#c084a45dd0591e28048a1d4ff8279c5c">load_service_list</a> (service_list **sl)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#ce772dad0102e6984e8bf416503ed74a">destroy_service_list</a> (<a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> **sl)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#ce772dad0102e6984e8bf416503ed74a">destroy_service_list</a> (service_list **sl)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#54690febb4d4eb1c4019318736b17044">save_service_list</a> (const <a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#54690febb4d4eb1c4019318736b17044">save_service_list</a> (const service_list *sl)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#ba374fb3ca8790bb07d8db4d65cf3f1e">count_service</a> (const <a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#ba374fb3ca8790bb07d8db4d65cf3f1e">count_service</a> (const service_list *sl)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#07b7647e8a7b796251e321133c8712c5">add_service_first</a> (<a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, const <a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#1702c4d1c68514d532a57d4ea5c190d6">add_service_first</a> (service_list *sl, const struct <a class="el" href="structservice.html">service</a> *s)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#80b496431ecd17604ef76360b0276179">add_service_last</a> (<a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, const <a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#12939ee697c39bb4944db1f3341ca46c">add_service_last</a> (service_list *sl, const struct <a class="el" href="structservice.html">service</a> *s)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#5baa52c0d5c3fffb155941fcf7148e19">get_service_at</a> (const <a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, <a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s, unsigned int idx)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#9dff71c014b364ec45cbb2dcf9cac64e">get_service_at</a> (const service_list *sl, struct <a class="el" href="structservice.html">service</a> **s, unsigned int idx)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#5c0baf105dcb98500d8d712862eeec40">insert_service_at</a> (<a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, const <a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s, unsigned int idx)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#c34fb274bc6837b3f704fea1e6c2b0c6">insert_service_at</a> (service_list *sl, const struct <a class="el" href="structservice.html">service</a> *s, unsigned int idx)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#8f9c81c24502355c7a6e642804545777">replace_service_at</a> (<a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, const <a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *s, unsigned int idx)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#9f7135189db6decfcb8c9bdf4ace4ebd">replace_service_at</a> (service_list *sl, const struct <a class="el" href="structservice.html">service</a> *s, unsigned int idx)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#6d854d1c079c1768937996ac8d7850d1">del_service_at</a> (<a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, unsigned int idx)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#6d854d1c079c1768937996ac8d7850d1">del_service_at</a> (service_list *sl, unsigned int idx)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#550c05cc62761451f91d68f59b71808e">del_service_all</a> (<a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#550c05cc62761451f91d68f59b71808e">del_service_all</a> (service_list *sl)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#811685fd83bc845b22c95f38d5dde079">disable_service_at</a> (<a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl, unsigned int idx)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#811685fd83bc845b22c95f38d5dde079">disable_service_at</a> (service_list *sl, unsigned int idx)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#51b063258edcc68d52ce0ced978d5356">disable_service_all</a> (<a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *sl)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#51b063258edcc68d52ce0ced978d5356">disable_service_all</a> (service_list *sl)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">uint64_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__list_8h.html#bcf79a0bfeaa3f071bc6c9c34dbd9891">get_last_modification_time</a> (void)</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-The service list module. Everything starts by getting the currently available service list. The service list can then be manipulated before being saved in the DB and automatically advertised in the SSID. 
+The <a class="el" href="structservice.html">service</a> list module. Everything starts by getting the currently available <a class="el" href="structservice.html">service</a> list. The <a class="el" href="structservice.html">service</a> list can then be manipulated before being saved in the DB and automatically advertised in the SSID. 
 <p>
-<hr><h2>Typedef Documentation</h2>
-<a class="anchor" name="d75f954e5ced4d3a9e6a20ba739e4aa6"></a><!-- doxytag: member="service_list.h::service" ref="d75f954e5ced4d3a9e6a20ba739e4aa6" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct service_impl <a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-A service to be included in a service list. 
-</div>
-</div><p>
-<a class="anchor" name="493c66a9405f6d964ed5e63b9da440d8"></a><!-- doxytag: member="service_list.h::service_list" ref="493c66a9405f6d964ed5e63b9da440d8" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct service_list_impl <a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-A list of services advertised in the SSID. 
-</div>
-</div><p>
 <hr><h2>Function Documentation</h2>
-<a class="anchor" name="07b7647e8a7b796251e321133c8712c5"></a><!-- doxytag: member="service_list.h::add_service_first" ref="07b7647e8a7b796251e321133c8712c5" args="(service_list *sl, const service *s)" -->
+<a class="anchor" name="1702c4d1c68514d532a57d4ea5c190d6"></a><!-- doxytag: member="service_list.h::add_service_first" ref="1702c4d1c68514d532a57d4ea5c190d6" args="(service_list *sl, const struct service *s)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int add_service_first           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *&nbsp;</td>
+          <td class="paramtype">service_list *&nbsp;</td>
           <td class="paramname"> <em>sl</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *&nbsp;</td>
+          <td class="paramtype">const struct <a class="el" href="structservice.html">service</a> *&nbsp;</td>
           <td class="paramname"> <em>s</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -128,31 +98,31 @@ A list of services advertised in the SSID.
 <div class="memdoc">
 
 <p>
-Adds a new service as the first member of the service list.<p>
+Adds a new <a class="el" href="structservice.html">service</a> as the first member of the <a class="el" href="structservice.html">service</a> list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that will contain the new service. </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the service to be added.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> list that will contain the new <a class="el" href="structservice.html">service</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> to be added.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
 
 </div>
 </div><p>
-<a class="anchor" name="80b496431ecd17604ef76360b0276179"></a><!-- doxytag: member="service_list.h::add_service_last" ref="80b496431ecd17604ef76360b0276179" args="(service_list *sl, const service *s)" -->
+<a class="anchor" name="12939ee697c39bb4944db1f3341ca46c"></a><!-- doxytag: member="service_list.h::add_service_last" ref="12939ee697c39bb4944db1f3341ca46c" args="(service_list *sl, const struct service *s)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int add_service_last           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *&nbsp;</td>
+          <td class="paramtype">service_list *&nbsp;</td>
           <td class="paramname"> <em>sl</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *&nbsp;</td>
+          <td class="paramtype">const struct <a class="el" href="structservice.html">service</a> *&nbsp;</td>
           <td class="paramname"> <em>s</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -165,11 +135,11 @@ Adds a new service as the first member of the service list.<p>
 <div class="memdoc">
 
 <p>
-Adds a new service as the last member of the service list.<p>
+Adds a new <a class="el" href="structservice.html">service</a> as the last member of the <a class="el" href="structservice.html">service</a> list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that will contain the new service. </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the service to be added.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> list that will contain the new <a class="el" href="structservice.html">service</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> to be added.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -183,7 +153,7 @@ Adds a new service as the last member of the service list.<p>
         <tr>
           <td class="memname">size_t count_service           </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *&nbsp;</td>
+          <td class="paramtype">const service_list *&nbsp;</td>
           <td class="paramname"> <em>sl</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -193,24 +163,24 @@ Adds a new service as the last member of the service list.<p>
 <div class="memdoc">
 
 <p>
-Count the number of elements in a service list.<p>
+Count the number of elements in a <a class="el" href="structservice.html">service</a> list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list whose elements are to be counted.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> list whose elements are to be counted.</td></tr>
   </table>
 </dl>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>the number of services contained in the service list. </dd></dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>the number of services contained in the <a class="el" href="structservice.html">service</a> list. </dd></dl>
 
 </div>
 </div><p>
-<a class="anchor" name="d609f5d3a865dee5f25de650b1f1e9a4"></a><!-- doxytag: member="service_list.h::create_service" ref="d609f5d3a865dee5f25de650b1f1e9a4" args="(service *s, unsigned long cat_id, const char *desc, const char *long_desc, const char *uri)" -->
+<a class="anchor" name="c06c6fd43ae92b1289d2c46155cb3463"></a><!-- doxytag: member="service_list.h::create_service" ref="c06c6fd43ae92b1289d2c46155cb3463" args="(struct service *s, unsigned long cat_id, const char *desc, const char *long_desc, const char *uri)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int create_service           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *&nbsp;</td>
+          <td class="paramtype">struct <a class="el" href="structservice.html">service</a> *&nbsp;</td>
           <td class="paramname"> <em>s</em>, </td>
         </tr>
         <tr>
@@ -247,14 +217,14 @@ Count the number of elements in a service list.<p>
 <div class="memdoc">
 
 <p>
-Creates a service having the specified attributes. The created service should be freed later with <a class="el" href="service__list_8h.html#4e6f244d29d53b67d43f0ea3511c504b">destroy_service()</a>.<p>
+Creates a <a class="el" href="structservice.html">service</a> having the specified attributes. The created <a class="el" href="structservice.html">service</a> should be freed later with <a class="el" href="service__list_8h.html#122667ee719585cfff23d4eb9bd1f708">destroy_service()</a>.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the resulting service object. </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>cat_id</em>&nbsp;</td><td>the mandatory category ID of the service. </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>desc</em>&nbsp;</td><td>the optional description of the service for the SSID ads. </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>long_desc</em>&nbsp;</td><td>the optional long description of the service. </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>uri</em>&nbsp;</td><td>the mandatory URI to obtain the service.</td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the resulting <a class="el" href="structservice.html">service</a> object. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>cat_id</em>&nbsp;</td><td>the mandatory category ID of the <a class="el" href="structservice.html">service</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>desc</em>&nbsp;</td><td>the optional description of the <a class="el" href="structservice.html">service</a> for the SSID ads. NULL will omit this. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>long_desc</em>&nbsp;</td><td>the optional long description of the <a class="el" href="structservice.html">service</a>. NULL will omit this. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>uri</em>&nbsp;</td><td>the mandatory URI to obtain the <a class="el" href="structservice.html">service</a>.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -268,7 +238,7 @@ Creates a service having the specified attributes. The created service should be
         <tr>
           <td class="memname">int del_service_all           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *&nbsp;</td>
+          <td class="paramtype">service_list *&nbsp;</td>
           <td class="paramname"> <em>sl</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -281,7 +251,7 @@ Creates a service having the specified attributes. The created service should be
 Deletes all services.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that to be emptied.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> list that to be emptied.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -295,7 +265,7 @@ Deletes all services.<p>
         <tr>
           <td class="memname">int del_service_at           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *&nbsp;</td>
+          <td class="paramtype">service_list *&nbsp;</td>
           <td class="paramname"> <em>sl</em>, </td>
         </tr>
         <tr>
@@ -314,10 +284,10 @@ Deletes all services.<p>
 <div class="memdoc">
 
 <p>
-Deletes a service at the specified index in the service list.<p>
+Deletes a <a class="el" href="structservice.html">service</a> at the specified index in the <a class="el" href="structservice.html">service</a> list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that contains the service. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> list that contains the <a class="el" href="structservice.html">service</a>. </td></tr>
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx</em>&nbsp;</td><td>the 0-based <a class="el" href="structposition.html">position</a> index.</td></tr>
   </table>
 </dl>
@@ -325,14 +295,14 @@ Deletes a service at the specified index in the service list.<p>
 
 </div>
 </div><p>
-<a class="anchor" name="4e6f244d29d53b67d43f0ea3511c504b"></a><!-- doxytag: member="service_list.h::destroy_service" ref="4e6f244d29d53b67d43f0ea3511c504b" args="(service **s)" -->
+<a class="anchor" name="122667ee719585cfff23d4eb9bd1f708"></a><!-- doxytag: member="service_list.h::destroy_service" ref="122667ee719585cfff23d4eb9bd1f708" args="(struct service **s)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void destroy_service           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> **&nbsp;</td>
+          <td class="paramtype">struct <a class="el" href="structservice.html">service</a> **&nbsp;</td>
           <td class="paramname"> <em>s</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -342,10 +312,10 @@ Deletes a service at the specified index in the service list.<p>
 <div class="memdoc">
 
 <p>
-Frees the memory allocated through <a class="el" href="service__list_8h.html#d609f5d3a865dee5f25de650b1f1e9a4">create_service()</a> or <a class="el" href="service__list_8h.html#5baa52c0d5c3fffb155941fcf7148e19">get_service_at()</a> and sets the pointer to NULL as a safe guard. Passing a pointer to NULL is okay but not a NULL pointer.<p>
+Frees the memory allocated through <a class="el" href="service__list_8h.html#c06c6fd43ae92b1289d2c46155cb3463">create_service()</a> or <a class="el" href="service__list_8h.html#9dff71c014b364ec45cbb2dcf9cac64e">get_service_at()</a> and sets the pointer to NULL as a safe guard. Passing a pointer to NULL is okay but not a NULL pointer.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the service to be freed. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> to be freed. </td></tr>
   </table>
 </dl>
 
@@ -358,7 +328,7 @@ Frees the memory allocated through <a class="el" href="service__list_8h.html#d60
         <tr>
           <td class="memname">void destroy_service_list           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> **&nbsp;</td>
+          <td class="paramtype">service_list **&nbsp;</td>
           <td class="paramname"> <em>sl</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -371,7 +341,7 @@ Frees the memory allocated through <a class="el" href="service__list_8h.html#d60
 Frees the memory allocated through <a class="el" href="service__list_8h.html#c084a45dd0591e28048a1d4ff8279c5c">load_service_list()</a> and sets the pointer to NULL as a safe guard. Passing a pointer to NULL is okay but not a NULL pointer.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list to be freed. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> list to be freed. </td></tr>
   </table>
 </dl>
 
@@ -384,7 +354,7 @@ Frees the memory allocated through <a class="el" href="service__list_8h.html#c08
         <tr>
           <td class="memname">int disable_service_all           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *&nbsp;</td>
+          <td class="paramtype">service_list *&nbsp;</td>
           <td class="paramname"> <em>sl</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -397,7 +367,7 @@ Frees the memory allocated through <a class="el" href="service__list_8h.html#c08
 Disables all services.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that to be disabled.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> list that to be disabled.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -411,7 +381,7 @@ Disables all services.<p>
         <tr>
           <td class="memname">int disable_service_at           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *&nbsp;</td>
+          <td class="paramtype">service_list *&nbsp;</td>
           <td class="paramname"> <em>sl</em>, </td>
         </tr>
         <tr>
@@ -430,10 +400,10 @@ Disables all services.<p>
 <div class="memdoc">
 
 <p>
-Disables a service at the specified index in the service list.<p>
+Disables a <a class="el" href="structservice.html">service</a> at the specified index in the <a class="el" href="structservice.html">service</a> list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that contains the service. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> list that contains the <a class="el" href="structservice.html">service</a>. </td></tr>
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx</em>&nbsp;</td><td>the 0-based <a class="el" href="structposition.html">position</a> index.</td></tr>
   </table>
 </dl>
@@ -441,20 +411,42 @@ Disables a service at the specified index in the service list.<p>
 
 </div>
 </div><p>
-<a class="anchor" name="5baa52c0d5c3fffb155941fcf7148e19"></a><!-- doxytag: member="service_list.h::get_service_at" ref="5baa52c0d5c3fffb155941fcf7148e19" args="(const service_list *sl, service *s, unsigned int idx)" -->
+<a class="anchor" name="bcf79a0bfeaa3f071bc6c9c34dbd9891"></a><!-- doxytag: member="service_list.h::get_last_modification_time" ref="bcf79a0bfeaa3f071bc6c9c34dbd9891" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t get_last_modification_time           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Returns the time since Unix epoch the <a class="el" href="structservice.html">service</a> list was last modified.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>the <a class="el" href="structservice.html">service</a> list last modification time. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="9dff71c014b364ec45cbb2dcf9cac64e"></a><!-- doxytag: member="service_list.h::get_service_at" ref="9dff71c014b364ec45cbb2dcf9cac64e" args="(const service_list *sl, struct service **s, unsigned int idx)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int get_service_at           </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *&nbsp;</td>
+          <td class="paramtype">const service_list *&nbsp;</td>
           <td class="paramname"> <em>sl</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *&nbsp;</td>
+          <td class="paramtype">struct <a class="el" href="structservice.html">service</a> **&nbsp;</td>
           <td class="paramname"> <em>s</em>, </td>
         </tr>
         <tr>
@@ -473,11 +465,11 @@ Disables a service at the specified index in the service list.<p>
 <div class="memdoc">
 
 <p>
-Gets a copy of the service at the specified index in the service list. The copy should later be freed with <a class="el" href="service__list_8h.html#4e6f244d29d53b67d43f0ea3511c504b">destroy_service()</a>.<p>
+Gets a copy of the <a class="el" href="structservice.html">service</a> at the specified index in the <a class="el" href="structservice.html">service</a> list. The copy should later be freed with <a class="el" href="service__list_8h.html#122667ee719585cfff23d4eb9bd1f708">destroy_service()</a>.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that has the service. </td></tr>
-    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>a pointer to the dynamically allocated copy of the service. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> list that has the <a class="el" href="structservice.html">service</a>. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>a pointer to the dynamically allocated copy of the <a class="el" href="structservice.html">service</a>. </td></tr>
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx</em>&nbsp;</td><td>the 0-based <a class="el" href="structposition.html">position</a> index.</td></tr>
   </table>
 </dl>
@@ -485,20 +477,20 @@ Gets a copy of the service at the specified index in the service list. The copy 
 
 </div>
 </div><p>
-<a class="anchor" name="5c0baf105dcb98500d8d712862eeec40"></a><!-- doxytag: member="service_list.h::insert_service_at" ref="5c0baf105dcb98500d8d712862eeec40" args="(service_list *sl, const service *s, unsigned int idx)" -->
+<a class="anchor" name="c34fb274bc6837b3f704fea1e6c2b0c6"></a><!-- doxytag: member="service_list.h::insert_service_at" ref="c34fb274bc6837b3f704fea1e6c2b0c6" args="(service_list *sl, const struct service *s, unsigned int idx)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int insert_service_at           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *&nbsp;</td>
+          <td class="paramtype">service_list *&nbsp;</td>
           <td class="paramname"> <em>sl</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *&nbsp;</td>
+          <td class="paramtype">const struct <a class="el" href="structservice.html">service</a> *&nbsp;</td>
           <td class="paramname"> <em>s</em>, </td>
         </tr>
         <tr>
@@ -517,11 +509,11 @@ Gets a copy of the service at the specified index in the service list. The copy 
 <div class="memdoc">
 
 <p>
-Inserts a new service at the specified index in the service list.<p>
+Inserts a new <a class="el" href="structservice.html">service</a> at the specified index in the <a class="el" href="structservice.html">service</a> list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that will contain the new service. </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the service to be added. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> list that will contain the new <a class="el" href="structservice.html">service</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> to be added. </td></tr>
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx</em>&nbsp;</td><td>the 0-based <a class="el" href="structposition.html">position</a> index.</td></tr>
   </table>
 </dl>
@@ -536,7 +528,7 @@ Inserts a new service at the specified index in the service list.<p>
         <tr>
           <td class="memname">int load_service_list           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> **&nbsp;</td>
+          <td class="paramtype">service_list **&nbsp;</td>
           <td class="paramname"> <em>sl</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -546,7 +538,7 @@ Inserts a new service at the specified index in the service list.<p>
 <div class="memdoc">
 
 <p>
-Loads the currently published service list.<p>
+Loads the currently published <a class="el" href="structservice.html">service</a> list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the pointer pointing to dynamically allocated memory that should be freed with <a class="el" href="service__list_8h.html#ce772dad0102e6984e8bf416503ed74a">destroy_service_list()</a>.</td></tr>
@@ -556,20 +548,20 @@ Loads the currently published service list.<p>
 
 </div>
 </div><p>
-<a class="anchor" name="8f9c81c24502355c7a6e642804545777"></a><!-- doxytag: member="service_list.h::replace_service_at" ref="8f9c81c24502355c7a6e642804545777" args="(service_list *sl, const service *s, unsigned int idx)" -->
+<a class="anchor" name="9f7135189db6decfcb8c9bdf4ace4ebd"></a><!-- doxytag: member="service_list.h::replace_service_at" ref="9f7135189db6decfcb8c9bdf4ace4ebd" args="(service_list *sl, const struct service *s, unsigned int idx)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int replace_service_at           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *&nbsp;</td>
+          <td class="paramtype">service_list *&nbsp;</td>
           <td class="paramname"> <em>sl</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="service__list_8h.html#d75f954e5ced4d3a9e6a20ba739e4aa6">service</a> *&nbsp;</td>
+          <td class="paramtype">const struct <a class="el" href="structservice.html">service</a> *&nbsp;</td>
           <td class="paramname"> <em>s</em>, </td>
         </tr>
         <tr>
@@ -588,11 +580,11 @@ Loads the currently published service list.<p>
 <div class="memdoc">
 
 <p>
-Replaces a service at the specified index in the service list.<p>
+Replaces a <a class="el" href="structservice.html">service</a> at the specified index in the <a class="el" href="structservice.html">service</a> list.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list that contains the service. </td></tr>
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the new service that will replace the old one. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> list that contains the <a class="el" href="structservice.html">service</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>s</em>&nbsp;</td><td>the new <a class="el" href="structservice.html">service</a> that will replace the old one. </td></tr>
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>idx</em>&nbsp;</td><td>the 0-based <a class="el" href="structposition.html">position</a> index.</td></tr>
   </table>
 </dl>
@@ -607,7 +599,7 @@ Replaces a service at the specified index in the service list.<p>
         <tr>
           <td class="memname">int save_service_list           </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="service__list_8h.html#493c66a9405f6d964ed5e63b9da440d8">service_list</a> *&nbsp;</td>
+          <td class="paramtype">const service_list *&nbsp;</td>
           <td class="paramname"> <em>sl</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -617,10 +609,10 @@ Replaces a service at the specified index in the service list.<p>
 <div class="memdoc">
 
 <p>
-Saves the service list in the published service database and advertises the service list in the SSID accordingly.<p>
+Saves the <a class="el" href="structservice.html">service</a> list in the published <a class="el" href="structservice.html">service</a> database and advertises the <a class="el" href="structservice.html">service</a> list in the SSID accordingly.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the service list to be saved.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>sl</em>&nbsp;</td><td>the <a class="el" href="structservice.html">service</a> list to be saved.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is an error. </dd></dl>
@@ -628,7 +620,7 @@ Saves the service list in the published service database and advertises the serv
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Feb 20 01:35:32 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 25 21:18:15 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

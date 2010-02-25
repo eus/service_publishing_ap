@@ -201,7 +201,7 @@ Calculates the padded length of unaligned data.<p>
 <div class="memdoc">
 
 <p>
-This function wraps the pointer arithmetic needed to read the chunks in a TLV packet. At the start of parsing a chunk, prev_chunk must be NULL while chunk and chunk_len are set properly. For parsing the next chunk, prev_chunk must be to the last parsed chunk. In all cases, the data and len should be the same so that the parser knows when to stop parsing.<p>
+This function wraps the pointer arithmetic needed to read the chunks in a TLV packet. At the start of parsing a chunk, prev_chunk must be NULL while chunk and chunk_len are set properly. For parsing the next chunk, prev_chunk must be a pointer to the last parsed chunk. In all cases, the data and len should be the same so that the parser knows when to stop parsing.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>data</em>&nbsp;</td><td>the start of the data containing TLV chunks. </td></tr>
@@ -215,7 +215,7 @@ This function wraps the pointer arithmetic needed to read the chunks in a TLV pa
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Feb 20 01:35:32 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 25 21:18:15 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

@@ -38,10 +38,21 @@
 <br>
 &nbsp;&nbsp;<a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad42e38db2712fd9ca6836c905abd801ee0">ERR_SSID_TOO_LONG</a>, 
 <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad482556b884fd73e88ecbf950884a7cde0">ERR_SET_SSID</a>, 
-<a class="el" href="logger__test_8c.html#52482fdd3721e7db69dc740aefee8ad46d4f18a9728f434ff2d1a64043ebe6e8">ERR_SUCCESS</a>, 
-<a class="el" href="logger__test_8c.html#52482fdd3721e7db69dc740aefee8ad4b2f8de630db874b7df23b1d7cc0b7779">ERR_SOCK</a>, 
+<a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad40703cba3474b19368e0ad9a8cde2c355">ERR_GET_SDE_INFO</a>, 
+<a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad481c9ba37d884ae6b8b4563fbdbc38ba3">ERR_HANDLE_SDE_PACKET</a>, 
 <br>
-&nbsp;&nbsp;<a class="el" href="logger__test_8c.html#52482fdd3721e7db69dc740aefee8ad4aaeafdbf3aecc46864daa3cd829c7e05">ERR_MEM</a>
+&nbsp;&nbsp;<a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad48e7c7780545b4c79f0b8845f7074b356">ERR_TAKE_SDE_PACKET</a>, 
+<a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad432b3f9b48f626baa65767fd0d13ba30d">ERR_REMOVE_SDE_PACKET</a>, 
+<a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad43b5f1b679ad0ca9ac913ab66cc850cc1">ERR_SEND_METADATA</a>, 
+<a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad46e16c5499b84c46ffc381964deeb2ce8">ERR_GET_METADATA_PACKETS</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad487a5db10ed0e0ee2861cfe16e8c1ec5a">ERR_EXTRACTING_METADATA</a>, 
+<a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad4ea3b1a4c24ca87fcfd6774bd0821322f">ERR_GET_SERVICE_DESC_PACKETS</a>, 
+<a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad4f96e41f37b5a4270bf798ee0a1a7b08b">ERR_GET_SERVICE_DESC</a>, 
+<a class="el" href="logger__test_8c.html#52482fdd3721e7db69dc740aefee8ad46d4f18a9728f434ff2d1a64043ebe6e8">ERR_SUCCESS</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="logger__test_8c.html#52482fdd3721e7db69dc740aefee8ad4b2f8de630db874b7df23b1d7cc0b7779">ERR_SOCK</a>, 
+<a class="el" href="logger__test_8c.html#52482fdd3721e7db69dc740aefee8ad4aaeafdbf3aecc46864daa3cd829c7e05">ERR_MEM</a>
 <br>
  }</td></tr>
 
@@ -70,7 +81,7 @@ The possible errors. <dl compact><dt><b>Enumerator: </b></dt><dd>
 <tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad46d4f18a9728f434ff2d1a64043ebe6e8"></a><!-- doxytag: member="ERR_SUCCESS" ref="52482fdd3721e7db69dc740aefee8ad46d4f18a9728f434ff2d1a64043ebe6e8" args="" -->ERR_SUCCESS</em>&nbsp;</td><td>
 There is no error. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad4a86fe0be58755670106c01522a1fde73"></a><!-- doxytag: member="ERR_SERVICE_SET_FULL" ref="52482fdd3721e7db69dc740aefee8ad4a86fe0be58755670106c01522a1fde73" args="" -->ERR_SERVICE_SET_FULL</em>&nbsp;</td><td>
-The service set ads will not fit in the SSID. </td></tr>
+The <a class="el" href="structservice.html">service</a> set ads will not fit in the SSID. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad4b2f8de630db874b7df23b1d7cc0b7779"></a><!-- doxytag: member="ERR_SOCK" ref="52482fdd3721e7db69dc740aefee8ad4b2f8de630db874b7df23b1d7cc0b7779" args="" -->ERR_SOCK</em>&nbsp;</td><td>
 Socket error. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad4aaeafdbf3aecc46864daa3cd829c7e05"></a><!-- doxytag: member="ERR_MEM" ref="52482fdd3721e7db69dc740aefee8ad4aaeafdbf3aecc46864daa3cd829c7e05" args="" -->ERR_MEM</em>&nbsp;</td><td>
@@ -79,6 +90,24 @@ Insufficient memory. </td></tr>
 The SSID is too long. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad482556b884fd73e88ecbf950884a7cde0"></a><!-- doxytag: member="ERR_SET_SSID" ref="52482fdd3721e7db69dc740aefee8ad482556b884fd73e88ecbf950884a7cde0" args="" -->ERR_SET_SSID</em>&nbsp;</td><td>
 Cannot set the SSID. </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad40703cba3474b19368e0ad9a8cde2c355"></a><!-- doxytag: member="ERR_GET_SDE_INFO" ref="52482fdd3721e7db69dc740aefee8ad40703cba3474b19368e0ad9a8cde2c355" args="" -->ERR_GET_SDE_INFO</em>&nbsp;</td><td>
+Error in getting the next SDE packet's info. </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad481c9ba37d884ae6b8b4563fbdbc38ba3"></a><!-- doxytag: member="ERR_HANDLE_SDE_PACKET" ref="52482fdd3721e7db69dc740aefee8ad481c9ba37d884ae6b8b4563fbdbc38ba3" args="" -->ERR_HANDLE_SDE_PACKET</em>&nbsp;</td><td>
+Error in handling an SDE packet. </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad48e7c7780545b4c79f0b8845f7074b356"></a><!-- doxytag: member="ERR_TAKE_SDE_PACKET" ref="52482fdd3721e7db69dc740aefee8ad48e7c7780545b4c79f0b8845f7074b356" args="" -->ERR_TAKE_SDE_PACKET</em>&nbsp;</td><td>
+Error in taking an SDE packet. </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad432b3f9b48f626baa65767fd0d13ba30d"></a><!-- doxytag: member="ERR_REMOVE_SDE_PACKET" ref="52482fdd3721e7db69dc740aefee8ad432b3f9b48f626baa65767fd0d13ba30d" args="" -->ERR_REMOVE_SDE_PACKET</em>&nbsp;</td><td>
+Error in taking an SDE packet. </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad43b5f1b679ad0ca9ac913ab66cc850cc1"></a><!-- doxytag: member="ERR_SEND_METADATA" ref="52482fdd3721e7db69dc740aefee8ad43b5f1b679ad0ca9ac913ab66cc850cc1" args="" -->ERR_SEND_METADATA</em>&nbsp;</td><td>
+Error in sending SDE <a class="el" href="structmetadata.html">metadata</a> response. </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad46e16c5499b84c46ffc381964deeb2ce8"></a><!-- doxytag: member="ERR_GET_METADATA_PACKETS" ref="52482fdd3721e7db69dc740aefee8ad46e16c5499b84c46ffc381964deeb2ce8" args="" -->ERR_GET_METADATA_PACKETS</em>&nbsp;</td><td>
+Error in creating <a class="el" href="structmetadata.html">metadata</a> packets. </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad487a5db10ed0e0ee2861cfe16e8c1ec5a"></a><!-- doxytag: member="ERR_EXTRACTING_METADATA" ref="52482fdd3721e7db69dc740aefee8ad487a5db10ed0e0ee2861cfe16e8c1ec5a" args="" -->ERR_EXTRACTING_METADATA</em>&nbsp;</td><td>
+Error in extracting <a class="el" href="structmetadata.html">metadata</a> from a <a class="el" href="structservice.html">service</a> list. </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad4ea3b1a4c24ca87fcfd6774bd0821322f"></a><!-- doxytag: member="ERR_GET_SERVICE_DESC_PACKETS" ref="52482fdd3721e7db69dc740aefee8ad4ea3b1a4c24ca87fcfd6774bd0821322f" args="" -->ERR_GET_SERVICE_DESC_PACKETS</em>&nbsp;</td><td>
+Error in creating <a class="el" href="structservice.html">service</a> description packets. </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="52482fdd3721e7db69dc740aefee8ad4f96e41f37b5a4270bf798ee0a1a7b08b"></a><!-- doxytag: member="ERR_GET_SERVICE_DESC" ref="52482fdd3721e7db69dc740aefee8ad4f96e41f37b5a4270bf798ee0a1a7b08b" args="" -->ERR_GET_SERVICE_DESC</em>&nbsp;</td><td>
+Error in extracting a <a class="el" href="structservice.html">service</a> description from a <a class="el" href="structservice.html">service</a> list. </td></tr>
 </table>
 </dl>
 
@@ -113,7 +142,7 @@ Translates an error code to a human-readable string.<p>
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Feb 20 01:35:32 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 25 21:18:15 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

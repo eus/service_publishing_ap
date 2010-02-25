@@ -15,28 +15,68 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
  *****************************************************************************/
 
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "app_err.h"
+#include "logger.h"
+#include "service_inquiry.h"
+#include "service_inquiry_handler.h"
 
-const char *
-errtostr (int err)
+static int stop_signal = 0;
+
+static int
+is_stopped ()
 {
-  static const char *errstr[] = {
-    "Success",
-    "SSID cannot accommodate the service set",
-    "Socket error",
-    "Not enough memory",
-    "SSID too long",
-    "Set SSID error",
-    "Error in getting the next SDE packet info",
-    "Error in handling an SDE packet",
-    "Error in taking an SDE packet",
-    "Error in removing an SDE packet",
-    "Error in sending SDE metadata response",
-    "Error in creating metadata packets",
-    "Error in extracting metadata from service list",
-    "Error in creating service description packets",
-    "Error in extracting service description from service list",
-  };
+  return stop_signal;
+}
 
-  return errstr[err];
+static void
+signal_handler (int signum)
+{
+  stop_signal = 1;
+}
+
+GLOBAL_LOGGER;
+
+int
+main (int argc, char **argv, char **envp)
+{
+  struct sigaction act = {
+    .sa_handler = signal_handler,
+  };
+  int rc;
+
+  if (argc != 2)
+    {
+      fprintf (stderr, "Usage: %s LOG_FILE\n", argv[0]);
+      exit (EXIT_FAILURE);
+    }
+
+  SETUP_LOGGER (argv[1], errtostr);
+
+  if (atexit (destroy_sde_handler_cache))
+    {
+      l->ERR ("Cannot install SDE cache destroyer");
+      exit (EXIT_FAILURE);
+    }
+
+  if (sigaction (SIGTERM, &act, NULL)
+      || sigaction (SIGINT, &act, NULL))
+    {
+      l->SYS_ERR ("Cannot install signal handler");
+      exit (EXIT_FAILURE);
+    }
+
+  if ((rc = run_inquiry_handler (is_stopped)))
+    {
+      l->APP_ERR (rc, "Error in inquiry handler");
+      rc = EXIT_FAILURE;
+    }
+  else
+    {
+      rc = EXIT_SUCCESS;
+    }
+
+  exit (rc);
 }

@@ -36,23 +36,41 @@
 <a name="l00014"></a>00014 <span class="comment"> * You should have received a copy of the GNU General Public License         *</span>
 <a name="l00015"></a>00015 <span class="comment"> * along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.     *</span>
 <a name="l00016"></a>00016 <span class="comment"> *************************************************************************/</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#ifndef SERVICE_INQUIRY_H</span>
-<a name="l00022"></a>00022 <span class="preprocessor"></span><span class="preprocessor">#define SERVICE_INQUIRY_H</span>
-<a name="l00023"></a>00023 <span class="preprocessor"></span>
-<a name="l00024"></a>00024 <span class="preprocessor">#ifdef __cpluplus</span>
-<a name="l00025"></a>00025 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span> {
-<a name="l00026"></a>00026 <span class="preprocessor">#endif</span>
-<a name="l00027"></a>00027 <span class="preprocessor"></span>
-<a name="l00028"></a>00028 <span class="keywordtype">int</span>
-<a name="l00029"></a>00029 run_inquiry_handler (<span class="keywordtype">int</span> (*is_stopped) (<span class="keywordtype">void</span>))
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031 <span class="preprocessor">#ifdef __cplusplus</span>
-<a name="l00032"></a>00032 <span class="preprocessor"></span>}
-<a name="l00033"></a>00033 <span class="preprocessor">#endif</span>
-<a name="l00034"></a>00034 <span class="preprocessor"></span>
-<a name="l00035"></a>00035 <span class="preprocessor">#endif </span><span class="comment">/* SERVICE_INQUIRY_H */</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#ifndef SERVICE_INQUIRY_H</span>
+<a name="l00025"></a>00025 <span class="preprocessor"></span><span class="preprocessor">#define SERVICE_INQUIRY_H</span>
+<a name="l00026"></a>00026 <span class="preprocessor"></span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;netinet/in.h&gt;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#include "<a class="code" href="sde_8h.html" title="The Service Description Exchange data and packet structures. A service description...">sde.h</a>"</span>
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="preprocessor">#ifdef __cpluplus</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span> {
+<a name="l00032"></a>00032 <span class="preprocessor">#endif</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span>
+<a name="l00039"></a>00039 <span class="keywordtype">void</span>
+<a name="l00040"></a>00040 destroy_sde_handler_cache (<span class="keywordtype">void</span>);
+<a name="l00041"></a>00041 
+<a name="l00055"></a>00055 <span class="keywordtype">int</span>
+<a name="l00056"></a>00056 get_metadata_response (uint32_t seq,
+<a name="l00057"></a>00057                        <span class="keyword">struct</span> <a class="code" href="structsde__metadata.html">sde_metadata</a> **p1,
+<a name="l00058"></a>00058                        <span class="keywordtype">size_t</span> *p1_size,
+<a name="l00059"></a>00059                        <span class="keyword">struct</span> <a class="code" href="structsde__metadata__data.html">sde_metadata_data</a> **p2,
+<a name="l00060"></a>00060                        <span class="keywordtype">size_t</span> *p2_size);
+<a name="l00061"></a>00061 
+<a name="l00079"></a>00079 <span class="keywordtype">int</span>
+<a name="l00080"></a>00080 get_service_desc_response (uint32_t seq,
+<a name="l00081"></a>00081                            <span class="keyword">struct</span> <a class="code" href="structsde__service__desc.html">sde_service_desc</a> **p1,
+<a name="l00082"></a>00082                            <span class="keywordtype">size_t</span> *p1_size,
+<a name="l00083"></a>00083                            <span class="keyword">struct</span> <a class="code" href="structsde__service__desc__data.html">sde_service_desc_data</a> **p2,
+<a name="l00084"></a>00084                            <span class="keywordtype">size_t</span> *p2_size,
+<a name="l00085"></a>00085                            <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structposition.html">position</a> *pos, uint32_t pos_len);
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00088"></a>00088 <span class="preprocessor"></span>}
+<a name="l00089"></a>00089 <span class="preprocessor">#endif</span>
+<a name="l00090"></a>00090 <span class="preprocessor"></span>
+<a name="l00091"></a>00091 <span class="preprocessor">#endif </span><span class="comment">/* SERVICE_INQUIRY_H */</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Feb 20 01:35:32 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 25 21:18:15 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

@@ -25,6 +25,7 @@
 #define SERVICE_LIST_H
 
 #include <stdlib.h>
+#include <stdint.h>
 
 #ifdef __cpluplus
 extern "C" {
@@ -34,7 +35,14 @@ extern "C" {
 typedef struct service_list_impl service_list;
 
 /** A service to be included in a service list. */
-typedef struct service_impl service;
+struct service
+{
+  unsigned long cat_id; /**< The service category ID. */
+  char *desc; /**< The optional (can be NULL) service short description. */
+  char *long_desc; /**< The optional (can be NULL) service long description. */
+  char *uri; /**< The service URI. */
+  uint64_t mod_time; /**< The last modification time. */
+};
 
 /**
  * Creates a service having the specified attributes. The created service should
@@ -43,13 +51,15 @@ typedef struct service_impl service;
  * @param [out] s the resulting service object.
  * @param [in] cat_id the mandatory category ID of the service.
  * @param [in] desc the optional description of the service for the SSID ads.
+ *                  NULL will omit this.
  * @param [in] long_desc the optional long description of the service.
+ *                       NULL will omit this.
  * @param [in] uri the mandatory URI to obtain the service.
  *
  * @return 0 if there is no error or non-zero if there is an error.
  */
 int
-create_service (service *s,
+create_service (struct service *s,
 		unsigned long cat_id,
 		const char *desc,
 		const char *long_desc,
@@ -63,7 +73,7 @@ create_service (service *s,
  * @param [in] s the service to be freed.
  */
 void
-destroy_service (service **s);
+destroy_service (struct service **s);
 
 /**
  * Loads the currently published service list.
@@ -116,7 +126,7 @@ count_service (const service_list *sl);
  * @return 0 if there is no error or non-zero if there is an error.
  */
 int
-add_service_first (service_list *sl, const service *s);
+add_service_first (service_list *sl, const struct service *s);
 
 /** 
  * Adds a new service as the last member of the service list.
@@ -127,7 +137,7 @@ add_service_first (service_list *sl, const service *s);
  * @return 0 if there is no error or non-zero if there is an error.
  */
 int
-add_service_last (service_list *sl, const service *s);
+add_service_last (service_list *sl, const struct service *s);
 
 /** 
  * Gets a copy of the service at the specified index in the service list.
@@ -140,7 +150,7 @@ add_service_last (service_list *sl, const service *s);
  * @return 0 if there is no error or non-zero if there is an error.
  */
 int
-get_service_at (const service_list *sl, service *s, unsigned int idx);
+get_service_at (const service_list *sl, struct service **s, unsigned int idx);
 
 /** 
  * Inserts a new service at the specified index in the service list.
@@ -152,7 +162,7 @@ get_service_at (const service_list *sl, service *s, unsigned int idx);
  * @return 0 if there is no error or non-zero if there is an error.
  */
 int
-insert_service_at (service_list *sl, const service *s, unsigned int idx);
+insert_service_at (service_list *sl, const struct service *s, unsigned int idx);
 
 /** 
  * Replaces a service at the specified index in the service list.
@@ -164,7 +174,7 @@ insert_service_at (service_list *sl, const service *s, unsigned int idx);
  * @return 0 if there is no error or non-zero if there is an error.
  */
 int
-replace_service_at (service_list *sl, const service *s, unsigned int idx);
+replace_service_at (service_list *sl, const struct service *s, unsigned int idx);
 
 /** 
  * Deletes a service at the specified index in the service list.
@@ -207,6 +217,14 @@ disable_service_at (service_list *sl, unsigned int idx);
  */
 int
 disable_service_all (service_list *sl);
+
+/**
+ * Returns the time since Unix epoch the service list was last modified.
+ *
+ * @return the service list last modification time.
+ */
+uint64_t
+get_last_modification_time (void);
 
 #ifdef __cplusplus
 }

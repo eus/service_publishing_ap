@@ -45,7 +45,7 @@ static void sys_err (const char *file, unsigned int line, const char *msg, ...)
 
 #if (_POSIX_C_SOURCE >= 200112L || _XOPEN_SOURCE >= 600) && ! _GNU_SOURCE
   if (strerror_r (error_num, buffer, sizeof (buffer)) == -1)
-    fprintf (l->private->out, "\n", buffer);
+    fprintf (l->private->out, "\n");
   else
     fprintf (l->private->out, " (%s)\n", buffer);
 #else

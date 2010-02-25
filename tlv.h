@@ -78,7 +78,8 @@ create_chunk (uint32_t type, uint32_t length, const void *value,
  * a TLV packet.
  * At the start of parsing a chunk, prev_chunk must be NULL while chunk and
  * chunk_len are set properly.
- * For parsing the next chunk, prev_chunk must be to the last parsed chunk.
+ * For parsing the next chunk, prev_chunk must be a pointer to the last parsed
+ * chunk.
  * In all cases, the data and len should be the same so that the parser
  * knows when to stop parsing.
  * 
