@@ -16,65 +16,150 @@
  *************************************************************************//**
  * @file sde.h
  * @brief The Service Description Exchange data and packet structures.
- * A service description exchange happens when a user connects to a particular
- * AP to retrieve the details of the service offered in the SSID. The data
- * exchange will be modeled after the latest Android ToDo protocol that
- * employs static packet structures and TLV chunks. Once the gadget gets an IP
- * address, it should connect to UDP port 30003 to start the following
- * communication sequence.
+ * A Service description exchange (<strong>SDE</strong>) happens when a user
+ * connects to a particular AP to retrieve the details of the service offered
+ * in the SSID. The data exchange will be modeled after the latest Android
+ * ToDo protocol that employs static packet structures and TLV chunks. The
+ * data are aligned properly as can be seen in detail in the C implementation
+ * at the end of this document. Once the gadget gets an IP address, it should
+ * connect to UDP port 30003 to start the following communication sequence:
  * <ol>
- *    <li>GET_METADATA</li>
- *    <ul>
- *        <li>If there is no answer after a timeout, the gadget can notify
- *            the user that the AP is not responding. The user can then
- *            choose to retry.</li>
- *        <li>One use of metadata is to enable caching of information like
- *            what is used in HTML proxy.</li>
- *    </ul>
- *    <li>METADATA: METADATA_COUNT</li>
- *    <ul>
- *        <li>The METADATA_COUNT tells the gadget how many "struct metadata"
- *            is contained in the packet that follows. In other words, the AP
- *            will issue two UDP packets in response to GET_METADATA.</li>
- *        <li>The packet that follows contains the last modification
- *            timestamp of each of the published service in the SSID. The
- *            timestamps are ordered according to the service positions in the
- *            SSID. The timestamp is the number of seconds since the Unix
- *            epoch stored in 8 bytes.</li>
- *        <li>A TLV chunk is not employed here because, I think, metadata
- *            negotiation has to be fast.</li>
- *    </ul>
- *    <li>GET_SERVICE_DESCRIPTION: POSITION_COUNT
- *    <ul>
- *        <li>The SERVICE_ID_COUNT tells the AP how many "struct position"
- *            is contained in the packet that follows. In other words, the
- *            gadget will issue two UDP packets in response to METADATA.</li>
- *        <li>The packet that follows contains the positions of the services
- *            that are published in the SSID so that the AP can send only the
- *            needed data as the gadget wants. A position starts from 0 and
- *            is stored in 1 byte.</li>
- *    </ul>
- *    </li>
- *    <li>SERVICE_DESCRIPTION: TOTAL_BYTES
- *    <ul>
- *        <li>The TOTAL_BYTES tells the gadget how many bytes is contained in
- *            the packet that follows. In other words, the AP will issue two
- *            UDP packets in response to GET_SERVICE_DESCRIPTION.</li>
- *        <li>The packet that follows contains a TLV chunk for each of the
- *            requested position. Each chunk currently contains the following
- *            information represented as nested TLV chunks:
- *        <ul>
- *            <li>Last modification timestamp.</li>
- *            <li>Service long description.</li>
- *            <li>URI to obtain the service (e.g., rss://xxx).</li>
- *        </ul>
- *        </li>
- *        <li>TLV is used here since more information can be added in the
- *            future (e.g., a small picture) or the information can be
- *            tailored to the service category.</li>
- *    </ul>
- *    </li>
+ *     <li>GET_METADATA (can be skipped)
+ *     <ul>
+ *         <li>If there is no answer after a timeout, the gadget can notify
+ *         the user that the AP is not responding. The user can then
+ *         choose to retry.</li>
+ *         <li>One use of metadata is to enable caching of information like
+ *         what is used in HTML proxy.</li>
+ *     </ul>
+ *     <dl>
+ *         <dt><strong>Response</strong></dt>
+ *         <dd>
+ *         <ol>
+ *             <li>METADATA: METADATA_COUNT
+ *             <ul>
+ *                 <li>The METADATA_COUNT tells the gadget how many
+ *                 "struct metadata" is contained in the packet that
+ *                 follows.</li>
+ *             </ul>
+ *             </li>
+ *             <li>METADATA_DATA: METADATA_COUNT, TSES
+ *             <ul>
+ *                 <li>METADATA_COUNT is the corresponding METADATA's
+ *                 METADATA_COUNT.</li>
+ *                 <li>TSES are the last modification
+ *                 timestamps of the published services in the SSID. The
+ *                 timestamps are ordered according to the service positions
+ *                 in the SSID. A timestamp is the number of seconds since
+ *                 the Unix epoch stored in 8 bytes.</li>
+ *                 <li>A TLV chunk is not employed here because, I think,
+ *                 metadata negotiation has to be fast.</li>
+ *             </ul>
+ *             </li>
+ *         </ol>
+ *         </dd>
+ *     </dl>
+ *     </li>
+ *     <li>GET_SERVICE_DESCRIPTION: POSITION_COUNT
+ *     <ul>
+ *         <li>The SERVICE_ID_COUNT tells the AP how many "struct position"
+ *         is contained in the packet that follows.</li>
+ *     </ul>
+ *     </li>
+ *     <li>GET_SERVICE_DESCRIPTION_DATA: POSITION_COUNT, POSITIONS
+ *     <ul>
+ *         <li>POSITION_COUNT is the corresponding GET_SERVICE_DESCRIPTION's
+ *         POSITION_COUNT.</li>
+ *         <li>POSITIONS are the positions of the services
+ *         that are published in the SSID so that the AP can send only the
+ *         needed data as the gadget wants. A position starts from 0 and
+ *         is stored in 1 byte.</li>
+ *     </ul>
+ *     <dl>
+ *         <dt><strong>Response</strong></dt>
+ *         <dd>
+ *         <ol>
+ *             <li>SERVICE_DESCRIPTION: TOTAL_BYTES
+ *             <ul>
+ *                 <li>The TOTAL_BYTES tells the gadget how many bytes is
+ *                 contained in the packet that follows.</li>
+ *             </ul>
+ *             </li>
+ *             <li>SERVICE_DESCRIPTION_DATA: TOTAL_BYTES, TLV_DATA
+ *             <ul>
+ *                 <li>TOTAL_BYTES is the corresponding
+ *                 SERVICE_DESCRIPTION's TOTAL_BYTES.</li>
+ *                 <li>TLV_DATA are TLV chunks for each of the requested
+ *                 position. <strong>[CAUTION]</strong> Not all requested
+ *                 service descriptions may be present (e.g., a service
+ *                 can be disabled by the AP owner). Each chunk currently
+ *                 contains the following information represented as nested
+ *                 TLV chunks:
+ *                 <ul>
+ *                     <li>Last modification timestamp.</li>
+ *                     <li>Service long description.</li>
+ *                     <li>URI to obtain the service (e.g., rss://xxx).</li>
+ *                 </ul>
+ *                 </li>
+ *                 <li>TLV is used here since more information can be added in
+ *                 the future (e.g., a small picture) or the information can
+ *                 be tailored to the service category.</li>
+ *             </ul>
+ *             </li>
+ *         </ol>
+ *         </dd>
+ *     </dl>
+ *     </li>
  * </ol>
+ * <strong>[CAUTION]</strong> GET_METADATA and the corresponding METADATA
+ * reply communication session can be skipped (i.e., GET_SERVICE_DESCRIPTION
+ * can be issued without issuing GET_METADATA first).
+ * <h1>Why duplicated "count" and "size" fields in sde_metadata_data,
+ * sde_get_service_desc_data and sde_service_desc_data?</h1>
+ * The duplicated count and size fields are there so that an AP or a gadget
+ * that are capable of using ioctl (..., FIONREAD, ...) to look the size of
+ * the next pending UDP datagram without retrieving the UDP datagram from
+ * the socket can save memory by not remembering the previously received
+ * announcement.
+ * The announcement scheme (preceding the variable length data packet with
+ * an announcement packet) is used because Android's Java requires a prior
+ * knowledge about the length of the next UDP datagram before you can
+ * retrieve the UDP datagram without truncation (i.e., there is no
+ * equivalent of FIONREAD in Java, but CMIIW).
+ * <h1>Beware of outdated data</h1>
+ * Consider the following sequence of communication with an AP:
+ * <table border="1">
+ *         <tr>
+ *             <th>Gadget</th>
+ *             <th>AP</th>
+ *         </tr>
+ *         <tr>
+ *             <td>get_metadata</td>
+ *             <td></td>
+ *         </tr>
+ *         <tr>
+ *             <td></td>
+ *             <td>metadata (count = 2)</td>
+ *         </tr>
+ *         <tr>
+ *             <td>get_service_description<br>
+ *             (count = 1, position = 0)</td>
+ *             <td></td>
+ *         </tr>
+ *         <tr>
+ *             <td></td>
+ *             <td>Owner deletes service #1, service #2 has position = 0</td>
+ *         </tr>
+ *         <tr>
+ *             <td></td>
+ *             <td>service_description<br>
+ *             (carries service description #2 instead of #1 as the gadget
+ *             requested)</td>
+ *         </tr>
+ * </table>
+ * As illustrated above, the gadget software should anticipate for such a
+ * discrepancy between the previous and current information by checking the
+ * last modification timestamp.
  ****************************************************************************/
 
 #ifndef SDE_H
