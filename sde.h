@@ -168,6 +168,9 @@
 #include <stdint.h>
 #include "tlv.h"
 
+/** The AP port for an SDE session. */
+#define SDE_PORT 30003
+
 #ifdef __cpluplus
 extern "C" {
 #endif

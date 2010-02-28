@@ -21,9 +21,6 @@
 #ifndef SERVICE_INQUIRY_HANDLER_H
 #define SERVICE_INQUIRY_HANDLER_H
 
-/** The port at which a client will initiate an SDE session. */
-#define SERVICE_INQUIRY_HANDLER_PORT 30003
-
 #ifdef __cpluplus
 extern "C" {
 #endif

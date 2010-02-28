@@ -337,7 +337,7 @@ run_inquiry_handler (int (*is_stopped) (void))
   struct sockaddr_in handler_addr = {
     .sin_family = AF_INET,
     .sin_addr = {INADDR_ANY},
-    .sin_port = SERVICE_INQUIRY_HANDLER_PORT,
+    .sin_port = htons (SDE_PORT),
   };
 
   s = socket (AF_INET, SOCK_DGRAM, 0);
