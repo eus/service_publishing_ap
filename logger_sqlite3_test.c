@@ -13,49 +13,60 @@
  *                                                                           *
  * You should have received a copy of the GNU General Public License         *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
- *************************************************************************//**
- * @file ssid.h
- * @brief The SSID advertisement module.
- ****************************************************************************/
+ *****************************************************************************/
 
-#ifndef SSID_H
-#define SSID_H
-
+#include <assert.h>
+#include <time.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sqlite3.h>
+#include "logger_sqlite3.h"
 
-#ifdef __cpluplus
-extern "C" {
-#endif
+GLOBAL_LOGGER;
 
-/** The maximum size in bytes of an SSID. */
-#define SSID_MAX_LEN 32
-
-/**
- * Sets the SSID.
- * 
- * @param [in] new_ssid the new SSID to set.
- * @param [in] len the length of the new SSID.
- *
- * @return 0 if it is successful, ERR_SSID_TOO_LONG if the new SSID is too long,
- *         or non-zero for other errors.
- */
 int
-set_ssid (const void *new_ssid, size_t len);
+main (int argc, char **argv, char **envp)
+{
+  sqlite3 *db;
+  char db_name[32] = "/tmp/test_";
+  char *err_msg;
+  time_t now = time (NULL);
 
-/**
- * Gets the SSID.
- *
- * @param [out] buffer the buffer to hold the returned SSID.
- * @param [in] len the length of the buffer.
- *
- * @return the length of the SSID contained in the buffer or -1 if there is an
- *         error.
- */
-ssize_t
-get_ssid (void *buffer, size_t len);
+  SETUP_LOGGER ("/dev/null", NULL);
 
-#ifdef __cplusplus
+  strftime (db_name + strlen (db_name), sizeof (db_name) - strlen (db_name),
+	    "%s", gmtime (&now));
+  strcpy (db_name + strlen (db_name), ".db");
+  
+  /* Ensuring no segmentation fault or memory leak happens */
+  if (sqlite3_open_v2 (db_name, &db, SQLITE_OPEN_READWRITE, NULL))
+    {
+      SQLITE3_ERR (db, "Cannot open DB in read-write mode");
+      if (sqlite3_close (db))
+	{
+	  assert (0);
+	}
+    }
+  else
+    {
+      assert (0);
+    }
+
+  if (sqlite3_open (db_name, &db))
+    {
+      sqlite3_close (db);
+      assert (0);
+    }
+
+  if (sqlite3_exec (db, "select * from eus", NULL, NULL, &err_msg))
+    {
+      SQLITE3_ERR_STR (err_msg, "Table eus does not exist");
+    }
+
+  if (sqlite3_close (db))
+    {
+      assert (0);
+    }
+
+  exit (EXIT_SUCCESS);
 }
-#endif
-
-#endif /* SSID_H */

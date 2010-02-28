@@ -143,13 +143,13 @@ Convenient way to define a global <a class="el" href="structlogger.html">logger<
 <div class="memdoc">
 
 <p>
-<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span> { \
+<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span> {                            \
     <span class="keywordflow">if</span> (!atexit (destroy_logger) &amp;&amp; !init_logger (log_output, err2str)) \
       <span class="keywordflow">break</span>;                                                            \
     fprintf (stderr, <span class="stringliteral">"Cannot setup logger\n"</span>);                          \
     exit (EXIT_FAILURE);                                                \
   } <span class="keywordflow">while</span> (0)
-</pre></div>Convenient way to setup an application to use and destroy the global <a class="el" href="structlogger.html">logger</a>. This should be put as the first executable line in main(). 
+</pre></div>Convenient way to setup an application to use and destroy the global <a class="el" href="structlogger.html">logger</a>. This should be put as the first executable line in main() and must only be called once. If the <a class="el" href="structlogger.html">logger</a> needs to be modified, use <a class="el" href="logger_8h.html#4dfcbd491525c8782dc0f4a373f29fd6">destroy_logger()</a> and then <a class="el" href="logger_8h.html#d669c69bbc8b70990cf421d32c54a220">init_logger()</a> instead of this macro. 
 </div>
 </div><p>
 <a class="anchor" name="11000ece922ae6d878ae07b4bf85df66"></a><!-- doxytag: member="logger.h::SYS_ERR" ref="11000ece922ae6d878ae07b4bf85df66" args="(msg,...)" -->
@@ -250,7 +250,7 @@ The global pointer to the global <a class="el" href="structlogger.html">logger</
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 25 21:18:15 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Feb 28 23:52:58 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

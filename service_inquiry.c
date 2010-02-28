@@ -15,6 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
  *****************************************************************************/
 
+#include <sqlite3.h>
 #include <stdint.h>
 #include <netinet/in.h>
 #include <string.h>
@@ -57,6 +58,9 @@ htonll (uint64_t h)
 	  | ((h & 0xFF00000000000000ULL) >> 56));
 }
 
+/**< The cached service list. */
+static service_list *sl = NULL;
+
 /**
  * Retrieves a service list from the published service DB if the DB has been
  * updated since a particular time in the past. The returned service list should
@@ -73,14 +77,9 @@ static service_list *
 get_service_list (uint64_t last_mod_time, uint64_t *curr_mod_time)
 {
   int rc;
-  service_list *sl = NULL;
 
-  *curr_mod_time = get_last_modification_time ();
-
-  if (last_mod_time != *curr_mod_time || last_mod_time == 0)
+  if (sl == NULL)
     {
-      last_mod_time = *curr_mod_time;
-
       if ((rc = load_service_list (&sl)))
 	{
 	  l->APP_ERR (rc, "Cannot load service list");
@@ -88,7 +87,16 @@ get_service_list (uint64_t last_mod_time, uint64_t *curr_mod_time)
 	}
     }
 
-  return sl;
+  *curr_mod_time = get_last_modification_time (sl);
+
+  if (last_mod_time != *curr_mod_time || last_mod_time == 0)
+    {
+      last_mod_time = *curr_mod_time;
+
+      return sl;
+    }
+
+  return NULL;
 }
 
 /**
@@ -102,7 +110,7 @@ get_service_list (uint64_t last_mod_time, uint64_t *curr_mod_time)
  * @return 0 if there is no error or non-zero if there is an error.
  */
 static int
-get_metadata_from_service_list (const service_list *sl,
+get_metadata_from_service_list (service_list *sl,
 				struct metadata **metadata,
 				size_t *metadata_size)
 {
@@ -130,7 +138,7 @@ get_metadata_from_service_list (const service_list *sl,
 	  return ERR_EXTRACTING_METADATA;
 	}
 
-      ptr_m[i].ts = htonll (s->mod_time);
+      ptr_m[i].ts = htonll (s->ro.mod_time);
 
       destroy_service (&s);
     }
@@ -172,10 +180,8 @@ get_metadata_response (uint32_t seq,
       if ((rc = get_metadata_from_service_list (sl, &metadata, &metadata_size)))
 	{
 	  l->APP_ERR (rc, "Cannot get metadata from service list");
-	  destroy_service_list (&sl);
 	  return ERR_GET_METADATA_PACKETS;
 	}
-      destroy_service_list (&sl);
     }
 
   ptr_m = malloc (sizeof (*ptr_m));
@@ -218,7 +224,7 @@ get_metadata_response (uint32_t seq,
  * @return 0 if there is no error or non-zero if there is an error.
  */
 static int
-get_service_desc_from_service_list (const service_list *sl,
+get_service_desc_from_service_list (service_list *sl,
 				    struct tlv_chunk **service_desc,
 				    size_t *service_desc_size)
 {
@@ -257,7 +263,7 @@ get_service_desc_from_service_list (const service_list *sl,
 	{
 	  return_cleanly (ERR_MEM);
 	}
-      mod_time = htonll (s->mod_time);
+      mod_time = htonll (s->ro.mod_time);
       if ((itr = create_chunk (SERVICE_TS, sizeof (uint64_t), &mod_time, itr,
 			       &service_data, &service_data_size)) == NULL)
 	{
@@ -405,10 +411,8 @@ get_service_desc_response (uint32_t seq,
 						    &service_desc_size)))
 	{
 	  l->APP_ERR (rc, "Cannot get service description from service list");
-	  destroy_service_list (&sl);
 	  return ERR_GET_SERVICE_DESC_PACKETS;
 	}
-      destroy_service_list (&sl);
     }
 
   ptr_s = malloc (sizeof (*ptr_s));
@@ -456,5 +460,11 @@ destroy_sde_handler_cache (void)
     {
       free (service_desc);
       service_desc = NULL;
+    }
+
+  if (sl != NULL)
+    {
+      destroy_service_list (&sl);
+      sl = NULL;
     }
 }

@@ -22,7 +22,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>sde.h File Reference</h1>The Service Description Exchange data and packet structures. A <a class="el" href="structservice.html">service</a> description exchange happens when a user connects to a particular AP to retrieve the details of the <a class="el" href="structservice.html">service</a> offered in the SSID. The data exchange will be modeled after the latest Android ToDo protocol that employs static packet structures and TLV chunks. Once the gadget gets an IP address, it should connect to UDP port 30003 to start the following communication sequence.  
+<h1>sde.h File Reference</h1>The Service Description Exchange data and packet structures. A Service description exchange (<b>SDE</b>) happens when a user connects to a particular AP to retrieve the details of the <a class="el" href="structservice.html">service</a> offered in the SSID. The data exchange will be modeled after the latest Android ToDo protocol that employs static packet structures and TLV chunks. The data are aligned properly as can be seen in detail in the C implementation at the end of this document. Once the gadget gets an IP address, it should connect to UDP port 30003 to start the following communication sequence:.  
 <a href="#_details">More...</a>
 <p>
 <code>#include &lt;stdint.h&gt;</code><br>
@@ -77,41 +77,67 @@
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-The Service Description Exchange data and packet structures. A <a class="el" href="structservice.html">service</a> description exchange happens when a user connects to a particular AP to retrieve the details of the <a class="el" href="structservice.html">service</a> offered in the SSID. The data exchange will be modeled after the latest Android ToDo protocol that employs static packet structures and TLV chunks. Once the gadget gets an IP address, it should connect to UDP port 30003 to start the following communication sequence. 
+The Service Description Exchange data and packet structures. A Service description exchange (<b>SDE</b>) happens when a user connects to a particular AP to retrieve the details of the <a class="el" href="structservice.html">service</a> offered in the SSID. The data exchange will be modeled after the latest Android ToDo protocol that employs static packet structures and TLV chunks. The data are aligned properly as can be seen in detail in the C implementation at the end of this document. Once the gadget gets an IP address, it should connect to UDP port 30003 to start the following communication sequence:. 
 <p>
 <ol>
 <li>
-GET_METADATA <ul>
+GET_METADATA (can be skipped) <ul>
 <li>
 If there is no answer after a timeout, the gadget can notify the user that the AP is not responding. The user can then choose to retry. </li>
 <li>
 One use of <a class="el" href="structmetadata.html">metadata</a> is to enable caching of information like what is used in HTML proxy. </li>
 </ul>
-</li>
+<dl>
+<dt><b>Response</b> </dt>
+<dd><ol>
 <li>
 METADATA: METADATA_COUNT <ul>
 <li>
-The METADATA_COUNT tells the gadget how many "struct metadata" is contained in the packet that follows. In other words, the AP will issue two UDP packets in response to GET_METADATA. </li>
+The METADATA_COUNT tells the gadget how many "struct metadata" is contained in the packet that follows. </li>
+</ul>
+</li>
 <li>
-The packet that follows contains the last modification timestamp of each of the published <a class="el" href="structservice.html">service</a> in the SSID. The timestamps are ordered according to the <a class="el" href="structservice.html">service</a> positions in the SSID. The timestamp is the number of seconds since the Unix epoch stored in 8 bytes. </li>
+METADATA_DATA: METADATA_COUNT, TSES <ul>
+<li>
+METADATA_COUNT is the corresponding METADATA's METADATA_COUNT. </li>
+<li>
+TSES are the last modification timestamps of the published services in the SSID. The timestamps are ordered according to the <a class="el" href="structservice.html">service</a> positions in the SSID. A timestamp is the number of seconds since the Unix epoch stored in 8 bytes. </li>
 <li>
 A TLV chunk is not employed here because, I think, <a class="el" href="structmetadata.html">metadata</a> negotiation has to be fast. </li>
 </ul>
 </li>
+</ol>
+</dd>
+</dl>
+</li>
 <li>
 GET_SERVICE_DESCRIPTION: POSITION_COUNT <ul>
 <li>
-The SERVICE_ID_COUNT tells the AP how many "struct position" is contained in the packet that follows. In other words, the gadget will issue two UDP packets in response to METADATA. </li>
-<li>
-The packet that follows contains the positions of the services that are published in the SSID so that the AP can send only the needed data as the gadget wants. A <a class="el" href="structposition.html">position</a> starts from 0 and is stored in 1 byte. </li>
+The SERVICE_ID_COUNT tells the AP how many "struct position" is contained in the packet that follows. </li>
 </ul>
 </li>
 <li>
+GET_SERVICE_DESCRIPTION_DATA: POSITION_COUNT, POSITIONS <ul>
+<li>
+POSITION_COUNT is the corresponding GET_SERVICE_DESCRIPTION's POSITION_COUNT. </li>
+<li>
+POSITIONS are the positions of the services that are published in the SSID so that the AP can send only the needed data as the gadget wants. A <a class="el" href="structposition.html">position</a> starts from 0 and is stored in 1 byte. </li>
+</ul>
+<dl>
+<dt><b>Response</b> </dt>
+<dd><ol>
+<li>
 SERVICE_DESCRIPTION: TOTAL_BYTES <ul>
 <li>
-The TOTAL_BYTES tells the gadget how many bytes is contained in the packet that follows. In other words, the AP will issue two UDP packets in response to GET_SERVICE_DESCRIPTION. </li>
+The TOTAL_BYTES tells the gadget how many bytes is contained in the packet that follows. </li>
+</ul>
+</li>
 <li>
-The packet that follows contains a TLV chunk for each of the requested <a class="el" href="structposition.html">position</a>. Each chunk currently contains the following information represented as nested TLV chunks: <ul>
+SERVICE_DESCRIPTION_DATA: TOTAL_BYTES, TLV_DATA <ul>
+<li>
+TOTAL_BYTES is the corresponding SERVICE_DESCRIPTION's TOTAL_BYTES. </li>
+<li>
+TLV_DATA are TLV chunks for each of the requested <a class="el" href="structposition.html">position</a>. <b>[CAUTION]</b> Not all requested <a class="el" href="structservice.html">service</a> descriptions may be present (e.g., a <a class="el" href="structservice.html">service</a> can be disabled by the AP owner). Each chunk currently contains the following information represented as nested TLV chunks: <ul>
 <li>
 Last modification timestamp. </li>
 <li>
@@ -125,7 +151,31 @@ TLV is used here since more information can be added in the future (e.g., a smal
 </ul>
 </li>
 </ol>
-<hr><h2>Enumeration Type Documentation</h2>
+</dd>
+</dl>
+</li>
+</ol>
+<b>[CAUTION]</b> GET_METADATA and the corresponding METADATA reply communication session can be skipped (i.e., GET_SERVICE_DESCRIPTION can be issued without issuing GET_METADATA first). <h1>Why duplicated "count" and "size" fields in <a class="el" href="structsde__metadata__data.html">sde_metadata_data</a>, <a class="el" href="structsde__get__service__desc__data.html">sde_get_service_desc_data</a> and <a class="el" href="structsde__service__desc__data.html">sde_service_desc_data</a>?</h1>
+<p>
+The duplicated count and size fields are there so that an AP or a gadget that are capable of using ioctl (..., FIONREAD, ...) to look the size of the next pending UDP datagram without retrieving the UDP datagram from the socket can save memory by not remembering the previously received announcement. The announcement scheme (preceding the variable length data packet with an announcement packet) is used because Android's Java requires a prior knowledge about the length of the next UDP datagram before you can retrieve the UDP datagram without truncation (i.e., there is no equivalent of FIONREAD in Java, but CMIIW). <h1>Beware of outdated data</h1>
+<p>
+Consider the following sequence of communication with an AP: <table border="1" cellspacing="3" cellpadding="3">
+<tr>
+<th>Gadget </th><th>AP  </th></tr>
+<tr>
+<td>get_metadata </td><td></td></tr>
+<tr>
+<td></td><td><a class="el" href="structmetadata.html">metadata</a> (count = 2)  </td></tr>
+<tr>
+<td>get_service_description<br>
+ (count = 1, <a class="el" href="structposition.html">position</a> = 0) </td><td></td></tr>
+<tr>
+<td></td><td>Owner deletes <a class="el" href="structservice.html">service</a> #1, <a class="el" href="structservice.html">service</a> #2 has <a class="el" href="structposition.html">position</a> = 0  </td></tr>
+<tr>
+<td></td><td>service_description<br>
+ (carries <a class="el" href="structservice.html">service</a> description #2 instead of #1 as the gadget requested)  </td></tr>
+</table>
+As illustrated above, the gadget software should anticipate for such a discrepancy between the previous and current information by checking the last modification timestamp. <hr><h2>Enumeration Type Documentation</h2>
 <a class="anchor" name="edbe138a09311afa037d3add2468d640"></a><!-- doxytag: member="sde.h::sde_packet_type" ref="edbe138a09311afa037d3add2468d640" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -189,7 +239,7 @@ The URI to obtain a particular <a class="el" href="structservice.html">service</
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 25 21:18:15 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Feb 28 23:52:58 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

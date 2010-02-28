@@ -52,6 +52,27 @@ enum err
 			   * Error in extracting a service description from a
 			   * service list.
 			   */
+    ERR_LOAD_SERVICE_LIST, /**< Error in loading published service DB. */
+    ERR_ADD_SERVICE_FIRST, /**< Error in adding a service at the front. */
+    ERR_SAVE_SERVICE_LIST, /**< Error in saving a service list. */
+    ERR_COUNT_SERVICES, /**< Error in counting services in a service list. */
+    ERR_INVALID_SERVICE_POS, /**< Invalid service position in the SSID. */
+    ERR_COUNT_ENABLED_SERVICES, /**<
+				 * Error in counting enabled services in a
+				 * service list.
+				 */
+    ERR_CREATE_SERVICE_URI_NULL, /**< URI is mandatory in creating a service. */
+    ERR_CREATE_TMP_SERVICE_LIST, /**< Cannot create a tmp service list table. */
+    ERR_INC_POS, /**< Cannot increment service positions. */
+    ERR_DEC_POS, /**< Cannot decrement service positions. */
+    ERR_ADD_SERVICE_LAST, /**< Error in adding a service at the back. */
+    ERR_INSERT_SERVICE, /**< Error in inserting a service. */
+    ERR_REPLACE_SERVICE, /**< Error in replacing a service. */
+    ERR_DELETE_SERVICE, /**< Error in deleting a service. */
+    ERR_DELETE_ALL_SERVICE, /**< Error in deleting all services. */
+    ERR_RANGE, /**< Index is not within range. */
+    ERR_INIT_INC_DEC_POS, /**< Cannot ensure inc_dec_pos. */
+    ERR_GET_SERVICE, /**< Error in retrieving a service. */
   };
 
 /**

@@ -24,13 +24,134 @@
 <div class="contents">
 <h1>service_list Struct Reference</h1><!-- doxytag: class="service_list_impl" --><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Data Fields</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">sqlite3 *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structservice__list__impl.html#2ffdeb7694a61c6163f51843fa4d3749">db</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structservice__list__impl.html#fde7814ba7bf4161fbe936d956d96c2e">has_service_list_tmp_table</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">sqlite3_stmt *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structservice__list__impl.html#4b1b85eef2b3086f388d8280bb0f7861">get_service_at</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">sqlite3_stmt *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structservice__list__impl.html#8dfed1269323b53531054f41c3b06068">insert_service_at</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">sqlite3_stmt *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structservice__list__impl.html#6e958b6a86f01e76c2f9ac5b677c1065">replace_service_at</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">sqlite3_stmt *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structservice__list__impl.html#1f8a4bfeea1b5f27ec1724c9e0b257cc">delete_service_at</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">sqlite3_stmt *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structservice__list__impl.html#ee6359996e9755e01ba44bd576dfaeeb">inc_dec_pos</a></td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 The implementation of <a class="el" href="structservice.html">service</a> list.<p>
-A list of services advertised in the SSID. <hr>The documentation for this struct was generated from the following file:<ul>
+A list of services advertised in the SSID. <hr><h2>Field Documentation</h2>
+<a class="anchor" name="2ffdeb7694a61c6163f51843fa4d3749"></a><!-- doxytag: member="service_list_impl::db" ref="2ffdeb7694a61c6163f51843fa4d3749" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sqlite3* service_list::db          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The published <a class="el" href="structservice.html">service</a> DB. 
+</div>
+</div><p>
+<a class="anchor" name="1f8a4bfeea1b5f27ec1724c9e0b257cc"></a><!-- doxytag: member="service_list_impl::delete_service_at" ref="1f8a4bfeea1b5f27ec1724c9e0b257cc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sqlite3_stmt* service_list::delete_service_at          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The supporting DML of the stated operation. 
+</div>
+</div><p>
+<a class="anchor" name="4b1b85eef2b3086f388d8280bb0f7861"></a><!-- doxytag: member="service_list_impl::get_service_at" ref="4b1b85eef2b3086f388d8280bb0f7861" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sqlite3_stmt* service_list::get_service_at          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The supporting DML of the stated operation. 
+</div>
+</div><p>
+<a class="anchor" name="fde7814ba7bf4161fbe936d956d96c2e"></a><!-- doxytag: member="service_list_impl::has_service_list_tmp_table" ref="fde7814ba7bf4161fbe936d956d96c2e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int service_list::has_service_list_tmp_table          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Non-zero if a temporary table has been created as a duplicate of the <a class="el" href="structservice.html">service</a> list table for temporary writing purpose. 
+</div>
+</div><p>
+<a class="anchor" name="ee6359996e9755e01ba44bd576dfaeeb"></a><!-- doxytag: member="service_list_impl::inc_dec_pos" ref="ee6359996e9755e01ba44bd576dfaeeb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sqlite3_stmt* service_list::inc_dec_pos          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Increment/decrement the <a class="el" href="structposition.html">position</a> of a <a class="el" href="structservice.html">service</a>. 
+</div>
+</div><p>
+<a class="anchor" name="8dfed1269323b53531054f41c3b06068"></a><!-- doxytag: member="service_list_impl::insert_service_at" ref="8dfed1269323b53531054f41c3b06068" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sqlite3_stmt* service_list::insert_service_at          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The supporting DML of the stated operation. 
+</div>
+</div><p>
+<a class="anchor" name="6e958b6a86f01e76c2f9ac5b677c1065"></a><!-- doxytag: member="service_list_impl::replace_service_at" ref="6e958b6a86f01e76c2f9ac5b677c1065" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sqlite3_stmt* service_list::replace_service_at          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The supporting DML of the stated operation. 
+</div>
+</div><p>
+<hr>The documentation for this struct was generated from the following file:<ul>
 <li>service_list.c</ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 25 21:18:15 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Feb 28 23:52:58 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

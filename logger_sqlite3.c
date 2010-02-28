@@ -13,49 +13,23 @@
  *                                                                           *
  * You should have received a copy of the GNU General Public License         *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
- *************************************************************************//**
- * @file ssid.h
- * @brief The SSID advertisement module.
- ****************************************************************************/
+ *****************************************************************************/
 
-#ifndef SSID_H
-#define SSID_H
+#include <sqlite3.h>
+#include "logger.h"
 
-#include <stdlib.h>
-
-#ifdef __cpluplus
-extern "C" {
-#endif
-
-/** The maximum size in bytes of an SSID. */
-#define SSID_MAX_LEN 32
-
-/**
- * Sets the SSID.
- * 
- * @param [in] new_ssid the new SSID to set.
- * @param [in] len the length of the new SSID.
- *
- * @return 0 if it is successful, ERR_SSID_TOO_LONG if the new SSID is too long,
- *         or non-zero for other errors.
- */
-int
-set_ssid (const void *new_ssid, size_t len);
-
-/**
- * Gets the SSID.
- *
- * @param [out] buffer the buffer to hold the returned SSID.
- * @param [in] len the length of the buffer.
- *
- * @return the length of the SSID contained in the buffer or -1 if there is an
- *         error.
- */
-ssize_t
-get_ssid (void *buffer, size_t len);
-
-#ifdef __cplusplus
+void
+sqlite3_err (const char *file, unsigned int line, sqlite3 *db,
+	     const char *msg, ...)
+{
+  l->err (file, line, "[SQLITE3] %s (%s)", msg, sqlite3_errmsg (db));
 }
-#endif
 
-#endif /* SSID_H */
+void
+sqlite3_err_str (const char *file, unsigned int line, char **err_str,
+		 const char *msg, ...)
+{
+  l->err (file, line, "[SQLITE3] %s (%s)\n", msg, *err_str);
+  sqlite3_free (*err_str);
+  *err_str = NULL;
+}

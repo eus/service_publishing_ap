@@ -36,104 +36,104 @@
 <a name="l00014"></a>00014 <span class="comment"> * You should have received a copy of the GNU General Public License         *</span>
 <a name="l00015"></a>00015 <span class="comment"> * along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.     *</span>
 <a name="l00016"></a>00016 <span class="comment"> *************************************************************************/</span>
-<a name="l00080"></a>00080 <span class="preprocessor">#ifndef SDE_H</span>
-<a name="l00081"></a>00081 <span class="preprocessor"></span><span class="preprocessor">#define SDE_H</span>
-<a name="l00082"></a>00082 <span class="preprocessor"></span>
-<a name="l00083"></a>00083 <span class="preprocessor">#include &lt;stdint.h&gt;</span>
-<a name="l00084"></a>00084 <span class="preprocessor">#include "<a class="code" href="tlv_8h.html" title="This helps you to create and parse a nested type-length-value packet. The value is...">tlv.h</a>"</span>
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086 <span class="preprocessor">#ifdef __cpluplus</span>
-<a name="l00087"></a>00087 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span> {
-<a name="l00088"></a>00088 <span class="preprocessor">#endif</span>
-<a name="l00089"></a>00089 <span class="preprocessor"></span>
-<a name="l00091"></a><a class="code" href="structmetadata.html">00091</a> <span class="keyword">struct </span><a class="code" href="structmetadata.html">metadata</a>
-<a name="l00092"></a>00092 {
-<a name="l00093"></a><a class="code" href="structmetadata.html#6a3fba89991fea79a63aae024ef8c12f">00093</a>   uint64_t <a class="code" href="structmetadata.html#6a3fba89991fea79a63aae024ef8c12f">ts</a>; 
-<a name="l00094"></a>00094 } __attribute__ ((packed));
-<a name="l00095"></a>00095 
-<a name="l00097"></a><a class="code" href="structposition.html">00097</a> <span class="keyword">struct </span><a class="code" href="structposition.html">position</a>
-<a name="l00098"></a>00098 {
-<a name="l00099"></a><a class="code" href="structposition.html#2ea022daab3ab7155a6e8eca50d8b5a1">00099</a>   uint8_t <a class="code" href="structposition.html#2ea022daab3ab7155a6e8eca50d8b5a1">pos</a>; 
-<a name="l00103"></a>00103 } __attribute__ ((packed));
-<a name="l00104"></a>00104 
-<a name="l00106"></a><a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28">00106</a> <span class="keyword">enum</span> <a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28">service_desc_chunk_type</a>
-<a name="l00107"></a>00107   {
-<a name="l00108"></a><a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28b6018339139b51a498dc44bd760766fc">00108</a>     <a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28b6018339139b51a498dc44bd760766fc">DESCRIPTION</a>, 
-<a name="l00113"></a><a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28feaef8a658b26a4d579bc6b737454b22">00113</a>     <a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28feaef8a658b26a4d579bc6b737454b22">SERVICE_POS</a>, 
-<a name="l00117"></a><a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28267d1e553ddae7b4a94965d90362173d">00117</a>     <a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28267d1e553ddae7b4a94965d90362173d">SERVICE_TS</a>, 
-<a name="l00118"></a><a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28266791ced345bfe6511dd4acab8d0b28">00118</a>     <a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28266791ced345bfe6511dd4acab8d0b28">SERVICE_LONG_DESC</a>, 
-<a name="l00119"></a><a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28dff633207be6c7a92d0462413ae8ce7e">00119</a>     <a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28dff633207be6c7a92d0462413ae8ce7e">SERVICE_URI</a>, 
-<a name="l00120"></a>00120   };
-<a name="l00121"></a>00121 
-<a name="l00123"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640">00123</a> <span class="keyword">enum</span> <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640">sde_packet_type</a>
-<a name="l00124"></a>00124   {
-<a name="l00125"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d6404428e5f642432448da74290c4a70173e">00125</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d6404428e5f642432448da74290c4a70173e">GET_METADATA</a>, 
-<a name="l00126"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d6400e1d7082456940b59823eed8099493ca">00126</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d6400e1d7082456940b59823eed8099493ca">METADATA</a>, 
-<a name="l00127"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640e4d7b97f100ece56b1dcfb19d8312fdc">00127</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640e4d7b97f100ece56b1dcfb19d8312fdc">METADATA_DATA</a>, 
-<a name="l00128"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640c626f3311c4accefb1fe659e53ffab61">00128</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640c626f3311c4accefb1fe659e53ffab61">GET_SERVICE_DESC</a>, 
-<a name="l00129"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640bd8f61f35a1f8df3f3d535b16440a1dc">00129</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640bd8f61f35a1f8df3f3d535b16440a1dc">GET_SERVICE_DESC_DATA</a>, 
-<a name="l00130"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d6400c6eddfb28096f33fc47e0eaa0588d88">00130</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d6400c6eddfb28096f33fc47e0eaa0588d88">SERVICE_DESC</a>, 
-<a name="l00131"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640acc47865511e3fb052c9777361bf5bda">00131</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640acc47865511e3fb052c9777361bf5bda">SERVICE_DESC_DATA</a>, 
-<a name="l00132"></a>00132   };
-<a name="l00133"></a>00133 
-<a name="l00135"></a><a class="code" href="structsde__packet.html">00135</a> <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a>
-<a name="l00136"></a>00136 {
-<a name="l00137"></a><a class="code" href="structsde__packet.html#5d17db087e3ef2b1d57160c5195e563b">00137</a>   uint32_t <a class="code" href="structsde__packet.html#5d17db087e3ef2b1d57160c5195e563b">type</a>; 
-<a name="l00138"></a><a class="code" href="structsde__packet.html#b7e4e3d5fc69a34014fe0e8f204e1bf6">00138</a>   uint32_t <a class="code" href="structsde__packet.html#b7e4e3d5fc69a34014fe0e8f204e1bf6">seq</a>; 
-<a name="l00139"></a>00139 } __attribute__ ((packed));
-<a name="l00140"></a>00140 
-<a name="l00146"></a><a class="code" href="structsde__get__metadata.html">00146</a> <span class="keyword">struct </span><a class="code" href="structsde__get__metadata.html">sde_get_metadata</a>
-<a name="l00147"></a>00147 {
-<a name="l00148"></a><a class="code" href="structsde__get__metadata.html#d3d3b20bf8845ae502b779735832998e">00148</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__get__metadata.html#d3d3b20bf8845ae502b779735832998e">c</a>; 
-<a name="l00149"></a>00149 } __attribute__ ((packed));
-<a name="l00150"></a>00150 
-<a name="l00157"></a><a class="code" href="structsde__metadata.html">00157</a> <span class="keyword">struct </span><a class="code" href="structsde__metadata.html">sde_metadata</a>
-<a name="l00158"></a>00158 {
-<a name="l00159"></a><a class="code" href="structsde__metadata.html#7a5fa626907b66158f94226216248322">00159</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__metadata.html#7a5fa626907b66158f94226216248322">c</a>; 
-<a name="l00160"></a><a class="code" href="structsde__metadata.html#8cd8a6f3a2fb265a4b075eeff598651d">00160</a>   uint32_t <a class="code" href="structsde__metadata.html#8cd8a6f3a2fb265a4b075eeff598651d">count</a>; 
-<a name="l00161"></a>00161 } __attribute__ ((packed));
-<a name="l00162"></a>00162 
-<a name="l00169"></a><a class="code" href="structsde__metadata__data.html">00169</a> <span class="keyword">struct </span><a class="code" href="structsde__metadata__data.html">sde_metadata_data</a>
-<a name="l00170"></a>00170 {
-<a name="l00171"></a><a class="code" href="structsde__metadata__data.html#22a2e7a618d0ff7f41c4c7305c70c3a4">00171</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__metadata__data.html#22a2e7a618d0ff7f41c4c7305c70c3a4">c</a>; 
-<a name="l00172"></a><a class="code" href="structsde__metadata__data.html#352d536c43420ca6fb7e704f2aacf74a">00172</a>   uint32_t <a class="code" href="structsde__metadata__data.html#352d536c43420ca6fb7e704f2aacf74a">count</a>; 
-<a name="l00173"></a><a class="code" href="structsde__metadata__data.html#2d194a23a7245b76cfb760cd6dad6072">00173</a>   uint32_t <a class="code" href="structsde__metadata__data.html#2d194a23a7245b76cfb760cd6dad6072">unused1</a>; 
-<a name="l00174"></a><a class="code" href="structsde__metadata__data.html#a2328a7a3bc265668e0c4befb34126b2">00174</a>   <span class="keyword">struct </span><a class="code" href="structmetadata.html">metadata</a> <a class="code" href="structsde__metadata__data.html#a2328a7a3bc265668e0c4befb34126b2">data</a>[0]; 
-<a name="l00175"></a>00175 } __attribute__ ((packed));
-<a name="l00176"></a>00176 
-<a name="l00182"></a><a class="code" href="structsde__get__service__desc.html">00182</a> <span class="keyword">struct </span><a class="code" href="structsde__get__service__desc.html">sde_get_service_desc</a>
+<a name="l00165"></a>00165 <span class="preprocessor">#ifndef SDE_H</span>
+<a name="l00166"></a>00166 <span class="preprocessor"></span><span class="preprocessor">#define SDE_H</span>
+<a name="l00167"></a>00167 <span class="preprocessor"></span>
+<a name="l00168"></a>00168 <span class="preprocessor">#include &lt;stdint.h&gt;</span>
+<a name="l00169"></a>00169 <span class="preprocessor">#include "<a class="code" href="tlv_8h.html" title="This helps you to create and parse a nested type-length-value packet. The value is...">tlv.h</a>"</span>
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171 <span class="preprocessor">#ifdef __cpluplus</span>
+<a name="l00172"></a>00172 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span> {
+<a name="l00173"></a>00173 <span class="preprocessor">#endif</span>
+<a name="l00174"></a>00174 <span class="preprocessor"></span>
+<a name="l00176"></a><a class="code" href="structmetadata.html">00176</a> <span class="keyword">struct </span><a class="code" href="structmetadata.html">metadata</a>
+<a name="l00177"></a>00177 {
+<a name="l00178"></a><a class="code" href="structmetadata.html#6a3fba89991fea79a63aae024ef8c12f">00178</a>   uint64_t <a class="code" href="structmetadata.html#6a3fba89991fea79a63aae024ef8c12f">ts</a>; 
+<a name="l00179"></a>00179 } __attribute__ ((packed));
+<a name="l00180"></a>00180 
+<a name="l00182"></a><a class="code" href="structposition.html">00182</a> <span class="keyword">struct </span><a class="code" href="structposition.html">position</a>
 <a name="l00183"></a>00183 {
-<a name="l00184"></a><a class="code" href="structsde__get__service__desc.html#0fa904576eb9c4391c36f7da4adfedb7">00184</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__get__service__desc.html#0fa904576eb9c4391c36f7da4adfedb7">c</a>; 
-<a name="l00185"></a><a class="code" href="structsde__get__service__desc.html#355370ab22b759d336375dd60ae5cfc0">00185</a>   uint32_t <a class="code" href="structsde__get__service__desc.html#355370ab22b759d336375dd60ae5cfc0">count</a>; 
-<a name="l00186"></a>00186 } __attribute__ ((packed));
-<a name="l00187"></a>00187 
-<a name="l00194"></a><a class="code" href="structsde__get__service__desc__data.html">00194</a> <span class="keyword">struct </span><a class="code" href="structsde__get__service__desc__data.html">sde_get_service_desc_data</a>
-<a name="l00195"></a>00195 {
-<a name="l00196"></a><a class="code" href="structsde__get__service__desc__data.html#b604b0984bfe9fbd4a8cdb2f30684192">00196</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__get__service__desc__data.html#b604b0984bfe9fbd4a8cdb2f30684192">c</a>; 
-<a name="l00197"></a><a class="code" href="structsde__get__service__desc__data.html#84ab625ec158116162118a417df9ae79">00197</a>   uint32_t <a class="code" href="structsde__get__service__desc__data.html#84ab625ec158116162118a417df9ae79">count</a>; 
-<a name="l00200"></a><a class="code" href="structsde__get__service__desc__data.html#fa5adf325af523029d00f52becf722e5">00200</a>   <span class="keyword">struct </span><a class="code" href="structposition.html">position</a> <a class="code" href="structsde__get__service__desc__data.html#fa5adf325af523029d00f52becf722e5">data</a>[0]; 
-<a name="l00201"></a>00201 } __attribute__ ((packed));
-<a name="l00202"></a>00202 
-<a name="l00209"></a><a class="code" href="structsde__service__desc.html">00209</a> <span class="keyword">struct </span><a class="code" href="structsde__service__desc.html">sde_service_desc</a>
-<a name="l00210"></a>00210 {
-<a name="l00211"></a><a class="code" href="structsde__service__desc.html#2cecebb3050c6e0e366d825a991b6017">00211</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__service__desc.html#2cecebb3050c6e0e366d825a991b6017">c</a>; 
-<a name="l00212"></a><a class="code" href="structsde__service__desc.html#668ef19d9f825355736e9336d42205a6">00212</a>   uint32_t <a class="code" href="structsde__service__desc.html#668ef19d9f825355736e9336d42205a6">size</a>; 
-<a name="l00213"></a>00213 } __attribute__ ((packed));
-<a name="l00214"></a>00214 
-<a name="l00221"></a><a class="code" href="structsde__service__desc__data.html">00221</a> <span class="keyword">struct </span><a class="code" href="structsde__service__desc__data.html">sde_service_desc_data</a>
-<a name="l00222"></a>00222 {
-<a name="l00223"></a><a class="code" href="structsde__service__desc__data.html#c5bc0bfd2c6ea8feb8042573563a6148">00223</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__service__desc__data.html#c5bc0bfd2c6ea8feb8042573563a6148">c</a>; 
-<a name="l00224"></a><a class="code" href="structsde__service__desc__data.html#3148a469c936c31469bf78cacee6eac0">00224</a>   uint32_t <a class="code" href="structsde__service__desc__data.html#3148a469c936c31469bf78cacee6eac0">size</a>; 
-<a name="l00225"></a><a class="code" href="structsde__service__desc__data.html#926f29c4e03c5891bd120df39f061967">00225</a>   <span class="keyword">struct </span><a class="code" href="structtlv__chunk.html">tlv_chunk</a> <a class="code" href="structsde__service__desc__data.html#926f29c4e03c5891bd120df39f061967">data</a>[0]; 
-<a name="l00226"></a>00226 } __attribute__ ((packed));
-<a name="l00227"></a>00227 
-<a name="l00228"></a>00228 <span class="preprocessor">#ifdef __cplusplus</span>
-<a name="l00229"></a>00229 <span class="preprocessor"></span>}
-<a name="l00230"></a>00230 <span class="preprocessor">#endif</span>
-<a name="l00231"></a>00231 <span class="preprocessor"></span>
-<a name="l00232"></a>00232 <span class="preprocessor">#endif </span><span class="comment">/* SDE_H */</span>
+<a name="l00184"></a><a class="code" href="structposition.html#2ea022daab3ab7155a6e8eca50d8b5a1">00184</a>   uint8_t <a class="code" href="structposition.html#2ea022daab3ab7155a6e8eca50d8b5a1">pos</a>; 
+<a name="l00188"></a>00188 } __attribute__ ((packed));
+<a name="l00189"></a>00189 
+<a name="l00191"></a><a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28">00191</a> <span class="keyword">enum</span> <a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28">service_desc_chunk_type</a>
+<a name="l00192"></a>00192   {
+<a name="l00193"></a><a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28b6018339139b51a498dc44bd760766fc">00193</a>     <a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28b6018339139b51a498dc44bd760766fc">DESCRIPTION</a>, 
+<a name="l00198"></a><a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28feaef8a658b26a4d579bc6b737454b22">00198</a>     <a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28feaef8a658b26a4d579bc6b737454b22">SERVICE_POS</a>, 
+<a name="l00202"></a><a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28267d1e553ddae7b4a94965d90362173d">00202</a>     <a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28267d1e553ddae7b4a94965d90362173d">SERVICE_TS</a>, 
+<a name="l00203"></a><a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28266791ced345bfe6511dd4acab8d0b28">00203</a>     <a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28266791ced345bfe6511dd4acab8d0b28">SERVICE_LONG_DESC</a>, 
+<a name="l00204"></a><a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28dff633207be6c7a92d0462413ae8ce7e">00204</a>     <a class="code" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28dff633207be6c7a92d0462413ae8ce7e">SERVICE_URI</a>, 
+<a name="l00205"></a>00205   };
+<a name="l00206"></a>00206 
+<a name="l00208"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640">00208</a> <span class="keyword">enum</span> <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640">sde_packet_type</a>
+<a name="l00209"></a>00209   {
+<a name="l00210"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d6404428e5f642432448da74290c4a70173e">00210</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d6404428e5f642432448da74290c4a70173e">GET_METADATA</a>, 
+<a name="l00211"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d6400e1d7082456940b59823eed8099493ca">00211</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d6400e1d7082456940b59823eed8099493ca">METADATA</a>, 
+<a name="l00212"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640e4d7b97f100ece56b1dcfb19d8312fdc">00212</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640e4d7b97f100ece56b1dcfb19d8312fdc">METADATA_DATA</a>, 
+<a name="l00213"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640c626f3311c4accefb1fe659e53ffab61">00213</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640c626f3311c4accefb1fe659e53ffab61">GET_SERVICE_DESC</a>, 
+<a name="l00214"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640bd8f61f35a1f8df3f3d535b16440a1dc">00214</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640bd8f61f35a1f8df3f3d535b16440a1dc">GET_SERVICE_DESC_DATA</a>, 
+<a name="l00215"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d6400c6eddfb28096f33fc47e0eaa0588d88">00215</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d6400c6eddfb28096f33fc47e0eaa0588d88">SERVICE_DESC</a>, 
+<a name="l00216"></a><a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640acc47865511e3fb052c9777361bf5bda">00216</a>     <a class="code" href="sde_8h.html#edbe138a09311afa037d3add2468d640acc47865511e3fb052c9777361bf5bda">SERVICE_DESC_DATA</a>, 
+<a name="l00217"></a>00217   };
+<a name="l00218"></a>00218 
+<a name="l00220"></a><a class="code" href="structsde__packet.html">00220</a> <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a>
+<a name="l00221"></a>00221 {
+<a name="l00222"></a><a class="code" href="structsde__packet.html#5d17db087e3ef2b1d57160c5195e563b">00222</a>   uint32_t <a class="code" href="structsde__packet.html#5d17db087e3ef2b1d57160c5195e563b">type</a>; 
+<a name="l00223"></a><a class="code" href="structsde__packet.html#b7e4e3d5fc69a34014fe0e8f204e1bf6">00223</a>   uint32_t <a class="code" href="structsde__packet.html#b7e4e3d5fc69a34014fe0e8f204e1bf6">seq</a>; 
+<a name="l00224"></a>00224 } __attribute__ ((packed));
+<a name="l00225"></a>00225 
+<a name="l00231"></a><a class="code" href="structsde__get__metadata.html">00231</a> <span class="keyword">struct </span><a class="code" href="structsde__get__metadata.html">sde_get_metadata</a>
+<a name="l00232"></a>00232 {
+<a name="l00233"></a><a class="code" href="structsde__get__metadata.html#d3d3b20bf8845ae502b779735832998e">00233</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__get__metadata.html#d3d3b20bf8845ae502b779735832998e">c</a>; 
+<a name="l00234"></a>00234 } __attribute__ ((packed));
+<a name="l00235"></a>00235 
+<a name="l00242"></a><a class="code" href="structsde__metadata.html">00242</a> <span class="keyword">struct </span><a class="code" href="structsde__metadata.html">sde_metadata</a>
+<a name="l00243"></a>00243 {
+<a name="l00244"></a><a class="code" href="structsde__metadata.html#7a5fa626907b66158f94226216248322">00244</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__metadata.html#7a5fa626907b66158f94226216248322">c</a>; 
+<a name="l00245"></a><a class="code" href="structsde__metadata.html#8cd8a6f3a2fb265a4b075eeff598651d">00245</a>   uint32_t <a class="code" href="structsde__metadata.html#8cd8a6f3a2fb265a4b075eeff598651d">count</a>; 
+<a name="l00246"></a>00246 } __attribute__ ((packed));
+<a name="l00247"></a>00247 
+<a name="l00254"></a><a class="code" href="structsde__metadata__data.html">00254</a> <span class="keyword">struct </span><a class="code" href="structsde__metadata__data.html">sde_metadata_data</a>
+<a name="l00255"></a>00255 {
+<a name="l00256"></a><a class="code" href="structsde__metadata__data.html#22a2e7a618d0ff7f41c4c7305c70c3a4">00256</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__metadata__data.html#22a2e7a618d0ff7f41c4c7305c70c3a4">c</a>; 
+<a name="l00257"></a><a class="code" href="structsde__metadata__data.html#352d536c43420ca6fb7e704f2aacf74a">00257</a>   uint32_t <a class="code" href="structsde__metadata__data.html#352d536c43420ca6fb7e704f2aacf74a">count</a>; 
+<a name="l00258"></a><a class="code" href="structsde__metadata__data.html#2d194a23a7245b76cfb760cd6dad6072">00258</a>   uint32_t <a class="code" href="structsde__metadata__data.html#2d194a23a7245b76cfb760cd6dad6072">unused1</a>; 
+<a name="l00259"></a><a class="code" href="structsde__metadata__data.html#a2328a7a3bc265668e0c4befb34126b2">00259</a>   <span class="keyword">struct </span><a class="code" href="structmetadata.html">metadata</a> <a class="code" href="structsde__metadata__data.html#a2328a7a3bc265668e0c4befb34126b2">data</a>[0]; 
+<a name="l00260"></a>00260 } __attribute__ ((packed));
+<a name="l00261"></a>00261 
+<a name="l00267"></a><a class="code" href="structsde__get__service__desc.html">00267</a> <span class="keyword">struct </span><a class="code" href="structsde__get__service__desc.html">sde_get_service_desc</a>
+<a name="l00268"></a>00268 {
+<a name="l00269"></a><a class="code" href="structsde__get__service__desc.html#0fa904576eb9c4391c36f7da4adfedb7">00269</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__get__service__desc.html#0fa904576eb9c4391c36f7da4adfedb7">c</a>; 
+<a name="l00270"></a><a class="code" href="structsde__get__service__desc.html#355370ab22b759d336375dd60ae5cfc0">00270</a>   uint32_t <a class="code" href="structsde__get__service__desc.html#355370ab22b759d336375dd60ae5cfc0">count</a>; 
+<a name="l00271"></a>00271 } __attribute__ ((packed));
+<a name="l00272"></a>00272 
+<a name="l00279"></a><a class="code" href="structsde__get__service__desc__data.html">00279</a> <span class="keyword">struct </span><a class="code" href="structsde__get__service__desc__data.html">sde_get_service_desc_data</a>
+<a name="l00280"></a>00280 {
+<a name="l00281"></a><a class="code" href="structsde__get__service__desc__data.html#b604b0984bfe9fbd4a8cdb2f30684192">00281</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__get__service__desc__data.html#b604b0984bfe9fbd4a8cdb2f30684192">c</a>; 
+<a name="l00282"></a><a class="code" href="structsde__get__service__desc__data.html#84ab625ec158116162118a417df9ae79">00282</a>   uint32_t <a class="code" href="structsde__get__service__desc__data.html#84ab625ec158116162118a417df9ae79">count</a>; 
+<a name="l00285"></a><a class="code" href="structsde__get__service__desc__data.html#fa5adf325af523029d00f52becf722e5">00285</a>   <span class="keyword">struct </span><a class="code" href="structposition.html">position</a> <a class="code" href="structsde__get__service__desc__data.html#fa5adf325af523029d00f52becf722e5">data</a>[0]; 
+<a name="l00286"></a>00286 } __attribute__ ((packed));
+<a name="l00287"></a>00287 
+<a name="l00294"></a><a class="code" href="structsde__service__desc.html">00294</a> <span class="keyword">struct </span><a class="code" href="structsde__service__desc.html">sde_service_desc</a>
+<a name="l00295"></a>00295 {
+<a name="l00296"></a><a class="code" href="structsde__service__desc.html#2cecebb3050c6e0e366d825a991b6017">00296</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__service__desc.html#2cecebb3050c6e0e366d825a991b6017">c</a>; 
+<a name="l00297"></a><a class="code" href="structsde__service__desc.html#668ef19d9f825355736e9336d42205a6">00297</a>   uint32_t <a class="code" href="structsde__service__desc.html#668ef19d9f825355736e9336d42205a6">size</a>; 
+<a name="l00298"></a>00298 } __attribute__ ((packed));
+<a name="l00299"></a>00299 
+<a name="l00306"></a><a class="code" href="structsde__service__desc__data.html">00306</a> <span class="keyword">struct </span><a class="code" href="structsde__service__desc__data.html">sde_service_desc_data</a>
+<a name="l00307"></a>00307 {
+<a name="l00308"></a><a class="code" href="structsde__service__desc__data.html#c5bc0bfd2c6ea8feb8042573563a6148">00308</a>   <span class="keyword">struct </span><a class="code" href="structsde__packet.html">sde_packet</a> <a class="code" href="structsde__service__desc__data.html#c5bc0bfd2c6ea8feb8042573563a6148">c</a>; 
+<a name="l00309"></a><a class="code" href="structsde__service__desc__data.html#3148a469c936c31469bf78cacee6eac0">00309</a>   uint32_t <a class="code" href="structsde__service__desc__data.html#3148a469c936c31469bf78cacee6eac0">size</a>; 
+<a name="l00310"></a><a class="code" href="structsde__service__desc__data.html#926f29c4e03c5891bd120df39f061967">00310</a>   <span class="keyword">struct </span><a class="code" href="structtlv__chunk.html">tlv_chunk</a> <a class="code" href="structsde__service__desc__data.html#926f29c4e03c5891bd120df39f061967">data</a>[0]; 
+<a name="l00311"></a>00311 } __attribute__ ((packed));
+<a name="l00312"></a>00312 
+<a name="l00313"></a>00313 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00314"></a>00314 <span class="preprocessor"></span>}
+<a name="l00315"></a>00315 <span class="preprocessor">#endif</span>
+<a name="l00316"></a>00316 <span class="preprocessor"></span>
+<a name="l00317"></a>00317 <span class="preprocessor">#endif </span><span class="comment">/* SDE_H */</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Feb 25 21:18:15 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Feb 28 23:52:58 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

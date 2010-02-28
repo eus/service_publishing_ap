@@ -14,48 +14,43 @@
  * You should have received a copy of the GNU General Public License         *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
  *************************************************************************//**
- * @file ssid.h
- * @brief The SSID advertisement module.
+ * @file logger_sqlite3.h
+ * @brief This logger module only provides convenient wrapper method over
+ *        logger::err() to log sqlite3 error messages.
  ****************************************************************************/
 
-#ifndef SSID_H
-#define SSID_H
+#ifndef LOGGER_SQLITE3_H
+#define LOGGER_SQLITE3_H
 
-#include <stdlib.h>
+#include "logger.h"
+#include <sqlite3.h>
 
 #ifdef __cpluplus
 extern "C" {
 #endif
 
-/** The maximum size in bytes of an SSID. */
-#define SSID_MAX_LEN 32
 
-/**
- * Sets the SSID.
- * 
- * @param [in] new_ssid the new SSID to set.
- * @param [in] len the length of the new SSID.
- *
- * @return 0 if it is successful, ERR_SSID_TOO_LONG if the new SSID is too long,
- *         or non-zero for other errors.
- */
-int
-set_ssid (const void *new_ssid, size_t len);
+/** Log the last sqlite3 error message from the DB. */
+void 
+sqlite3_err (const char *file, unsigned int line, sqlite3 *db,
+	    const char *msg, ...);
 
-/**
- * Gets the SSID.
- *
- * @param [out] buffer the buffer to hold the returned SSID.
- * @param [in] len the length of the buffer.
- *
- * @return the length of the SSID contained in the buffer or -1 if there is an
- *         error.
- */
-ssize_t
-get_ssid (void *buffer, size_t len);
+/** Log an sqlite3 error message (there is _no_ need to free err_str). */
+void
+sqlite3_err_str (const char *file, unsigned int line, char **err_str,
+		const char *msg, ...);
+
+/** Convenient wrapper for calling sqlite_err. */
+#define SQLITE3_ERR(db, msg, ...) sqlite3_err (__FILE__, __LINE__, db,	\
+					       msg , ## __VA_ARGS__)
+
+/** Convenient wrapper for calling sqlite_err_str (NO need to free err_str). */
+#define SQLITE3_ERR_STR(err_str, msg, ...) sqlite3_err_str (__FILE__, __LINE__, \
+							    &err_str,	\
+							    msg , ## __VA_ARGS__)
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* SSID_H */
+#endif /* LOGGER_SQLITE3_H */

@@ -1,10 +1,11 @@
 .PHONY: all test test_with_root_priv test_without_root_priv clean doc
 
 TEST_EXECUTABLES_NEEDING_ROOT_PRIV := ssid_test
-TEST_EXECUTABLES := tlv_test logger_test
+TEST_EXECUTABLES := tlv_test logger_test logger_sqlite3_test
 EXECUTABLES := service_inquiry_handler_daemon
 
 CFLAGS := -Wall -Werror $(CFLAGS)
+LDLIBS := -lsqlite3 $(LDLIBS)
 
 all: $(EXECUTABLES)
 
@@ -12,13 +13,17 @@ logger.o: logger.h
 
 logger_test: logger.o
 
+logger_sqlite3.o: logger_sqlite3.h logger.h
+
+logger_sqlite3_test: logger_sqlite3.o logger.o
+
 app_err.o: app_err.h
 
 service_inquiry.o: service_inquiry.h app_err.h logger.h tlv.h sde.h service_list.h
 
 service_inquiry_handler.o: service_inquiry_handler.h app_err.h logger.h service_inquiry.h sde.h
 
-service_inquiry_handler_daemon: app_err.o service_inquiry.o service_inquiry_handler.o logger.o tlv.o service_list.o
+service_inquiry_handler_daemon: app_err.o service_inquiry.o service_inquiry_handler.o logger.o logger_sqlite3.o tlv.o service_list.o ssid.o
 
 tlv.o: tlv.h
 
@@ -26,7 +31,7 @@ tlv_test: tlv.o
 
 service_category.o: service_category.h app_err.h logger.h
 
-service_list.o: service_list.h app_err.h logger.h
+service_list.o: service_list.h app_err.h logger.h logger_sqlite3.h ssid.h
 
 ssid.o: ssid.h app_err.h logger.h
 
