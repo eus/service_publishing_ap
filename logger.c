@@ -32,13 +32,14 @@ struct logger_data
   FILE *out; /**< The file stream into which messages will be logged. */
 };
 
-static void sys_err (const char *file, unsigned int line, const char *msg, ...)
+static void
+sys_err (const char *file, unsigned int line, const char *msg, ...)
 {
   int error_num = errno;
   va_list ap;
   char buffer[128];
 
-  fprintf (l->private->out, "[ERR] %s:%d: ", file, line);
+  fprintf (l->private->out, "[SYS ERR] %s:%d: ", file, line);
 
   va_start (ap, msg);
   vfprintf (l->private->out, msg, ap);
@@ -54,20 +55,31 @@ static void sys_err (const char *file, unsigned int line, const char *msg, ...)
 #endif
 }
 
-static void app_err (const char *file, unsigned int line, int error_num,
-		     const char *msg, ...)
+static void
+app_err (const char *file, unsigned int line, int error_num,
+	 const char *msg, ...)
 {
   va_list ap;
 
-  fprintf (l->private->out, "[ERR] %s:%d: ", file, line);
+  fprintf (l->private->out, "[APP ERR] %s:%d: ", file, line);
 
   va_start (ap, msg);
   vfprintf (l->private->out, msg, ap);
 
-  fprintf (l->private->out, ": (%s)\n", l->private->app_err2str (error_num));
+  fprintf (l->private->out, " (");
+  if (l->private->app_err2str)
+    {
+      fprintf (l->private->out, "%s", l->private->app_err2str (error_num));
+    }
+  else
+    {
+      fprintf (l->private->out, "%d", error_num);
+    }
+  fprintf (l->private->out, ")\n");
 }
 
-static void err (const char *file, unsigned int line, const char *msg, ...)
+static void
+err (const char *file, unsigned int line, const char *msg, ...)
 {
   va_list ap;
 
@@ -96,12 +108,12 @@ init_logger (const char *log_output, const char *(*err2str) (int))
       return -1;
     }
   l->private->app_err2str = err2str;
-  l->private->out = out;
+   l->private->out = out;
 
   l->sys_err = sys_err;
   l->app_err = app_err;
   l->err = err;
-
+ 
   return 0;
 }
 

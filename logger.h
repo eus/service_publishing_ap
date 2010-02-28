@@ -85,9 +85,11 @@ destroy_logger (void);
 
 /**
  * Convenient way to setup an application to use and destroy the global
- * logger. This should be put as the first executable line in main().
+ * logger. This should be put as the first executable line in main() and must
+ * only be called once. If the logger needs to be modified, use
+ * destroy_logger() and then init_logger() instead of this macro.
  */
-#define SETUP_LOGGER(log_output, err2str) do { \
+#define SETUP_LOGGER(log_output, err2str) do {				\
     if (!atexit (destroy_logger) && !init_logger (log_output, err2str))	\
       break;								\
     fprintf (stderr, "Cannot setup logger\n");				\

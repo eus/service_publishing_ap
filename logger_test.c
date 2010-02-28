@@ -54,5 +54,12 @@ main (int argc, char **argv, char **envp)
 
   l->ERR ("Custom error %s", "[ERROR]");
 
+  destroy_logger ();
+
+  /* Ensuring that passing NULL is okay */
+  init_logger ("/dev/null", NULL);
+
+  l->APP_ERR (ERR_MEM, "Error code logged as it is");
+
   exit (EXIT_SUCCESS);
 }
