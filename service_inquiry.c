@@ -287,6 +287,13 @@ get_service_desc_from_service_list (service_list *sl,
 	{
 	  return_cleanly (ERR_MEM);
 	}
+      if (s->desc != NULL
+	  && (itr = create_chunk (SERVICE_DESC, strlen (s->desc),
+				  s->desc, itr,
+				  &service_data, &service_data_size)) == NULL)
+	{
+	  return_cleanly (ERR_MEM);
+	}
       if (s->long_desc != NULL
 	  && (itr = create_chunk (SERVICE_LONG_DESC, strlen (s->long_desc),
 				  s->long_desc, itr,
