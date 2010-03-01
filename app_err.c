@@ -54,6 +54,7 @@ errtostr (int err)
     "Index is outside range",
     "Cannot ensure inc_dec_pos",
     "Error in retrieving a service",
+    "Error in reloading service list",
   };
 
   return errstr[err];

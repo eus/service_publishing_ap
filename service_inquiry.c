@@ -93,6 +93,12 @@ get_service_list (uint64_t last_mod_time, uint64_t *curr_mod_time)
     {
       last_mod_time = *curr_mod_time;
 
+      if ((rc = reload_service_list (sl)))
+	{
+	  l->APP_ERR (rc, "Cannot reload service list");
+	  return NULL;
+	}
+
       return sl;
     }
 

@@ -73,6 +73,7 @@ enum err
     ERR_RANGE, /**< Index is not within range. */
     ERR_INIT_INC_DEC_POS, /**< Cannot ensure inc_dec_pos. */
     ERR_GET_SERVICE, /**< Error in retrieving a service. */
+    ERR_RELOAD_SERVICE_LIST, /**< Error in reloading service list. */
   };
 
 /**

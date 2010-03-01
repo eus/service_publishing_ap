@@ -229,6 +229,30 @@ load_service_list (service_list **sl)
   return ERR_SUCCESS;
 }
 
+int
+reload_service_list (service_list *sl)
+{
+  char *err_msg;
+
+  if (!sl->has_service_list_tmp_table)
+    {
+      return ERR_SUCCESS;
+    }
+
+  if (sqlite3_exec (sl->db,
+		    "delete from " TABLE_SERVICE_LIST_TMP ";"
+		    "insert into " TABLE_SERVICE_LIST_TMP
+		    " select *"
+		    " from " TABLE_SERVICE_LIST ";",
+		    NULL, NULL, &err_msg))
+    {
+      SQLITE3_ERR_STR (err_msg, "Cannot reload services");
+      return ERR_RELOAD_SERVICE_LIST;
+    }
+
+  return ERR_SUCCESS;
+}
+
 void
 destroy_service_list (service_list **sl)
 {

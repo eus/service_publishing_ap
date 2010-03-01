@@ -82,6 +82,12 @@ load_service_list (service_list **sl)
   return ERR_SUCCESS;
 }
 
+int
+reload_service_list (service_list *sl)
+{
+  return ERR_SUCCESS;
+}
+
 void
 destroy_service_list (service_list **sl)
 {

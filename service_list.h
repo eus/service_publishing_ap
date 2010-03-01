@@ -35,7 +35,7 @@
 
 #ifndef SERVICE_LIST_DB
 /** The service list Sqlite3 DB file. */
-#define SERVICE_LIST_DB "./service_list.dat"
+#define SERVICE_LIST_DB "./service_list.db"
 #endif
 
 #ifdef __cpluplus
@@ -116,6 +116,17 @@ destroy_service (struct service **s);
  */
 int
 load_service_list (service_list **sl);
+
+/**
+ * Refreshes the list with the currently published service list. All unsaved
+ * changes will be lost.
+ *
+ * @param [in] sl the list to be refreshed.
+ *
+ * @return 0 if there is no error or non-zero if there is an error.
+ */
+int
+reload_service_list (service_list *sl);
 
 /**
  * Frees the memory allocated through load_service_list() and sets the pointer
