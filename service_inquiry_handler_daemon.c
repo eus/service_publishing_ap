@@ -34,6 +34,7 @@ is_stopped ()
 static void
 signal_handler (int signum)
 {
+  l->INFO ("Signal caught, stopping handler");
   stop_signal = 1;
 }
 
@@ -60,6 +61,7 @@ main (int argc, char **argv, char **envp)
       l->ERR ("Cannot install SDE cache destroyer");
       exit (EXIT_FAILURE);
     }
+  l->INFO ("SDE cache destroyer registered");
 
   if (sigaction (SIGTERM, &act, NULL)
       || sigaction (SIGINT, &act, NULL))
@@ -67,7 +69,9 @@ main (int argc, char **argv, char **envp)
       l->SYS_ERR ("Cannot install signal handler");
       exit (EXIT_FAILURE);
     }
+  l->INFO ("Signal handler registered");
 
+  l->INFO ("Running inquiry handler");
   if ((rc = run_inquiry_handler (is_stopped)))
     {
       l->APP_ERR (rc, "Error in inquiry handler");
@@ -75,6 +79,7 @@ main (int argc, char **argv, char **envp)
     }
   else
     {
+      l->INFO ("Daemon exiting");
       rc = EXIT_SUCCESS;
     }
 

@@ -195,16 +195,25 @@ enum service_desc_chunk_type
   {
     DESCRIPTION, /**<
 		   * The service description of a service at a particular
-		   * position. The value is chunks of ::SERVICE_POS,
-		   * ::SERVICE_TS, ::SERVICE_LONG_DESC and ::SERVICE_URI.
+		   * position. The value is a set of chunks of ::SERVICE_POS,
+		   * ::SERVICE_TS, ::SERVICE_LONG_DESC and ::SERVICE_URI
+		   * (i.e., nested TLV chunks).
 		   */
     SERVICE_POS, /**<
 		  * The position of a particular service as advertised in the
-		  * SSID.
+		  * SSID starting from 0 and encoded as 1 octet value.
 		  */
-    SERVICE_TS, /**< The last-modification timestamp of a particular service. */
-    SERVICE_LONG_DESC, /**< The long description of a particular service. */
-    SERVICE_URI, /**< The URI to obtain a particular service. */
+    SERVICE_TS, /**<
+		 * The last-modification timestamp in second of a particular
+		 * service since Unix epoch encoded as 8 octet value.
+		 */
+    SERVICE_LONG_DESC, /**<
+			* The long description of a particular service
+			* encoded in UTF-8.
+			*/
+    SERVICE_URI, /**<
+		  * The URI to obtain a particular service encoded in UTF-8.
+		  */
   };
 
 /** Service Description Exchange packet types. */

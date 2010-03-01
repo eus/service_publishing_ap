@@ -20,6 +20,7 @@
 #include <sys/socket.h>
 #include <sys/ioctl.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include "service_inquiry_handler.h"
@@ -70,6 +71,7 @@ next_sde_packet_info (enum sde_packet_type *packet_type, int *packet_size)
     {
       if (errno == EINTR)
 	{
+	  l->INFO ("Interrupted listening");
 	  return 0;
 	}
 
@@ -79,8 +81,10 @@ next_sde_packet_info (enum sde_packet_type *packet_type, int *packet_size)
 
   if (bytes_rcvd < sizeof (packet))
     {
+      l->INFO ("Packet too small for an SDE packet");
       if (remove_packet ())
 	{
+	  l->INFO ("Cannot remove the small packet from the buffer");
 	  return -1;
 	}
 
@@ -95,7 +99,34 @@ next_sde_packet_info (enum sde_packet_type *packet_type, int *packet_size)
       return -1;
     }
 
+  l->INFO ("An SDE packet received");
+
   return 1;
+}
+
+/**
+ * Checks whether or not a packet size is at least as big as the minimum size
+ * required by the type.
+ *
+ * @param [in] packet_type the SDE packet type to be checked.
+ * @param [in] packet_size the size of the packet.
+ *
+ * @return 0 if the size is okay or non-zero if the size is not okay.
+ */
+static int
+is_sde_packet (enum sde_packet_type packet_type, int packet_size)
+{
+  switch (packet_type)
+    {
+    case GET_METADATA:
+      return packet_size >= sizeof (struct sde_get_metadata);
+    case GET_SERVICE_DESC:
+      return packet_size >= sizeof (struct sde_get_service_desc);
+    case GET_SERVICE_DESC_DATA:
+      return packet_size >= sizeof (struct sde_get_service_desc_data);
+    default:
+      return 0;
+    }
 }
 
 /**
@@ -146,7 +177,7 @@ is_sde_packet_sane (struct sde_packet *packet, int packet_size)
  */
 static int
 take_sde_packet (struct sde_packet **packet, int packet_size,
-		 struct sockaddr_in **sender_addr)
+		 struct sockaddr_in *sender_addr)
 {
   socklen_t sender_addr_len = sizeof (*sender_addr);
 
@@ -156,7 +187,7 @@ take_sde_packet (struct sde_packet **packet, int packet_size,
       return ERR_MEM;
     }
 
-  if (recvfrom (s, packet, packet_size, 0, (struct sockaddr *) sender_addr,
+  if (recvfrom (s, *packet, packet_size, 0, (struct sockaddr *) sender_addr,
 		&sender_addr_len) == -1)
     {
       l->SYS_ERR ("Cannot retrieve an SDE packet from the SDE socket");
@@ -167,7 +198,8 @@ take_sde_packet (struct sde_packet **packet, int packet_size,
 
   if (sender_addr_len != sizeof (*sender_addr))
     {
-      l->ERR ("Socket returns incorrect sender address");
+      l->ERR ("Socket returns incorrect sender address (len = %u vs. %u)",
+	      sender_addr_len, sizeof (*sender_addr));
       free (*packet);
       *packet = NULL;
       return ERR_SOCK;
@@ -194,12 +226,16 @@ send_metadata (struct sockaddr_in *sender_addr, uint32_t seq)
   size_t metadata_data_len;
   ssize_t bytes_sent;
 
+  l->INFO ("Responding to GET_METADATA packet #%u", seq);
+
   if ((rc = get_metadata_response (seq, &metadata, &metadata_len,
 				   &metadata_data, &metadata_data_len)))
     {
       l->APP_ERR (rc, "Cannot get metadata packets");
     }
 
+  l->INFO ("Sending METADATA #%u packet to %s:%hu", seq,
+	   inet_ntoa (sender_addr->sin_addr), ntohs (sender_addr->sin_port));
   bytes_sent = sendto (s, metadata, metadata_len, 0,
 		       (struct sockaddr *) sender_addr, sizeof (*sender_addr));
   if (bytes_sent == -1)
@@ -207,6 +243,8 @@ send_metadata (struct sockaddr_in *sender_addr, uint32_t seq)
       l->SYS_ERR ("Cannot send metadata packet");
     }
 
+  l->INFO ("Sending METADATA_DATA #%u packet to %s:%hu", seq,
+	   inet_ntoa (sender_addr->sin_addr), ntohs (sender_addr->sin_port));
   bytes_sent = sendto (s, metadata_data, metadata_data_len, 0,
 		       (struct sockaddr *) sender_addr, sizeof (*sender_addr));
   if (bytes_sent == -1)
@@ -257,6 +295,8 @@ send_service_desc (struct sockaddr_in *sender_addr, uint32_t seq,
   size_t service_desc_data_len;
   ssize_t bytes_sent;
 
+  l->INFO ("Responding to GET_SERVICE_DESC packet #%u", seq);
+
   qsort (pos, pos_len, sizeof (*pos), compare_service_position);
 
   if ((rc = get_service_desc_response (seq, &service_desc, &service_desc_len,
@@ -266,6 +306,8 @@ send_service_desc (struct sockaddr_in *sender_addr, uint32_t seq,
       l->APP_ERR (rc, "Cannot get service description packets");
     }
 
+  l->INFO ("Sending SERVICE_DESC #%u packet to %s:%hu", seq,
+	   inet_ntoa (sender_addr->sin_addr), ntohs (sender_addr->sin_port));
   bytes_sent = sendto (s, service_desc, service_desc_len, 0,
 		       (struct sockaddr *) sender_addr, sizeof (*sender_addr));
   if (bytes_sent == -1)
@@ -273,6 +315,8 @@ send_service_desc (struct sockaddr_in *sender_addr, uint32_t seq,
       l->SYS_ERR ("Cannot send service description packet");
     }
 
+  l->INFO ("Sending SERVICE_DESC_DATA #%u packet to %s:%hu", seq,
+	   inet_ntoa (sender_addr->sin_addr), ntohs (sender_addr->sin_port));
   bytes_sent = sendto (s, service_desc_data, service_desc_data_len, 0,
 		       (struct sockaddr *) sender_addr, sizeof (*sender_addr));
   if (bytes_sent == -1)
@@ -346,52 +390,67 @@ run_inquiry_handler (int (*is_stopped) (void))
       l->SYS_ERR ("Cannot create inquiry handler socket");
       return cleanly ERR_SOCK;
     }
+  l->INFO ("Socket for listening created");
 
   if (bind (s, (struct sockaddr *) &handler_addr, sizeof (handler_addr)) == -1)
     {
       l->SYS_ERR ("Cannot name inquiry handler socket");
       return cleanly ERR_SOCK;
     }
+  l->INFO ("Listening on port %hu", SDE_PORT);
 
   while (!is_stopped ())
     {
       struct sde_packet *packet;
       enum sde_packet_type packet_type;
-      struct sockaddr_in *sender_addr;
+      struct sockaddr_in sender_addr;
       int packet_size;
       int rc;
 
+      l->INFO ("Waiting for SDE packet");
       rc = next_sde_packet_info (&packet_type, &packet_size);
       if (rc == -1)
 	{
 	  return cleanly ERR_GET_SDE_INFO;
 	}
-
-      if (rc != 0)
+      if (rc == 0)
 	{
 	  continue;
 	}
 
-      if (is_sde_packet_sane (packet, packet_size))
+      if (is_sde_packet (packet_type, packet_size))
 	{
 	  if ((rc = take_sde_packet (&packet, packet_size, &sender_addr)))
 	    {
 	      l->APP_ERR (rc, "Cannot take an SDE packet");
 	      return cleanly ERR_TAKE_SDE_PACKET;
 	    }
+	  l->INFO ("The SDE packet has the correct minimum size");
 	}
       else
 	{
+	  l->INFO ("The SDE packet is insane");
 	  if ((rc = remove_packet ()))
 	    {
 	      l->APP_ERR (rc, "Cannot remove an SDE packet");
 	      return cleanly ERR_REMOVE_SDE_PACKET;
 	    }
 
+	  l->INFO ("The SDE packet has an incorrect minimum size");
+
 	  continue;
 	}
 
-      handle_sde_packet (packet, packet_size, sender_addr);
+      if (is_sde_packet_sane (packet, packet_size))
+	{
+	  l->INFO ("The SDE packet is sane");
+
+	  handle_sde_packet (packet, packet_size, &sender_addr);
+	}
+      else
+	{
+	  l->INFO ("The SDE packet is insane");
+	}
       free (packet);
     }
 

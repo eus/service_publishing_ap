@@ -171,6 +171,8 @@ get_metadata_response (uint32_t seq,
     {
       int rc;
 
+      l->INFO ("Cache miss");
+
       last_mod_time = curr_mod_time;
       if (metadata != NULL)
 	{
@@ -182,6 +184,10 @@ get_metadata_response (uint32_t seq,
 	  l->APP_ERR (rc, "Cannot get metadata from service list");
 	  return ERR_GET_METADATA_PACKETS;
 	}
+    }
+  else
+    {
+      l->INFO ("Cache hit");
     }
 
   ptr_m = malloc (sizeof (*ptr_m));
@@ -196,13 +202,19 @@ get_metadata_response (uint32_t seq,
       return ERR_MEM;
     }
 
-  ptr_m->c.type = METADATA;
+  ptr_m->c.type = htonl (METADATA);
   ptr_m->c.seq = htonl (seq);
   ptr_m->count = htonl (metadata_size / sizeof (*metadata));
+  l->INFO ("METADATA #%u packet crafted announcing %u metadata",
+	   ntohl (ptr_m->c.seq), ntohl (ptr_m->count));
 
-  ptr_d->c.type = METADATA_DATA;
-  ptr_d->c.seq = htonl (seq);
+  ptr_d->c.type = htonl (METADATA_DATA);
+  ptr_d->c.seq = ptr_m->c.seq;
+  ptr_d->count = ptr_m->count;
+  ptr_d->unused1 = 0;
   memcpy (ptr_d->data, metadata, metadata_size);
+  l->INFO ("METADATA_DATA #%u packet crafted containing %u bytes",
+	   ntohl (ptr_d->c.seq), metadata_size);
 
   *p1 = ptr_m;
   *p1_size = sizeof (*ptr_m);
@@ -230,7 +242,6 @@ get_service_desc_from_service_list (service_list *sl,
 {
   size_t service_count = count_service (sl);
   int i;
-  const struct tlv_chunk *itr = NULL;
   const struct tlv_chunk *itr2 = NULL;
   void *descs = NULL;
   uint32_t descs_size;
@@ -247,6 +258,7 @@ get_service_desc_from_service_list (service_list *sl,
       } while (0)
 
       int rc;
+      const struct tlv_chunk *itr = NULL;
       struct service *s = NULL;
       void *service_data = NULL;
       uint32_t service_data_size;
@@ -295,6 +307,9 @@ get_service_desc_from_service_list (service_list *sl,
 #undef return_cleanly
     }
 
+  *service_desc = descs;
+  *service_desc_size = descs_size;
+
   return ERR_SUCCESS;
 }
 
@@ -314,7 +329,7 @@ get_req_service_desc_size (const struct tlv_chunk *service_desc,
 			   size_t service_desc_size,
 			   const struct position *pos, uint32_t pos_len)
 {
-  uint32_t i, j = 0;
+  uint32_t i = 0, j = 0;
   size_t result = 0;
   const struct tlv_chunk *itr = NULL;
 
@@ -353,7 +368,7 @@ copy_req_service_desc (void *dst, const struct tlv_chunk *service_desc,
 		       size_t service_desc_size, const struct position *pos,
 		       uint32_t pos_len)
 {
-  uint32_t i, j = 0;
+  uint32_t i = 0, j = 0;
   const struct tlv_chunk *itr = NULL;
 
   while ((itr = read_chunk (service_desc, service_desc_size, itr)) != NULL)
@@ -401,6 +416,8 @@ get_service_desc_response (uint32_t seq,
     {
       int rc;
 
+      l->INFO ("Cache miss");
+
       last_mod_time = curr_mod_time;
       if (service_desc != NULL)
 	{
@@ -413,6 +430,10 @@ get_service_desc_response (uint32_t seq,
 	  l->APP_ERR (rc, "Cannot get service description from service list");
 	  return ERR_GET_SERVICE_DESC_PACKETS;
 	}
+    }
+  else
+    {
+      l->INFO ("Cache hit");
     }
 
   ptr_s = malloc (sizeof (*ptr_s));
@@ -430,14 +451,19 @@ get_service_desc_response (uint32_t seq,
       return ERR_MEM;
     }
 
-  ptr_s->c.type = SERVICE_DESC;
+  ptr_s->c.type = htonl (SERVICE_DESC);
   ptr_s->c.seq = htonl (seq);
   ptr_s->size = htonl (ptr_d_size);
+  l->INFO ("SERVICE_DESC #%u packet crafted announcing %u bytes of data packet",
+	   ntohl (ptr_s->c.seq), ntohl (ptr_s->size));
 
-  ptr_d->c.type = SERVICE_DESC_DATA;
-  ptr_d->c.seq = htonl (seq);
+  ptr_d->c.type = htonl (SERVICE_DESC_DATA);
+  ptr_d->c.seq = ptr_s->c.seq;
+  ptr_d->size = ptr_s->size;
   copy_req_service_desc (ptr_d->data, service_desc, service_desc_size, pos,
 			 pos_len);
+  l->INFO ("SERVICE_DESC_DATA #%u packet crafted having %u bytes of data",
+	   ntohl (ptr_d->c.seq), ntohl (ptr_d->size));
 
   *p1 = ptr_s;
   *p1_size = sizeof (*ptr_s);

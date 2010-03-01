@@ -52,6 +52,9 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsde__service__desc__data.html">sde_service_desc_data</a></td></tr>
 
+<tr><td colspan="2"><br><h2>Defines</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="sde_8h.html#3cae2d1065c37163cc29ca5874abb904">SDE_PORT</a>&nbsp;&nbsp;&nbsp;30003</td></tr>
+
 <tr><td colspan="2"><br><h2>Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28">service_desc_chunk_type</a> { <br>
 &nbsp;&nbsp;<a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28b6018339139b51a498dc44bd760766fc">DESCRIPTION</a>, 
@@ -175,7 +178,23 @@ Consider the following sequence of communication with an AP: <table border="1" c
 <td></td><td>service_description<br>
  (carries <a class="el" href="structservice.html">service</a> description #2 instead of #1 as the gadget requested)  </td></tr>
 </table>
-As illustrated above, the gadget software should anticipate for such a discrepancy between the previous and current information by checking the last modification timestamp. <hr><h2>Enumeration Type Documentation</h2>
+As illustrated above, the gadget software should anticipate for such a discrepancy between the previous and current information by checking the last modification timestamp. <hr><h2>Define Documentation</h2>
+<a class="anchor" name="3cae2d1065c37163cc29ca5874abb904"></a><!-- doxytag: member="sde.h::SDE_PORT" ref="3cae2d1065c37163cc29ca5874abb904" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SDE_PORT&nbsp;&nbsp;&nbsp;30003          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The AP port for an SDE session. 
+</div>
+</div><p>
+<hr><h2>Enumeration Type Documentation</h2>
 <a class="anchor" name="edbe138a09311afa037d3add2468d640"></a><!-- doxytag: member="sde.h::sde_packet_type" ref="edbe138a09311afa037d3add2468d640" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -224,22 +243,22 @@ The <a class="el" href="structservice.html">service</a> description response dat
 The type of a chunk contained in a <a class="el" href="structservice.html">service</a> description data. <dl compact><dt><b>Enumerator: </b></dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" name="6ae07eed4365b800c09d7b22bacd7a28b6018339139b51a498dc44bd760766fc"></a><!-- doxytag: member="DESCRIPTION" ref="6ae07eed4365b800c09d7b22bacd7a28b6018339139b51a498dc44bd760766fc" args="" -->DESCRIPTION</em>&nbsp;</td><td>
-The <a class="el" href="structservice.html">service</a> description of a <a class="el" href="structservice.html">service</a> at a particular <a class="el" href="structposition.html">position</a>. The value is chunks of <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28feaef8a658b26a4d579bc6b737454b22">SERVICE_POS</a>, <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28267d1e553ddae7b4a94965d90362173d">SERVICE_TS</a>, <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28266791ced345bfe6511dd4acab8d0b28">SERVICE_LONG_DESC</a> and <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28dff633207be6c7a92d0462413ae8ce7e">SERVICE_URI</a>. </td></tr>
+The <a class="el" href="structservice.html">service</a> description of a <a class="el" href="structservice.html">service</a> at a particular <a class="el" href="structposition.html">position</a>. The value is a set of chunks of <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28feaef8a658b26a4d579bc6b737454b22">SERVICE_POS</a>, <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28267d1e553ddae7b4a94965d90362173d">SERVICE_TS</a>, <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28266791ced345bfe6511dd4acab8d0b28">SERVICE_LONG_DESC</a> and <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28dff633207be6c7a92d0462413ae8ce7e">SERVICE_URI</a> (i.e., nested TLV chunks). </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="6ae07eed4365b800c09d7b22bacd7a28feaef8a658b26a4d579bc6b737454b22"></a><!-- doxytag: member="SERVICE_POS" ref="6ae07eed4365b800c09d7b22bacd7a28feaef8a658b26a4d579bc6b737454b22" args="" -->SERVICE_POS</em>&nbsp;</td><td>
-The <a class="el" href="structposition.html">position</a> of a particular <a class="el" href="structservice.html">service</a> as advertised in the SSID. </td></tr>
+The <a class="el" href="structposition.html">position</a> of a particular <a class="el" href="structservice.html">service</a> as advertised in the SSID starting from 0 and encoded as 1 octet value. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="6ae07eed4365b800c09d7b22bacd7a28267d1e553ddae7b4a94965d90362173d"></a><!-- doxytag: member="SERVICE_TS" ref="6ae07eed4365b800c09d7b22bacd7a28267d1e553ddae7b4a94965d90362173d" args="" -->SERVICE_TS</em>&nbsp;</td><td>
-The last-modification timestamp of a particular <a class="el" href="structservice.html">service</a>. </td></tr>
+The last-modification timestamp in second of a particular <a class="el" href="structservice.html">service</a> since Unix epoch encoded as 8 octet value. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="6ae07eed4365b800c09d7b22bacd7a28266791ced345bfe6511dd4acab8d0b28"></a><!-- doxytag: member="SERVICE_LONG_DESC" ref="6ae07eed4365b800c09d7b22bacd7a28266791ced345bfe6511dd4acab8d0b28" args="" -->SERVICE_LONG_DESC</em>&nbsp;</td><td>
-The long description of a particular <a class="el" href="structservice.html">service</a>. </td></tr>
+The long description of a particular <a class="el" href="structservice.html">service</a> encoded in UTF-8. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="6ae07eed4365b800c09d7b22bacd7a28dff633207be6c7a92d0462413ae8ce7e"></a><!-- doxytag: member="SERVICE_URI" ref="6ae07eed4365b800c09d7b22bacd7a28dff633207be6c7a92d0462413ae8ce7e" args="" -->SERVICE_URI</em>&nbsp;</td><td>
-The URI to obtain a particular <a class="el" href="structservice.html">service</a>. </td></tr>
+The URI to obtain a particular <a class="el" href="structservice.html">service</a> encoded in UTF-8. </td></tr>
 </table>
 </dl>
 
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Feb 28 23:52:58 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 1 13:14:05 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

@@ -319,16 +319,19 @@ gen_ssid (void *result, int col_count, char **cols, char **col_names)
   strncpy (arg->ssid + arg->ssid_len, cols[0], len);
   arg->ssid_len += len;
 
-  len = strlen (cols[1]); /* desc */
-  if (arg->ssid_len + len + 1 > SSID_MAX_LEN)
+  if (cols[1] != NULL) /* desc */
     {
-      arg->rc = ERR_SSID_TOO_LONG;
-      return -1;
+      len = strlen (cols[1]);
+      if (arg->ssid_len + len + 1 > SSID_MAX_LEN)
+	{
+	  arg->rc = ERR_SSID_TOO_LONG;
+	  return -1;
+	}
+      arg->ssid[arg->ssid_len] = ',';
+      arg->ssid_len++;
+      strncpy (arg->ssid + arg->ssid_len, cols[1], len);
+      arg->ssid_len += len;
     }
-  arg->ssid[arg->ssid_len] = ',';
-  arg->ssid_len++;
-  strncpy (arg->ssid + arg->ssid_len, cols[1], len);
-  arg->ssid_len += len;
 
   return 0;
 }
@@ -402,14 +405,6 @@ adjust_mod_time (void *stmt, int col_count, char **cols, char **col_names)
   return 0;
 }
 
-/**
- * Saves the service list in the published service database and advertises the
- * service list in the SSID accordingly.
- *
- * @param [in] sl the service list to be saved.
- *
- * @return 0 if there is no error or non-zero if there is an error.
- */
 int
 save_service_list (const service_list *sl)
 {

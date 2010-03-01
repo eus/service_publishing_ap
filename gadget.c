@@ -225,8 +225,8 @@ print_metadata (struct sde_metadata *m, ssize_t size)
       return;
     }
 
-  printf ("Metadata (%u)", ntohl (m->c.seq));
-  printf ("\tCount: %u", ntohl (m->count));
+  printf ("Metadata (%u)\n", ntohl (m->c.seq));
+  printf ("\tCount: %u\n", ntohl (m->count));
 }
 
 static void
@@ -258,8 +258,8 @@ print_service_desc (struct sde_service_desc *s, ssize_t size)
       return;
     }
 
-  printf ("Service desc (%u)", ntohl (s->c.seq));
-  printf ("\tSize: %u", ntohl (s->size));
+  printf ("Service desc (%u)\n", ntohl (s->c.seq));
+  printf ("\tSize: %u\n", ntohl (s->size));
 }
 
 static void
@@ -268,18 +268,22 @@ print_service_desc_data (struct sde_service_desc_data *d, ssize_t size)
   char buffer[1024];
   const struct tlv_chunk *itr = NULL;
   int i = -1;
+  size_t data_len;
 
   if (size < 0)
     {
       return;
     }
 
+  data_len = ntohl (d->size) - sizeof (*d);
+
   printf ("Service desc data (%u)\n", ntohl (d->c.seq));
-  printf ("\tSize: %u\n", ntohl (d->size));
+  printf ("\tData size: %u\n", data_len);
   printf ("\tData:\n");
-  while ((itr = read_chunk (d->data, ntohl (d->size), itr)))
+  while ((itr = read_chunk (d->data, data_len, itr)))
     {
       const struct tlv_chunk *itr2 = NULL;
+      size_t desc_len = ntohl (itr->length);
       ++i;
 
       if (ntohl (itr->type) != DESCRIPTION)
@@ -289,7 +293,7 @@ print_service_desc_data (struct sde_service_desc_data *d, ssize_t size)
 	}
 
       printf ("\t\t[Service %d]\n", i);
-      while ((itr2 = read_chunk (itr->value, ntohl (itr->length), itr2)))
+      while ((itr2 = read_chunk (itr->value, desc_len, itr2)))
 	{
 	  switch (ntohl (itr2->type))
 	    {
@@ -381,7 +385,7 @@ wait_for (enum sde_packet_type expected_type, uint32_t expected_seq,
 	  break;
 	case SERVICE_DESC_DATA:
 	  sd = (struct sde_service_desc_data *) p;
-	  is_size_invalid = (bytes_rcvd < sizeof (*sd) + ntohl (sd->size));
+	  is_size_invalid = (bytes_rcvd < ntohl (sd->size));
 	  break;
 	default:
 	  is_size_invalid = 1;
@@ -389,7 +393,7 @@ wait_for (enum sde_packet_type expected_type, uint32_t expected_seq,
 	}
       if (is_size_invalid)
 	{
-	  l->ERR ("Invalid size for %u packet", expected_type);
+	  l->ERR ("Invalid size for %u packet (%d)", expected_type, bytes_rcvd);
 	  continue;
 	}
       if (ntohl (p->type) != expected_type)

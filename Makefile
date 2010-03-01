@@ -1,7 +1,7 @@
 .PHONY: all test test_with_root_priv test_without_root_priv clean doc
 
 TEST_EXECUTABLES_NEEDING_ROOT_PRIV := ssid_test
-TEST_EXECUTABLES := tlv_test logger_test logger_sqlite3_test
+TEST_EXECUTABLES := tlv_test logger_test logger_sqlite3_test service_inquiry_handler_daemon_test
 EXECUTABLES := service_inquiry_handler_daemon gadget
 
 CFLAGS := -Wall -Werror $(CFLAGS)
@@ -25,6 +25,8 @@ service_inquiry_handler.o: service_inquiry_handler.h app_err.h logger.h service_
 
 service_inquiry_handler_daemon: app_err.o service_inquiry.o service_inquiry_handler.o logger.o logger_sqlite3.o tlv.o service_list.o ssid.o
 
+service_inquiry_handler_daemon_test: app_err.o service_inquiry.o service_inquiry_handler.o logger.o tlv.o service_list_dummy.o
+
 tlv.o: tlv.h
 
 tlv_test: tlv.o
@@ -32,6 +34,8 @@ tlv_test: tlv.o
 service_category.o: service_category.h app_err.h logger.h
 
 service_list.o: service_list.h app_err.h logger.h logger_sqlite3.h ssid.h
+
+service_list_dummy.o: service_list.h app_err.h logger.h
 
 ssid.o: ssid.h app_err.h logger.h
 
