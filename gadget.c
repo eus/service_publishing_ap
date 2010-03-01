@@ -15,6 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
  *****************************************************************************/
 
+#include <errno.h>
+#include <signal.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
@@ -165,8 +167,8 @@ get_metadata (void)
 {
   struct sde_get_metadata m = {
     .c = {
-      .type = GET_METADATA,
-      .seq = packet_seq,
+      .type = htonl (GET_METADATA),
+      .seq = htonl (packet_seq),
     },
   };
 
@@ -181,14 +183,13 @@ get_metadata (void)
 
 static void
 get_service_description (struct position *pos, size_t count)
-{
-  struct sde_get_service_desc s = {
+{  struct sde_get_service_desc s = {
     .c = {
-      .type = GET_SERVICE_DESC,
-      .seq = packet_seq,
+      .type = htonl (GET_SERVICE_DESC),
+      .seq = htonl (packet_seq),
     },
     .count = htonl (count),
-  };
+    };
   size_t d_size = (sizeof (struct sde_get_service_desc_data)
 		   + sizeof (*pos) * count);
   struct sde_get_service_desc_data *d = malloc (d_size);
@@ -198,8 +199,8 @@ get_service_description (struct position *pos, size_t count)
       return;
     }
 
-  d->c.type = GET_SERVICE_DESC_DATA;
-  d->c.seq = packet_seq;
+  d->c.type = htonl (GET_SERVICE_DESC_DATA);
+  d->c.seq = htonl (packet_seq);
   d->count = htonl (count);
   memcpy (d->data, pos, sizeof (*pos) * count);
 
@@ -208,8 +209,8 @@ get_service_description (struct position *pos, size_t count)
       l->SYS_ERR ("Cannot send get_service_desc");
       free (d);
       return;
-    }  
-  if (sendto (sock, &d, sizeof (d_size), 0, ap_addr, ap_addr_len) == -1)
+    }
+  if (sendto (sock, d, d_size, 0, ap_addr, ap_addr_len) == -1)
     {
       l->SYS_ERR ("Cannot send get_service_desc_data");
     }
@@ -217,7 +218,7 @@ get_service_description (struct position *pos, size_t count)
 }
 
 static void
-print_metadata (struct sde_metadata *m, size_t size)
+print_metadata (struct sde_metadata *m, ssize_t size)
 {
   if (size < 0)
     {
@@ -229,7 +230,7 @@ print_metadata (struct sde_metadata *m, size_t size)
 }
 
 static void
-print_metadata_data (struct sde_metadata_data *d, size_t size)
+print_metadata_data (struct sde_metadata_data *d, ssize_t size)
 {
   int i;
 
@@ -250,7 +251,7 @@ print_metadata_data (struct sde_metadata_data *d, size_t size)
 }
 
 static void
-print_service_desc (struct sde_service_desc *s, size_t size)
+print_service_desc (struct sde_service_desc *s, ssize_t size)
 {
   if (size < 0)
     {
@@ -262,7 +263,7 @@ print_service_desc (struct sde_service_desc *s, size_t size)
 }
 
 static void
-print_service_desc_data (struct sde_service_desc_data *d, size_t size)
+print_service_desc_data (struct sde_service_desc_data *d, ssize_t size)
 {
   char buffer[1024];
   const struct tlv_chunk *itr = NULL;
@@ -322,24 +323,26 @@ wait_for (enum sde_packet_type expected_type, uint32_t expected_seq,
 {
   ssize_t bytes_rcvd;
 
+  printf ("Waiting for");
   switch (expected_type)
     {
     case METADATA:
-      printf ("Waiting for METADATA (%u)\n", expected_seq);
+      printf (" METADATA (%u)", expected_seq);
       break;
     case METADATA_DATA:
-      printf ("Waiting for METADATA_DATA (%u)\n", expected_seq);
+      printf (" METADATA_DATA (%u)", expected_seq);
       break;
     case SERVICE_DESC:
-      printf ("Waiting for SERVICE_DESC (%u)\n", expected_seq);
+      printf (" SERVICE_DESC (%u)", expected_seq);
       break;
     case SERVICE_DESC_DATA:
-      printf ("Waiting for SERVICE_DESC_DATA (%u)\n", expected_seq);
+      printf (" SERVICE_DESC_DATA (%u)", expected_seq);
       break;
     default:
       l->ERR ("Invalid expected type");
       return -1;
     }
+  printf (" (Give SIGINT to stop waiting)\n");
 
   do
     {
@@ -354,6 +357,11 @@ wait_for (enum sde_packet_type expected_type, uint32_t expected_seq,
 				  NULL,
 				  NULL)) == -1)
 	{
+	  if (errno == EINTR)
+	    {
+	      printf ("Interrupted\n");
+	      return -1;
+	    }
 	  l->SYS_ERR ("Cannot retrieve packet");
 	  continue;
 	}
@@ -404,6 +412,11 @@ wait_for (enum sde_packet_type expected_type, uint32_t expected_seq,
   return bytes_rcvd;
 }
 
+void
+terminate_wait (int signum)
+{
+}
+
 int
 main (int argc, char **argv, char **envp)
 {
@@ -416,6 +429,9 @@ main (int argc, char **argv, char **envp)
     .sin_port = htons (SDE_PORT),
   };
   ssize_t bytes_rcvd;
+  struct sigaction sigact = {
+    .sa_handler = terminate_wait,
+  };
 
   ap_addr = (struct sockaddr *) &ap_ip_addr;
   ap_addr_len = sizeof (ap_ip_addr);
@@ -427,6 +443,11 @@ main (int argc, char **argv, char **envp)
     }
 
   SETUP_LOGGER ("/dev/stderr", NULL);
+
+  if (sigaction (SIGINT, &sigact, NULL) == -1)
+    {
+      l->SYS_ERR ("Cannot install signal handler");
+    }
 
   sock = socket (AF_INET, SOCK_DGRAM, 0);
   if (sock == -1)
@@ -458,23 +479,31 @@ main (int argc, char **argv, char **envp)
     {
       printf ("[Menu]\n"
 	      "1. Get metadata\n"
-	      "2. Get service description\n"
+	      "2. Only wait for metadata\n"
+	      "3. Get service description\n"
+	      "4. Only wait for service description\n"
 	      "\n"
-	      "3. Quit\n"
+	      "5. Quit\n"
 	      "\n");
 
-      switch (display_user_choice_prompt ("Choice (1-3)? ", 3))
+      switch (display_user_choice_prompt ("Choice (1-5)? ", 5))
 	{
 	case 1:
 	  get_metadata ();
+	case 2:
 	  print_metadata (packet_buffer,
-			  wait_for (METADATA, packet_seq,
-				    packet_buffer, packet_buffer_len));
+			  (bytes_rcvd = wait_for (METADATA, packet_seq,
+						  packet_buffer,
+						  packet_buffer_len)));
+	  if (bytes_rcvd == -1)
+	    {
+	      break;
+	    }
 	  print_metadata_data (packet_buffer,
 			       wait_for (METADATA_DATA, packet_seq,
 					 packet_buffer, packet_buffer_len));
 	  break;
-	case 2:
+	case 3:
 	  pos = NULL;
 	  pos_count = 0;
 	  display_user_prompt ("Position (0-based) to retrieve"
@@ -490,6 +519,7 @@ main (int argc, char **argv, char **envp)
 		  break;
 		}
 	      pos[pos_count - 1].pos = atoi (buffer);
+	      printf ("You enter %hhu\n", pos[pos_count - 1].pos);
 	      display_user_prompt ("Position (0-based) to retrieve"
 				   " (-1 to stop): ",
 				   buffer, sizeof (buffer));
@@ -500,24 +530,20 @@ main (int argc, char **argv, char **envp)
 	    }
 	  get_service_description (pos, pos_count);
 	  free (pos);
-	  bytes_rcvd = recvfrom (sock, packet_buffer, packet_buffer_len,
-				 0, NULL, NULL);
+	case 4:
+	  print_service_desc (packet_buffer,
+			      (bytes_rcvd = wait_for (SERVICE_DESC, packet_seq,
+						      packet_buffer,
+						      packet_buffer_len)));
 	  if (bytes_rcvd == -1)
 	    {
-	      l->SYS_ERR ("Cannot receive service_desc");
 	      break;
 	    }
-	  print_service_desc (packet_buffer, bytes_rcvd);
-	  bytes_rcvd = recvfrom (sock, packet_buffer, packet_buffer_len,
-				 0, NULL, NULL);
-	  if (bytes_rcvd == -1)
-	    {
-	      l->SYS_ERR ("Cannot receive service_desc_data");
-	      break;
-	    }
-	  print_service_desc_data (packet_buffer, bytes_rcvd);
+	  print_service_desc_data (packet_buffer,
+				   wait_for (SERVICE_DESC_DATA, packet_seq,
+					     packet_buffer, packet_buffer_len));
 	  break;
-	case 3:
+	case 5:
 	  is_terminated = 1;
 	  break;
 	default:
