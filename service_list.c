@@ -35,6 +35,25 @@
  * double linked list. One main copy is kept for SDE and each writer is
  * assigned a copy of the whole link list. But, then I would reinvent the
  * wheel that sqlite3 has taken care of so well (e.g., the ACID properties).
+ *
+ * It turns out that each reader should also be allocated a temporary table.
+ * Consider the following code (sl is a service list):
+ * <pre>
+ *  size_t service_count = count_service (sl);
+ *  for (i = 0; i < service_count; i++)
+ *    {
+ *      struct service *s;
+ *      
+ *      get_service_at (sl, &s, i);
+ *      // do something fun with s
+ *      destroy_service (&s);
+ *    }
+ * </pre>
+ * If a writer happens to write into the main table while the poor reader is
+ * still in the loop, service_count may be too long and hence s may be NULL.
+ * The reader will unexpectedly get a segmentation fault that is hard to debug
+ * because the premise is that the number of iterated service should stay the
+ * same over a course of iteration.
  */
 
 #include <sqlite3.h>
@@ -302,7 +321,7 @@ gen_ssid (void *result, int col_count, char **cols, char **col_names)
 
   if (arg->last_pos + 1 != position)
     {
-      l->ERR ("Wrong service position in the SSID (%lu + 1 != %lu)",
+      l->ERR ("Wrong service position in the SSID (%d + 1 != %lu)",
 	      arg->last_pos, position);
       arg->rc = ERR_INVALID_SERVICE_POS;
       return -1;
@@ -332,6 +351,8 @@ gen_ssid (void *result, int col_count, char **cols, char **col_names)
       strncpy (arg->ssid + arg->ssid_len, cols[1], len);
       arg->ssid_len += len;
     }
+
+  arg->last_pos = position;
 
   return 0;
 }
@@ -512,7 +533,6 @@ save_service_list (const service_list *sl)
 		    "insert into " TABLE_SERVICE_LIST
 		    " select *"
 		    " from " TABLE_SERVICE_LIST_TMP ";"
-		    "delete from " TABLE_SERVICE_LIST_TMP ";"
 		    "commit",
 		    NULL, NULL, &err_msg))
     {
@@ -585,15 +605,17 @@ count_service (const service_list *sl)
 /**
  * Since writing to the service table must not succeed until
  * save_service_list() can check the sanity of the new set of published
- * services, a temporary table unique to each sqlite3 DB connection is
- * created when a write operation is performed for the very first time.
+ * services and a reader's table must not be changed while being iterated,
+ * a temporary table unique to each sqlite3 DB connection is
+ * created when a read or write operation is performed for the very first time.
  *
- * @param [in] sl the service list where the write operation is to be performed.
+ * @param [in] sl the service list where the read or write operation is to be
+ *                performed.
  *
  * @return 0 if there is no error or non-zero if there is an error.
  */
 static int
-ensure_writable (service_list *sl)
+ensure_tmp_table (service_list *sl)
 {
   char *err_msg;
 
@@ -603,8 +625,8 @@ ensure_writable (service_list *sl)
     }
 
   if (sqlite3_exec (sl->db,
-		    "create temporary table " TABLE_SERVICE_LIST_TMP
-		    " if not exists ("
+		    "create temporary table if not exists "
+		    TABLE_SERVICE_LIST_TMP " ("
 		    COLUMN_POSITION " integer primary key not null,"
 		    COLUMN_MOD_TIME " integer not null default 0,"
 		    COLUMN_CAT_ID " integer not null,"
@@ -644,7 +666,7 @@ ensure_inc_dec_pos (service_list *sl)
       return ERR_SUCCESS;
     }
 
-  if ((rc = ensure_writable (sl)))
+  if ((rc = ensure_tmp_table (sl)))
     {
       l->APP_ERR (rc, "Service list is not writable");
       return ERR_INIT_INC_DEC_POS;
@@ -761,6 +783,7 @@ dec_positions (service_list *sl, int from, int to)
       SQLITE3_ERR (sl->db, "Cannot bind -1 to inc_dec_pos");
       return ERR_DEC_POS;
     }
+
   for (i = from; i <= to; i++)
     {
       if (sqlite3_bind_int (sl->inc_dec_pos, 2, i))
@@ -801,7 +824,7 @@ int
 add_service_last (service_list *sl, const struct service *s)
 {
   int rc;
-  size_t last_pos = count_service (sl) - 1;
+  size_t last_pos = count_service (sl);
 
   if ((rc = insert_service_at (sl, s, last_pos)))
     {
@@ -826,9 +849,9 @@ get_service_at (service_list *sl, struct service **s, unsigned int idx)
   int rc;
 
   /* Preparation */
-  if ((rc = ensure_writable (sl)))
+  if ((rc = ensure_tmp_table (sl)))
     {
-      l->APP_ERR (rc, "Service list is not writable");
+      l->APP_ERR (rc, "Service list is not readable");
       return ERR_GET_SERVICE;
     }
 
@@ -881,7 +904,7 @@ get_service_at (service_list *sl, struct service **s, unsigned int idx)
 							   COLPOS_DESC);
       if (retrieved_desc != NULL)
 	{
-	  desc = malloc (strlen (retrieved_desc));
+	  desc = malloc (strlen (retrieved_desc) + 1);
 	  if (desc != NULL)
 	    {
 	      strcpy (desc, retrieved_desc);
@@ -892,7 +915,7 @@ get_service_at (service_list *sl, struct service **s, unsigned int idx)
 						  COLPOS_LONG_DESC));
       if (retrieved_long_desc != NULL)
 	{
-	  long_desc = malloc (strlen (retrieved_long_desc));
+	  long_desc = malloc (strlen (retrieved_long_desc) + 1);
 	  if (long_desc != NULL)
 	    {
 	      strcpy (long_desc, retrieved_long_desc);
@@ -902,7 +925,7 @@ get_service_at (service_list *sl, struct service **s, unsigned int idx)
 							  COLPOS_URI);
       if (retrieved_uri != NULL)
 	{
-	  uri = malloc (strlen (retrieved_uri));
+	  uri = malloc (strlen (retrieved_uri) + 1);
 	  if (uri != NULL)
 	    {
 	      strcpy (uri, retrieved_uri);
@@ -964,13 +987,13 @@ insert_service_at (service_list *sl, const struct service *s, unsigned int idx)
   char *err_msg;
   int rc;
 
-  if (idx >= count_service (sl))
+  if (idx > count_service (sl))
     {
       return ERR_RANGE;
     }
 
   /* Preparation */
-  if ((rc = ensure_writable (sl)))
+  if ((rc = ensure_tmp_table (sl)))
     {
       l->APP_ERR (rc, "Service list is not writable");
       return ERR_INSERT_SERVICE;
@@ -1114,7 +1137,7 @@ replace_service_at (service_list *sl, const struct service *s, unsigned int idx)
   int rc;
 
   /* Preparation */
-  if ((rc = ensure_writable (sl)))
+  if ((rc = ensure_tmp_table (sl)))
     {
       l->APP_ERR (rc, "Service list is not writable");
       return ERR_REPLACE_SERVICE;
@@ -1244,7 +1267,7 @@ del_service_at (service_list *sl, unsigned int idx)
   int rc;
 
   /* Preparation */
-  if ((rc = ensure_writable (sl)))
+  if ((rc = ensure_tmp_table (sl)))
     {
       l->APP_ERR (rc, "Service list is not writable");
       return ERR_DELETE_SERVICE;
@@ -1302,7 +1325,7 @@ del_service_at (service_list *sl, unsigned int idx)
 	}
       return ERR_DELETE_SERVICE;
     }
-  if ((rc = dec_positions (sl, idx + 1, count_service (sl) - 1)))
+  if ((rc = dec_positions (sl, idx + 1, count_service (sl))))
     {
       l->APP_ERR (rc, "Cannot increment positions");
       if (sqlite3_exec (sl->db, "rollback", NULL, NULL, &err_msg))
@@ -1327,7 +1350,7 @@ del_service_all (service_list *sl)
   char *err_msg;
   int rc;
 
-  if ((rc = ensure_writable (sl)))
+  if ((rc = ensure_tmp_table (sl)))
     {
       l->APP_ERR (rc, "Service list is not writable");
       return ERR_DELETE_ALL_SERVICE;
@@ -1361,6 +1384,12 @@ static int
 get_mod_time (void *result, int col_count, char **cols, char **col_names)
 {
   uint64_t *mod_time = result;
+
+  if (cols[0] == NULL)
+    {
+      *mod_time = 0ULL;
+      return 0;
+    }
 
   *mod_time = strtoull (cols[0], NULL, 10);
 

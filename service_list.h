@@ -21,7 +21,10 @@
  *        advertised in the SSID. This module is thread-safe and fork-safe as
  *        long as each thread and each child process load their own service
  *        list (i.e., the service list object must not be passed from one
- *        thread to another or from a parent process to its child).
+ *        thread to another or from a parent process to its child). And, it
+ *        is recommended to always check the DB periodically for a newer
+ *        update. In the future, an event listener may be available to make
+ *        this more efficient.
  ****************************************************************************/
 
 #ifndef SERVICE_LIST_H
@@ -30,8 +33,10 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+#ifndef SERVICE_LIST_DB
 /** The service list Sqlite3 DB file. */
 #define SERVICE_LIST_DB "./service_list.dat"
+#endif
 
 #ifdef __cpluplus
 extern "C" {
@@ -182,7 +187,7 @@ get_service_at (service_list *sl, struct service **s, unsigned int idx);
 
 /** 
  * Inserts a new service at the specified index in the service list.
- * It is an error to insert a service outside the range [0, count_service() - 1].
+ * It is an error to insert a service outside the range [0, count_service()].
  * 
  * @param [in] sl the service list that will contain the new service.
  * @param [in] s the service to be added.
@@ -235,7 +240,8 @@ del_service_all (service_list *sl);
  *                services are to be checked.
  *
  * @return the already published service list's last modification time.
- *         When an error occurs, 0 is returned.
+ *         When an error occurs or the already published service list is
+ *         empty, 0 is returned.
  */
 uint64_t
 get_last_modification_time (service_list *sl);

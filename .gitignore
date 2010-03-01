@@ -1,4 +1,5 @@
 *.o
 *_test
+*.db
 service_inquiry_handler_daemon
 gadget
