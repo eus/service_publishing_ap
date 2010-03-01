@@ -1,13 +1,16 @@
-.PHONY: all test test_with_root_priv test_without_root_priv clean doc
+.PHONY: all all_debug test test_with_root_priv test_without_root_priv clean doc
 
 TEST_EXECUTABLES_NEEDING_ROOT_PRIV := ssid_test
 TEST_EXECUTABLES := tlv_test logger_test logger_sqlite3_test service_inquiry_handler_daemon_test
 EXECUTABLES := service_inquiry_handler_daemon gadget
 
-CFLAGS := -Wall -Werror $(CFLAGS)
-LDLIBS := -lsqlite3 $(LDLIBS)
+CFLAGS := -DNDEBUG -O3 -Wall -Werror $(CFLAGS)
+CFLAGS_DEBUG := -UNDEBUG -O0 -g3
 
 all: $(EXECUTABLES)
+
+all_debug: CFLAGS := $(CFLAGS) $(CFLAGS_DEBUG)
+all_debug: $(EXECUTABLES)
 
 logger.o: logger.h
 
@@ -23,6 +26,7 @@ service_inquiry.o: service_inquiry.h app_err.h logger.h tlv.h sde.h service_list
 
 service_inquiry_handler.o: service_inquiry_handler.h app_err.h logger.h service_inquiry.h sde.h
 
+service_inquiry_handler_daemon: LDLIBS := -lsqlite3 $(LDLIBS)
 service_inquiry_handler_daemon: app_err.o service_inquiry.o service_inquiry_handler.o logger.o logger_sqlite3.o tlv.o service_list.o ssid.o
 
 service_inquiry_handler_daemon_test: app_err.o service_inquiry.o service_inquiry_handler.o logger.o tlv.o service_list_dummy.o
