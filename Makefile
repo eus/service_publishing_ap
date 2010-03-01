@@ -1,8 +1,8 @@
 .PHONY: all all_debug test test_with_root_priv test_without_root_priv clean doc
 
 TEST_EXECUTABLES_NEEDING_ROOT_PRIV := ssid_test
-TEST_EXECUTABLES := tlv_test logger_test logger_sqlite3_test service_inquiry_handler_daemon_test
-EXECUTABLES := service_inquiry_handler_daemon gadget
+TEST_EXECUTABLES := tlv_test logger_test logger_sqlite3_test
+EXECUTABLES := service_inquiry_handler_daemon gadget service_inquiry_handler_daemon_test
 
 CFLAGS := -DNDEBUG -O3 -Wall -Werror $(CFLAGS)
 CFLAGS_DEBUG := -UNDEBUG -O0 -g3
@@ -10,7 +10,7 @@ CFLAGS_DEBUG := -UNDEBUG -O0 -g3
 all: $(EXECUTABLES)
 
 all_debug: CFLAGS := $(CFLAGS) $(CFLAGS_DEBUG)
-all_debug: $(EXECUTABLES)
+all_debug: all
 
 logger.o: logger.h
 
@@ -18,6 +18,7 @@ logger_test: logger.o
 
 logger_sqlite3.o: logger_sqlite3.h logger.h
 
+logger_sqlite3_test: LDLIBS := -lsqlite3 $(LDLIBS)
 logger_sqlite3_test: logger_sqlite3.o logger.o
 
 app_err.o: app_err.h
@@ -61,6 +62,7 @@ test_without_root_priv: $(TEST_EXECUTABLES)
 		valgrind --leak-check=full ./$$test; \
 	done
 
+test: CFLAGS := $(CFLAGS) $(CFLAGS_DEBUG)
 test: test_with_root_priv test_without_root_priv
 
 doc:

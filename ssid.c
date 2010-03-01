@@ -60,7 +60,12 @@ iw_get_kernel_we_version(void)
     }
 
   /* Read the first line of buffer */
-  fgets(buff, sizeof(buff), fh);
+  if (fgets(buff, sizeof(buff), fh) == NULL)
+    {
+      l->SYS_ERR ("Cannot read %s or it is empty", get_proc_net_wireless ());
+      fclose (fh);
+      return -1;
+    }
 
   if(strstr(buff, "| WE") == NULL)
     {
@@ -76,7 +81,12 @@ iw_get_kernel_we_version(void)
     }
 
   /* Read the second line of buffer */
-  fgets(buff, sizeof(buff), fh);
+  if (fgets(buff, sizeof(buff), fh) == NULL)
+    {
+      l->SYS_ERR ("Cannot read %s or it is empty", get_proc_net_wireless ());
+      fclose (fh);
+      return -1;
+    }
 
   /* Get to the last separator, to get the version */
   p = strrchr(buff, '|');

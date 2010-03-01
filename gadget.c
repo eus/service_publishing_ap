@@ -68,7 +68,11 @@ get_user_input (char *buffer, size_t len, const char **err_msg)
 {
   char *newline;
 
-  fgets (buffer, len, stdin);
+  if (fgets (buffer, len, stdin) == NULL)
+    {
+      *err_msg = "Cannot read stdin or it is empty";
+      return 0;
+    }
   if ((newline = strchr (buffer, '\n')) == NULL)
     {
       int next_char = getchar ();
