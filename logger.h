@@ -45,6 +45,8 @@ struct logger
 					   */
   void (*err) (const char *file, unsigned int line,
 	       const char *msg, ...); /**< Log a custom error message. */
+  void (*info) (const char *file, unsigned int line,
+		const char *msg, ...); /**< Log an info message. */
 };
 
 /** Convenient wrapper for calling logger::sys_err. */
@@ -56,6 +58,9 @@ struct logger
 
 /** Convenient wrapper for calling logger::err. */
 #define ERR(msg, ...) err (__FILE__, __LINE__, msg , ## __VA_ARGS__)
+
+/** Convenient wrapper for calling logger::info. */
+#define INFO(msg, ...) info (__FILE__, __LINE__, msg , ## __VA_ARGS__)
 
 /** The global pointer to the global logger of an application. */
 extern struct logger *l;

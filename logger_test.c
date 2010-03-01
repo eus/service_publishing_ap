@@ -54,6 +54,8 @@ main (int argc, char **argv, char **envp)
 
   l->ERR ("Custom error %s", "[ERROR]");
 
+  l->INFO ("Information 1: %s", "Great is the Lord!");
+
   destroy_logger ();
 
   /* Ensuring that passing NULL is okay */

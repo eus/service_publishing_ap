@@ -91,6 +91,19 @@ err (const char *file, unsigned int line, const char *msg, ...)
   fprintf (l->private->out, "\n");
 }
 
+static void
+info (const char *file, unsigned int line, const char *msg, ...)
+{
+  va_list ap;
+
+  fprintf (l->private->out, "[INFO] %s:%d: ", file, line);
+
+  va_start (ap, msg);
+  vfprintf (l->private->out, msg, ap);
+
+  fprintf (l->private->out, "\n");
+}
+
 int
 init_logger (const char *log_output, const char *(*err2str) (int))
 {
@@ -113,6 +126,7 @@ init_logger (const char *log_output, const char *(*err2str) (int))
   l->sys_err = sys_err;
   l->app_err = app_err;
   l->err = err;
+  l->info = info;
  
   return 0;
 }

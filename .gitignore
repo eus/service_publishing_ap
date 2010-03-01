@@ -1,3 +1,4 @@
 *.o
 *_test
 service_inquiry_handler_daemon
+gadget

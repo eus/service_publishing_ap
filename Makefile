@@ -2,7 +2,7 @@
 
 TEST_EXECUTABLES_NEEDING_ROOT_PRIV := ssid_test
 TEST_EXECUTABLES := tlv_test logger_test logger_sqlite3_test
-EXECUTABLES := service_inquiry_handler_daemon
+EXECUTABLES := service_inquiry_handler_daemon gadget
 
 CFLAGS := -Wall -Werror $(CFLAGS)
 LDLIBS := -lsqlite3 $(LDLIBS)
@@ -36,6 +36,10 @@ service_list.o: service_list.h app_err.h logger.h logger_sqlite3.h ssid.h
 ssid.o: ssid.h app_err.h logger.h
 
 ssid_test: ssid.o app_err.o logger.o
+
+gadget.o: sde.h logger.h tlv.h
+
+gadget: gadget.o logger.o tlv.o
 
 test_with_root_priv: $(TEST_EXECUTABLES_NEEDING_ROOT_PRIV)
 	@for test in $(TEST_EXECUTABLES_NEEDING_ROOT_PRIV); do \
