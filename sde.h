@@ -214,6 +214,10 @@ enum service_desc_chunk_type
     SERVICE_URI, /**<
 		  * The URI to obtain a particular service encoded in UTF-8.
 		  */
+    SERVICE_SHORT_DESC, /**<
+			 * The short description of a particular service
+			 * encoded in UTF-8.
+			 */
   };
 
 /** Service Description Exchange packet types. */
