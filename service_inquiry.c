@@ -269,6 +269,7 @@ get_service_desc_from_service_list (service_list *sl,
       void *service_data = NULL;
       uint32_t service_data_size;
       uint64_t mod_time;
+      uint32_t cat_id;
 
       if ((rc = get_service_at (sl, &s, i)))
 	{
@@ -283,6 +284,12 @@ get_service_desc_from_service_list (service_list *sl,
 	}
       mod_time = htonll (s->ro.mod_time);
       if ((itr = create_chunk (SERVICE_TS, sizeof (uint64_t), &mod_time, itr,
+			       &service_data, &service_data_size)) == NULL)
+	{
+	  return_cleanly (ERR_MEM);
+	}
+      cat_id = htonl (s->cat_id);
+      if ((itr = create_chunk (SERVICE_CAT_ID, sizeof (cat_id), &cat_id, itr,
 			       &service_data, &service_data_size)) == NULL)
 	{
 	  return_cleanly (ERR_MEM);

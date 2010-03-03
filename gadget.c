@@ -308,6 +308,10 @@ print_service_desc_data (struct sde_service_desc_data *d, ssize_t size)
 	      printf ("\t\tMod time: %llu\n",
 		      ntohll (*((unsigned long long *) itr2->value)));
 	      break;
+	    case SERVICE_CAT_ID:
+	      printf ("\t\tCategory ID: %u\n",
+		      ntohl (*((uint32_t *) itr2->value)));
+	      break;
 	    case SERVICE_SHORT_DESC:
 	      memset (buffer, 0, sizeof (buffer));
 	      memcpy (buffer, itr2->value, ntohl (itr2->length));

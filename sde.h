@@ -218,6 +218,10 @@ enum service_desc_chunk_type
 			 * The short description of a particular service
 			 * encoded in UTF-8.
 			 */
+    SERVICE_CAT_ID, /**<
+		     * The category ID of a particular service
+		     * encoded as 4 octets unsigned value.
+		     */
   };
 
 /** Service Description Exchange packet types. */
