@@ -131,7 +131,7 @@ url_decode (char *data_buffer, const char *buffer_end)
   const char *itr;
   char *decoder = data_buffer;
   char hexcode[3] = {0};
-  int hexcode_idx;
+  int hexcode_idx = 0;
   int is_reading_hexcode = 0;
 
   for (itr = data_buffer; itr < buffer_end; itr++)

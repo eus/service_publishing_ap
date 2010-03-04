@@ -250,7 +250,7 @@ get_service_desc_from_service_list (service_list *sl,
   int i;
   const struct tlv_chunk *itr2 = NULL;
   void *descs = NULL;
-  uint32_t descs_size;
+  uint32_t descs_size = 0;
 
   for (i = 0; i < service_count; i++)
     {
