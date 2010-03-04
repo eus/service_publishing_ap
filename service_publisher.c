@@ -98,8 +98,7 @@ print_published_services (void)
 
   if (service_count == 0)
     {
-      printf ("categories = new Array();"
-	      "services = new Array();");
+      printf ("services = new Array();");
     }
 }
 
