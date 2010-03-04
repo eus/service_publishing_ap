@@ -1,0 +1,450 @@
+<html>
+<head>
+<title>Service Publishing AP</title>
+<script type="text/javascript">
+var categories = new Array();
+var services = new Array();
+var errorMsg = null;
+
+categories[0] = "NULL";
+categories[1] = "Restaurant";
+categories[2] = "School";
+categories[3] = "Tourism";
+
+services[0] = new Service(1, 'http://www.google.com', 'search engine', 'wow!');
+services[1] = new Service(0, 'http://www.e.com', 'sss', null);
+services[2] = new Service(2, 'http://www.indoasia.com', 'nyam', 'delicious foods, right price!');
+services[3] = new Service(1, 'http://www.sd.com', null, 'delicious foods, right price!');
+services[4] = new Service(3, 'http://www.indoazcsia.com', 'nyam', 'delicious foods, right price!');
+services[5] = new Service(0, 'http://www.vsd.com', 'nyam', null);
+services[6] = new Service(3, 'http://www.fdf.com', null, null);
+
+function $(id)
+{
+	return document.getElementById(id);
+}
+
+function display(id)
+{
+	$(id).style.display = "block";
+}
+
+function hide(id)
+{
+	$(id).style.display = "none";
+}
+
+String.prototype.trim = function() {
+	return this.replace(/^\s+|\s+$/g, '');
+};
+
+function Service(catId, uri, desc, longDesc)
+{
+	this.catId = catId;
+	this.uri = uri;
+	this.desc = desc;
+	this.longDesc = longDesc;
+}
+
+function getServicePos(rowIndex)
+{
+	return (rowIndex - 1) / 2;
+}
+
+function resetEditFields()
+{
+	$('editCategory').selectedIndex = 0;
+	$('editDesc').value = null;
+	$('editLongDesc').value = null;
+	$('editUri').value = null;
+}
+
+var editOkPos;
+
+function editService(row)
+{
+	var servicePos = getServicePos(row.rowIndex);
+	$('editServicePos').innerHTML = 'Editing Service #' + (servicePos + 1);
+	editOkPos = servicePos;
+	resetEditFields();	
+	$('editOkButton').value = 'Save';
+
+	var service = services[servicePos];
+	$('editCategory').selectedIndex = service.catId;
+	$('editDesc').value = service.desc;
+	$('editLongDesc').value = service.longDesc;
+	$('editUri').value = service.uri;
+
+	hide('serviceForm');
+	display('serviceEdit');
+}
+
+function createDelButton()
+{
+	var button = document.createElement('input');
+	button.type = 'button';
+	button.onclick = function(event) {
+		var rowIndex = this.parentNode.parentNode.rowIndex;
+		services.splice(getServicePos(rowIndex), 1);
+		this.parentNode.parentNode.parentNode.deleteRow(rowIndex);
+	};
+	button.value = 'Delete';
+
+	return button;
+}
+
+function createEditButton()
+{
+	var button = document.createElement('input');
+	button.type = 'button';
+	button.onclick = function(event) {
+		editService(this.parentNode.parentNode);
+	};
+	button.value = 'Edit';
+
+	return button;
+}
+
+function createCheckboxForMoving(pos)
+{
+	var checkBox = document.createElement('input');
+	checkBox.type = 'checkbox';
+	checkBox.name = 'movingTag';
+	checkBox.value = pos;
+	checkBox.title = 'Check this for position reordering';
+	checkBox.onchange = function (event) {
+		var row = this.parentNode.parentNode;
+		if (this.checked)
+		{
+			row.style.backgroundColor = 'yellow';
+		}
+		else
+		{
+			row.style.backgroundColor = 'transparent';
+		}
+	};
+	return checkBox;
+}
+
+function editOk()
+{
+	if (!$('editUri').value || typeof $('editUri').value != 'string' || $('editUri').value.trim == '')
+	{
+		alert('URI cannot be empty');
+		return;
+	}
+
+	var editMode = $('editOkButton').value;
+
+	var service = new Service(
+		$('editCategory').selectedIndex,
+		$('editUri').value,
+		$('editDesc').value,
+		$('editLongDesc').value		
+	);
+
+	if (editMode == 'Create')
+	{
+		services.splice(editOkPos, 0, service);
+	}
+	else
+	{
+		services.splice(editOkPos, 1, service);
+	}
+
+	render();
+
+	hide('serviceEdit');
+	display('serviceForm');
+}
+
+function editCancel()
+{
+	hide('serviceEdit');
+	display('serviceForm');
+}
+
+var isRerender = 0;
+
+function render()
+{
+	var serviceTable = $('serviceTable');
+
+	for(var i = serviceTable.rows.length - 1; i > 0; i--)
+		serviceTable.deleteRow(i);
+
+	$('errorMsg').style.display = 'none';
+
+	if (!isRerender)
+	{
+		isRerender = 1;
+
+		for (var i = 0; i < categories.length; i++)
+		{
+			if (!categories[i])
+				continue;
+
+			var category = document.createElement('option');
+			category.value = i;
+			category.innerHTML = categories[i];
+			$('editCategory').appendChild(category);
+		}
+
+		if (errorMsg)
+		{
+			$('errorMsg').style.display = 'block';
+			$('errorMsg').innerHTML = errorMsg;
+		}
+	}
+
+	for (var i = 0; i < services.length; i++)
+	{
+		var serviceObject = services[i];
+		var service = serviceTable.insertRow(serviceTable.rows.length);
+
+		service.insertCell(0).innerHTML = categories[serviceObject.catId];
+		service.insertCell(1).innerHTML = serviceObject.desc;
+		service.insertCell(2).appendChild(createDelButton());
+		service.insertCell(3).appendChild(createEditButton());
+		service.insertCell(4).appendChild(createCheckboxForMoving(i));
+
+		var buttonHolder = serviceTable.insertRow(serviceTable.rows.length);
+		var cell = buttonHolder.insertCell(0);
+		cell.colSpan = 5;
+		var insertButton = document.createElement('input');
+		insertButton.type = 'button';
+		insertButton.style.width = '100%';
+		insertButton.value = 'Insert New Service Here';
+		insertButton.onclick = function (event) {
+			insertService(this.parentNode.parentNode.rowIndex / 2);
+		};
+		cell.appendChild(insertButton);
+	}
+}
+
+function insertService(pos)
+{
+	$('editServicePos').innerHTML = 'New Service';
+	editOkPos = pos;
+	resetEditFields();
+	$('editOkButton').value = 'Create';
+
+	hide('serviceForm');
+	display('serviceEdit');
+}
+
+function getCheckedPos()
+{
+	var movingTags = document.getElementsByName('movingTag');
+	var checkedPos = new Array();
+
+	for (var i = 0; i < movingTags.length; i++)
+	{
+		var movingTag = movingTags[i];
+		if (movingTag.checked)
+		{
+			checkedPos.push(movingTag.value);
+		}
+	}
+
+	return checkedPos;
+}
+
+function recheckMovingTags(checkedPos, direction)
+{
+	var movingTags = document.getElementsByName('movingTag');
+
+	for (var i = 0; i < checkedPos.length; i++)
+	{
+		var checkedValue = checkedPos[i];
+		if (direction == 'up')
+		{
+			checkedValue -= 1;
+		}
+		else
+		{
+			checkedValue = parseInt(checkedValue) + 1;
+		}
+
+		var movingTag = movingTags[checkedValue];
+
+		if (movingTag.value == checkedValue)
+		{
+			movingTag.click();
+			continue;
+		}
+
+		// Alas, movingTags is not sorted!
+		for (var j = 0; j < movingTags.length; j++)
+		{
+			var movingTag = movingTags[j];
+
+			if (movingTag.value == checkedValue)
+			{
+				movingTag.click();
+				break;
+			}
+		}
+	}
+}
+
+function swapServices(service1, service2)
+{
+	var tmp;
+	tmp = service1.catId;
+	service1.catId = service2.catId;
+	service2.catId = tmp;
+
+	tmp = service1.uri;
+	service1.uri = service2.uri;
+	service2.uri = tmp;
+
+	tmp = service1.desc;
+	service1.desc = service2.desc;
+	service2.desc = tmp;
+
+	tmp = service1.longDesc;
+	service1.longDesc = service2.longDesc;
+	service2.longDesc = tmp;
+}
+
+function moveServicesUp()
+{
+	var checkedPos = getCheckedPos();
+
+	if (checkedPos[0] == 0)
+	{
+		alert('Cannot move up the top-most service');
+		return;
+	}
+
+	for (var i = 0; i < checkedPos.length; i++)
+	{
+		var idx = checkedPos[i];
+		swapServices(services[idx], services[idx - 1]);
+	}
+
+	render();
+	recheckMovingTags(checkedPos, 'up');
+}
+
+function moveServicesDown()
+{
+	var checkedPos = getCheckedPos();
+	var lastPosIdx = checkedPos.length - 1;
+
+	if (checkedPos[lastPosIdx] == services.length - 1)
+	{
+		alert('Cannot move down the bottom-most service');
+		return;
+	}
+
+	for (var i = checkedPos.length - 1; i >= 0; i--)
+	{
+		var idx = parseInt(checkedPos[i]);
+		swapServices(services[idx], services[idx + 1]);
+	}
+
+	render();
+	recheckMovingTags(checkedPos, 'down');
+}
+
+function serializeServices()
+{
+	var buffer = $('serializeBuffer');
+	buffer.value = '';
+
+	// FORMAT: TYPE:LENGTH:VALUE following enum service_desc_chunk_type
+	for (var i = 0; i < services.length; i++)
+	{
+		var service = services[i];
+
+		var nestedBuffer = '6:';
+		var value = (service.catId + '');
+		nestedBuffer += value.length + ':';
+		nestedBuffer += value + ':';
+
+		if (service.desc && service.desc.trim() != '')
+		{
+			nestedBuffer += '5:';
+			value = (service.desc + '');
+			nestedBuffer += value.length + ':';
+			nestedBuffer += value + ':';
+		}
+
+		nestedBuffer += '4:';
+		value = (service.uri + '');
+		nestedBuffer += value.length + ':';
+		nestedBuffer += value + ':';
+
+		if (service.longDesc && service.longDesc.trim() != '')
+		{
+			nestedBuffer += '3:';
+			value = (service.longDesc + '');
+			nestedBuffer += value.length + ':';
+			nestedBuffer += value + ':';
+		}
+
+		buffer.value += '0:';
+		buffer.value += nestedBuffer.length + ':';
+		buffer.value += nestedBuffer;
+	}
+}
+</script>
+<style type="text/css">
+table {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+select,input,textarea {
+	width: 100%;
+}
+#serviceTable {
+	border-collapse: collapse;
+}
+#serviceTable td {
+	border-width: 2px;
+	border-style: groove;
+}
+#reorderButtonTable {
+	font-size: 10pt;
+}
+#reorderButtonTable input {
+	width: 20%;
+}
+</style>
+</head>
+<body onload="render()">
+	<div id="serviceForm">
+		<h1 style="text-align: center">Published Services</h1>
+		<h2 id="errorMsg" style="display: none; text-align: center; background-color: red"></h2>
+		<table id="serviceTable">			
+			<tr><td colspan="5">
+				<input type="button" onclick="insertService(0)" style="width: 100%" value="Insert New Service Here" />
+			</td></tr>
+		</table>
+		<h1 style="font-size: 11pt; text-align: center; margin-bottom: 5px;">Reordering Services</h1>
+			<table id="reorderButtonTable" style="border-style: groove; border-width: 2px"><tr><td colspan="2">Select a service to be reordered by checking the check box next to it and then use the following two ordering buttons</td></tr><tr style="text-align: center"><td>
+				<input type="button" value="Down" onclick="moveServicesDown()"/>
+				<input type="button" value="Uncheck All" onclick="render()"/>
+				<input type="button" value="Up" onclick="moveServicesUp()"/>
+			</td></tr></table>
+		<form action="http://192.168.1.1/cgi-bin/hello.sh" method="post" onsubmit="serializeServices()">
+			<input id="serializeBuffer" type="hidden" name="serializedServices" value=""/>
+			<table style="padding: 10px;"><tr><td><button type="submit">Save and Publish Services</button></td></tr></table>
+		</form>
+	</div>
+	<div id="serviceEdit" style="display: none;">
+		<h1 id="editServicePos" style="text-align: center"></h1>
+		<table id="serviceEditTable">
+			<tr><td>Category</td><td><select id="editCategory"></select></td></tr>
+			<tr><td>Description</td><td><input id="editDesc" type="text" maxlength="27"/></td></tr>
+			<tr><td>Long description</td><td><textarea id="editLongDesc" rows="5"></textarea></td></tr>
+			<tr><td>URI</td><td><input id="editUri" type="text"/></td></tr>
+			<tr>
+				<td><input id="editOkButton" type="button" onclick="editOk()"/></td>
+				<td><input type="button" onclick="editCancel()" value="Cancel"/></td>
+			</tr>
+		</table>
+	</div>

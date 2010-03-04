@@ -55,6 +55,8 @@ errtostr (int err)
     "Cannot ensure inc_dec_pos",
     "Error in retrieving a service",
     "Error in reloading service list",
+    "Error in loading category list",
+    "Error in parsing data",
   };
 
   return errstr[err];

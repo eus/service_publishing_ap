@@ -2,7 +2,7 @@
 
 TEST_EXECUTABLES_NEEDING_ROOT_PRIV := ssid_test
 TEST_EXECUTABLES := tlv_test logger_test logger_sqlite3_test service_list_test
-EXECUTABLES := service_inquiry_handler_daemon gadget service_inquiry_handler_daemon_test
+EXECUTABLES := service_publisher.cgi service_publisher_test service_inquiry_handler_daemon gadget service_inquiry_handler_daemon_test
 
 CFLAGS := -DNDEBUG -O3 -Wall -Werror $(CFLAGS)
 CFLAGS_DEBUG := -UNDEBUG -O0 -g3
@@ -24,6 +24,16 @@ logger_sqlite3_test: LDLIBS := -lsqlite3 $(LDLIBS)
 logger_sqlite3_test: logger_sqlite3.o logger.o
 
 app_err.o: app_err.h
+
+service_publisher.cgi: service_publisher
+	mv $< $@
+
+service_publisher: LDLIBS := -lsqlite3 $(LDLIBS)
+service_publisher: app_err.o logger.o service_list.o logger_sqlite3.o ssid.o
+
+service_publisher_test: LDLIBS := -lsqlite3 $(LDLIBS)
+service_publisher_test: CFLAGS := $(CFLAGS) $(CFLAGS_DEBUG)
+service_publisher_test: app_err.o logger.o service_list.o logger_sqlite3.o ssid_dummy.o
 
 service_inquiry.o: service_inquiry.h app_err.h logger.h tlv.h sde.h service_list.h
 

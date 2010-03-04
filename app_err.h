@@ -74,6 +74,8 @@ enum err
     ERR_INIT_INC_DEC_POS, /**< Cannot ensure inc_dec_pos. */
     ERR_GET_SERVICE, /**< Error in retrieving a service. */
     ERR_RELOAD_SERVICE_LIST, /**< Error in reloading service list. */
+    ERR_LOAD_CATEGORY_LIST, /**< Error in loading category DB. */
+    ERR_PARSE_DATA, /**< Error in parsing data. */
   };
 
 /**
