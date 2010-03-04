@@ -484,6 +484,7 @@ save_service_list (const service_list *sl)
     }
   if (rc == SQLITE_ABORT)
     {
+      sqlite3_free (err_msg);
       l->APP_ERR (arg.rc, "Cannot publish services");
       return arg.rc;
     }
