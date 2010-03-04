@@ -89,7 +89,7 @@ get_service_list (uint64_t last_mod_time, uint64_t *curr_mod_time)
 
   *curr_mod_time = get_last_modification_time (sl);
 
-  if (last_mod_time != *curr_mod_time || last_mod_time == 0)
+  if (last_mod_time != *curr_mod_time)
     {
       last_mod_time = *curr_mod_time;
 
