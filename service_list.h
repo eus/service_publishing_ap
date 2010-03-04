@@ -150,6 +150,12 @@ int
 save_service_list (const service_list *sl);
 
 /**
+ * Advertises stored services in the published service database in the SSID.
+ */
+void
+publish_services (void);
+
+/**
  * Count the number of elements in a service list.
  *
  * @param [in] sl the service list whose elements are to be counted.

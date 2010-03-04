@@ -14,13 +14,13 @@ WLAN_IF_NAME: The name of the wireless interface of the router as returned by `i
 You should also specify the include dir of OpenWRT buildroot in the CFLAGS.
 
 For example, here is how I set my CFLAGS:
-export CFLAGS='
--DWLAN_IF_NAME=\"wl0\" 
--DCATEGORY_LIST_DB=\"/root/category_list.db\" 
--DSERVICE_LIST_DB=\"/root/service_list.db\" 
--DUI_FILE=\"/root/ui.html\" 
--DSERVICE_PUBLISHER_LOG_FILE=\"/root/service_publisher.log\" 
--I/home/eus/home/del/openwrt_trunk/staging_dir/target-mipsel_uClibc-0.9.30.1/usr/include/'
+export CFLAGS=\
+'-DWLAN_IF_NAME=\"wl0\" '\
+'-DCATEGORY_LIST_DB=\"/root/category_list.db\" '\
+'-DSERVICE_LIST_DB=\"/root/service_list.db\" '\
+'-DUI_FILE=\"/root/ui.html\" '\
+'-DSERVICE_PUBLISHER_LOG_FILE=\"/root/service_publisher.log\" '\
+'-I/home/eus/home/del/openwrt_trunk/staging_dir/target-mipsel_uClibc-0.9.30.1/usr/include/'
 
 Second, you have to specify the correct INCLUDEs search directory for Sqlite3 header file by exporting it as LDFLAGS environment variable. For example, here is how I set my LDFLAGS:
 export LDFLAGS=-L/home/eus/home/del/openwrt_trunk/staging_dir/target-mipsel_uClibc-0.9.30.1/usr/lib/

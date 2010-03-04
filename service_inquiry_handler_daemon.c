@@ -22,6 +22,7 @@
 #include "logger.h"
 #include "service_inquiry.h"
 #include "service_inquiry_handler.h"
+#include "service_list.h"
 
 static int stop_signal = 0;
 
@@ -55,6 +56,8 @@ main (int argc, char **argv, char **envp)
     }
 
   SETUP_LOGGER (argv[1], errtostr);
+
+  publish_services ();
 
   if (atexit (destroy_sde_handler_cache))
     {

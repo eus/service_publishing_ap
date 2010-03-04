@@ -94,6 +94,12 @@ destroy_service_list (service_list **sl)
   l->INFO ("Service list destroyed");
 }
 
+void
+publish_services (void)
+{
+  l->INFO ("Service list published");
+}
+
 int
 save_service_list (const service_list *sl)
 {

@@ -381,6 +381,57 @@ gen_ssid (void *result, int col_count, char **cols, char **col_names)
   return 0;
 }
 
+void
+publish_services (void)
+{
+  struct gen_ssid_arg arg = {
+    .ssid = "##",
+    .ssid_len = 2,
+    .last_pos = -1,
+    .rc = ERR_SUCCESS,
+  };
+  char *err_msg;
+  int rc;
+  sqlite3 *db;
+
+  if (sqlite3_open_v2 (SERVICE_LIST_DB, &db, SQLITE_OPEN_READONLY, NULL))
+    {
+      SQLITE3_ERR (db,
+		   "Cannot open DB in read-only mode for publishing services");
+      goto error;
+    }
+
+  if ((rc = sqlite3_exec (db,
+			  "select "
+			  COLUMN_CAT_ID ", " COLUMN_DESC ", " COLUMN_POSITION
+			  " from " TABLE_SERVICE_LIST
+			  " order by " COLUMN_POSITION " asc",
+			  gen_ssid, &arg, &err_msg)) != SQLITE_ABORT
+      && rc != SQLITE_OK)
+    {
+      SQLITE3_ERR_STR (err_msg, "Cannot select services to publish");
+      goto error;
+    }
+  if (rc == SQLITE_ABORT)
+    {
+      sqlite3_free (err_msg);
+      l->APP_ERR (arg.rc, "Cannot publish services");
+      goto error;
+    }
+
+  if ((rc = set_ssid (arg.ssid, arg.ssid_len)))
+    {
+      l->APP_ERR (rc, "Cannot set SSID");
+    }
+
+ error:
+  if (sqlite3_close (db))
+    {
+      SQLITE3_ERR (db,
+		   "Cannot close read-only DB for reading published services");
+    }
+}
+
 /**
  * The callback function used with sqlite3_exec() to not change the modification
  * time of unmodified record. The SQL select in sqlite3_exec()
