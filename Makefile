@@ -2,7 +2,7 @@
 
 TEST_EXECUTABLES_NEEDING_ROOT_PRIV := ssid_test
 TEST_EXECUTABLES := tlv_test logger_test logger_sqlite3_test service_list_test
-EXECUTABLES := service_publisher.cgi service_publisher_test service_inquiry_handler_daemon gadget service_inquiry_handler_daemon_test
+EXECUTABLES := service_publisher service_publisher.cgi service_publisher_test service_inquiry_handler_daemon gadget service_inquiry_handler_daemon_test
 
 CFLAGS := -DNDEBUG -O3 -Wall -Werror $(CFLAGS)
 #CFLAGS += -DCATEGORY_LIST_DB=\"\"
@@ -98,5 +98,5 @@ clean:
 	-rm *.o
 
 mrproper: clean
-	-rm $(EXECUTABLES) $(TEST_EXECUTABLES) \
+	-rm *.db $(EXECUTABLES) $(TEST_EXECUTABLES) \
 		$(TEST_EXECUTABLES_NEEDING_ROOT_PRIV)
