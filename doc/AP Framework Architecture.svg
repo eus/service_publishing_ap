@@ -8,43 +8,44 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="744.09448"
+   height="1052.3622"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.46"
    sodipodi:docname="AP Framework Architecture.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    inkscape:export-filename="/home/eus/eumi/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
-   inkscape:export-xdpi="150.07819"
-   inkscape:export-ydpi="150.07819">
+   inkscape:export-xdpi="150.08"
+   inkscape:export-ydpi="150.08"
+   version="1.0">
   <defs
      id="defs4">
     <marker
        inkscape:stockid="Arrow1Mend"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow1Mend"
-       style="overflow:visible;">
+       style="overflow:visible">
       <path
          id="path4139"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
-         transform="scale(0.4) rotate(180) translate(10,0)" />
+         d="M 0,0 L 5,-5 L -12.5,0 L 5,5 L 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
     </marker>
     <marker
        inkscape:stockid="Arrow1Lend"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow1Lend"
-       style="overflow:visible;">
+       style="overflow:visible">
       <path
          id="path3192"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
-         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+         d="M 0,0 L 5,-5 L -12.5,0 L 5,5 L 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
     </marker>
     <inkscape:perspective
        sodipodi:type="inkscape:persp3d"
@@ -64,16 +65,19 @@
      objecttolerance="10"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.82816158"
-     inkscape:cx="309.48701"
-     inkscape:cy="791.4876"
+     inkscape:zoom="0.46864958"
+     inkscape:cx="259.94399"
+     inkscape:cy="615.6746"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1024"
      inkscape:window-height="768"
      inkscape:window-x="0"
-     inkscape:window-y="0" />
+     inkscape:window-y="0"
+     showborder="true"
+     inkscape:showpageshadow="true"
+     showguides="true" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -88,458 +92,591 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-49.180511,-54.831882)">
     <g
-       id="g3330"
-       transform="translate(14.465738,51.960561)">
-      <text
-         id="text2532"
-         y="224.61438"
-         x="59.02541"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-         xml:space="preserve"><tspan
-           y="224.61438"
+       id="g3323"
+       transform="translate(106.68952,198.44251)">
+      <g
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         transform="translate(14.465738,51.960561)"
+         id="g3330">
+        <text
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
            x="59.02541"
-           id="tspan2534"
-           sodipodi:role="line">SSID Advertisement Module</tspan></text>
-      <rect
-         y="206.73598"
-         x="49.809307"
-         height="28.300743"
-         width="163.01228"
-         id="rect2536"
-         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    </g>
-    <g
-       id="g3335"
-       transform="translate(29.380258,12.339513)">
-      <text
-         id="text2528"
-         y="263.19537"
-         x="285.80704"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-         xml:space="preserve"><tspan
-           y="263.19537"
+           y="224.61438"
+           id="text2532"><tspan
+             sodipodi:role="line"
+             id="tspan2534"
+             x="59.02541"
+             y="224.61438">SSID Advertisement Module</tspan></text>
+        <rect
+           style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect2536"
+           width="163.01228"
+           height="28.300743"
+           x="49.809307"
+           y="206.73598" />
+      </g>
+      <g
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         transform="translate(29.380258,12.339513)"
+         id="g3335">
+        <text
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
            x="285.80704"
-           id="tspan2530"
-           sodipodi:role="line">Service Inquiry Handler</tspan></text>
-      <rect
-         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         id="rect3314"
-         width="163.01228"
-         height="28.300743"
-         x="266.02698"
-         y="246.35703" />
-    </g>
-    <g
-       id="g3325"
-       transform="translate(-154.20669,25.357269)">
-      <text
-         id="text2524"
-         y="171.32109"
-         x="269.55087"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-         xml:space="preserve"><tspan
-           y="171.32109"
+           y="263.19537"
+           id="text2528"><tspan
+             sodipodi:role="line"
+             id="tspan2530"
+             x="285.80704"
+             y="263.19537">Service Inquiry Handler</tspan></text>
+        <rect
+           y="246.35703"
+           x="266.02698"
+           height="28.300743"
+           width="163.01228"
+           id="rect3314"
+           style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      </g>
+      <g
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         transform="translate(-154.20669,25.357269)"
+         id="g3325">
+        <text
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
            x="269.55087"
-           id="tspan2526"
-           sodipodi:role="line">Service List</tspan></text>
-      <rect
-         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         id="rect3316"
-         width="163.01228"
-         height="28.300743"
-         x="218.48174"
-         y="153.53058" />
-    </g>
-    <g
-       id="g3320"
-       transform="translate(11.320297,-23.772624)">
-      <text
-         id="text2520"
-         y="109.23933"
-         x="189.20813"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-         xml:space="preserve"><tspan
-           y="109.23933"
+           y="171.32109"
+           id="text2524"><tspan
+             sodipodi:role="line"
+             id="tspan2526"
+             x="269.55087"
+             y="171.32109">Service List</tspan></text>
+        <rect
+           y="153.53058"
+           x="218.48174"
+           height="28.300743"
+           width="163.01228"
+           id="rect3316"
+           style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      </g>
+      <g
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         transform="translate(11.320297,-23.772624)"
+         id="g3320">
+        <text
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
            x="189.20813"
-           id="tspan2522"
-           sodipodi:role="line">Service Publishing UI (HTML)</tspan></text>
-      <rect
-         y="92.40097"
-         x="184.52084"
-         height="28.300743"
-         width="163.01228"
-         id="rect3318"
-         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    </g>
-    <g
-       id="g3384"
-       transform="translate(185.20109,-130.03806)">
-      <g
-         id="g3348">
-        <path
-           sodipodi:type="arc"
+           y="109.23933"
+           id="text2520"><tspan
+             sodipodi:role="line"
+             id="tspan2522"
+             x="189.20813"
+             y="109.23933">Service Publishing UI (HTML)</tspan></text>
+        <rect
            style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-           id="path3340"
-           sodipodi:cx="129.6174"
-           sodipodi:cy="314.27881"
-           sodipodi:rx="42.451115"
-           sodipodi:ry="9.0562382"
-           d="M 172.06852,314.27881 A 42.451115,9.0562382 0 1 1 87.166286,314.27881 A 42.451115,9.0562382 0 1 1 172.06852,314.27881 z" />
-        <path
-           d="M 172.06852,314.27881 A 42.451115,9.0562382 0 1 1 87.166286,314.27881"
-           sodipodi:ry="9.0562382"
-           sodipodi:rx="42.451115"
-           sodipodi:cy="314.27881"
-           sodipodi:cx="129.6174"
-           id="path3342"
-           style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-           sodipodi:type="arc"
-           transform="translate(0,28)"
-           sodipodi:start="0"
-           sodipodi:end="3.1415927"
-           sodipodi:open="true" />
-        <path
-           style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-           d="M 87.088486,342.60288 L 87.088486,314.60168"
-           id="path3344" />
-        <path
-           style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-           d="M 172.04129,342.34895 L 172.04129,314.14373"
-           id="path3346" />
+           id="rect3318"
+           width="163.01228"
+           height="28.300743"
+           x="184.52084"
+           y="92.40097" />
       </g>
-      <text
-         id="text3354"
-         y="338.87891"
-         x="97.120003"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-         xml:space="preserve"><tspan
-           y="338.87891"
+      <g
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         transform="translate(185.20109,-130.03806)"
+         id="g3384">
+        <g
+           id="g3348">
+          <path
+             d="M 172.06852,314.27881 A 42.451115,9.0562382 0 1 1 87.166286,314.27881 A 42.451115,9.0562382 0 1 1 172.06852,314.27881 z"
+             sodipodi:ry="9.0562382"
+             sodipodi:rx="42.451115"
+             sodipodi:cy="314.27881"
+             sodipodi:cx="129.6174"
+             id="path3340"
+             style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             sodipodi:type="arc" />
+          <path
+             sodipodi:open="true"
+             sodipodi:end="3.1415927"
+             sodipodi:start="0"
+             transform="translate(0,28)"
+             sodipodi:type="arc"
+             style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             id="path3342"
+             sodipodi:cx="129.6174"
+             sodipodi:cy="314.27881"
+             sodipodi:rx="42.451115"
+             sodipodi:ry="9.0562382"
+             d="M 172.06852,314.27881 A 42.451115,9.0562382 0 1 1 87.166286,314.27881" />
+          <path
+             id="path3344"
+             d="M 87.088486,342.60288 L 87.088486,314.60168"
+             style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <path
+             id="path3346"
+             d="M 172.04129,342.34895 L 172.04129,314.14373"
+             style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
            x="97.120003"
-           id="tspan3356"
-           sodipodi:role="line">Category DB</tspan></text>
-    </g>
-    <g
-       id="g3374"
-       transform="translate(53.117642,-295.84296)">
+           y="338.87891"
+           id="text3354"><tspan
+             sodipodi:role="line"
+             id="tspan3356"
+             x="97.120003"
+             y="338.87891">Category DB</tspan></text>
+      </g>
       <g
-         transform="translate(-36.914956,81.884085)"
-         id="g3358">
-        <path
-           d="M 172.06852,314.27881 A 42.451115,9.0562382 0 1 1 87.166286,314.27881 A 42.451115,9.0562382 0 1 1 172.06852,314.27881 z"
-           sodipodi:ry="9.0562382"
-           sodipodi:rx="42.451115"
-           sodipodi:cy="314.27881"
-           sodipodi:cx="129.6174"
-           id="path3360"
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         transform="translate(53.117642,-295.84296)"
+         id="g3374">
+        <g
+           id="g3358"
+           transform="translate(-36.914956,81.884085)">
+          <path
+             sodipodi:type="arc"
+             style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             id="path3360"
+             sodipodi:cx="129.6174"
+             sodipodi:cy="314.27881"
+             sodipodi:rx="42.451115"
+             sodipodi:ry="9.0562382"
+             d="M 172.06852,314.27881 A 42.451115,9.0562382 0 1 1 87.166286,314.27881 A 42.451115,9.0562382 0 1 1 172.06852,314.27881 z" />
+          <path
+             d="M 172.06852,314.27881 A 42.451115,9.0562382 0 1 1 87.166286,314.27881"
+             sodipodi:ry="9.0562382"
+             sodipodi:rx="42.451115"
+             sodipodi:cy="314.27881"
+             sodipodi:cx="129.6174"
+             id="path3362"
+             style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             sodipodi:type="arc"
+             transform="translate(0,28)"
+             sodipodi:start="0"
+             sodipodi:end="3.1415927"
+             sodipodi:open="true" />
+          <path
+             style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             d="M 87.088486,342.60288 L 87.088486,314.60168"
+             id="path3364" />
+          <path
+             style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             d="M 172.04129,342.34895 L 172.04129,314.14373"
+             id="path3366" />
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+           x="92.546356"
+           y="415.64093"
+           id="text3368"><tspan
+             sodipodi:role="line"
+             id="tspan3370"
+             x="92.546356"
+             y="415.64093">Published</tspan><tspan
+             sodipodi:role="line"
+             x="92.546356"
+             y="428.14093"
+             id="tspan3372">Service DB</tspan></text>
+      </g>
+      <g
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         transform="translate(73.680181,48.996836)"
+         id="g3431">
+        <rect
            style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-           sodipodi:type="arc" />
+           id="rect3413"
+           width="47.126957"
+           height="72.373543"
+           x="180.10362"
+           y="370.7894"
+           rx="10"
+           ry="10" />
+        <rect
+           style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect3415"
+           width="33.621326"
+           height="30.05092"
+           x="186.85645"
+           y="377.25787" />
         <path
-           sodipodi:open="true"
-           sodipodi:end="3.1415927"
-           sodipodi:start="0"
-           transform="translate(0,28)"
            sodipodi:type="arc"
            style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-           id="path3362"
-           sodipodi:cx="129.6174"
-           sodipodi:cy="314.27881"
-           sodipodi:rx="42.451115"
-           sodipodi:ry="9.0562382"
-           d="M 172.06852,314.27881 A 42.451115,9.0562382 0 1 1 87.166286,314.27881" />
+           id="path3427"
+           sodipodi:cx="286.52512"
+           sodipodi:cy="404.03592"
+           sodipodi:rx="14.579159"
+           sodipodi:ry="14.579159"
+           d="M 301.10427,404.03592 A 14.579159,14.579159 0 1 1 271.94596,404.03592 A 14.579159,14.579159 0 1 1 301.10427,404.03592 z"
+           transform="translate(-82.858015,20.612573)" />
         <path
-           id="path3364"
-           d="M 87.088486,342.60288 L 87.088486,314.60168"
-           style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-        <path
-           id="path3366"
-           d="M 172.04129,342.34895 L 172.04129,314.14373"
-           style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+           sodipodi:type="arc"
+           style="opacity:0.81999972;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="path3429"
+           sodipodi:cx="269.86322"
+           sodipodi:cy="392.13455"
+           sodipodi:rx="6.8432789"
+           sodipodi:ry="6.8432789"
+           d="M 276.7065,392.13455 A 6.8432789,6.8432789 0 1 1 263.01994,392.13455 A 6.8432789,6.8432789 0 1 1 276.7065,392.13455 z"
+           transform="translate(-66.196119,32.51394)" />
       </g>
-      <text
-         id="text3368"
-         y="415.64093"
-         x="92.546356"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-         xml:space="preserve"><tspan
-           y="415.64093"
-           x="92.546356"
-           id="tspan3370"
-           sodipodi:role="line">Published</tspan><tspan
-           id="tspan3372"
-           y="428.14093"
-           x="92.546356"
-           sodipodi:role="line">Service DB</tspan></text>
-    </g>
-    <g
-       id="g3431"
-       transform="translate(73.680181,84.996836)">
-      <rect
-         ry="10"
-         rx="10"
-         y="370.7894"
-         x="180.10362"
-         height="72.373543"
-         width="47.126957"
-         id="rect3413"
-         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-      <rect
-         y="377.25787"
-         x="186.85645"
-         height="30.05092"
-         width="33.621326"
-         id="rect3415"
-         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-      <path
-         transform="translate(-82.858015,20.612573)"
-         d="M 301.10427,404.03592 A 14.579159,14.579159 0 1 1 271.94596,404.03592 A 14.579159,14.579159 0 1 1 301.10427,404.03592 z"
-         sodipodi:ry="14.579159"
-         sodipodi:rx="14.579159"
-         sodipodi:cy="404.03592"
-         sodipodi:cx="286.52512"
-         id="path3427"
-         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         sodipodi:type="arc" />
-      <path
-         transform="translate(-66.196119,32.51394)"
-         d="M 276.7065,392.13455 A 6.8432789,6.8432789 0 1 1 263.01994,392.13455 A 6.8432789,6.8432789 0 1 1 276.7065,392.13455 z"
-         sodipodi:ry="6.8432789"
-         sodipodi:rx="6.8432789"
-         sodipodi:cy="392.13455"
-         sodipodi:cx="269.86322"
-         id="path3429"
-         style="opacity:0.81999972;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         sodipodi:type="arc" />
-    </g>
-    <g
-       id="g3599"
-       transform="translate(55.212267,47.851819)">
-      <path
-         sodipodi:nodetypes="ccccccccccccccccc"
-         id="path3439"
-         d="M 198.38911,332.00902 L 198.38911,327.92645 L 191.01673,327.92645 L 191.01673,302.75065 L 246.86935,302.75065 L 246.86935,311.76631 L 247.48662,311.79013 L 247.48662,295.43605 L 253.2533,295.43605 L 253.2533,295.88497 L 247.93833,295.88497 L 247.93833,331.15849 L 247.41557,331.14344 L 247.41557,327.87916 L 227.02136,327.87916 L 227.02136,332.00844 L 198.38911,332.00902 z"
-         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-      <text
-         id="text3595"
-         y="317.36267"
-         x="209.25415"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-         xml:space="preserve"><tspan
-           y="317.36267"
-           x="209.25415"
-           id="tspan3597"
-           sodipodi:role="line">SSID</tspan></text>
-    </g>
-    <path
-       style="opacity:0.81999996;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="M 196.35631,80.043588 L 49.680512,80.043588 L 49.680512,361.56649 L 246.03682,361.56649"
-       id="path3606"
-       sodipodi:nodetypes="cccc" />
-    <path
-       sodipodi:nodetypes="cccccc"
-       id="path3608"
-       d="M 533.71227,80.043588 L 539.70489,80.043588 L 539.86442,361.56649 L 303.68052,361.56649 M 358.56911,80.043588 L 370.70062,80.043588"
-       style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-opacity:1"
-       d="M 167.50493,287.49728 L 249.49046,342.78787"
-       id="path5436"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g3330"
-       inkscape:connection-end="#g3599" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
-       d="M 298.42866,342.78787 L 360.47336,287.49728"
-       id="path7001"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g3599"
-       inkscape:connection-end="#g3335" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
-       d="M 277.34728,455.28623 L 277.34728,380.36084"
-       id="path9093"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g3431"
-       inkscape:connection-end="#g3599" />
-    <text
-       xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-       x="264.97668"
-       y="542.83588"
-       id="text9616"><tspan
-         sodipodi:role="line"
-         id="tspan9618"
-         x="264.97668"
-         y="542.83588">User</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-       x="260.11584"
-       y="62.253757"
-       id="text9620"><tspan
-         sodipodi:role="line"
-         id="tspan9622"
-         x="260.11584"
-         y="62.253757">Owner</tspan></text>
-    <g
-       id="g10174"
-       transform="translate(14.851517,0)">
       <g
-         transform="translate(0,-2)"
-         id="g10161">
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         transform="translate(55.212267,47.851819)"
+         id="g3599">
         <path
-           style="opacity:0.85999989;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-           d="M 41.14383,471.38072 L 77.455172,471.38072"
-           id="path9626" />
+           style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="M 198.38911,332.00902 L 198.38911,327.92645 L 191.01673,327.92645 L 191.01673,302.75065 L 246.86935,302.75065 L 246.86935,311.76631 L 247.48662,311.79013 L 247.48662,295.43605 L 253.2533,295.43605 L 253.2533,295.88497 L 247.93833,295.88497 L 247.93833,331.15849 L 247.41557,331.14344 L 247.41557,327.87916 L 227.02136,327.87916 L 227.02136,332.00844 L 198.38911,332.00902 z"
+           id="path3439"
+           sodipodi:nodetypes="ccccccccccccccccc" />
         <text
            xml:space="preserve"
            style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-           x="105.00848"
-           y="472.93588"
-           id="text10149"><tspan
+           x="209.25415"
+           y="317.36267"
+           id="text3595"><tspan
              sodipodi:role="line"
-             id="tspan10151"
-             x="105.00848"
-             y="472.93588">x uses y</tspan></text>
+             id="tspan3597"
+             x="209.25415"
+             y="317.36267">SSID</tspan></text>
+      </g>
+      <path
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         sodipodi:nodetypes="cccc"
+         id="path3606"
+         d="M 196.35631,80.043588 L 49.680512,80.043588 L 49.680512,361.56649 L 246.03682,361.56649"
+         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="M 533.71227,80.043588 L 539.70489,80.043588 L 539.86442,361.56649 L 303.68052,361.56649 M 358.56911,80.043588 L 370.70062,80.043588"
+         id="path3608"
+         sodipodi:nodetypes="cccccc" />
+      <path
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         inkscape:connection-end="#g3599"
+         inkscape:connection-start="#g3330"
+         inkscape:connector-type="polyline"
+         id="path5436"
+         d="M 167.50493,287.49728 L 249.49046,342.78787"
+         style="fill:none;fill-rule:evenodd;stroke:#ff00ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         inkscape:connector-type="polyline"
+         id="path7001"
+         d="M 289.08938,342.78787 L 517.77337,294.7191 L 457.49578,97.42909"
+         style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline" />
+      <path
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         inkscape:connection-end="#g3599"
+         inkscape:connection-start="#g3431"
+         inkscape:connector-type="polyline"
+         id="path9093"
+         d="M 277.34728,419.28623 L 277.34728,380.36084"
+         style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         id="text9616"
+         y="506.83588"
+         x="264.97668"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+         xml:space="preserve"><tspan
+           y="506.83588"
+           x="264.97668"
+           id="tspan9618"
+           sodipodi:role="line">User</tspan></text>
+      <text
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         id="text9620"
+         y="62.253757"
+         x="260.11584"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+         xml:space="preserve"><tspan
+           y="62.253757"
+           x="260.11584"
+           id="tspan9622"
+           sodipodi:role="line">Owner</tspan></text>
+      <path
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         inkscape:connection-end="#g3330"
+         inkscape:connection-start="#g3325"
+         inkscape:connector-type="polyline"
+         id="path2450"
+         d="M 145.78119,207.68859 L 145.78119,258.19654"
+         style="fill:none;fill-rule:evenodd;stroke:#ff00ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         inkscape:connection-end="#g3374"
+         inkscape:connection-start="#g3325"
+         inkscape:connector-type="polyline"
+         id="path3755"
+         d="M 145.78119,178.38785 L 145.78119,137.87617"
+         style="fill:none;fill-rule:evenodd;stroke:#ff00ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         inkscape:connection-end="#g3325"
+         inkscape:connection-start="#g3320"
+         inkscape:connector-type="polyline"
+         id="path4278"
+         d="M 259.86587,97.42909 L 163.2626,178.38785"
+         style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         inkscape:connection-end="#g3325"
+         inkscape:connection-start="#g3335"
+         inkscape:connector-type="polyline"
+         id="path4801"
+         d="M 334.48476,258.19654 L 188.20981,207.68859"
+         style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <g
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         transform="translate(52.224045,-30.187448)"
+         id="g5324">
         <text
            xml:space="preserve"
            style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-           x="34.206924"
-           y="473.97592"
-           id="text10153"><tspan
+           x="228.01941"
+           y="170.28105"
+           id="text5326"><tspan
              sodipodi:role="line"
-             id="tspan10155"
-             x="34.206924"
-             y="473.97592">x</tspan></text>
+             id="tspan5328"
+             x="228.01941"
+             y="170.28105">Category List</tspan></text>
+        <rect
+           y="153.53058"
+           x="218.48172"
+           height="28.300743"
+           width="88.147659"
+           id="rect5330"
+           style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      </g>
+      <path
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         inkscape:connection-end="#g3384"
+         inkscape:connection-start="#g5324"
+         inkscape:connector-type="polyline"
+         id="path5332"
+         d="M 314.77959,152.14387 L 314.77959,174.68451"
+         style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         inkscape:connection-end="#g5324"
+         inkscape:connection-start="#g3320"
+         inkscape:connector-type="polyline"
+         id="path6376"
+         d="M 287.37012,97.42909 L 304.75676,122.84313"
+         style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <g
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         transform="translate(185.57571,-23.772624)"
+         id="g6899">
         <text
            xml:space="preserve"
            style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-           x="81.001701"
-           y="472.86508"
-           id="text10157"><tspan
+           x="265.6095"
+           y="104.02937"
+           id="text6901"><tspan
+             style="text-align:center;text-anchor:middle"
              sodipodi:role="line"
-             id="tspan10159"
-             x="81.001701"
-             y="472.86508">y</tspan></text>
+             id="tspan6903"
+             x="265.6095"
+             y="104.02937">Service Inquiry Handler</tspan><tspan
+             style="text-align:center;text-anchor:middle"
+             id="tspan6907"
+             sodipodi:role="line"
+             x="265.6095"
+             y="116.52937">Daemon</tspan></text>
+        <rect
+           style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect6905"
+           width="163.01228"
+           height="28.300743"
+           x="184.52084"
+           y="92.40097" />
       </g>
       <text
-         id="text10170"
-         y="457.27032"
-         x="33.777237"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-         xml:space="preserve"><tspan
-           y="457.27032"
-           x="33.777237"
-           id="tspan10172"
-           sodipodi:role="line">Legend:</tspan></text>
-    </g>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
-       d="M 145.78119,207.68859 L 145.78119,258.19654"
-       id="path2450"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g3325"
-       inkscape:connection-end="#g3330" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
-       d="M 145.78119,178.38785 L 145.78119,137.87617"
-       id="path3755"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g3325"
-       inkscape:connection-end="#g3374" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
-       d="M 259.86587,97.42909 L 163.2626,178.38785"
-       id="path4278"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g3320"
-       inkscape:connection-end="#g3325" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
-       d="M 334.48476,258.19654 L 188.20981,207.68859"
-       id="path4801"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g3335"
-       inkscape:connection-end="#g3325" />
-    <g
-       id="g5324"
-       transform="translate(52.224045,-30.187448)">
-      <text
-         id="text5326"
-         y="170.28105"
-         x="228.01941"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-         xml:space="preserve"><tspan
-           y="170.28105"
-           x="228.01941"
-           id="tspan5328"
-           sodipodi:role="line">Category List</tspan></text>
-      <rect
-         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         id="rect5330"
-         width="88.147659"
-         height="28.300743"
-         x="218.48172"
-         y="153.53058" />
-    </g>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1"
-       d="M 314.77959,152.14387 L 314.77959,174.68451"
-       id="path5332"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g5324"
-       inkscape:connection-end="#g3384" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1"
-       d="M 287.37012,97.42909 L 304.75676,122.84313"
-       id="path6376"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g3320"
-       inkscape:connection-end="#g5324" />
-    <g
-       id="g6899"
-       transform="translate(185.57571,-23.772624)">
-      <text
-         id="text6901"
-         y="104.02937"
-         x="265.6095"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-         xml:space="preserve"><tspan
-           y="104.02937"
-           x="265.6095"
-           id="tspan6903"
-           sodipodi:role="line"
-           style="text-align:center;text-anchor:middle">Service Inquiry Handler</tspan><tspan
-           y="116.52937"
-           x="265.6095"
-           sodipodi:role="line"
-           id="tspan6907"
-           style="text-align:center;text-anchor:middle">Daemon</tspan></text>
-      <rect
-         y="92.40097"
-         x="184.52084"
-         height="28.300743"
-         width="163.01228"
-         id="rect6905"
-         style="opacity:0.81999972;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
-       x="442.55972"
-       y="62.222019"
-       id="text6909"><tspan
-         sodipodi:role="line"
-         id="tspan6911"
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         id="text6909"
+         y="62.222019"
          x="442.55972"
-         y="62.222019">Init</tspan></text>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
-       d="M 445.84568,97.42909 L 382.6704,258.19654"
-       id="path6913"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#g6899"
-       inkscape:connection-end="#g3335" />
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+         xml:space="preserve"><tspan
+           y="62.222019"
+           x="442.55972"
+           id="tspan6911"
+           sodipodi:role="line">Init</tspan></text>
+      <path
+         inkscape:export-ydpi="150.07819"
+         inkscape:export-xdpi="150.07819"
+         inkscape:export-filename="/home/eus/home/shared/Burn_70/Eus' Documents/Documents/EuMI School/Semester 1/Mobile Communication Systems Engineering Lab/Final Project/04 - AP Framework Development/doc/generated/AP Framework Architecture v1.png"
+         inkscape:connection-end="#g3335"
+         inkscape:connection-start="#g6899"
+         inkscape:connector-type="polyline"
+         id="path6913"
+         d="M 445.84568,97.42909 L 382.6704,258.19654"
+         style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <g
+         transform="translate(0,-28)"
+         id="g3299">
+        <g
+           id="g10161"
+           transform="translate(14.851517,-56)">
+          <path
+             id="path9626"
+             d="M 41.14383,471.38072 L 77.455172,471.38072"
+             style="opacity:0.85999989;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <text
+             id="text10149"
+             y="472.93588"
+             x="105.00848"
+             style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+             xml:space="preserve"><tspan
+               y="472.93588"
+               x="105.00848"
+               id="tspan10151"
+               sodipodi:role="line">x uses y</tspan></text>
+          <text
+             id="text10153"
+             y="473.97592"
+             x="34.206924"
+             style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+             xml:space="preserve"><tspan
+               y="473.97592"
+               x="34.206924"
+               id="tspan10155"
+               sodipodi:role="line">x</tspan></text>
+          <text
+             id="text10157"
+             y="472.86508"
+             x="83.001701"
+             style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+             xml:space="preserve"><tspan
+               y="472.86508"
+               x="83.001701"
+               id="tspan10159"
+               sodipodi:role="line">y</tspan></text>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+           x="48.628754"
+           y="403.27032"
+           id="text10170"><tspan
+             sodipodi:role="line"
+             id="tspan10172"
+             x="48.628754"
+             y="403.27032">Legend:</tspan></text>
+        <g
+           transform="translate(14.851517,-38)"
+           id="g3267">
+          <path
+             style="opacity:0.85999989;fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:2;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             d="M 41.14383,471.38072 L 77.455172,471.38072"
+             id="path3269" />
+          <text
+             xml:space="preserve"
+             style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+             x="105.00848"
+             y="475.02084"
+             id="text3271"><tspan
+               sodipodi:role="line"
+               id="tspan3273"
+               x="105.00848"
+               y="475.02084">Service Desc Exchange</tspan></text>
+        </g>
+        <g
+           id="g3283"
+           transform="translate(14.851517,-22)">
+          <path
+             id="path3285"
+             d="M 41.14383,471.38072 L 77.455172,471.38072"
+             style="opacity:0.85999989;fill:none;fill-opacity:1;stroke:#0000ff;stroke-width:2;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <text
+             id="text3287"
+             y="474.95493"
+             x="105.00848"
+             style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+             xml:space="preserve"><tspan
+               y="474.95493"
+               x="105.00848"
+               id="tspan3289"
+               sodipodi:role="line">UI</tspan></text>
+        </g>
+        <g
+           transform="translate(14.851517,-4)"
+           id="g3291">
+          <path
+             style="opacity:0.85999989;fill:none;fill-opacity:1;stroke:#ff00ff;stroke-width:2;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             d="M 41.14383,471.38072 L 77.455172,471.38072"
+             id="path3293" />
+          <text
+             xml:space="preserve"
+             style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+             x="105.00848"
+             y="474.95493"
+             id="text3295"><tspan
+               sodipodi:role="line"
+               id="tspan3297"
+               x="105.00848"
+               y="474.95493">Core activity</tspan></text>
+        </g>
+      </g>
+    </g>
   </g>
 </svg>
