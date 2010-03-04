@@ -31,7 +31,7 @@
 #include "ssid.h"
 
 #ifndef WLAN_IF_NAME
-#define WLAN_IF_NAME "wl0"
+#define WLAN_IF_NAME "wlan0"
 #endif
 
 #ifndef PROC_NET_WIRELESS

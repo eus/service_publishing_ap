@@ -1,0 +1,57 @@
+1. Router Setup
+My development router is ASUS WL-500W. And, I followed the instruction on http://nuwiki.openwrt.org/oldwiki/openwrtdocs/hardware/asus/wl500w to compile OpenWRT source code and get it up and running on the router. However, since this software depends on Sqlite3 that in turn depends on pthread, the software won't run on OpenWRT Kamikaze 8.09.1. Instead, you have to get the OpenWRT version that has got the right patch for its uClibc. In short, see http://www.kerneltrap.org/node/53783.
+
+2. Software Compilation
+First, you have to specify the following DEFINEs by exporting them as CFLAGS environment variable:
+
+CATEGORY_LIST_DB: An absolute path to the sqlite3 DB file for category list in the router.
+SERVICE_LIST_DB: An absolute path to the sqlite3 DB file for the published service list in the router.
+UI_FILE: An absolute path to the ui.html in the router.
+SERVICE_PUBLISHER_LOG_FILE: An absolute path to the service publisher (the CGI for editing published services) log file in the router.
+WLAN_IF_NAME: The name of the wireless interface of the router as returned by `ifconfig' run on the router.
+[Optional] PROC_NET_WIRELESS: The absolute path to /proc/net/wireless in the router.
+
+You should also specify the include dir of OpenWRT buildroot in the CFLAGS.
+
+For example, here is how I set my CFLAGS:
+export CFLAGS='
+-DWLAN_IF_NAME=\"wl0\" 
+-DCATEGORY_LIST_DB=\"/root/category_list.db\" 
+-DSERVICE_LIST_DB=\"/root/service_list.db\" 
+-DUI_FILE=\"/root/ui.html\" 
+-DSERVICE_PUBLISHER_LOG_FILE=\"/root/service_publisher.log\" 
+-I/home/eus/home/del/openwrt_trunk/staging_dir/target-mipsel_uClibc-0.9.30.1/usr/include/'
+
+Second, you have to specify the correct INCLUDEs search directory for Sqlite3 header file by exporting it as LDFLAGS environment variable. For example, here is how I set my LDFLAGS:
+export LDFLAGS=-L/home/eus/home/del/openwrt_trunk/staging_dir/target-mipsel_uClibc-0.9.30.1/usr/lib/
+
+Third, you have to set the right compiler by setting the CC environment variable correctly. Here is how I set my CC:
+export CC=/home/eus/home/del/openwrt_trunk/staging_dir/toolchain-mipsel_gcc-3.4.6_uClibc-0.9.30.1/usr/bin/mipsel-openwrt-linux-gcc
+
+Finally, enter `make' in the source directory.
+
+3. Software installation
+First, service_inquiry_handler_daemon should be copied to the router using, for example, scp. It can be placed in any directory you wish although /usr/sbin may be the right one. Afterward, create an executable script named, for example service_inquiry_handler_daemon, in /etc/init.d/ containing the text below. You have to replace [LOG_FILE] with the path that you specify as SERVICE_PUBLISHER_LOG_FILE in the first step of the compilation phase:
+
+--- 8< -------------------------------------------------------------------------
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2010 Tadeus Prastowo <eus at member dot fsf dot org>
+START=50
+
+start () {
+        service_inquiry_handler_daemon [LOG_FILE] &
+}
+
+stop() {
+        killall -SIGTERM service_inquiry_handler_daemon
+}
+--- 8< -------------------------------------------------------------------------
+
+To enable the script, issue: /etc/init.d/service_inquiry_handler_daemon enable.
+
+Second, copy service_publisher.cgi to /www/cgi-bin/ in the router. If cgi-bin/ directory has not existed, you have to create it first.
+
+Finally, copy `ui.html' file found in the source directory to the location that you specify through UI_FILE in the first step of the compilation phase. Afterward, you need to edit the file by changing the URI of the `action' attribute of the only FORM element in the file so that it points to service_publisher.cgi. For example, here is how I set the `action' attribute: <form action="http://192.168.1.1/cgi-bin/service_publisher.cgi" ...>
+
+4. Software usage
+Since the software will modify the SSID of the router, you should connect to the router using a LAN cable. Being connected, using your web browser, navigate to service_publisher.cgi, for example, http://192.168.1.1/cgi-bin/service_publisher.cgi to start editing your service offering. The editing interface relies solely on Javascript. Therefore, you should ensure that you do not disable Javascript in your web browser.

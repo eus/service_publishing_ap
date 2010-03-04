@@ -1,0 +1,15 @@
+There are two type of test cases:
+1. Requiring root privilege
+2. Not requiring root privilege.
+
+The only test case of type 1 is ssid_test.c to see that the SSID of the device can truly be manipulated.
+
+Test cases should run without human intervention, but there are some test cases that still need human interaction (patch to make them automatic are very welcome):
+
+1. service_publisher_test to test the CGI component interactively by setting environment variables REQUEST_METHOD to POST and CONTENT_LENGTH to the length of the characters that are returned by ui.html (the submit button of ui.html only sends one POST variable named serializedServices). It is interactive because you need to use GDB to see where service_publisher goes wrong. You need to copy-and-paste the POST data to the stdin because this is how CGI works. I obtain the POST data by making ui.html send the data to a CGI script that contains only the following command: `head -c $CONTENT_LENGTH'.
+
+2. service_inquiry_handler_daemon_test to test the SDE part of the service_inquiry_handler_daemon using dummy service list so that you can check whether or not the SDE works as it should.
+
+3. gadget is used to test service_inquiry_handler_daemon whose output is logged to stdout by sending particular SDE packets interactively. Gadget also prints out the response packets for ease of debugging. For example, you may want to see whether or not caching actually works by inspecting the log output of the daemon. You may also want to inspect the correctness of the data sent.
+
+When compiling for testing, you only need to run `make test' that will output the aforementioned executables requiring interaction as well as running automated test cases. For the automated test cases, everything is okay as long as you don't see any assertion error and memory leak. Error message issued by the application logger is fine. When testing for ssid_test.c, you need to define WLAN_IF_NAME through CFLAGS environment variable like CFLASG='-DWLAN_IF_NAME=\"wl0\"' if your wireless interface name is not wlan0.

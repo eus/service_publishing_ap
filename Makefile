@@ -2,15 +2,10 @@
 
 TEST_EXECUTABLES_NEEDING_ROOT_PRIV := ssid_test
 TEST_EXECUTABLES := tlv_test logger_test logger_sqlite3_test service_list_test
-EXECUTABLES := service_publisher service_publisher.cgi service_publisher_test service_inquiry_handler_daemon gadget service_inquiry_handler_daemon_test
+INTERACTIVE_TEST_EXECUTABLES := service_publisher_test gadget service_inquiry_handler_daemon_test
+EXECUTABLES := service_publisher.cgi service_inquiry_handler_daemon
 
 CFLAGS := -DNDEBUG -O3 -Wall -Werror $(CFLAGS)
-#CFLAGS += -DCATEGORY_LIST_DB=\"\"
-#CFLAGS += -DSERVICE_LIST_DB=\"\"
-#CFLAGS += -DUI_FILE=\"\"
-#CFLAGS += -DSERVICE_PUBLISHER_LOG_FILE=\"\"
-#CFLAGS += -DPROC_NET_WIRELESS=\"\"
-#CFLAGS += -DWLAN_IF_NAME=\"\"
 CFLAGS_DEBUG := -UNDEBUG -O0 -g3
 
 all: $(EXECUTABLES)
@@ -89,7 +84,7 @@ test_without_root_priv: $(TEST_EXECUTABLES)
 		valgrind --leak-check=full ./$$test; \
 	done
 
-test: test_with_root_priv test_without_root_priv
+test: test_with_root_priv test_without_root_priv $(INTERACTIVE_TEST_EXECUTABLES)
 
 doc:
 	-rm -R doc/generated/html/*
@@ -99,5 +94,6 @@ clean:
 	-rm *.o
 
 mrproper: clean
-	-rm *.db $(EXECUTABLES) $(TEST_EXECUTABLES) \
-		$(TEST_EXECUTABLES_NEEDING_ROOT_PRIV)
+	-rm *.log *.db $(EXECUTABLES) $(TEST_EXECUTABLES) \
+		$(TEST_EXECUTABLES_NEEDING_ROOT_PRIV) \
+		$(INTERACTIVE_TEST_EXECUTABLES)

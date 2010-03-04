@@ -32,69 +32,37 @@
 <tr><td colspan="2"><br><h2>Data Structures</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcat.html">cat</a></td></tr>
 
-<tr><td colspan="2"><br><h2>Typedefs</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct cat_list_impl&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#e1be5bbbffe3942dca22969605b7d0be">cat_list</a></td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct cat_list_itr_impl&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a></td></tr>
+<tr><td colspan="2"><br><h2>Defines</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="4999432fed11aedfd2b07e92228613f3"></a><!-- doxytag: member="service_category.h::CATEGORY_LIST_DB" ref="4999432fed11aedfd2b07e92228613f3" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>CATEGORY_LIST_DB</b>&nbsp;&nbsp;&nbsp;&quot;./category_list.db&quot;</td></tr>
 
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#ea93a3c7ccb1c48660f6ed198db14729">load_cat_list</a> (<a class="el" href="service__category_8h.html#e1be5bbbffe3942dca22969605b7d0be">cat_list</a> **cl)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#ea93a3c7ccb1c48660f6ed198db14729">load_cat_list</a> (cat_list **cl)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#aa4a1b8440b32ddd8fe638be8c699904">destroy_cat_list</a> (<a class="el" href="service__category_8h.html#e1be5bbbffe3942dca22969605b7d0be">cat_list</a> **cl)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#aa4a1b8440b32ddd8fe638be8c699904">destroy_cat_list</a> (cat_list **cl)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#cb7fc9d3af683d2a7e41a0a1ea1d1740">create_cat_list_itr</a> (<a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> **itr, <a class="el" href="service__category_8h.html#e1be5bbbffe3942dca22969605b7d0be">cat_list</a> *cl)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#cb7fc9d3af683d2a7e41a0a1ea1d1740">create_cat_list_itr</a> (cat_list_itr **itr, cat_list *cl)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#0bd7ad900c9fcd3677ffcbfa4af5bd36">destroy_cat_list_itr</a> (<a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> **itr)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#0bd7ad900c9fcd3677ffcbfa4af5bd36">destroy_cat_list_itr</a> (cat_list_itr **itr)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#80d493b55f5e1c44f016fc31bf9bb646">next</a> (<a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> *itr)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#80d493b55f5e1c44f016fc31bf9bb646">next</a> (cat_list_itr *itr)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#675133de16b603711189e3e5d7d2fd93">prev</a> (<a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> *itr)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#675133de16b603711189e3e5d7d2fd93">prev</a> (cat_list_itr *itr)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#bfc9f86af2fc746dc2755e19d172b5a1">go_sub</a> (<a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> *itr)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#bfc9f86af2fc746dc2755e19d172b5a1">go_sub</a> (cat_list_itr *itr)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#e7717ee814cbc7cfe7f826f7d4871f92">go_sup</a> (<a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> *itr)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#e7717ee814cbc7cfe7f826f7d4871f92">go_sup</a> (cat_list_itr *itr)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#1ea92041159ec8c3497b1896d237bc11">get_cat</a> (struct <a class="el" href="structcat.html">cat</a> **c, const <a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> *itr)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#1ea92041159ec8c3497b1896d237bc11">get_cat</a> (struct <a class="el" href="structcat.html">cat</a> **c, const cat_list_itr *itr)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#193751c355ce8ca503b900987443ce67">free_cat</a> (struct <a class="el" href="structcat.html">cat</a> **c)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#c717070150975bfa8f2d50b9bffc123a">update_cat_list</a> (const void *data)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="service__category_8h.html#94d3ce9beae4bc559fad4705e59d0348">update_cat_list</a> (const void *data, size_t data_len)</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 The <a class="el" href="structservice.html">service</a> category module. First, the complete category list is loaded from the DB. Then, one or more iterators are created for the category list to navigate the list. The category list DB can be updated. 
 <p>
-<hr><h2>Typedef Documentation</h2>
-<a class="anchor" name="e1be5bbbffe3942dca22969605b7d0be"></a><!-- doxytag: member="service_category.h::cat_list" ref="e1be5bbbffe3942dca22969605b7d0be" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct cat_list_impl <a class="el" href="service__category_8h.html#e1be5bbbffe3942dca22969605b7d0be">cat_list</a>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-A list of categories. 
-</div>
-</div><p>
-<a class="anchor" name="4b435696b2dc032dbf299f9578c7f6aa"></a><!-- doxytag: member="service_category.h::cat_list_itr" ref="4b435696b2dc032dbf299f9578c7f6aa" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct cat_list_itr_impl <a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-An iterator to traverse a category list. 
-</div>
-</div><p>
 <hr><h2>Function Documentation</h2>
 <a class="anchor" name="cb7fc9d3af683d2a7e41a0a1ea1d1740"></a><!-- doxytag: member="service_category.h::create_cat_list_itr" ref="cb7fc9d3af683d2a7e41a0a1ea1d1740" args="(cat_list_itr **itr, cat_list *cl)" -->
 <div class="memitem">
@@ -103,13 +71,13 @@ An iterator to traverse a category list.
         <tr>
           <td class="memname">int create_cat_list_itr           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> **&nbsp;</td>
+          <td class="paramtype">cat_list_itr **&nbsp;</td>
           <td class="paramname"> <em>itr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="service__category_8h.html#e1be5bbbffe3942dca22969605b7d0be">cat_list</a> *&nbsp;</td>
+          <td class="paramtype">cat_list *&nbsp;</td>
           <td class="paramname"> <em>cl</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -122,7 +90,7 @@ An iterator to traverse a category list.
 <div class="memdoc">
 
 <p>
-Creates an iterator to traverse the given category list.<p>
+Creates an iterator to traverse the given category list. The category list must not be destroyed while an iterator still wants to iterate the list. To be save, always destroy all iterators before destroying the iterated lists.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>itr</em>&nbsp;</td><td>the pointer pointing to a dynamically allocated memory that should be freed with <a class="el" href="service__category_8h.html#0bd7ad900c9fcd3677ffcbfa4af5bd36">destroy_cat_list_itr()</a>. </td></tr>
@@ -140,7 +108,7 @@ Creates an iterator to traverse the given category list.<p>
         <tr>
           <td class="memname">void destroy_cat_list           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__category_8h.html#e1be5bbbffe3942dca22969605b7d0be">cat_list</a> **&nbsp;</td>
+          <td class="paramtype">cat_list **&nbsp;</td>
           <td class="paramname"> <em>cl</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -166,7 +134,7 @@ Frees the memory allocated through <a class="el" href="service__category_8h.html
         <tr>
           <td class="memname">void destroy_cat_list_itr           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> **&nbsp;</td>
+          <td class="paramtype">cat_list_itr **&nbsp;</td>
           <td class="paramname"> <em>itr</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -224,7 +192,7 @@ Frees the memory allocated through <a class="el" href="service__category_8h.html
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> *&nbsp;</td>
+          <td class="paramtype">const cat_list_itr *&nbsp;</td>
           <td class="paramname"> <em>itr</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -255,7 +223,7 @@ Reads the category under the iterator.<p>
         <tr>
           <td class="memname">int go_sub           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> *&nbsp;</td>
+          <td class="paramtype">cat_list_itr *&nbsp;</td>
           <td class="paramname"> <em>itr</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -282,7 +250,7 @@ Moves the iterator to the subcategory of the category under the iterator.<p>
         <tr>
           <td class="memname">int go_sup           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> *&nbsp;</td>
+          <td class="paramtype">cat_list_itr *&nbsp;</td>
           <td class="paramname"> <em>itr</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -309,7 +277,7 @@ Moves the iterator to the parent category of the category under the iterator.<p>
         <tr>
           <td class="memname">int load_cat_list           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__category_8h.html#e1be5bbbffe3942dca22969605b7d0be">cat_list</a> **&nbsp;</td>
+          <td class="paramtype">cat_list **&nbsp;</td>
           <td class="paramname"> <em>cl</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -336,7 +304,7 @@ Loads the currently available categories.<p>
         <tr>
           <td class="memname">int next           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> *&nbsp;</td>
+          <td class="paramtype">cat_list_itr *&nbsp;</td>
           <td class="paramname"> <em>itr</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -363,7 +331,7 @@ Moves the iterator to the next category in the same subcategory.<p>
         <tr>
           <td class="memname">int prev           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="service__category_8h.html#4b435696b2dc032dbf299f9578c7f6aa">cat_list_itr</a> *&nbsp;</td>
+          <td class="paramtype">cat_list_itr *&nbsp;</td>
           <td class="paramname"> <em>itr</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -383,7 +351,7 @@ Moves the iterator to the previous category in the same subcategory.<p>
 
 </div>
 </div><p>
-<a class="anchor" name="c717070150975bfa8f2d50b9bffc123a"></a><!-- doxytag: member="service_category.h::update_cat_list" ref="c717070150975bfa8f2d50b9bffc123a" args="(const void *data)" -->
+<a class="anchor" name="94d3ce9beae4bc559fad4705e59d0348"></a><!-- doxytag: member="service_category.h::update_cat_list" ref="94d3ce9beae4bc559fad4705e59d0348" args="(const void *data, size_t data_len)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -391,9 +359,18 @@ Moves the iterator to the previous category in the same subcategory.<p>
           <td class="memname">int update_cat_list           </td>
           <td>(</td>
           <td class="paramtype">const void *&nbsp;</td>
-          <td class="paramname"> <em>data</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">size_t&nbsp;</td>
+          <td class="paramname"> <em>data_len</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
         </tr>
       </table>
 </div>
@@ -403,7 +380,8 @@ Moves the iterator to the previous category in the same subcategory.<p>
 Updates the category list database.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>data</em>&nbsp;</td><td>the update data as provided by the central category database.</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>data</em>&nbsp;</td><td>the update data as provided by the central category database. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>data_len</em>&nbsp;</td><td>the length in bytes of the update data.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>0 if there is no error or non-zero if there is one. </dd></dl>
@@ -411,7 +389,7 @@ Updates the category list database.<p>
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 1 18:15:02 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Mar 4 18:01:13 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>
