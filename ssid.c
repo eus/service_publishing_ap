@@ -30,17 +30,13 @@
 #include "logger.h"
 #include "ssid.h"
 
-static const char *
-get_wlan_ifname (void)
-{
-  return "wlan0";
-}
+#ifndef WLAN_IF_NAME
+#define WLAN_IF_NAME "wl0"
+#endif
 
-static const char *
-get_proc_net_wireless (void)
-{
-  return "/proc/net/wireless";
-}
+#ifndef PROC_NET_WIRELESS
+#define PROC_NET_WIRELESS "/proc/net/wireless"
+#endif
 
 static int
 iw_get_kernel_we_version(void)
@@ -51,18 +47,18 @@ iw_get_kernel_we_version(void)
   int           v;
 
   /* Check if /proc/net/wireless is available */
-  fh = fopen(get_proc_net_wireless (), "r");
+  fh = fopen(PROC_NET_WIRELESS, "r");
 
   if(fh == NULL)
     {
-      l->SYS_ERR ("Cannot read %s", get_proc_net_wireless ());
+      l->SYS_ERR ("Cannot read " PROC_NET_WIRELESS);
       return(-1);
     }
 
   /* Read the first line of buffer */
   if (fgets(buff, sizeof(buff), fh) == NULL)
     {
-      l->SYS_ERR ("Cannot read %s or it is empty", get_proc_net_wireless ());
+      l->SYS_ERR ("Cannot read " PROC_NET_WIRELESS " or it is empty");
       fclose (fh);
       return -1;
     }
@@ -83,7 +79,7 @@ iw_get_kernel_we_version(void)
   /* Read the second line of buffer */
   if (fgets(buff, sizeof(buff), fh) == NULL)
     {
-      l->SYS_ERR ("Cannot read %s or it is empty", get_proc_net_wireless ());
+      l->SYS_ERR ("Cannot read " PROC_NET_WIRELESS " or it is empty");
       fclose (fh);
       return -1;
     }
@@ -92,7 +88,7 @@ iw_get_kernel_we_version(void)
   p = strrchr(buff, '|');
   if((p == NULL) || (sscanf(p + 1, "%d", &v) != 1))
     {
-      l->ERR ("Cannot parse %s", get_proc_net_wireless ());
+      l->ERR ("Cannot parse " PROC_NET_WIRELESS);
       fclose(fh);
       return(-1);
     }
@@ -155,7 +151,7 @@ set_ssid (const void *new_ssid, size_t len)
       wrq.u.essid.length++;
     }
 
-  strncpy (wrq.ifr_name, get_wlan_ifname (), IFNAMSIZ);
+  strncpy (wrq.ifr_name, WLAN_IF_NAME, IFNAMSIZ);
   if (ioctl (s, SIOCSIWESSID, &wrq) < 0)
     {
       l->SYS_ERR ("Cannot set SSID");
@@ -186,7 +182,7 @@ get_ssid (void *buffer, size_t len)
   wrq.u.essid.length = len;
   wrq.u.essid.flags = 0;
 
-  strncpy (wrq.ifr_name, get_wlan_ifname (), IFNAMSIZ);
+  strncpy (wrq.ifr_name, WLAN_IF_NAME, IFNAMSIZ);
   if (ioctl (s, SIOCGIWESSID, &wrq) < 0)
     {
       l->SYS_ERR ("Cannot retrieve SSID");

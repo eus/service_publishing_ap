@@ -5,6 +5,11 @@ TEST_EXECUTABLES := tlv_test logger_test logger_sqlite3_test service_list_test
 EXECUTABLES := service_publisher.cgi service_publisher_test service_inquiry_handler_daemon gadget service_inquiry_handler_daemon_test
 
 CFLAGS := -DNDEBUG -O3 -Wall -Werror $(CFLAGS)
+#CFLAGS += -DCATEGORY_LIST_DB=\"\"
+#CFLAGS += -DSERVICE_LIST_DB=\"\"
+#CFLAGS += -DUI_FILE=\"\"
+#CFLAGS += -DPROC_NET_WIRELESS=\"\"
+#CFLAGS += -DWLAN_IF_NAME=\"\"
 CFLAGS_DEBUG := -UNDEBUG -O0 -g3
 
 all: $(EXECUTABLES)
