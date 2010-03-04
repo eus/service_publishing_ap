@@ -86,6 +86,9 @@ function createDelButton()
 	button.onclick = function(event) {
 		var rowIndex = this.parentNode.parentNode.rowIndex;
 		services.splice(getServicePos(rowIndex), 1);
+		// The insert button
+		this.parentNode.parentNode.parentNode.deleteRow(rowIndex + 1);
+		// The service row
 		this.parentNode.parentNode.parentNode.deleteRow(rowIndex);
 	};
 	button.value = 'Delete';
