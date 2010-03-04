@@ -31,6 +31,10 @@
 #define UI_FILE "./ui.html"
 #endif
 
+#ifndef SERVICE_PUBLISHER_LOG_FILE
+#define SERVICE_PUBLISHER_LOG_FILE "./service_publisher.log"
+#endif
+
 GLOBAL_LOGGER;
 
 static int should_close_html = 0;
@@ -91,6 +95,12 @@ print_published_services (void)
     }
 
   destroy_service_list (&sl);
+
+  if (service_count == 0)
+    {
+      printf ("categories = new Array();"
+	      "services = new Array();");
+    }
 }
 
 void
@@ -259,7 +269,7 @@ main (int argc, char **argv, char **envp)
   char *buffer;
   struct stat ui_file_stat;
 
-  SETUP_LOGGER ("/dev/stderr", errtostr);
+  SETUP_LOGGER (SERVICE_PUBLISHER_LOG_FILE, errtostr);
 
   if (atexit (close_html))
     {
