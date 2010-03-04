@@ -511,10 +511,10 @@ save_service_list (const service_list *sl)
 			  "update " TABLE_SERVICE_LIST_TMP " set "
 			  COLUMN_MOD_TIME " = ?"
 			  " where " COLUMN_POSITION " = ?"
-			  " and (" COLUMN_CAT_ID " != ?"
-			  " or " COLUMN_DESC " != ?"
-			  " or " COLUMN_LONG_DESC " != ?"
-			  " or " COLUMN_URI " != ?)",
+			  " and " COLUMN_CAT_ID " = ?"
+			  " and " COLUMN_DESC " = ?"
+			  " and " COLUMN_LONG_DESC " = ?"
+			  " and " COLUMN_URI " = ?",
 			  -1,
 			  &updt_stmt,
 			  NULL))
@@ -522,7 +522,7 @@ save_service_list (const service_list *sl)
       SQLITE3_ERR (sl->db, "Cannot prepare mod time adjustment update statement");
       return ERR_SAVE_SERVICE_LIST;
     }
-  if ((rc = sqlite3_exec (sl->db, "select * from " TABLE_SERVICE_LIST_TMP,
+  if ((rc = sqlite3_exec (sl->db, "select * from " TABLE_SERVICE_LIST,
 			  adjust_mod_time, updt_stmt, &err_msg)))
     {
       SQLITE3_ERR_STR (err_msg, "Cannot adjust mod time");
