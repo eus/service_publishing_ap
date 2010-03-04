@@ -116,9 +116,7 @@ close_html (void)
 
   if (err_msg != NULL)
     {
-      printf ("categories = new Array();"
-	      "services = new Array();"
-	      "errorMsg = '%s';", err_msg);
+      printf ("errorMsg = '%s';", err_msg);
     }
 
   printf ("</script></body></html>");
