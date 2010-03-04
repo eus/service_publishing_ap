@@ -53,6 +53,8 @@ print_published_services (void)
   size_t service_count;
   struct service *s;
 
+  printf ("services = new Array();");
+
   if (sl == NULL && load_service_list (&sl))
     {
       err_msg = "Cannot load service list for reading";
@@ -95,11 +97,6 @@ print_published_services (void)
     }
 
   destroy_service_list (&sl);
-
-  if (service_count == 0)
-    {
-      printf ("services = new Array();");
-    }
 }
 
 void
