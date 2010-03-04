@@ -2,5 +2,6 @@
 *_test
 *.db
 *.cgi
+*.log
 service_inquiry_handler_daemon
 gadget

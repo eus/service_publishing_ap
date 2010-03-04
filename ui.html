@@ -433,7 +433,7 @@ select,input,textarea {
 				<input type="button" value="Uncheck All" onclick="render()"/>
 				<input type="button" value="Up" onclick="moveServicesUp()"/>
 			</td></tr></table>
-		<form action="http://192.168.1.1/cgi-bin/hello.sh" method="post" onsubmit="serializeServices()">
+		<form action="http://192.168.1.1/cgi-bin/service_publisher.cgi" method="post" onsubmit="serializeServices()">
 			<input id="serializeBuffer" type="hidden" name="serializedServices" value=""/>
 			<table style="padding: 10px;"><tr><td><button type="submit">Save and Publish Services</button></td></tr></table>
 		</form>

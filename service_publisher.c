@@ -357,11 +357,7 @@ main (int argc, char **argv, char **envp)
 			{
 			  memset (&s, 0, sizeof (s));
 			  rc = parse_next_service (&itr, itr_end, &s);
-			  if (rc == -1)
-			    {
-			      break;
-			    }
-			  if (rc != 0)
+			  if (rc > 0)
 			    {
 			      err_msg = "Cannot parse the next service";
 			      break;
@@ -369,6 +365,10 @@ main (int argc, char **argv, char **envp)
 			  if (add_service_last (sl, &s))
 			    {
 			      err_msg = "Cannot add service";
+			      break;
+			    }
+			  if (rc == -1)
+			    {
 			      break;
 			    }
 			}
