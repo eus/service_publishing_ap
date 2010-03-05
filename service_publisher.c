@@ -84,7 +84,23 @@ print_published_services (void)
 
       if (s->long_desc)
 	{
-	  printf (", '%s'", s->long_desc);
+	  char *ptr = s->long_desc;
+
+	  printf (", \"");
+	  while (*ptr != '\0')
+	    {
+	      if (*ptr == '\n')
+		{
+		  printf ("\\n");
+		}
+	      else
+		{
+		  printf ("%c", *ptr);
+		}
+
+	      ptr++;
+	    }
+	  printf ("\"");
 	}
       else
 	{
@@ -152,6 +168,11 @@ url_decode (char *data_buffer, const char *buffer_end)
 	    {
 	      is_reading_hexcode = 0;
 	      *decoder = (char) strtoul (hexcode, NULL, 16);
+if (decoder[0] == '\n' && decoder[-1] == '\r')
+{
+decoder[-1] = '\n';
+decoder--;
+}
 	      decoder++;
 	    }
 	}
