@@ -36,7 +36,6 @@
       <li><a href="#index_c"><span>c</span></a></li>
       <li><a href="#index_d"><span>d</span></a></li>
       <li><a href="#index_e"><span>e</span></a></li>
-      <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_l"><span>l</span></a></li>
@@ -44,6 +43,7 @@
       <li><a href="#index_p"><span>p</span></a></li>
       <li><a href="#index_r"><span>r</span></a></li>
       <li><a href="#index_s"><span>s</span></a></li>
+      <li><a href="#index_t"><span>t</span></a></li>
       <li><a href="#index_u"><span>u</span></a></li>
     </ul>
   </div>
@@ -60,12 +60,12 @@
 <h3><a class="anchor" name="index_c">- c -</a></h3><ul>
 <li>count_service()
 : <a class="el" href="service__list_8h.html#ba374fb3ca8790bb07d8db4d65cf3f1e">service_list.h</a>
-<li>create_cat_list_itr()
-: <a class="el" href="service__category_8h.html#cb7fc9d3af683d2a7e41a0a1ea1d1740">service_category.h</a>
 <li>create_chunk()
 : <a class="el" href="tlv_8h.html#5ba090432b02ce67c02f72f9085218f1">tlv.h</a>
 <li>create_service()
 : <a class="el" href="service__list_8h.html#f027547e83ef6a9d926e1dd1123a3f56">service_list.h</a>
+<li>create_stack()
+: <a class="el" href="stack_8h.html#0f479ac0962ee55fd9e1ff9a6b0df54f">stack.h</a>
 </ul>
 <h3><a class="anchor" name="index_d">- d -</a></h3><ul>
 <li>del_service_all()
@@ -74,8 +74,6 @@
 : <a class="el" href="service__list_8h.html#6d854d1c079c1768937996ac8d7850d1">service_list.h</a>
 <li>destroy_cat_list()
 : <a class="el" href="service__category_8h.html#aa4a1b8440b32ddd8fe638be8c699904">service_category.h</a>
-<li>destroy_cat_list_itr()
-: <a class="el" href="service__category_8h.html#0bd7ad900c9fcd3677ffcbfa4af5bd36">service_category.h</a>
 <li>destroy_logger()
 : <a class="el" href="logger_8h.html#4dfcbd491525c8782dc0f4a373f29fd6">logger.h</a>
 <li>destroy_sde_handler_cache()
@@ -84,18 +82,16 @@
 : <a class="el" href="service__list_8h.html#122667ee719585cfff23d4eb9bd1f708">service_list.h</a>
 <li>destroy_service_list()
 : <a class="el" href="service__list_8h.html#ce772dad0102e6984e8bf416503ed74a">service_list.h</a>
+<li>destroy_stack()
+: <a class="el" href="stack_8h.html#535cd557c7ef1c8a6db66c9ced67ff63">stack.h</a>
 </ul>
 <h3><a class="anchor" name="index_e">- e -</a></h3><ul>
 <li>errtostr()
 : <a class="el" href="app__err_8h.html#ce1966c7826a4a215b5bc90482a123fd">app_err.h</a>
 </ul>
-<h3><a class="anchor" name="index_f">- f -</a></h3><ul>
-<li>free_cat()
-: <a class="el" href="service__category_8h.html#193751c355ce8ca503b900987443ce67">service_category.h</a>
-</ul>
 <h3><a class="anchor" name="index_g">- g -</a></h3><ul>
 <li>get_cat()
-: <a class="el" href="service__category_8h.html#1ea92041159ec8c3497b1896d237bc11">service_category.h</a>
+: <a class="el" href="service__category_8h.html#7b5a52e998daed030d9cf4e76fd9ea8a">service_category.h</a>
 <li>get_last_modification_time()
 : <a class="el" href="service__list_8h.html#94fb1846f6f87afc488541b4f3c45d63">service_list.h</a>
 <li>get_metadata_response()
@@ -109,29 +105,39 @@
 <li>get_ssid()
 : <a class="el" href="ssid_8h.html#148ac704d7b8a2cfdabe724b2d6c0ff3">ssid.h</a>
 <li>go_sub()
-: <a class="el" href="service__category_8h.html#bfc9f86af2fc746dc2755e19d172b5a1">service_category.h</a>
+: <a class="el" href="service__category_8h.html#ad0f4bda7951e23c95f58ce557d8778d">service_category.h</a>
 <li>go_sup()
-: <a class="el" href="service__category_8h.html#e7717ee814cbc7cfe7f826f7d4871f92">service_category.h</a>
+: <a class="el" href="service__category_8h.html#63e61050101cfac35371aac243ea02b4">service_category.h</a>
 </ul>
 <h3><a class="anchor" name="index_i">- i -</a></h3><ul>
 <li>init_logger()
 : <a class="el" href="logger_8h.html#d669c69bbc8b70990cf421d32c54a220">logger.h</a>
 <li>insert_service_at()
 : <a class="el" href="service__list_8h.html#c34fb274bc6837b3f704fea1e6c2b0c6">service_list.h</a>
+<li>is_empty()
+: <a class="el" href="stack_8h.html#938d6cdb835c36915ab1b04853f62d15">stack.h</a>
 </ul>
 <h3><a class="anchor" name="index_l">- l -</a></h3><ul>
 <li>load_cat_list()
 : <a class="el" href="service__category_8h.html#ea93a3c7ccb1c48660f6ed198db14729">service_category.h</a>
+<li>load_flat_cat_list()
+: <a class="el" href="service__category_8h.html#4f54917033fb9e1ad6810c18f55ad2ef">service_category.h</a>
 <li>load_service_list()
 : <a class="el" href="service__list_8h.html#c084a45dd0591e28048a1d4ff8279c5c">service_list.h</a>
 </ul>
 <h3><a class="anchor" name="index_n">- n -</a></h3><ul>
 <li>next()
-: <a class="el" href="service__category_8h.html#80d493b55f5e1c44f016fc31bf9bb646">service_category.h</a>
+: <a class="el" href="service__category_8h.html#4027472a008ee0e28517c4b53fd66a23">service_category.h</a>
 </ul>
 <h3><a class="anchor" name="index_p">- p -</a></h3><ul>
+<li>pop()
+: <a class="el" href="stack_8h.html#51a1546d14f3595cb8fa5ea2df9a08d1">stack.h</a>
 <li>prev()
-: <a class="el" href="service__category_8h.html#675133de16b603711189e3e5d7d2fd93">service_category.h</a>
+: <a class="el" href="service__category_8h.html#1cd22c89db9382d30ff257833ab5376b">service_category.h</a>
+<li>publish_services()
+: <a class="el" href="service__list_8h.html#7fd58150475c5d008f28e915e61ffb69">service_list.h</a>
+<li>push()
+: <a class="el" href="stack_8h.html#d6785d3908ce1a65ed60134049d2459a">stack.h</a>
 </ul>
 <h3><a class="anchor" name="index_r">- r -</a></h3><ul>
 <li>read_chunk()
@@ -140,6 +146,8 @@
 : <a class="el" href="service__list_8h.html#53f438044929c297de64b723f577e2f3">service_list.h</a>
 <li>replace_service_at()
 : <a class="el" href="service__list_8h.html#9f7135189db6decfcb8c9bdf4ace4ebd">service_list.h</a>
+<li>reset()
+: <a class="el" href="service__category_8h.html#19f63eb11677f61c05dd42f03018179d">service_category.h</a>
 <li>run_inquiry_handler()
 : <a class="el" href="service__inquiry__handler_8h.html#9ea2b046e8293035e0d84376721fa1f5">service_inquiry_handler.h</a>
 </ul>
@@ -153,12 +161,16 @@
 <li>sqlite3_err_str()
 : <a class="el" href="logger__sqlite3_8h.html#4a67e30aed2fc33908e2797559bf7d33">logger_sqlite3.h</a>
 </ul>
+<h3><a class="anchor" name="index_t">- t -</a></h3><ul>
+<li>top()
+: <a class="el" href="stack_8h.html#5180d53bf176cd257ed7c739bbaf49d9">stack.h</a>
+</ul>
 <h3><a class="anchor" name="index_u">- u -</a></h3><ul>
 <li>update_cat_list()
-: <a class="el" href="service__category_8h.html#94d3ce9beae4bc559fad4705e59d0348">service_category.h</a>
+: <a class="el" href="service__category_8h.html#c019be18beb6357fb0447b25b5b211dd">service_category.h</a>
 </ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Mar 4 18:01:13 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Apr 23 21:13:47 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

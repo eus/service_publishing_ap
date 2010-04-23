@@ -57,6 +57,10 @@ errtostr (int err)
     "Error in reloading service list",
     "Error in loading category list",
     "Error in parsing data",
+    "Error in the DB",
+    "Error in updating the category list",
+    "Error in loading flat category list",
+    "Invalid program state",
   };
 
   return errstr[err];

@@ -36,7 +36,6 @@
       <li><a href="#index_c"><span>c</span></a></li>
       <li><a href="#index_d"><span>d</span></a></li>
       <li><a href="#index_e"><span>e</span></a></li>
-      <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_l"><span>l</span></a></li>
@@ -45,6 +44,7 @@
       <li><a href="#index_p"><span>p</span></a></li>
       <li><a href="#index_r"><span>r</span></a></li>
       <li><a href="#index_s"><span>s</span></a></li>
+      <li><a href="#index_t"><span>t</span></a></li>
       <li><a href="#index_u"><span>u</span></a></li>
       <li><a href="#index_v"><span>v</span></a></li>
     </ul>
@@ -64,12 +64,12 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 <h3><a class="anchor" name="index_c">- c -</a></h3><ul>
 <li>count_service()
 : <a class="el" href="service__list_8h.html#ba374fb3ca8790bb07d8db4d65cf3f1e">service_list.h</a>
-<li>create_cat_list_itr()
-: <a class="el" href="service__category_8h.html#cb7fc9d3af683d2a7e41a0a1ea1d1740">service_category.h</a>
 <li>create_chunk()
 : <a class="el" href="tlv_8h.html#5ba090432b02ce67c02f72f9085218f1">tlv.h</a>
 <li>create_service()
 : <a class="el" href="service__list_8h.html#f027547e83ef6a9d926e1dd1123a3f56">service_list.h</a>
+<li>create_stack()
+: <a class="el" href="stack_8h.html#0f479ac0962ee55fd9e1ff9a6b0df54f">stack.h</a>
 </ul>
 <h3><a class="anchor" name="index_d">- d -</a></h3><ul>
 <li>del_service_all()
@@ -80,8 +80,6 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="sde_8h.html#6ae07eed4365b800c09d7b22bacd7a28b6018339139b51a498dc44bd760766fc">sde.h</a>
 <li>destroy_cat_list()
 : <a class="el" href="service__category_8h.html#aa4a1b8440b32ddd8fe638be8c699904">service_category.h</a>
-<li>destroy_cat_list_itr()
-: <a class="el" href="service__category_8h.html#0bd7ad900c9fcd3677ffcbfa4af5bd36">service_category.h</a>
 <li>destroy_logger()
 : <a class="el" href="logger_8h.html#4dfcbd491525c8782dc0f4a373f29fd6">logger.h</a>
 <li>destroy_sde_handler_cache()
@@ -90,6 +88,8 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="service__list_8h.html#122667ee719585cfff23d4eb9bd1f708">service_list.h</a>
 <li>destroy_service_list()
 : <a class="el" href="service__list_8h.html#ce772dad0102e6984e8bf416503ed74a">service_list.h</a>
+<li>destroy_stack()
+: <a class="el" href="stack_8h.html#535cd557c7ef1c8a6db66c9ced67ff63">stack.h</a>
 </ul>
 <h3><a class="anchor" name="index_e">- e -</a></h3><ul>
 <li>err
@@ -108,6 +108,8 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad4e565e29281ae4a3869fe5b0dc1cc5280">app_err.h</a>
 <li>ERR_CREATE_TMP_SERVICE_LIST
 : <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad4b722d0016fec9bd0087ea6f671d629f3">app_err.h</a>
+<li>ERR_DB
+: <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad40c84f5bcb4467b31b6ff08f6689acb6d">app_err.h</a>
 <li>ERR_DEC_POS
 : <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad4166e2680f41073c9fd7dd59e3f9f7152">app_err.h</a>
 <li>ERR_DELETE_ALL_SERVICE
@@ -136,8 +138,12 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad424e2b68708e69381d62891e93b53e1ca">app_err.h</a>
 <li>ERR_INVALID_SERVICE_POS
 : <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad41ccfd1e5c5e94388ca7dc4978f527be7">app_err.h</a>
+<li>ERR_INVALID_STATE
+: <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad4c60ad9ef7b73386b49d5c93a2391c447">app_err.h</a>
 <li>ERR_LOAD_CATEGORY_LIST
 : <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad4cb0e72cae8269aacbff186a3a310b7ab">app_err.h</a>
+<li>ERR_LOAD_FLAT_CATEGORY_LIST
+: <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad4365e2d37ed5293d7fce626cd80da9763">app_err.h</a>
 <li>ERR_LOAD_SERVICE_LIST
 : <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad48346990dffc3b42ef37c5ab52595548b">app_err.h</a>
 <li>ERR_MEM
@@ -168,16 +174,14 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad46d4f18a9728f434ff2d1a64043ebe6e8">app_err.h</a>
 <li>ERR_TAKE_SDE_PACKET
 : <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad48e7c7780545b4c79f0b8845f7074b356">app_err.h</a>
+<li>ERR_UPDATE_CATEGORY_LIST
+: <a class="el" href="app__err_8h.html#52482fdd3721e7db69dc740aefee8ad438d9701c65cd069a6e1b6a7d28a9db3b">app_err.h</a>
 <li>errtostr()
 : <a class="el" href="app__err_8h.html#ce1966c7826a4a215b5bc90482a123fd">app_err.h</a>
 </ul>
-<h3><a class="anchor" name="index_f">- f -</a></h3><ul>
-<li>free_cat()
-: <a class="el" href="service__category_8h.html#193751c355ce8ca503b900987443ce67">service_category.h</a>
-</ul>
 <h3><a class="anchor" name="index_g">- g -</a></h3><ul>
 <li>get_cat()
-: <a class="el" href="service__category_8h.html#1ea92041159ec8c3497b1896d237bc11">service_category.h</a>
+: <a class="el" href="service__category_8h.html#7b5a52e998daed030d9cf4e76fd9ea8a">service_category.h</a>
 <li>get_last_modification_time()
 : <a class="el" href="service__list_8h.html#94fb1846f6f87afc488541b4f3c45d63">service_list.h</a>
 <li>GET_METADATA
@@ -199,9 +203,9 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 <li>GLOBAL_LOGGER
 : <a class="el" href="logger_8h.html#12f7b436908fb49526f10ebcefd401ba">logger.h</a>
 <li>go_sub()
-: <a class="el" href="service__category_8h.html#bfc9f86af2fc746dc2755e19d172b5a1">service_category.h</a>
+: <a class="el" href="service__category_8h.html#ad0f4bda7951e23c95f58ce557d8778d">service_category.h</a>
 <li>go_sup()
-: <a class="el" href="service__category_8h.html#e7717ee814cbc7cfe7f826f7d4871f92">service_category.h</a>
+: <a class="el" href="service__category_8h.html#63e61050101cfac35371aac243ea02b4">service_category.h</a>
 </ul>
 <h3><a class="anchor" name="index_i">- i -</a></h3><ul>
 <li>INFO
@@ -210,12 +214,16 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="logger_8h.html#d669c69bbc8b70990cf421d32c54a220">logger.h</a>
 <li>insert_service_at()
 : <a class="el" href="service__list_8h.html#c34fb274bc6837b3f704fea1e6c2b0c6">service_list.h</a>
+<li>is_empty()
+: <a class="el" href="stack_8h.html#938d6cdb835c36915ab1b04853f62d15">stack.h</a>
 </ul>
 <h3><a class="anchor" name="index_l">- l -</a></h3><ul>
 <li>l
 : <a class="el" href="logger_8h.html#f7810bf7932f515cc24dff9384e78b1b">logger.h</a>
 <li>load_cat_list()
 : <a class="el" href="service__category_8h.html#ea93a3c7ccb1c48660f6ed198db14729">service_category.h</a>
+<li>load_flat_cat_list()
+: <a class="el" href="service__category_8h.html#4f54917033fb9e1ad6810c18f55ad2ef">service_category.h</a>
 <li>load_service_list()
 : <a class="el" href="service__list_8h.html#c084a45dd0591e28048a1d4ff8279c5c">service_list.h</a>
 </ul>
@@ -227,11 +235,17 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 </ul>
 <h3><a class="anchor" name="index_n">- n -</a></h3><ul>
 <li>next()
-: <a class="el" href="service__category_8h.html#80d493b55f5e1c44f016fc31bf9bb646">service_category.h</a>
+: <a class="el" href="service__category_8h.html#4027472a008ee0e28517c4b53fd66a23">service_category.h</a>
 </ul>
 <h3><a class="anchor" name="index_p">- p -</a></h3><ul>
+<li>pop()
+: <a class="el" href="stack_8h.html#51a1546d14f3595cb8fa5ea2df9a08d1">stack.h</a>
 <li>prev()
-: <a class="el" href="service__category_8h.html#675133de16b603711189e3e5d7d2fd93">service_category.h</a>
+: <a class="el" href="service__category_8h.html#1cd22c89db9382d30ff257833ab5376b">service_category.h</a>
+<li>publish_services()
+: <a class="el" href="service__list_8h.html#7fd58150475c5d008f28e915e61ffb69">service_list.h</a>
+<li>push()
+: <a class="el" href="stack_8h.html#d6785d3908ce1a65ed60134049d2459a">stack.h</a>
 </ul>
 <h3><a class="anchor" name="index_r">- r -</a></h3><ul>
 <li>read_chunk()
@@ -240,6 +254,8 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="service__list_8h.html#53f438044929c297de64b723f577e2f3">service_list.h</a>
 <li>replace_service_at()
 : <a class="el" href="service__list_8h.html#9f7135189db6decfcb8c9bdf4ace4ebd">service_list.h</a>
+<li>reset()
+: <a class="el" href="service__category_8h.html#19f63eb11677f61c05dd42f03018179d">service_category.h</a>
 <li>run_inquiry_handler()
 : <a class="el" href="service__inquiry__handler_8h.html#9ea2b046e8293035e0d84376721fa1f5">service_inquiry_handler.h</a>
 </ul>
@@ -274,29 +290,33 @@ Here is a list of all documented functions, variables, defines, enums, and typed
 : <a class="el" href="ssid_8h.html#b95825902a49c3d8825beb538d2e8599">ssid.h</a>
 <li>SETUP_LOGGER
 : <a class="el" href="logger_8h.html#ac5f0777f4352b3cc840319006ae1cff">logger.h</a>
-<li>SQLITE3_ERR
-: <a class="el" href="logger__sqlite3_8h.html#ec8da5ec9210700aed7a18e74ba7268a">logger_sqlite3.h</a>
 <li>sqlite3_err()
 : <a class="el" href="logger__sqlite3_8h.html#0297a93539687e2bc3de793182dffc22">logger_sqlite3.h</a>
-<li>SQLITE3_ERR_STR
-: <a class="el" href="logger__sqlite3_8h.html#49d4139b37ed76d57d1a9fa9314520a9">logger_sqlite3.h</a>
+<li>SQLITE3_ERR
+: <a class="el" href="logger__sqlite3_8h.html#ec8da5ec9210700aed7a18e74ba7268a">logger_sqlite3.h</a>
 <li>sqlite3_err_str()
 : <a class="el" href="logger__sqlite3_8h.html#4a67e30aed2fc33908e2797559bf7d33">logger_sqlite3.h</a>
+<li>SQLITE3_ERR_STR
+: <a class="el" href="logger__sqlite3_8h.html#49d4139b37ed76d57d1a9fa9314520a9">logger_sqlite3.h</a>
 <li>SSID_MAX_LEN
 : <a class="el" href="ssid_8h.html#d87933771918587fe8eac8b0f48fa2d1">ssid.h</a>
 <li>SYS_ERR
 : <a class="el" href="logger_8h.html#11000ece922ae6d878ae07b4bf85df66">logger.h</a>
 </ul>
+<h3><a class="anchor" name="index_t">- t -</a></h3><ul>
+<li>top()
+: <a class="el" href="stack_8h.html#5180d53bf176cd257ed7c739bbaf49d9">stack.h</a>
+</ul>
 <h3><a class="anchor" name="index_u">- u -</a></h3><ul>
 <li>update_cat_list()
-: <a class="el" href="service__category_8h.html#94d3ce9beae4bc559fad4705e59d0348">service_category.h</a>
+: <a class="el" href="service__category_8h.html#c019be18beb6357fb0447b25b5b211dd">service_category.h</a>
 </ul>
 <h3><a class="anchor" name="index_v">- v -</a></h3><ul>
 <li>VALUE_ALIGNMENT
 : <a class="el" href="tlv_8h.html#d36cab94944bfd82311ae5939d58af94">tlv.h</a>
 </ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Mar 4 18:01:13 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Apr 23 21:13:47 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

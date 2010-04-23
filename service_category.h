@@ -15,34 +15,65 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
  *************************************************************************//**
  * @file service_category.h
- * @brief The service category module. First, the complete category list is
- *        loaded from the DB. Then, one or more iterators are created for the
- *        category list to navigate the list. The category list DB can be
- *        updated.
+ * @brief The service category module. This module is thread-safe and
+ *        fork-safe as long as each thread and each child process load their
+ *        own service list (i.e., the service list object must not be passed
+ *        from one thread to another or from a parent process to its child).
+ *        And, it is good to reset the category list before navigating it to
+ *        get the latest update to the underlying DB. In the future, an event
+ *        listener may be available to make this more efficient. The geometry
+ *        of the hierarchical structure of a category list is a tree whose
+ *        root is only logical and not present in the list. The children of
+ *        the logical root are the top-level categories. Upon obtaining a
+ *        service category list using either load_flat_cat_list() or
+ *        load_cat_list(), or after resetting a service category list with
+ *        reset(), the internal iterator is before the first category if the
+ *        list is flat or before the first top-level category if the list is
+ *        hierarchical that means that get_cat(), prev(), go_sup() and
+ *        go_sub() will indicate that there is no category unless next() has
+ *        been executed to move the internal iterator to the first
+ *        (top-level) category.
  ****************************************************************************/
 
 #ifndef SERVICE_CATEGORY_H
 #define SERVICE_CATEGORY_H
 
+#ifndef CATEGORY_LIST_DB
+#define CATEGORY_LIST_DB "./category_list.db"
+#endif
+
 #ifdef __cpluplus
 extern "C" {
 #endif
 
-/** A category. */
+/** The category under the internal iterator of the category list. */
 struct cat
 {
   unsigned long id; /**< The category ID. */
-  char *name; /**< The category name. */
+  const char *name; /**< The category name. */
 };
 
 /** A list of categories. */
 typedef struct cat_list_impl cat_list;
 
-/** An iterator to traverse a category list. */
-typedef struct cat_list_itr_impl cat_list_itr;
+/**
+ * Loads the currently available categories to be read without considering the
+ * hierarchical structure. The list is detached from the underlying DB so that
+ * any change to the underlying DB will not be seen by the list unless the list
+ * is reset.
+ *
+ * @param [out] cl the pointer pointing to a dynamically allocated memory that
+ *                 should be freed with destroy_cat_list().
+ *
+ * @return 0 if there is no error or non-zero if there is an error.
+ */
+int
+load_flat_cat_list (cat_list **cl);
 
 /**
- * Loads the currently available categories.
+ * Loads the currently available categories to be read in a hierarchical manner.
+ * The list is detached from the underlying DB so that any change to the
+ * underlying DB will not be seen by the list unless the list is reset.
  *
  * @param [out] cl the pointer pointing to a dynamically allocated memory that
  *                 should be freed with destroy_cat_list().
@@ -53,9 +84,9 @@ int
 load_cat_list (cat_list **cl);
 
 /**
- * Frees the memory allocated through load_cat_list() and sets the pointer
- * to NULL as a safe guard. Passing a pointer to NULL is okay but not a NULL
- * pointer.
+ * Frees the memory allocated through load_cat_list() or load_flat_cat_list()
+ * and sets the pointer to NULL as a safe guard. Passing a pointer to NULL is
+ * okay but not a NULL pointer.
  *
  * @param [in] cl the category list to be freed.
  */
@@ -63,98 +94,91 @@ void
 destroy_cat_list (cat_list **cl);
 
 /**
- * Creates an iterator to traverse the given category list.
+ * Moves the internal iterator to the next category in the same subcategory.
+ * Or, if the category list is flat, the internal iterator will move to the
+ * next available category.
  *
- * @param [out] itr the pointer pointing to a dynamically allocated memory that
- *                  should be freed with destroy_cat_list_itr().
- * @param [in] cl the category list to be traversed.
+ * @param [in] cl the category list whose internal iterator is to be updated.
+ *
+ * @return 0 if there is no next category or the list is empty, -1 if there is
+ *         a next category, or a positive integer if there is an error.
+ */
+int
+next (cat_list *cl);
+
+/**
+ * Moves the internal iterator to the previous category in the same subcategory.
+ * Or, if the category list is flat, the internal iterator will move to the
+ * previous available category.
+ *
+ * @param [in] cl the category list whose internal iterator is to be updated.
+ *
+ * @return 0 if there is no previous category or the internal iterator is not
+ *         over any category, -1 if there is a previous category, or a positive
+ *         integer if there is an error.
+ */
+int
+prev (cat_list *cl);
+
+/**
+ * Moves the internal iterator to the subcategory of the category under the
+ * internal iterator.
+ *
+ * @param [in] cl the category list whose internal iterator is to be updated.
+ *
+ * @return 0 if there is no subcategory or the internal iterator is not over any
+ *         category or the list is flat, -1 if there is a subcategory, or a
+ *         positive integer if there is an error.
+ */
+int
+go_sub (cat_list *cl);
+
+/**
+ * Moves the internal iterator to the parent category of the category under
+ * the internal iterator.
+ *
+ * @param [in] cl the category list whose internal iterator is to be updated.
+ *
+ * @return 0 if there is no parent category or the internal iterator is not over
+ *         any category or the list is flat, -1 if there is a parent category, or
+ *         a positive integer if there is an error.
+ */
+int
+go_sup (cat_list *cl);
+
+/**
+ * Resets the internal iterator of the given category list as well as refreshing
+ * the list data by re-reading the underlying DB.
+ *
+ * @param [in] cl the category list whose internal iterator will be reset.
  *
  * @return 0 if there is no error or non-zero if there is an error.
  */
 int
-create_cat_list_itr (cat_list_itr **itr, cat_list *cl);
+reset (cat_list *cl);
 
 /**
- * Frees the memory allocated through create_cat_list_itr() and sets the pointer
- * to NULL as a safe guard. Passing a pointer to NULL is okay but not a NULL
- * pointer.
+ * Reads the category under the internal iterator.
  *
- * @param [in] itr the iterator to be freed.
+ * @param [in] cl the category list to be read.
+ *
+ * @return the category under the internal iterator or NULL if the internal
+ *         iterator is not over any category.
  */
-void
-destroy_cat_list_itr (cat_list_itr **itr);
+const struct cat *
+get_cat (const cat_list *cl);
 
 /**
- * Moves the iterator to the next category in the same subcategory.
+ * Updates the category list database. The update will not be visible to
+ * a category list that is created before the update and has not been reset.
  *
- * @param [in] itr the category list iterator.
- *
- * @return 0 if there is no next category or non-zero if there is one.
- */
-int
-next (cat_list_itr *itr);
-
-/**
- * Moves the iterator to the previous category in the same subcategory.
- *
- * @param [in] itr the category list iterator.
- *
- * @return 0 if there is no previous category or non-zero if there is one.
- */
-int
-prev (cat_list_itr *itr);
-
-/**
- * Moves the iterator to the subcategory of the category under the iterator.
- *
- * @param [in] itr the category list iterator.
- *
- * @return 0 if there is no subcategory or non-zero if there is one.
- */
-int
-go_sub (cat_list_itr *itr);
-
-/**
- * Moves the iterator to the parent category of the category under the iterator.
- *
- * @param [in] itr the category list iterator.
- *
- * @return 0 if there is no parent category or non-zero if there is one.
- */
-int
-go_sup (cat_list_itr *itr);
-
-/**
- * Reads the category under the iterator.
- *
- * @param [out] c the pointer pointing to a dynamically allocated memory that
- *                should be freed with free_cat().
- * @param [in] itr the category list iterator.
+ * @param [in] sql_statements the update data as provided by the central category
+ *                            database.
  *
  * @return 0 if there is no error or non-zero if there is one.
  */
 int
-get_cat (struct cat **c, const cat_list_itr *itr);
-
-/**
- * Frees the memory allocated through get_cat() and sets the pointer
- * to NULL as a safe guard. Passing a pointer to NULL is okay but not a NULL
- * pointer.
- *
- * @param [in] c the category to be freed.
- */
-void
-free_cat (struct cat **c);
-
-/**
- * Updates the category list database.
- *
- * @param [in] data the update data as provided by the central category database.
- *
- * @return 0 if there is no error or non-zero if there is one.
- */
-int
-update_cat_list (const void *data);
+update_cat_list (const char *sql_statements);
 
 #ifdef __cplusplus
 }

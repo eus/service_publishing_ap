@@ -90,40 +90,43 @@
 <a name="l00149"></a>00149 <span class="keywordtype">int</span>
 <a name="l00150"></a>00150 save_service_list (<span class="keyword">const</span> service_list *sl);
 <a name="l00151"></a>00151 
-<a name="l00160"></a>00160 <span class="keywordtype">size_t</span>
-<a name="l00161"></a>00161 count_service (<span class="keyword">const</span> service_list *sl);
-<a name="l00162"></a>00162 
-<a name="l00171"></a>00171 <span class="keywordtype">int</span>
-<a name="l00172"></a>00172 add_service_first (service_list *sl, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structservice.html">service</a> *s);
-<a name="l00173"></a>00173 
-<a name="l00182"></a>00182 <span class="keywordtype">int</span>
-<a name="l00183"></a>00183 add_service_last (service_list *sl, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structservice.html">service</a> *s);
-<a name="l00184"></a>00184 
-<a name="l00196"></a>00196 <span class="keywordtype">int</span>
-<a name="l00197"></a>00197 get_service_at (service_list *sl, <span class="keyword">struct</span> <a class="code" href="structservice.html">service</a> **s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
-<a name="l00198"></a>00198 
-<a name="l00209"></a>00209 <span class="keywordtype">int</span>
-<a name="l00210"></a>00210 insert_service_at (service_list *sl, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structservice.html">service</a> *s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
-<a name="l00211"></a>00211 
-<a name="l00221"></a>00221 <span class="keywordtype">int</span>
-<a name="l00222"></a>00222 replace_service_at (service_list *sl, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structservice.html">service</a> *s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
-<a name="l00223"></a>00223 
-<a name="l00232"></a>00232 <span class="keywordtype">int</span>
-<a name="l00233"></a>00233 del_service_at (service_list *sl, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
-<a name="l00234"></a>00234 
-<a name="l00242"></a>00242 <span class="keywordtype">int</span>
-<a name="l00243"></a>00243 del_service_all (service_list *sl);
-<a name="l00244"></a>00244 
-<a name="l00257"></a>00257 uint64_t
-<a name="l00258"></a>00258 get_last_modification_time (service_list *sl);
-<a name="l00259"></a>00259 
-<a name="l00260"></a>00260 <span class="preprocessor">#ifdef __cplusplus</span>
-<a name="l00261"></a>00261 <span class="preprocessor"></span>}
-<a name="l00262"></a>00262 <span class="preprocessor">#endif</span>
-<a name="l00263"></a>00263 <span class="preprocessor"></span>
-<a name="l00264"></a>00264 <span class="preprocessor">#endif </span><span class="comment">/* SERVICE_LIST_H */</span>
+<a name="l00155"></a>00155 <span class="keywordtype">void</span>
+<a name="l00156"></a>00156 publish_services (<span class="keywordtype">void</span>);
+<a name="l00157"></a>00157 
+<a name="l00166"></a>00166 <span class="keywordtype">size_t</span>
+<a name="l00167"></a>00167 count_service (<span class="keyword">const</span> service_list *sl);
+<a name="l00168"></a>00168 
+<a name="l00177"></a>00177 <span class="keywordtype">int</span>
+<a name="l00178"></a>00178 add_service_first (service_list *sl, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structservice.html">service</a> *s);
+<a name="l00179"></a>00179 
+<a name="l00188"></a>00188 <span class="keywordtype">int</span>
+<a name="l00189"></a>00189 add_service_last (service_list *sl, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structservice.html">service</a> *s);
+<a name="l00190"></a>00190 
+<a name="l00202"></a>00202 <span class="keywordtype">int</span>
+<a name="l00203"></a>00203 get_service_at (service_list *sl, <span class="keyword">struct</span> <a class="code" href="structservice.html">service</a> **s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
+<a name="l00204"></a>00204 
+<a name="l00215"></a>00215 <span class="keywordtype">int</span>
+<a name="l00216"></a>00216 insert_service_at (service_list *sl, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structservice.html">service</a> *s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
+<a name="l00217"></a>00217 
+<a name="l00227"></a>00227 <span class="keywordtype">int</span>
+<a name="l00228"></a>00228 replace_service_at (service_list *sl, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code" href="structservice.html">service</a> *s, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
+<a name="l00229"></a>00229 
+<a name="l00238"></a>00238 <span class="keywordtype">int</span>
+<a name="l00239"></a>00239 del_service_at (service_list *sl, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx);
+<a name="l00240"></a>00240 
+<a name="l00248"></a>00248 <span class="keywordtype">int</span>
+<a name="l00249"></a>00249 del_service_all (service_list *sl);
+<a name="l00250"></a>00250 
+<a name="l00263"></a>00263 uint64_t
+<a name="l00264"></a>00264 get_last_modification_time (service_list *sl);
+<a name="l00265"></a>00265 
+<a name="l00266"></a>00266 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00267"></a>00267 <span class="preprocessor"></span>}
+<a name="l00268"></a>00268 <span class="preprocessor">#endif</span>
+<a name="l00269"></a>00269 <span class="preprocessor"></span>
+<a name="l00270"></a>00270 <span class="preprocessor">#endif </span><span class="comment">/* SERVICE_LIST_H */</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Mar 4 18:01:12 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Apr 23 21:13:47 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

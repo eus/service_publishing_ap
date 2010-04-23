@@ -1,7 +1,7 @@
 .PHONY: all all_debug test test_with_root_priv test_without_root_priv clean doc
 
 TEST_EXECUTABLES_NEEDING_ROOT_PRIV := ssid_test
-TEST_EXECUTABLES := tlv_test logger_test logger_sqlite3_test service_list_test
+TEST_EXECUTABLES := tlv_test logger_test logger_sqlite3_test service_list_test stack_test service_category_test
 INTERACTIVE_TEST_EXECUTABLES := service_publisher_test gadget service_inquiry_handler_daemon_test
 EXECUTABLES := service_publisher.cgi service_inquiry_handler_daemon
 
@@ -12,6 +12,11 @@ all: $(EXECUTABLES)
 
 all_debug: CFLAGS := $(CFLAGS) $(CFLAGS_DEBUG)
 all_debug: all
+
+stack.o: stack.h
+
+stack_test: CFLAGS := $(CFLAGS) $(CFLAGS_DEBUG)
+stack_test: stack.o app_err.o logger.o
 
 logger.o: logger.h
 
@@ -51,7 +56,11 @@ tlv.o: tlv.h
 tlv_test: CFLAGS := $(CFLAGS) $(CFLAGS_DEBUG)
 tlv_test: tlv.o
 
-service_category.o: service_category.h app_err.h logger.h
+service_category.o: service_category.h app_err.h logger_sqlite3.h logger.h stack.h tlv.h
+
+service_category_test: CFLAGS := $(CFLAGS) $(CFLAGS_DEBUG) -DCATEGORY_LIST_DB=\"./service_category_test.db\"
+service_category_test: LDLIBS := -lsqlite3 $(LDLIBS)
+service_category_test: service_category.o app_err.o logger.o logger_sqlite3.o stack.o tlv.o
 
 service_list.o: service_list.h app_err.h logger.h logger_sqlite3.h ssid.h
 

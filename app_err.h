@@ -76,6 +76,10 @@ enum err
     ERR_RELOAD_SERVICE_LIST, /**< Error in reloading service list. */
     ERR_LOAD_CATEGORY_LIST, /**< Error in loading category DB. */
     ERR_PARSE_DATA, /**< Error in parsing data. */
+    ERR_DB, /**< A DB related general error. */
+    ERR_UPDATE_CATEGORY_LIST, /**< Error in updating the category list. */
+    ERR_LOAD_FLAT_CATEGORY_LIST, /**< Error in loading flat category list. */
+    ERR_INVALID_STATE, /**< The state should never been entered. */
   };
 
 /**

@@ -27,10 +27,62 @@
 <tr><td colspan="2"><br><h2>Data Fields</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">sqlite3 *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcat__list__impl.html#4b268a03c7c17005c1ab2195e2cbd06b">db</a></td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structcat.html">cat</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcat__list__impl.html#aa7ed53feff7bfad226001711d5bc996">cur_cat</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcat__list__impl.html#a2aec0247e4682c171f7eb24561f2b31">cur_cat_name_size</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned long&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcat__list__impl.html#8189868f54862c6455efe88eda101b88">next_offset</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcat__list__impl.html#f063702b99c3b9133d520c23046abf88">is_flat</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">sqlite3_stmt *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcat__list__impl.html#e4959818b5ed443ed40f16169a6f9855">flat_next_prev_stmt</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">stack *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcat__list__impl.html#ed70a4d8d7f535e388e0dfc88c11910a">parents_id_and_next_offset</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">sqlite3_stmt *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcat__list__impl.html#d4301a0d729456d02e801701fc3a5ef8">go_sub_sup_stmt</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">sqlite3_stmt *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcat__list__impl.html#38179f03c7a090d3701bb5aff3bd715a">top_level_next_prev_stmt</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">sqlite3_stmt *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcat__list__impl.html#4ca22a696372db860fcc734ddec2cdb3">next_prev_stmt</a></td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-The implementation of a list of categories.<p>
+The implementation of a list of categories. I don't build a linked-list from the DB to be iterated. Instead, I directly iterate the categories using SQL queries. Although the outside world sees the list as containing a tree like the following one: +-- NULL (0) |-- Restaurant (1) |-- Schools (2) | |-- Private schools (4) | | |-- Kindergarden (6) | | |-- Elementary school (7) | | | |-- Public schools (5) | | |-- Kindergarden (6) | | |-- Elementary school (7) | |-- Games (3) |-- Logic games (8) |-- Card games (9)<p>
+the implementation is not since one subcategory may be reused by some parents as illustrated below: +-------+----------+ |cat_id | subcat_id| +-------+----------+ |... |... | | 2 | 4 | | 2 | 5 | | 4 | 6 | | 4 | 7 | | 5 | 6 | | 5 | 7 | |... |... | +-------+----------+ Doing `select subcat_id from t where cat_id = 4' returns a subtree rooted at "Private schools". But, doing `select cat_id from t where subcat_id = 6' returns two parents: "Private schools" and "Public schools". This means that navigation of the tree must never start from a subcategory. Therefore, going to a subcategory has to record both the current category ID and its iteration offset so that it is possible to go back to the parent categories. For example, iterating "Schools" -&gt; "Private schools" -&gt; "Public schools" -&gt; "Kindergarden" causes the following vertical navigation information to be stored in a stack: +--------+-------------+ | cat_id | next_offset | +--------+-------------+ | 2 | 3 | | 7 | 2 | +--------+-------------+<p>
+In order to go back to the list containing the previous parent, the following SQL should be used: select cat_id, cat_name from category_list where cat_id in ( select subcat_id from category_structure where cat_id = ?) limit 1 offset ?<p>
+The first "?" should be initialized with cat_id 2 that has cat_id 7 as one of its children so that the second "?" can be initialized to next_offset 2.<p>
+If the content of the stack above is only the first entry, going to a parent category is simply retrieving the list of top-level categories and selecting the recorded next_offset.<p>
 A list of categories. <hr><h2>Field Documentation</h2>
+<a class="anchor" name="aa7ed53feff7bfad226001711d5bc996"></a><!-- doxytag: member="cat_list_impl::cur_cat" ref="aa7ed53feff7bfad226001711d5bc996" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structcat.html">cat</a> cat_list::cur_cat<code> [read]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The category under iterator. 
+</div>
+</div><p>
+<a class="anchor" name="a2aec0247e4682c171f7eb24561f2b31"></a><!-- doxytag: member="cat_list_impl::cur_cat_name_size" ref="a2aec0247e4682c171f7eb24561f2b31" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t cat_list::cur_cat_name_size          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The current capacity of cur_cat.name 
+</div>
+</div><p>
 <a class="anchor" name="4b268a03c7c17005c1ab2195e2cbd06b"></a><!-- doxytag: member="cat_list_impl::db" ref="4b268a03c7c17005c1ab2195e2cbd06b" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -46,10 +98,115 @@ A list of categories. <hr><h2>Field Documentation</h2>
 The category DB. 
 </div>
 </div><p>
+<a class="anchor" name="e4959818b5ed443ed40f16169a6f9855"></a><!-- doxytag: member="cat_list_impl::flat_next_prev_stmt" ref="e4959818b5ed443ed40f16169a6f9855" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sqlite3_stmt* cat_list::flat_next_prev_stmt          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+SQL to go to the next/prev category in a flat manner. 
+</div>
+</div><p>
+<a class="anchor" name="d4301a0d729456d02e801701fc3a5ef8"></a><!-- doxytag: member="cat_list_impl::go_sub_sup_stmt" ref="d4301a0d729456d02e801701fc3a5ef8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sqlite3_stmt* cat_list::go_sub_sup_stmt          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+SQL to go to the subcategory/super category 
+</div>
+</div><p>
+<a class="anchor" name="f063702b99c3b9133d520c23046abf88"></a><!-- doxytag: member="cat_list_impl::is_flat" ref="f063702b99c3b9133d520c23046abf88" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cat_list::is_flat          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+0 if the iterator is a hierarchical iterator or non-zero if the iterator is flat. 
+</div>
+</div><p>
+<a class="anchor" name="8189868f54862c6455efe88eda101b88"></a><!-- doxytag: member="cat_list_impl::next_offset" ref="8189868f54862c6455efe88eda101b88" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long cat_list::next_offset          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The SQL offset value starting from 0 used to fetch the next category. 0 means that the internal iterator is not over any category. 
+</div>
+</div><p>
+<a class="anchor" name="4ca22a696372db860fcc734ddec2cdb3"></a><!-- doxytag: member="cat_list_impl::next_prev_stmt" ref="4ca22a696372db860fcc734ddec2cdb3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sqlite3_stmt* cat_list::next_prev_stmt          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+SQL to go to the next/prev non-top-level category at a particular depth. 
+</div>
+</div><p>
+<a class="anchor" name="ed70a4d8d7f535e388e0dfc88c11910a"></a><!-- doxytag: member="cat_list_impl::parents_id_and_next_offset" ref="ed70a4d8d7f535e388e0dfc88c11910a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">stack* cat_list::parents_id_and_next_offset          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The ID and value of next_offset at each parent level. 
+</div>
+</div><p>
+<a class="anchor" name="38179f03c7a090d3701bb5aff3bd715a"></a><!-- doxytag: member="cat_list_impl::top_level_next_prev_stmt" ref="38179f03c7a090d3701bb5aff3bd715a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sqlite3_stmt* cat_list::top_level_next_prev_stmt          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+SQL to go to the next/prev top-level category. 
+</div>
+</div><p>
 <hr>The documentation for this struct was generated from the following file:<ul>
 <li>service_category.c</ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Mar 4 18:01:13 2010 for AP Service Publisher by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Apr 23 21:13:47 2010 for AP Service Publisher by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>
