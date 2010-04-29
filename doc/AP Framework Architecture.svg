@@ -65,16 +65,16 @@
      objecttolerance="10"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.46864958"
-     inkscape:cx="259.94399"
-     inkscape:cy="615.6746"
+     inkscape:zoom="0.99681022"
+     inkscape:cx="358.6036"
+     inkscape:cy="791.11845"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1024"
      inkscape:window-height="768"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-x="246"
+     inkscape:window-y="25"
      showborder="true"
      inkscape:showpageshadow="true"
      showguides="true" />
@@ -678,5 +678,127 @@
         </g>
       </g>
     </g>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+       x="414.34531"
+       y="672.80847"
+       id="text2828"><tspan
+         sodipodi:role="line"
+         id="tspan2830"
+         x="414.34531"
+         y="672.80847"
+         style="fill:#008000">gadget.c</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+       x="170.56773"
+       y="416.99249"
+       id="text2832"><tspan
+         sodipodi:role="line"
+         id="tspan2834"
+         x="170.56773"
+         y="416.99249"
+         style="fill:#008000">service_list.c</tspan></text>
+    <text
+       id="text2836"
+       y="261.49649"
+       x="583.88611"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+       xml:space="preserve"><tspan
+         style="fill:#008000"
+         y="261.49649"
+         x="583.88611"
+         id="tspan2838"
+         sodipodi:role="line">service_inquiry_handler_daemon.c</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+       x="430.39651"
+       y="317.67569"
+       id="text2840"><tspan
+         sodipodi:role="line"
+         id="tspan2842"
+         x="430.39651"
+         y="317.67569"
+         style="fill:#008000">service_category.c</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+       x="440.20486"
+       y="292.5477"
+       id="text2844"
+       transform="matrix(0.940248,0.3404903,-0.3404903,0.940248,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan2846"
+         x="440.20486"
+         y="292.5477"
+         style="fill:#008000">service_inquiry.c</tspan></text>
+    <text
+       id="text2848"
+       y="496.2453"
+       x="403.31015"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+       xml:space="preserve"><tspan
+         style="fill:#008000"
+         y="496.2453"
+         x="403.31015"
+         id="tspan2850"
+         sodipodi:role="line">service_inquiry_handler.c</tspan></text>
+    <text
+       id="text2852"
+       y="261.10654"
+       x="261.41528"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+       xml:space="preserve"><tspan
+         style="fill:#008000"
+         y="261.10654"
+         x="261.41528"
+         id="tspan2854"
+         sodipodi:role="line">service_publisher.c</tspan></text>
+    <text
+       id="text2856"
+       y="497.2485"
+       x="172.57414"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+       xml:space="preserve"><tspan
+         style="fill:#008000"
+         y="497.2485"
+         x="172.57414"
+         id="tspan2858"
+         sodipodi:role="line">ssid.c</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+       x="162.54211"
+       y="290.58926"
+       id="text2860"><tspan
+         sodipodi:role="line"
+         id="tspan2862"
+         x="162.54211"
+         y="290.58926"
+         style="font-weight:bold;-inkscape-font-specification:Bitstream Vera Serif Bold">AP</tspan></text>
+    <text
+       id="text2864"
+       y="605.59406"
+       x="389.26532"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+       xml:space="preserve"><tspan
+         style="fill:#008000"
+         y="605.59406"
+         x="389.26532"
+         id="tspan2866"
+         sodipodi:role="line">tlv.c</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif;-inkscape-font-specification:Bitstream Vera Serif"
+       x="261.41528"
+       y="247.06174"
+       id="text2868"><tspan
+         sodipodi:role="line"
+         id="tspan2870"
+         x="261.41528"
+         y="247.06174"
+         style="fill:#008000">ui.html</tspan></text>
   </g>
 </svg>
