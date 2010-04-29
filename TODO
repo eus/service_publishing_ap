@@ -1,0 +1,23 @@
+[AP Todos]
+1. Currently the category presented to the AP owner through ui.html is still hard-coded inside ui.html because service_category.c was not ready at that time. Now that service_category.c is ready, service_publisher.c should use service_category.c to load the categories from the category DB and embed the categories dynamically upon sending ui.html to the AP owner's web browser.
+
+2. Currently AP owner must upload any files into the AP through scp. It is very convenient if the AP owner can upload the file through ui.html. Beside that, ui.html should also present the available space in the AP so that the owner won't put a file that is too big for the AP. Therefore, ui.html must be modified to provide the necessary upload box as well as the information to the available space in the AP.
+
+3. ui.html must also be modified to let the AP owner upload category DB update data in the form of a text file containing SQL DML instructions that the AP owner has downloaded from the central category database.
+
+[Requirements for application residing in user gadget]
+1. The app should be able to detect a service publishing AP that offers update to the app's category DB. Upon detecting an update, the app may prompt the user with the following text: "A category DB update is available. Update?" To detect the authenticity of the update, the central category DB should digitally sign its update files that the app should then verify.
+
+2. The app should have a foreground and background mode. The foreground mode presents to the user the available service in the surrounding environment as well as handling user's actions. The background mode keeps monitoring the surrounding environment all the time all the way for any offered service.
+
+3. The foreground mode can incrementally present its scanning result to the user while keep looking for one (i.e., employing kind of prefetching).
+
+4. The app should do DHCP-less operation during SDE by randomly pick an IP address from IP address pool that all service publishing AP has agreed to allocate (e.g., 10.0.0.0 - 10.7.255.255 are allocated for 524,288 random IP addresses while the rest is used for clients that are using the offered services) to shorten the time to retrieve service information. For this, the app should be able to control the gadget when a DHCP should be used and when it should not.
+
+5. The app should take care of the possibility that the user can walk outside the range of a service publishing AP, for example, by refreshing the list of detected services or prompting the user that the service is no longer available when the user clicks on it.
+
+6. User should be able to filter the detected services. The app should also be able to notify the user if it detects a service that the user is interested in.
+
+7. The app should be smart in handling the offered service based on the access protocol (e.g., rss://) and the MIME type or file extension. Upon encountering an unrecognized file, the app can offer a selection for the possible applications/services to open the offered service/file.
+
+8. The app's UI should only present relevant information (e.g., there is no need to tell the user about the signal strength of each AP).
